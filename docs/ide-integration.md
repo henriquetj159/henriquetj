@@ -40,8 +40,8 @@ AIOX supports multiple AI-powered development platforms. Choose the one that bes
 | AntiGravity | Works | workflow-driven activation (`aios-execute-story`) | Not available | Uses native workflows for deep execution |
 
 Legend:
-- `Works`: fully recommended for new users in AIOX 4.2.11.
-- `Limited`: usable with the documented workaround.
+- `Works`: integration is functional and fully deployable in AIOX (automation level varies — see the Auto-Checks column and the Beginner Decision Guide for effort required).
+- `Limited`: usable with the documented workaround/extra manual steps.
 - `Not available`: this IDE does not offer this capability; use the workaround instead.
 
 ### What You Lose Without Full Auto-Checks
@@ -260,7 +260,7 @@ special_features:
   - Google Cloud integration
   - Workflow system
   - Native Firebase tools
-  - Deep Execution Engine (Workflows nativos para Dev e QA)
+  - Deep Execution Engine (Native workflows for Dev and QA)
 ```
 
 **Setup:**
