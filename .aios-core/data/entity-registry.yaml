@@ -1,9 +1,78 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-02-17T12:54:37.702Z'
-  entityCount: 506
+  lastUpdated: '2026-02-22T00:00:00.000Z'
+  entityCount: 510
   checksumAlgorithm: sha256
 entities:
+  squads:
+    zona-genialidade:
+      path: squads/zona-genialidade/config.yaml
+      type: squad
+      purpose: Squad para diagnosticar zona de genialidade e gerar blueprint
+      keywords:
+        - zona-genialidade
+        - genius
+        - assessment
+        - blueprint
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:2a4fcebfd214daca7e32bffc08e94ada4f429296211794e6ff92443764d0a6a2
+      lastVerified: '2026-02-22T00:00:00.000Z'
+    dopamine-learning:
+      path: squads/dopamine-learning/config.yaml
+      type: squad
+      purpose: Squad para design de experiências de aprendizagem com dopamina
+      keywords:
+        - dopamine
+        - learning
+        - gamification
+        - behavior
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:7b9b9b734a2e0daee1fca2a0b214ce7c59c82bb78b4a1de46af58dce2037f8a3
+      lastVerified: '2026-02-22T00:00:00.000Z'
+    repertoire-mapper:
+      path: squads/repertoire-mapper/config.yaml
+      type: squad
+      purpose: Squad para mapeamento e sistematização de repertórios pessoais
+      keywords:
+        - repertoire
+        - knowledge
+        - mapping
+        - tacit
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:e840fabe2f1a8b015f5b20a83f8e972860a3601563901a465ef579268701fb1d
+      lastVerified: '2026-02-22T00:00:00.000Z'
+    design-studio:
+      path: squads/design-studio/config.yaml
+      type: squad
+      purpose: Squad de design visual e criativo com elite minds
+      keywords:
+        - design
+        - studio
+        - branding
+        - visual
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:b8fef33c050d8313fd199ad954ded7d6dc79886000f33fe1ec6dc277b3a034bd
+      lastVerified: '2026-02-22T00:00:00.000Z'
   tasks:
     add-mcp:
       path: .aios-core/development/tasks/add-mcp.md
@@ -9195,6 +9264,9 @@ entities:
       checksum: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
       lastVerified: '2026-02-08T13:33:24.397Z'
 categories:
+  - id: squads
+    description: Squad manifests and entry configurations
+    basePath: squads
   - id: tasks
     description: Executable task workflows for agent operations
     basePath: .aios-core/development/tasks

@@ -1,3 +1,18 @@
+name: repertoire-mapper
+title: "Repertoire Mapper"
+version: "1.0.0"
+author: "MMOS"
+description: >
+  Squad dedicado ao mapeamento completo de repertórios pessoais.
+  Extrai conhecimento tácito e explícito de múltiplas fontes (livros, vídeos,
+  lives, redes sociais, mentorias, Q&A interativo) e organiza em outputs
+  acionáveis: manual operacional, grafo de conhecimento, frameworks de decisão.
+  Baseado em 9 mentes elite em extração de conhecimento tácito, PKM e
+  ciência cognitiva.
+entry_agent: repertoire-chief
+type: specialist
+slash_prefix: repertoire-mapper
+
 pack:
   name: repertoire-mapper
   title: Repertoire Mapper
@@ -11,7 +26,7 @@ pack:
     Baseado em 9 mentes elite em extração de conhecimento tácito, PKM e
     ciência cognitiva.
   icon: "🧠"
-  slash_prefix: RepertoireMapper
+  slash_prefix: repertoire-mapper
   pattern_prefix: RM
   target_user: "Qualquer pessoa que queira mapear seus próprios repertórios"
 

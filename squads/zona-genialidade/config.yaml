@@ -13,9 +13,11 @@ description: >
   Squad que identifica a zona de genialidade do usuario atraves de assessment
   comportamental unificado (30 min max), analise multi-framework autonoma
   e entrega um Blueprint completo com squad recomendado e plano de monetizacao.
+entry_agent: zona-genialidade-chief
+type: specialist
 
 ## Slash command prefix for Claude Code
-slash_prefix: "ZonaGenialidade"
+slash_prefix: zona-genialidade
 pattern_prefix: "ZG"
 
 ## Target audience

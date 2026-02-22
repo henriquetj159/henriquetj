@@ -2,6 +2,15 @@
 # DOPAMINE-LEARNING SQUAD CONFIGURATION
 ############################################################
 
+name: dopamine-learning
+title: "Dopamine Learning Squad"
+version: "1.0.0"
+author: "Jose Carlos Amorim"
+description: "Transform boring questions into immersive, dopamine-optimized learning experiences"
+entry_agent: dopamine-learning-chief
+type: specialist
+slash_prefix: dopamine
+
 squad:
   id: "dopamine-learning"
   name: "Dopamine Learning Squad"
@@ -11,7 +20,7 @@ squad:
   description: "Transform boring questions into immersive, dopamine-optimized learning experiences"
 
 activation:
-  slash_command: "dopamine"
+  slash_prefix: "dopamine"
   example_activation: "@dopamine-learning-chief"
   pattern_prefix: "DL"
 
@@ -21,10 +30,14 @@ architecture:
       - id: "dopamine-learning-chief"
         role: "Squad Coordinator & Router"
         commands:
-          - "*help" - List all capabilities
-          - "*route" - Route to appropriate agent
-          - "*status" - Show current workflow status
-          - "*handoff" - Transfer to specific agent
+          - command: "*help"
+            description: "List all capabilities"
+          - command: "*route"
+            description: "Route to appropriate agent"
+          - command: "*status"
+            description: "Show current workflow status"
+          - command: "*handoff"
+            description: "Transfer to specific agent"
 
     tier_0_diagnostic:
       - id: "schultz-dopamine-analyst"

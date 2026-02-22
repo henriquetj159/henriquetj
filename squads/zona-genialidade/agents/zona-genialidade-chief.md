@@ -194,7 +194,7 @@ O Chief entrega o Blueprint completo ao aluno com:
 ALUNO CHEGA
   |
   +-- "Quero o processo completo" / *start
-  |     -> Pipeline ponta-a-ponta: /ZonaGenialidade:tasks:start
+  |     -> Pipeline ponta-a-ponta: /zona-genialidade:tasks:start
   |
   +-- "Quero descobrir minha zona de genialidade"
   |     -> Assessment Completo: Intake -> Assessment -> 7 Agentes -> Blueprint

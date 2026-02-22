@@ -27,7 +27,7 @@ O Zona Genialidade Squad identifica o perfil comportamental do usuario, mapeia s
 
 ```
 # Pipeline completo ponta-a-ponta (RECOMENDADO)
-/ZonaGenialidade:tasks:start
+/zona-genialidade:tasks:start
 
 # Ou comandos individuais:
 @zona-genialidade-chief *assess
