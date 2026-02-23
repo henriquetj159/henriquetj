@@ -4,7 +4,7 @@
 **Wave:** 2 — Installer Integration (P1)
 **Points:** 5
 **Agents:** @dev
-**Status:** Ready for Review
+**Status:** Done
 **Blocked By:** — (INS-4.2 Done — commit 4a8d9f9e)
 **Created:** 2026-02-23
 
@@ -393,3 +393,4 @@ Claude Opus 4.6
 | 2026-02-23 | @sm (River) | [Codex Story Review] Narrativa de hooks corrigida: linhas 539-548 copiam Claude Code hooks para `.claude/hooks/` (SYNAPSE engine), NAO git hooks para `.husky/`. Context e Dev Notes atualizados. |
 | 2026-02-23 | @sm (River) | [PM v4 — DevOps Handoff v2] Escopo expandido massivamente. INS-4.9 absorvida. Gaps #11 (skills), #12 (commands), #13 (hooks) incorporados. Titulo: "Wire Generator" → "Full Artifact Copy Pipeline". 7 ACs (era 4). 8 Tasks (era 5). Skills inventory (7), commands inventory (~11), hooks fix. Sizing: 2→5 pts. PM decision: only JS hooks, no Py/Sh. |
 | 2026-02-23 | @po (Pax) | [Validation Fix] Gap #13 corrigido: hooks copy JA funciona (whitelist linha 678 tem ambos .cjs). Bug real e na registration — `createClaudeSettingsLocal()` hardcoda `synapse-engine.cjs` apenas (linha 712). AC4 e Task 5 reescritos para focar em registration fix, nao copy fix. Line refs verificados e corretos. Status: Draft -> Approved. |
+| 2026-02-23 | @po (Pax) | [Close] Story Done. QA PASS (re-review). 3 tech debts resolved (TD-1/TD-2/TD-3). Commit 8c92b01f. 9/9 tests pass. Full artifact copy pipeline: settings.json generator wired, 7 skills copy, ~11 commands copy, dynamic hooks registration. Progress: 3/9 stories (15/33 pts). |

@@ -56,7 +56,7 @@ Garantir que qualquer **fresh install** ou **upgrade** do aios-core resulta num 
 
 | Story | Title | Agent | Points | Status | Blocked By |
 |-------|-------|-------|--------|--------|------------|
-| [INS-4.3](story-INS-4.3-installer-settings-rules.md) | Installer: Full Artifact Copy Pipeline (Settings + Skills + Commands + Hooks) | @dev | 5 | Draft | INS-4.2 |
+| [INS-4.3](story-INS-4.3-installer-settings-rules.md) | Installer: Full Artifact Copy Pipeline (Settings + Skills + Commands + Hooks) | @dev | 5 | Done | INS-4.2 |
 | [INS-4.4](story-INS-4.4-claude-md-template-v5.md) | Installer: CLAUDE.md Template v5 (4 secoes novas) | @dev | 3 | Draft | — |
 | [INS-4.5](story-INS-4.5-ide-sync-integration.md) | IDE Sync Integration — Skills + Commands + API programatica | @dev + @devops | 3 | Draft | — |
 
@@ -74,8 +74,8 @@ Garantir que qualquer **fresh install** ou **upgrade** do aios-core resulta num 
 |--------|-------|
 | **Total Stories** | 9 (+1 INS-4.10) |
 | **Total Points** | ~33 (v4: +3 INS-4.3 expand, +1 INS-4.8 expand, +2 INS-4.10 new) |
-| **Points Done** | 10 (INS-4.1, INS-4.2) |
-| **Points Remaining** | ~23 |
+| **Points Done** | 15 (INS-4.1, INS-4.2, INS-4.3) |
+| **Points Remaining** | ~18 |
 | **Waves** | 3 |
 | **Executor Primario** | @dev (Dex) |
 | **Pre-requisitos** | Branch `feat/epic-nogic-code-intelligence` merged em main (antes de Wave 2) |
@@ -221,6 +221,7 @@ Auditoria encontrou 7 `.claude/rules/*.md`: agent-authority, workflow-execution,
 
 - [x] INS-4.1: `aios doctor` functional with 12 checks, --fix, --json flags (Done — commit 337213dc)
 - [x] INS-4.2: `generate-settings-json.js` created with path traversal validation, idempotency, 12 tests (Done — commit 4a8d9f9e)
+- [x] INS-4.3: Full artifact copy pipeline — settings.json wired, 7 skills copy, ~11 commands copy, dynamic hooks registration, 9 tests (Done — commit 8c92b01f)
 - [ ] All 9 stories completed with acceptance criteria met
 - [ ] `generate-settings-json.js` created and integrated in installer
 - [ ] Fresh install includes: settings.json, 7 rules files, CLAUDE.md v5, IDE sync, entity registry
@@ -243,6 +244,7 @@ Auditoria encontrou 7 `.claude/rules/*.md`: agent-authority, workflow-execution,
 | 3.0 | 2026-02-23 | @sm (River) | Stories corrigidas pos-Codex Story Review: schema settings.json como strings "Edit(path)" (INS-4.2), contrato commandSync com adapter pattern (INS-4.5), contrato MergeResult com createMergeResult (INS-4.7), narrativa hooks Claude Code vs git (INS-4.3), markers AIOS-MANAGED-START/END (INS-4.4), source path rules confirmado como .claude/rules/ (INS-4.1). Sizing INS-4.5 ajustado 2→3 pts. Total 27 pts. |
 | 3.1 | 2026-02-23 | @po (Pax) | INS-4.1 closed: Done. 12 modular checks, --fix/--json/--dry-run, 40 tests. QA PASS (9/10). Commit 337213dc. Progress: 1/8 stories. |
 | 4.1 | 2026-02-23 | @po (Pax) | INS-4.2 closed: Done. Settings.json generator with path traversal validation, js-yaml alignment, 12 tests. QA PASS (re-review). Commit 4a8d9f9e. Progress: 2/9 stories (10/33 pts). |
+| 4.2 | 2026-02-23 | @po (Pax) | INS-4.3 closed: Done. Full artifact copy pipeline — settings.json generator wired, 7 skills copy, ~11 commands copy, dynamic hooks registration, 9 tests. QA PASS (re-review, 3 TDs resolved). Commit 8c92b01f. Progress: 3/9 stories (15/33 pts). |
 | 4.0 | 2026-02-23 | @pm (Morgan) | DevOps Handoff v2 incorporado. 4 gaps novos (#11-#14): skills nao instaladas, commands extras ausentes, hooks parciais, publish sem validacao. INS-4.3 expandida (2→5 pts, absorve INS-4.9 skills/commands/hooks copy). INS-4.8 expandida (2→3 pts, absorve 3 doctor checks novos). INS-4.10 criada (2 pts, publish safety gate, Wave 1). INS-4.5 titulo expandido. Total: 27→33 pts, 8→9 stories. Decisoes: hooks Py/Sh criticos→CJS, rest→ignorar. |
 
 ## Handoff to Story Manager

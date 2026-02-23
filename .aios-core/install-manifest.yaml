@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-02-23T16:58:15.324Z"
+generated_at: "2026-02-23T19:51:23.894Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1073
+file_count: 1074
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1197,9 +1197,9 @@ files:
     type: data
     size: 9573
   - path: data/entity-registry.yaml
-    hash: sha256:2bd30a44455d325e469c63e321d28451bbfab95af74e12db633b525f7584cb96
+    hash: sha256:dbd4e2b8c79c309435fbd34a847cf8bb4bcb8854a520d5d0d786a04442cff4eb
     type: data
-    size: 511516
+    size: 511881
   - path: data/learned-patterns.yaml
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
@@ -2500,6 +2500,10 @@ files:
     hash: sha256:a273d4e3aebfd505b2e15721a49912ed25e4f2d6a58ddcf06e9e6c4d2fc9dec0
     type: task
     size: 2233
+  - path: development/templates/agent-handoff-tmpl.yaml
+    hash: sha256:683371374512bfbb4e439825074bb5328c2e5936483e70cfeacb81875224011c
+    type: template
+    size: 1987
   - path: development/templates/aios-doc-template.md
     hash: sha256:755abbb43aacb901a07dd2b66574f7d5a0750bf4f18e59f58fe52c35e61de8c1
     type: template
@@ -3785,9 +3789,9 @@ files:
     type: template
     size: 3081
   - path: product/templates/ide-rules/claude-rules.md
-    hash: sha256:13d5fb7858534f6d49150a5dff642faa276c17b9d242f995369c5e7e1d37ae40
+    hash: sha256:026503d18f9a0b8d228801db3c855496028cc5b0a870f93e754bd9949b3c9d68
     type: template
-    size: 6785
+    size: 11072
   - path: product/templates/ide-rules/codex-rules.md
     hash: sha256:e8345404f17977a268b917a4ff86e4f10f80174a6bb572865e5413c8f7dd217a
     type: template
