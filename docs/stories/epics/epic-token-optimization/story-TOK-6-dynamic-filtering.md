@@ -7,7 +7,7 @@
 | **Story ID** | TOK-6 |
 | **Epic** | Token Optimization — Intelligent Tool Loading |
 | **Type** | Enhancement |
-| **Status** | Ready for Review |
+| **Status** | ✅ Done |
 | **Priority** | P2 (Intelligence) |
 | **Points** | 3-5 |
 | **Agent** | @dev (Dex) |
@@ -427,3 +427,5 @@ None — clean implementation, no blocking issues.
 | 1.0 | 2026-02-22 | @sm (River) | Story drafted from Blueprint v2.0 + Codex reestimation |
 | 1.1 | 2026-02-23 | @po (Pax) | PO validation fixes (6 CF + 4 SF): CF-1/2/4 Tasks restructured 4→5 with correct AC mapping (17 ACs fully covered); CF-3/5/6 Architecture reframed from impossible "client-side MCP intercept" to rules-based filtering (SYNAPSE rule + utility scripts); SF-1/2 Testing section fixed (map-based registry, filter behavior tests); SF-3 Dependencies corrected (TOK-5 Done, informational not blocking); SF-4 Blocked By updated TOK-2→TOK-2 (Done). File List expanded 5→8. Risks updated. |
 | 2.0 | 2026-02-23 | @dev (Dex) | Implementation complete: 5 filter configs in tool-registry.yaml, SYNAPSE rule created, 4 filter utility scripts (content, schema, field, index), 42 unit tests passing, payload reduction verified (-46% content, -81% schema, -86% field). DoD checklist passed. Status → Ready for Review. |
+| 2.1 | 2026-02-23 | @qa (Quinn) | QA Review PASS 100/100. Tech debt resolved: shared constants.js, safe truncation logic, 4 additional tests (46 total). Gate: docs/qa/gates/TOK-6-dynamic-filtering.yml |
+| 3.0 | 2026-02-23 | @po (Pax) | Story closed. Commit 8af115a7. QA Gate PASS 100/100. All 17 ACs met. Epic Token Optimization 8/8 complete. |
