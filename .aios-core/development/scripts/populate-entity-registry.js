@@ -537,6 +537,29 @@ function populate(options = {}) {
     console.log(`[IDS]   Found ${count} ${config.category}`);
   }
 
+  // Preserve invocationExamples from existing registry (TOK-4B)
+  // invocationExamples are manually curated and must survive re-population.
+  // Limits: max 3 examples per entity, max 200 tokens per example (ADR-5).
+  try {
+    const existingYaml = fs.readFileSync(REGISTRY_PATH, 'utf8');
+    const existingRegistry = yaml.load(existingYaml);
+    if (existingRegistry && existingRegistry.entities) {
+      for (const [category, entities] of Object.entries(existingRegistry.entities)) {
+        if (!allEntities[category]) continue;
+        for (const [entityId, entity] of Object.entries(entities)) {
+          if (entity.invocationExamples && Array.isArray(entity.invocationExamples) && allEntities[category][entityId]) {
+            // Enforce limits: max 3 examples, each max 200 chars
+            const examples = entity.invocationExamples.slice(0, 3).map((e) => String(e).slice(0, 200));
+            allEntities[category][entityId].invocationExamples = examples;
+          }
+        }
+      }
+      console.log('[IDS] Preserved invocationExamples from existing registry');
+    }
+  } catch {
+    // No existing registry or parse error — skip preservation
+  }
+
   console.log('[IDS] Resolving usedBy relationships...');
   resolveUsedBy(allEntities);
 
