@@ -7,7 +7,7 @@
 | **Story ID** | TOK-1 |
 | **Epic** | Token Optimization — Intelligent Tool Loading |
 | **Type** | Enhancement |
-| **Status** | Ready for Review |
+| **Status** | Done |
 | **Priority** | P0 (Foundation) |
 | **Points** | 3-5 |
 | **Agent** | @dev (Dex) |
@@ -311,3 +311,5 @@ Story TOK-1 satisfies all 21 acceptance criteria. Both artifacts are well-struct
 | 1.0 | 2026-02-22 | @sm (River) | Story drafted from Architect Blueprint v2.0 |
 | 1.1 | 2026-02-23 | @po (Pax) | PO validation: replaced `research` task binding with `plan-create-implementation` (real task); moved AC 13-14 from Task 4 to Task 2 with new subtask 2.5; corrected Task 4 AC mapping to 15-21 |
 | 2.0 | 2026-02-23 | @dev (Dex) | Implementation complete: tool-registry.yaml (34 tools, 10 profiles, 5 bindings), squad override example, all validations pass |
+| 2.1 | 2026-02-23 | @qa (Quinn) | QA Review: PASS 21/21 ACs, 4 observations (3 resolved), gate decision PASS with HIGH confidence |
+| 3.0 | 2026-02-23 | @po (Pax) | Story closed. Pushed commit 8ef32fe5 to feat/epic-nogic-code-intelligence. Status → Done |
