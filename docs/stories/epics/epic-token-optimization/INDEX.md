@@ -58,7 +58,7 @@ Reduzir o overhead de tokens do AIOS em **25-45%** (conservador) combinando feat
 | Story | Title | Agent | Points | Status | Blocked By |
 |-------|-------|-------|--------|--------|------------|
 | [TOK-1](story-TOK-1-unified-tool-registry.md) | Unified Tool Registry Creation | @dev + @architect | 3-5 | ✅ Done | - |
-| [TOK-1.5](story-TOK-1.5-baseline-metrics.md) | Baseline Metrics per Workflow | @dev + @analyst | 2-3 | Draft | - |
+| [TOK-1.5](story-TOK-1.5-baseline-metrics.md) | Baseline Metrics per Workflow | @dev + @analyst | 2-3 | ✅ Done | - |
 | [TOK-2](story-TOK-2-deferred-search-capability-aware.md) | Deferred/Search Capability-Aware | @dev + @devops | 5 | Draft | TOK-1 |
 
 ### Wave 2: Optimization (P1)

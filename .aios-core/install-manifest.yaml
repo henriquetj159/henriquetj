@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-02-23T12:45:06.964Z"
+generated_at: "2026-02-23T14:14:21.677Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1047
+file_count: 1069
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -177,9 +177,9 @@ files:
     type: cli
     size: 5907
   - path: core-config.yaml
-    hash: sha256:1005d2dead63377c519713946263c8d5e944eb68f2933da6dee73fb727bed6c9
+    hash: sha256:3545633a3e636d75e286bb7a26765d769ef3dedbcb75d0bdc3a601d003667a52
     type: config
-    size: 10845
+    size: 10936
   - path: core/code-intel/code-intel-client.js
     hash: sha256:bd88497c8c8f312e95f746121e627c088e93d27af093d411f0521712bd17ba94
     type: core
@@ -276,6 +276,74 @@ files:
     hash: sha256:866128ca19c1be8254534ff42b9eefad77f6c4ef34adfe20319b1f80c5258382
     type: template
     size: 721
+  - path: core/doctor/checks/agent-memory.js
+    hash: sha256:1100511be904b8dc1eca7fc10dda7555e4c9f10c50dddfb740ac947c593a744e
+    type: core
+    size: 1367
+  - path: core/doctor/checks/claude-md.js
+    hash: sha256:11b8cdd9b3b45f5dad368bf99d61e4b6465f43c1731bcd53355393a706a01129
+    type: core
+    size: 1188
+  - path: core/doctor/checks/code-intel.js
+    hash: sha256:a5f9175c1da2e285f016e9c464ba8e2a45a7307eea7bfb3f22bb81f05626112c
+    type: core
+    size: 1352
+  - path: core/doctor/checks/core-config.js
+    hash: sha256:fbf07087b997250f1c00a2f698910f0689f82f4a3ddfcc007c084a81a784ef87
+    type: core
+    size: 1208
+  - path: core/doctor/checks/entity-registry.js
+    hash: sha256:5e94ced04a6d835b45b18a574108f908fdee43fe973dbd8fa5aea3675bb927e1
+    type: core
+    size: 1333
+  - path: core/doctor/checks/git-hooks.js
+    hash: sha256:0fbf921cee36695716d8762a4b675403d788ffdb69ae41c0e2a398d516d2530f
+    type: core
+    size: 1029
+  - path: core/doctor/checks/graph-dashboard.js
+    hash: sha256:edfd68c7ab96a91304382cddce13029cadcf52284433a43d8146e61162c3fb44
+    type: core
+    size: 1106
+  - path: core/doctor/checks/ide-sync.js
+    hash: sha256:a4ed3aa066382bc43a9e5f4178bc91f2927a24d628d66eb9aa88e66a1ccb734a
+    type: core
+    size: 1789
+  - path: core/doctor/checks/index.js
+    hash: sha256:ddb24ddbc4cf705ed0a6e3ffa88334876c011c1c0d780afe6cbe0ac24179ae60
+    type: core
+    size: 969
+  - path: core/doctor/checks/node-version.js
+    hash: sha256:972840a623cd452017af5d7a3e91e9d4c29e4bebeaa1f79f009e0cfe90abdcd8
+    type: core
+    size: 674
+  - path: core/doctor/checks/npm-packages.js
+    hash: sha256:16f747d25d3185050c3b149d235dce707555038b51c0659e416a4d33a3672032
+    type: core
+    size: 702
+  - path: core/doctor/checks/rules-files.js
+    hash: sha256:6fe670f3759520f0d4b0abdad14f5f8b0eaa12cc9b15252c6de7e4cfa099d337
+    type: core
+    size: 1426
+  - path: core/doctor/checks/settings-json.js
+    hash: sha256:03920105e204a369b0c0d881e7fce730b26cbc1b2e6a2ee16758c3dd88e2a7a8
+    type: core
+    size: 3286
+  - path: core/doctor/fix-handler.js
+    hash: sha256:51cac57859a662d56a01d2137e789a36d36ff4a52d4bfe20ab45da8525c125be
+    type: core
+    size: 4535
+  - path: core/doctor/formatters/json.js
+    hash: sha256:a2f03e7aec43d1c9c1a0d5a9c35bbac75da2e727e397c4c8407c5c9a4692841d
+    type: core
+    size: 256
+  - path: core/doctor/formatters/text.js
+    hash: sha256:f79986236f5a4c094622dabc6432ea0162e8a96218af9fb7c52ef684113a3dd4
+    type: core
+    size: 1456
+  - path: core/doctor/index.js
+    hash: sha256:9865804725e3b0889861637b9d38cb1fc2032f6b00d07e824c98988db6c62016
+    type: core
+    size: 2529
   - path: core/elicitation/agent-elicitation.js
     hash: sha256:ef13ebff1375279e7b8f0f0bbd3699a0d201f9a67127efa64c4142159a26f417
     type: elicitation
@@ -1124,14 +1192,22 @@ files:
     hash: sha256:fe9bffd71c2070116a7802ecc91718ad64e7ca4e4ba4f7e2fd2f5e188120ffb7
     type: data
     size: 34235
-  - path: data/entity-registry.yaml
-    hash: sha256:7a8483f62b5ada8de4529f6ebfbb05f3c4bef500627b2d3edb6b5a5b9abca917
+  - path: data/capability-detection.js
+    hash: sha256:103dd2370d7400d270342c434ef666b84976d8c344a301efe3bdbe3bdd6ef04c
     type: data
-    size: 502509
+    size: 9573
+  - path: data/entity-registry.yaml
+    hash: sha256:a26a753c989115e13f15f5cfd761dd24ef317d79a6639d0b1b08f131e57c2e3b
+    type: data
+    size: 508858
   - path: data/learned-patterns.yaml
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
     size: 68
+  - path: data/mcp-discipline.js
+    hash: sha256:893cf7c6c0f69e9e7c9efe23cd2ae74fc63613480f6b645a820908d6d1351dfa
+    type: data
+    size: 5093
   - path: data/tech-presets/_template.md
     hash: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
     type: data
@@ -1144,10 +1220,18 @@ files:
     hash: sha256:7acc7123b9678ce4a48ee5c0e5f4d84665b7f3c34798178640c2c1e982c2e2c3
     type: data
     size: 2643
-  - path: data/tool-registry.yaml
-    hash: sha256:b344270815b0692c2c2e3fa65c0bce28af17c10306d5f6098dc2b6c36d939b5d
+  - path: data/tok2-validation.js
+    hash: sha256:52ffb14d8bb00a28d0568570a60d5af01a970d64a320bfb63fde9fcf5a2db481
     type: data
-    size: 12144
+    size: 7026
+  - path: data/tool-registry.yaml
+    hash: sha256:e965d655d9139d950b66f9fd1b0944644c14718c345db38f53177559759f94c1
+    type: data
+    size: 12486
+  - path: data/tool-search-validation.js
+    hash: sha256:569063d2d48cef7c41d1f62b4541ff5ca31924d9d1af816f0588b39ef25c56ec
+    type: data
+    size: 5752
   - path: data/workflow-patterns.yaml
     hash: sha256:3c3625a5d9eb6eca6f33e3ac35d20fa377b44b061dc1dbf6b04116c6c5722834
     type: data
@@ -2888,6 +2972,10 @@ files:
     hash: sha256:2b1bb5ecd76b6a4041b76b18905a88959179ec348be9e11cd520f4bee4719a53
     type: script
     size: 24263
+  - path: infrastructure/scripts/generate-settings-json.js
+    hash: sha256:9e9219106165593927f5fbb2a0a1e5d82e9d19ca23171e0f9c836f31c6dd2c35
+    type: script
+    size: 7624
   - path: infrastructure/scripts/git-config-detector.js
     hash: sha256:52ed96d98fc6f9e83671d7d27f78dcff4f2475f3b8e339dc31922f6b2814ad78
     type: script

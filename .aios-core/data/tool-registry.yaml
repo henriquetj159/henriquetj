@@ -216,6 +216,7 @@ tools:
     tier: 3
     layer: L4
     defer: true
+    essential: false # Task-specific: research, competitor analysis
     tokenCost: 500
     category: web-search
     keywords:
@@ -229,6 +230,7 @@ tools:
     tier: 3
     layer: L4
     defer: true
+    essential: false # Task-specific: browser automation, screenshots
     tokenCost: 800
     category: browser-automation
     keywords:
@@ -236,12 +238,14 @@ tools:
       - screenshot
       - web-test
       - automation
+      - website
     mcp_server: direct
     input_examples: null
   apify:
     tier: 3
     layer: L4
     defer: true
+    essential: false # Task-specific: web scraping, social media
     tokenCost: 600
     category: web-scraping
     keywords:
@@ -255,6 +259,7 @@ tools:
     tier: 3
     layer: L4
     defer: true
+    essential: true # Core code intelligence — NEVER disable
     tokenCost: 400
     category: code-intelligence
     keywords:
@@ -267,6 +272,7 @@ tools:
     tier: 3
     layer: L4
     defer: true
+    essential: true # Dependency analysis — NEVER disable
     tokenCost: 400
     category: code-intelligence
     keywords:
