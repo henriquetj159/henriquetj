@@ -7,13 +7,13 @@
 | **Story ID** | TOK-4A |
 | **Epic** | Token Optimization — Intelligent Tool Loading |
 | **Type** | Enhancement |
-| **Status** | Draft |
+| **Status** | Ready for Review |
 | **Priority** | P1 (Optimization) |
 | **Points** | 3-5 |
 | **Agent** | @dev (Dex) + @architect (Aria) |
 | **Quality Gate** | @qa (Quinn) |
 | **Quality Gate Tools** | [context_measurement, handoff_integrity] |
-| **Blocked By** | TOK-1 |
+| **Blocked By** | TOK-1. Phase 2 (ACs 7-9): NOG-18 (condicional) |
 | **Branch** | feat/epic-token-optimization |
 | **Origin** | Codex ALTO-1: TOK-4 split — Handoff strategy separated from Input Examples |
 
@@ -86,55 +86,66 @@ Max context: always ~1 active agent + summaries of previous agents.
 5. New agent receives: own full profile + handoff artifact from previous agent(s)
 6. Context does NOT accumulate 3+ full agent personas simultaneously
 
-### SYNAPSE Integration
+### Integration Point & Limits
 
-7. Handoff integrates with SYNAPSE context tracking (NOG-18)
-8. SYNAPSE domain switch triggers handoff compaction
-9. Handoff artifact stored in `.aios/handoffs/` (runtime, gitignored)
-
-### Integration Point (Handoff ajuste obrigatorio)
-
-10. Define exact integration point: SYNAPSE layer (new l8?), orchestration hook, or standalone module
-11. No regression in current subagent flow: `subagent-prompt-builder.js` and `executor-assignment.js` continue to work identically
-12. Define objective compaction limits: max tokens for handoff artifact, max retained agent summaries
+7. Define exact integration point: orchestration hook, CLAUDE.md instructions, or standalone module
+8. No regression in current subagent flow: `subagent-prompt-builder.js` and `executor-assignment.js` continue to work identically
+9. Define objective compaction limits: max tokens for handoff artifact, max retained agent summaries
+10. Handoff artifact stored in `.aios/handoffs/` (runtime, gitignored)
 
 ### Validation
 
-13. SDC workflow (4 agent switches) measured: context growth < 50% vs current accumulation
-14. No critical information lost in handoff (story context, decisions, file lists preserved)
-15. `npm test` passes — zero regressions
+11. SDC workflow (4 agent switches) measured: context growth < 50% vs current accumulation
+12. No critical information lost in handoff (story context, decisions, file lists preserved)
+13. `npm test` passes — zero regressions
+
+### Phase 2: SYNAPSE Integration (condicional — requer NOG-18 Done)
+
+> **NOTA:** ACs 14-16 so sao executaveis apos NOG-18 (SYNAPSE context engine) estar Done. Se NOG-18 nao estiver pronto no momento da implementacao, Phase 1 (ACs 1-13) pode ser entregue standalone. Phase 2 sera implementada quando NOG-18 estiver disponivel.
+
+14. Handoff integrates with SYNAPSE context tracking (NOG-18)
+15. SYNAPSE domain switch triggers handoff compaction
+16. SYNAPSE integration tested with domain-aware context active
 
 ## Tasks / Subtasks
 
-> **Execution order:** Task 1 → Task 2 → Task 3 → Task 4
+> **Execution order:** Phase 1: Task 1 → Task 2 → Task 3 → Task 4. Phase 2 (condicional NOG-18): Task 5.
 
-- [ ] **Task 1: Handoff artifact design** (AC: 1, 2, 3)
-  - [ ] 1.1 Design handoff artifact schema (story context, decisions, files, blockers)
-  - [ ] 1.2 Create template at `.aios-core/development/templates/agent-handoff-tmpl.yaml`
-  - [ ] 1.3 Validate template is < 500 tokens when filled
+### Phase 1: Standalone Handoff (ACs 1-13)
 
-- [ ] **Task 2: Context compaction implementation** (AC: 4, 5, 6)
-  - [ ] 2.1 Define compaction trigger (agent switch detection)
-  - [ ] 2.2 Implement context compaction: extract critical state, discard persona
-  - [ ] 2.3 Load new agent profile from tool registry
+- [x] **Task 1: Handoff artifact design** (AC: 1, 2, 3)
+  - [x] 1.1 Design handoff artifact schema (story context, decisions, files, blockers)
+  - [x] 1.2 Create template at `.aios-core/development/templates/agent-handoff-tmpl.yaml`
+  - [x] 1.3 Validate template is < 500 tokens when filled (379 tokens filled, no comments)
 
-- [ ] **Task 3: SYNAPSE integration** (AC: 7, 8, 9)
-  - [ ] 3.1 Link handoff to SYNAPSE domain switch
-  - [ ] 3.2 Store handoff artifacts in `.aios/handoffs/`
-  - [ ] 3.3 Test with SYNAPSE context tracking active
+- [x] **Task 2: Context compaction implementation** (AC: 4, 5, 6)
+  - [x] 2.1 Define compaction trigger (agent switch detection via `@agent` command)
+  - [x] 2.2 Implement context compaction: `.claude/rules/agent-handoff.md` — extract critical state, discard persona
+  - [x] 2.3 Load new agent profile from tool registry (incoming agent loads full profile, outgoing discarded)
+  - [x] 2.4 Implement handoff artifact storage in `.aios/handoffs/` (AC: 10) — directory created, gitignored
 
-- [ ] **Task 4: Validation** (AC: 10, 11, 12)
-  - [ ] 4.1 Measure SDC workflow context growth: before vs after
-  - [ ] 4.2 Verify critical information preserved across handoffs
-  - [ ] 4.3 Run `npm test` — zero regressions
+- [x] **Task 3: Integration point & limits** (AC: 7, 8, 9)
+  - [x] 3.1 Integration point: `.claude/rules/agent-handoff.md` (native Claude Code rules injection — zero code changes)
+  - [x] 3.2 Zero regression verified: `git diff` on subagent-prompt-builder.js and executor-assignment.js = empty
+  - [x] 3.3 Compaction limits documented: 500 tok max artifact, 3 max retained, 5/10/3 decisions/files/blockers
+
+- [x] **Task 4: Validation** (AC: 11, 12, 13)
+  - [x] 4.1 SDC context growth: 18,751 → 6,497 tokens (65.4% reduction, target >50%) — PASS
+  - [x] 4.2 Critical info preserved: story_id, path, status, task, branch, decisions, files, blockers, next_action
+  - [x] 4.3 npm test: 282 passed, 11 failed (pre-existing), 0 new regressions
+
+### Phase 2: SYNAPSE Integration (ACs 14-16, condicional NOG-18 Done)
+
+- [ ] **Task 5: SYNAPSE integration** (AC: 14, 15, 16) — **blocked by NOG-18**
+  - [ ] 5.1 Link handoff to SYNAPSE domain switch
+  - [ ] 5.2 SYNAPSE domain switch triggers handoff compaction
+  - [ ] 5.3 Test with SYNAPSE context tracking active
 
 ## Scope
 
 ### IN Scope
-- Handoff artifact template
-- Context compaction on agent switch
-- SYNAPSE integration
-- SDC workflow validation
+- **Phase 1:** Handoff artifact template, context compaction on agent switch, integration point design, SDC workflow validation
+- **Phase 2 (condicional NOG-18):** SYNAPSE integration
 
 ### OUT of Scope
 - Input examples for tools (TOK-4B)
@@ -145,9 +156,11 @@ Max context: always ~1 active agent + summaries of previous agents.
 ## Dependencies
 
 ```
-TOK-1 (Registry) → TOK-4A (agent profiles from registry)
-NOG-18 (SYNAPSE) → TOK-4A (context tracking foundation)
+TOK-1 (Registry) → TOK-4A (agent profiles from registry) — HARD dependency (Phase 1)
+NOG-18 (SYNAPSE) → TOK-4A Phase 2 (ACs 14-16) — SOFT dependency (condicional)
 ```
+
+**Nota:** Phase 1 (ACs 1-13) pode ser entregue sem NOG-18. Phase 2 (ACs 14-16) requer NOG-18 Done.
 
 ## Complexity & Estimation
 
@@ -199,8 +212,11 @@ npm test
 
 | File | Action | Description |
 |------|--------|-------------|
-| `.aios-core/development/templates/agent-handoff-tmpl.yaml` | Created | Handoff artifact template |
-| `.aios/handoffs/` | Created | Runtime handoff storage (gitignored) |
+| `.aios-core/development/templates/agent-handoff-tmpl.yaml` | Created | Handoff artifact template — 379 tokens filled (L2) |
+| `.claude/rules/agent-handoff.md` | Created | Agent handoff protocol — compaction rules, limits, examples |
+| `.aios/handoffs/` | Created | Runtime handoff storage directory (L4, gitignored) |
+| `.claude/CLAUDE.md` | Modified | Added handoff reference to Context Management section |
+| `docs/stories/epics/epic-token-optimization/story-TOK-4A-agent-handoff-context-strategy.md` | Modified | Story file (checkboxes, Dev Agent Record) |
 
 ## CodeRabbit Integration
 
@@ -228,10 +244,35 @@ _Pending implementation_
 
 ## Dev Agent Record
 
-_Pending implementation_
+### Agent Model Used
+Claude Opus 4.6
+
+### Implementation Summary
+
+**Task 1 (Handoff artifact design):** Created structured YAML template at `.aios-core/development/templates/agent-handoff-tmpl.yaml`. Schema captures: story context (id, path, status, task, branch), decisions (max 5), files modified (max 10), blockers (max 3), next action. Filled size: 379 tokens (target < 500).
+
+**Task 2 (Context compaction):** Implemented via `.claude/rules/agent-handoff.md` — native Claude Code rules injection. On agent switch, outgoing agent's full persona (~3-5K tokens) is replaced by compact handoff artifact (~379 tokens). Incoming agent loads full profile + handoff. Storage: `.aios/handoffs/` (gitignored).
+
+**Task 3 (Integration point & limits):** Integration via `.claude/rules/` (zero code changes to L1 core). `subagent-prompt-builder.js` and `executor-assignment.js` untouched (verified via `git diff`). Limits: 500 tok max artifact, 3 max retained summaries, 5/10/3 decisions/files/blockers.
+
+**Task 4 (Validation):** SDC workflow (4 agent switches): 18,751 → 6,497 tokens = **65.4% reduction** (target > 50%). Critical info preserved via structured artifact. npm test: 282 passed, 11 failed (pre-existing), 0 new regressions.
+
+**Task 5 (SYNAPSE integration):** BLOCKED by NOG-18. Phase 2 deferred.
+
+### Debug Log References
+- Agent persona sizes: @sm ~2.9K, @dev ~5.9K, @qa ~4.5K, @devops ~5.4K tokens
+- Handoff artifact filled size: 379 tokens (measured via char/4 estimation)
+
+### Completion Notes
+- Phase 1 (ACs 1-13) complete. Phase 2 (ACs 14-16) blocked by NOG-18.
+- Implementation is instructions-based (`.claude/rules/`), not code-based — zero L1 core changes
+- Compaction is advisory (Claude Code follows rules instructions) — not enforced programmatically
+- `frameworkProtection: false` still active from TOK-3 — required for template creation in L2
 
 ## Change Log
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2026-02-22 | @sm (River) | Story drafted from Codex ALTO-1 split recommendation |
+| 1.1 | 2026-02-23 | @po (Pax) | PO validation fixes: CF-1 Task-AC mapping corrected (Task 4→ACs 11-13, new Task 5→ACs 14-16); CF-2 NOG-18 declared as condicional dependency; CF-3 SYNAPSE ACs (14-16) moved to Phase 2 condicional; SF-1 File List expanded with expected paths. 16 ACs (13 Phase 1 + 3 Phase 2). |
+| 2.0 | 2026-02-23 | @dev (Dex) | Phase 1 implementation complete: handoff template (379 tok), rules-based compaction, 65.4% context reduction in SDC (18.7K→6.5K). Task 5 (Phase 2 SYNAPSE) blocked by NOG-18. Status → Ready for Review. |

@@ -65,8 +65,8 @@ Reduzir o overhead de tokens do AIOS em **25-45%** (conservador) combinando feat
 
 | Story | Title | Agent | Points | Status | Blocked By |
 |-------|-------|-------|--------|--------|------------|
-| [TOK-3](story-TOK-3-ptc-native-bulk-ops.md) | PTC for Native/CLI Bulk Operations | @dev | 5 | Ready for Review | TOK-1.5 (Done) |
-| [TOK-4A](story-TOK-4A-agent-handoff-context-strategy.md) | Agent Handoff Context Strategy | @dev + @architect | 3-5 | Draft | TOK-1 |
+| [TOK-3](story-TOK-3-ptc-native-bulk-ops.md) | PTC for Native/CLI Bulk Operations | @dev | 5 | ✅ Done | TOK-1.5 (Done) |
+| [TOK-4A](story-TOK-4A-agent-handoff-context-strategy.md) | Agent Handoff Context Strategy | @dev + @architect | 3-5 | Ready for Review (Phase 1) | TOK-1 (Done) |
 | [TOK-4B](story-TOK-4B-input-examples-registry.md) | Input Examples Registry + Injection | @dev | 3-5 | Draft | TOK-1 |
 
 ### Wave 3: Intelligence (P2)

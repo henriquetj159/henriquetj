@@ -273,11 +273,12 @@ Seguir Conventional Commits:
 - Use execução paralela para operações independentes
 - Cache dados frequentemente acessados durante a sessão
 
-### Context Management (NOG-18)
+### Context Management (NOG-18 + TOK-4A)
 - Use `/compact` when context feels heavy or approaching limits
 - Context brackets (SYNAPSE) replaced by native compaction
 - Agent memory persists in `.aios-core/development/agents/{id}/MEMORY.md`
 - Rules with `paths:` frontmatter only load when working on matching files
+- **Agent Handoff:** On agent switch (`@agent`), previous agent is compacted to ~379-token handoff artifact. See `.claude/rules/agent-handoff.md` for full protocol. Max 3 retained summaries, oldest discarded.
 
 ### Gerenciamento de Sessão
 - Rastreie progresso da story durante a sessão
