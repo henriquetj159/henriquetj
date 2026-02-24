@@ -47,10 +47,10 @@ describe('Doctor Orchestrator', () => {
     });
   });
 
-  describe('12 checks (AC2)', () => {
-    it('should run exactly 12 checks', async () => {
+  describe('15 checks (AC2 + INS-4.8)', () => {
+    it('should run exactly 15 checks', async () => {
       const result = await runDoctorChecks({ projectRoot });
-      expect(result.data.checks).toHaveLength(12);
+      expect(result.data.checks).toHaveLength(15);
     });
 
     it('should return valid status for each check', async () => {
@@ -80,14 +80,17 @@ describe('Doctor Orchestrator', () => {
       expect(checkNames).toContain('code-intel');
       expect(checkNames).toContain('node-version');
       expect(checkNames).toContain('npm-packages');
+      expect(checkNames).toContain('skills-count');
+      expect(checkNames).toContain('commands-count');
+      expect(checkNames).toContain('hooks-claude-count');
     });
   });
 
   describe('summary (AC3)', () => {
-    it('should have pass/warn/fail/info counts that sum to 12', async () => {
+    it('should have pass/warn/fail/info counts that sum to 15', async () => {
       const result = await runDoctorChecks({ projectRoot });
       const { pass, warn, fail, info } = result.data.summary;
-      expect(pass + warn + fail + info).toBe(12);
+      expect(pass + warn + fail + info).toBe(15);
     });
 
     it('should include Summary line in text output', async () => {
