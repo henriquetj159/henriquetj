@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.3.0
-generated_at: "2026-02-24T13:57:38.389Z"
+generated_at: "2026-02-24T13:58:07.749Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1084
+file_count: 1083
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1221,9 +1221,9 @@ files:
     type: data
     size: 9575
   - path: data/entity-registry.yaml
-    hash: sha256:7b3a120377b67b9e959bc84c9b5bd885e93c6b3e7604841dba8f222e654e0130
+    hash: sha256:0c239f1265b21b3e22b24fa50b889d192d6e256570f1f02b284a457168386900
     type: data
-    size: 519735
+    size: 519666
   - path: data/learned-patterns.yaml
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
@@ -1264,10 +1264,6 @@ files:
     hash: sha256:8757bf087692f002d67115dbe1c8244bbd869600e4f52c49b0d9b07cb9fbb783
     type: data
     size: 5754
-  - path: data/workflow-chains.yaml
-    hash: sha256:1fbf1625e267eedc315cf1e08e5827c250ddc6785fb2cb139e7702def9b66268
-    type: data
-    size: 5055
   - path: data/workflow-patterns.yaml
     hash: sha256:3c3625a5d9eb6eca6f33e3ac35d20fa377b44b061dc1dbf6b04116c6c5722834
     type: data
