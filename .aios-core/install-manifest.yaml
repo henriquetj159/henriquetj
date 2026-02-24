@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.3.0
-generated_at: "2026-02-24T14:48:16.896Z"
+generated_at: "2026-02-24T14:56:38.151Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1085
+file_count: 1084
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1236,10 +1236,6 @@ files:
     hash: sha256:853d3653ef82583dca5284e96613df0988ce6255d5cffbe9bd359df63a3feb46
     type: data
     size: 9266
-  - path: data/registry-backups/healing/heal-1771944281657-7b5f083a.yaml
-    hash: sha256:f57a6f38be309d21b3d66697ff270edb03b710ef0a2c93c4fa76ca19eac42822
-    type: data
-    size: 519735
   - path: data/tech-presets/_template.md
     hash: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
     type: data
