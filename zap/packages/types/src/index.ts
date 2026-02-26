@@ -215,6 +215,17 @@ export interface ApiError {
   details?: Record<string, unknown>
 }
 
+// ---- BullMQ Jobs ----
+export interface OfferParserJob {
+  message_id: string
+  group_jid: string
+  sender_jid: string
+  text: string
+  timestamp: string | Date
+  tenant_id: string
+  media_url?: string
+}
+
 // ---- Real-time Events ----
 export type RealtimeEvent =
   | { type: 'connection:status'; connectionId: string; status: ConnectionStatus }
