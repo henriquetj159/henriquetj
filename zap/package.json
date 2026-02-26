@@ -21,6 +21,7 @@
     "db:seed": "supabase db seed"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.18",
     "turbo": "^2.0.0",
     "typescript": "^5.4.0"
   },
