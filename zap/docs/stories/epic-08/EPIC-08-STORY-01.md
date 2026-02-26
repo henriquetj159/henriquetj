@@ -280,12 +280,13 @@ app.get('/', async (c) => {
 ## Definition of Done
 
 - [x] Table created with all fields
-- [x] RLS policies enforced
-- [x] Encryption/decryption working correctly
-- [x] Credentials never logged
-- [x] API endpoints: save, get, delete
-- [x] Unit tests: encryption, API, edge cases
-- [x] `npm run typecheck` → 0 errors
+- [x] RLS policies enforced (authenticated + service_role)
+- [x] Encryption/decryption working correctly (AES-256-GCM, tenant-derived keys)
+- [x] Credentials never logged (no plaintext in error messages or logs)
+- [x] API endpoints: save (3), get (1), delete (3)
+- [x] Unit tests: encryption (17), API (8) = 25 total
+- [x] `npm run typecheck` → 0 errors ✅
+- [x] All 154 tests passing
 
 ---
 
@@ -293,9 +294,53 @@ app.get('/', async (c) => {
 
 | File | Action | Notes |
 |------|--------|-------|
-| `supabase/migrations/20260226000003_create_marketplace_credentials.sql` | CREATE | Migration |
-| `apps/api/src/services/encryption.service.ts` | CREATE | Encryption |
-| `apps/api/src/routes/marketplace-credentials.ts` | CREATE | API |
+| `supabase/migrations/20260226000003_create_marketplace_credentials.sql` | CREATE | Migration with table schema + RLS policies |
+| `apps/api/src/services/encryption.service.ts` | CREATE | EncryptionService (AES-256-GCM, tenant-derived keys) |
+| `apps/api/src/services/encryption.service.test.ts` | CREATE | 17 unit tests covering encryption, decryption, tampering |
+| `apps/api/src/routes/marketplace-credentials.ts` | CREATE | API routes (POST/GET/DELETE for each marketplace) |
+| `apps/api/src/routes/marketplace-credentials.test.ts` | CREATE | 8 integration tests for API endpoints |
+
+---
+
+## Dev Agent Record
+
+### Implementation Status ✅
+
+**Status:** Completed (Ready for QA)
+**Developer:** Dex (@dev)
+**Completion Date:** 2026-02-26
+
+#### Implementation Summary
+- **Migration:** `marketplace_credentials` table with 9 fields (Shopee, ML, Amazon credentials)
+- **Encryption:** AES-256-GCM with tenant-derived keys (PBKDF2)
+- **API:** 3 POST, 1 GET, 3 DELETE endpoints for marketplace credential management
+- **Tests:** 25 unit/integration tests covering all 8 ACs
+- **Quality:** TypeScript ✅, 154/154 tests PASS
+
+#### Quality Checks
+- ✅ AC-043.1: Table created with all required columns
+- ✅ AC-043.2: Encryption at rest (AES-256-GCM) working correctly
+- ✅ AC-043.3: RLS policies enforced (tenant isolation)
+- ✅ AC-043.4: Credentials never logged in errors
+- ✅ AC-043.5: API POST endpoints with validation
+- ✅ AC-043.6: API GET returns status only (no key exposure)
+- ✅ AC-043.7: API DELETE clears credentials per marketplace
+- ✅ AC-043.8: Token expiration timestamp stored for future Phase 3
+- ✅ `npm run typecheck` — PASS (0 errors)
+- ✅ 154/154 tests passing
+
+#### Key Implementation Details
+- **Encryption Strategy:** Tenant-specific keys via PBKDF2(masterKey, tenantId)
+- **API Design:** RESTful with per-marketplace endpoints (POST /shopee, /mercadolivre, /amazon)
+- **Security:** Never expose keys/tokens in responses, auth context required
+- **RLS:** Both authenticated and service_role policies implemented
+- **Tests:** Full coverage of encryption edge cases (tampering, unicode, long strings, concurrent ops)
+
+#### Files Created
+1. Migration (26 lines): Table schema with indexes
+2. EncryptionService (202 lines): AES-256-GCM encryption/decryption
+3. API routes (241 lines): CRUD endpoints with validation
+4. Tests (378 lines): Comprehensive encryption + API tests
 
 ---
 
@@ -303,6 +348,7 @@ app.get('/', async (c) => {
 
 | Date | Author | Change |
 |------|--------|--------|
+| 2026-02-26 | Dex (@dev) | ✅ Implementation complete — migration, encryption service, API routes, 25 tests, ready for QA |
 | 2026-02-26 | River (SM) | Story created — ready for development |
 
 ---
