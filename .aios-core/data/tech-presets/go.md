@@ -247,7 +247,7 @@ func (b *OrderBuilder) Build() orders.PlaceOrderCommand {
 
 ## Project Structure
 
-```
+```text
 /cmd
   /api                    # Entrypoint HTTP
   /worker                 # Entrypoint de processamento
@@ -336,7 +336,7 @@ go test ./...
 
 ### Test Pyramid
 
-```
+```text
          /\
         /E2E\           10% - Fluxos ponta a ponta criticos
        /------\
@@ -366,7 +366,7 @@ go test ./...
 
 ### Coverage Goals
 
-```
+```text
 - Domain/use cases: 90%+
 - Handlers/adapters: 70%+
 - Overall: 75%+

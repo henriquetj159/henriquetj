@@ -205,7 +205,7 @@ public sealed class PlaceOrderCommandBuilder
 
 ## Project Structure
 
-```
+```text
 /src
   /App.Api                    # ASP.NET endpoints
   /App.Application            # Use cases, contracts, validators
@@ -289,7 +289,7 @@ dotnet test
 
 ### Test Pyramid
 
-```
+```text
          /\
         /E2E\           10% - Fluxos HTTP completos
        /------\
@@ -319,7 +319,7 @@ dotnet test
 
 ### Coverage Goals
 
-```
+```text
 - Domain/Application: 90%+
 - Infrastructure: 70%+
 - Overall: 75%+

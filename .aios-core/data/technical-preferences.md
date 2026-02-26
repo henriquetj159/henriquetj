@@ -10,11 +10,11 @@ Location: `.aios-core/data/tech-presets/`
 | Preset         | Technologies                                                     | Best For                                                 |
 | -------------- | ---------------------------------------------------------------- | -------------------------------------------------------- |
 | `nextjs-react` | Next.js 16+, React, TypeScript, Tailwind, Zustand, React Query  | Fullstack web apps, SaaS, E-commerce, Dashboards         |
-| `go`           | Go 1.24+, Chi/Gin, pgx/sqlc, Testify, Testcontainers            | APIs, microsservicos, workers concorrentes               |
-| `java`         | Java 21+, Spring Boot, Spring Data JPA, Flyway, JUnit           | Sistemas enterprise, dominios complexos, APIs criticas   |
-| `rust`         | Rust 1.77+, Axum, Tokio, SQLx, thiserror                        | Servicos de alta confiabilidade e alta performance        |
+| `go`           | Go 1.24+, Chi/Gin, pgx/sqlc, Testify, Testcontainers            | APIs, microsserviços, workers concorrentes               |
+| `java`         | Java 21+, Spring Boot, Spring Data JPA, Flyway, JUnit           | Sistemas enterprise, domínios complexos, APIs críticas   |
+| `rust`         | Rust 1.77+, Axum, Tokio, SQLx, thiserror                        | Serviços de alta confiabilidade e alta performance        |
 | `csharp`       | C# 13, .NET 9, ASP.NET Core, EF Core, FluentValidation, xUnit   | Backends enterprise em stack Microsoft                    |
-| `php`          | PHP 8.3+, Laravel 11, Eloquent, Pest/PHPUnit                    | Sistemas web e APIs de negocio em ecossistema Laravel    |
+| `php`          | PHP 8.3+, Laravel 11, Eloquent, Pest/PHPUnit                    | Sistemas web e APIs de negócio em ecossistema Laravel    |
 
 ### How to Use Presets
 
