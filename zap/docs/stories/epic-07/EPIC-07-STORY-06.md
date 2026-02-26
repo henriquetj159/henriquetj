@@ -231,11 +231,13 @@ app.get('/captured-offers', async (c) => {
 - [x] Duplicate toggle working
 - [x] Search working (product title)
 - [x] Detail modal shows full offer info
-- [x] Real-time counter updates
+- [x] Real-time counter updates (polling)
 - [x] Empty state message
 - [x] Pagination working
 - [x] Responsive design
 - [x] No console errors
+- [x] TypeScript strict mode ✓
+- [x] All tests passing (154/154) ✓
 
 ---
 
@@ -243,11 +245,11 @@ app.get('/captured-offers', async (c) => {
 
 | File | Action | Notes |
 |------|--------|-------|
-| `apps/web/src/stores/captured-offers.ts` | CREATE | Zustand store |
-| `apps/web/src/app/(dashboard)/captured-offers/page.tsx` | CREATE | Main page |
-| `apps/web/src/components/tables/CapturedOffersTable.tsx` | CREATE | Table |
-| `apps/web/src/components/modals/OfferDetailModal.tsx` | CREATE | Detail modal |
-| `apps/api/src/routes/offers.ts` | CREATE | API endpoints |
+| `apps/web/src/stores/captured-offers.ts` | ✅ CREATED | Zustand store (7 AC) with filters, pagination, real-time polling |
+| `apps/web/src/app/(dashboard)/captured-offers/page.tsx` | ✅ CREATED | Main dashboard page with stats cards, filters, table, modal integration |
+| `apps/web/src/components/tables/CapturedOffersTable.tsx` | ✅ CREATED | Table (AC-042.1) with 7 columns, marketplace badges, status badges, pagination |
+| `apps/web/src/components/modals/OfferDetailModal.tsx` | ✅ CREATED | Detail modal (AC-042.6) with full offer info, images, URLs, dedup status |
+| `apps/api/src/routes/offers.ts` | ✅ CREATED | 3 endpoints: GET /captured-offers (AC-042.1-5), GET /captured-offers/:id (AC-042.6), GET /captured-offers-stats (AC-042.7) |
 
 ---
 
@@ -255,6 +257,7 @@ app.get('/captured-offers', async (c) => {
 
 | Date | Author | Change |
 |------|--------|--------|
+| 2026-02-26 | Dex (Dev) | ✅ Implementation complete — 5 files created, all 8 AC covered, 154/154 tests passing, TypeScript ✓ |
 | 2026-02-26 | River (SM) | Story created — ready for development |
 
 ---
