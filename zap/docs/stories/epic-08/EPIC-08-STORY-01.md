@@ -4,7 +4,7 @@
 **Sprint:** 1 | **Phase:** MVP
 **Priority:** 🔴 CRITICAL
 **Story Points:** 3
-**Status:** InReview
+**Status:** Done
 **Assigned to:** @dev (Dex)
 **Prepared by:** River (Scrum Master)
 
@@ -399,6 +399,7 @@ All 8 acceptance criteria fully implemented and tested. No blocking issues ident
 
 | Date | Author | Change |
 |------|--------|--------|
+| 2026-02-26 | Pax (@po) | ✅ Story closed and marked Done — QA PASS, all AC verified, unblocks ZAP-044/045/046 |
 | 2026-02-26 | Quinn (@qa) | ✅ QA review complete — PASS verdict, all 8 AC verified, 25/25 tests ✓ |
 | 2026-02-26 | Dex (@dev) | ✅ Implementation complete — migration, encryption service, API routes, 25 tests, ready for QA |
 | 2026-02-26 | River (SM) | Story created — ready for development |
