@@ -1,7 +1,7 @@
 # ROADMAP MASTER - AIOS + JARVIS
 
 > Documento vivo. Atualizar checkboxes conforme progresso.
-> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-28 (W5-W7 redefinidas — Agent Parity + Intelligence + Hardening)
+> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-28 (W5.1-W5.4 DONE — Agent Personas, Authority, Tools, Memory)
 > Referencia cruzada: `docs/stories/backlog.json`, `docs/roadmap.md`
 
 ---
@@ -182,10 +182,10 @@
 
 ### Phase 1: Agent Personas & Authority (paridade de identidade)
 
-- [ ] W5.1 - Agent persona injection: carregar persona completa (greeting, communication style, signature) no system prompt do Cloud Brain, nao so o YAML cru
-- [ ] W5.2 - Agent authority enforcement: implementar delegation matrix no Cloud Brain (@dev nao faz push, @devops nao faz code, etc.)
-- [ ] W5.3 - Agent-specific tools: filtrar tools por agente (dev = read/write/edit/git_commit, devops = git_push/git_branch, qa = run_tests/search_code)
-- [ ] W5.4 - Agent MEMORY.md: carregar e atualizar MEMORY.md por agente na VPS (persistencia entre sessoes)
+- [x] W5.1 - Agent persona injection — DONE 2026-02-28 (parseAgentYaml() extrai campos YAML, buildSystemPrompt() compacto ~3K vs ~5K raw)
+- [x] W5.2 - Agent authority enforcement — DONE 2026-02-28 (AGENT_AUTHORITY matrix, 10 agentes, blocked_tools + blocked_commands)
+- [x] W5.3 - Agent-specific tools — DONE 2026-02-28 (getToolsForAgent() filtra TOOLS por agente, run_command checa blocked_commands)
+- [x] W5.4 - Agent MEMORY.md — DONE 2026-02-28 (loadAgentMemory(), update_memory tool, 2KB load / 5KB write limit)
 
 ### Phase 2: Workflows & Tasks (paridade de execucao)
 
@@ -263,10 +263,10 @@
 | W2 Integration | 12 | 12 | 100% |
 | W3 Core | 17 | 17 | 100% |
 | W4 Cloud Brain | 18 | 18 | 100% |
-| W5 Agent Parity | 12 | 0 | 0% |
+| W5 Agent Parity | 12 | 4 | 33% |
 | W6 Intelligence | 9 | 0 | 0% |
 | W7 Hardening | 12 | 0 | 0% |
-| **TOTAL** | **109** | **75** | **69%** |
+| **TOTAL** | **109** | **79** | **72%** |
 
 ---
 
