@@ -40,6 +40,8 @@ const ContextDetector = require('../../core/session/context-detector');
 const GitConfigDetector = require('../../infrastructure/scripts/git-config-detector');
 const WorkflowNavigator = require('./workflow-navigator');
 const GreetingPreferenceManager = require('./greeting-preference-manager');
+// Story WIS-16: Handoff reader for workflow-aware greeting handoffs
+const HandoffReader = require('./handoff-reader');
 const { loadProjectStatus } = require('../../infrastructure/scripts/project-status-loader');
 const { PermissionMode } = require('../../core/permissions');
 const { resolveConfig } = require('../../core/config/config-resolver');
@@ -71,6 +73,8 @@ class GreetingBuilder {
     this.gitConfigDetector = new GitConfigDetector();
     this.workflowNavigator = new WorkflowNavigator();
     this.preferenceManager = new GreetingPreferenceManager();
+    // Story WIS-16: Handoff reader for workflow-aware greeting handoffs
+    this.handoffReader = new HandoffReader(process.cwd());
     this.config = this._loadConfig();
   }
 
@@ -189,6 +193,13 @@ class GreetingBuilder {
     // Story ACT-2: Use pre-loaded value if available to avoid double resolveConfig() call
     const userProfile = preloadedUserProfile || this.loadUserProfile();
 
+    // Story WIS-16: Load recent handoff artifact for the incoming agent (best-effort, sync).
+    // If context already has handoffData (set by pipeline, even as null), use it directly.
+    // Only call HandoffReader when handoffData is NOT in context at all (direct buildGreeting calls).
+    const handoffData = ('handoffData' in context)
+      ? context.handoffData
+      : this._safeReadHandoff(agent.id);
+
     // Story ACT-7 AC1: Build enriched section context for all builders
     const sectionContext = {
       sessionType,
@@ -202,6 +213,10 @@ class GreetingBuilder {
       workflowState: context.workflowState || null,
       workflowActive: context.workflowActive || null,
       permissions: context.permissions || null,
+      // Story ACT-7: Absence info for "return after absence" section
+      absenceInfo: context.absenceInfo || null,
+      // Story WIS-16: Handoff data for workflow-aware handoff section
+      handoffData: handoffData || null,
     };
 
     // Permission badge: use from enriched context if available, otherwise load
@@ -234,17 +249,32 @@ class GreetingBuilder {
     }
 
     // Story ACT-7 AC7: Parallel execution of independent sections
-    // Context section and workflow suggestions use different data sources
-    const [contextSection, workflowSection] = await Promise.all([
+    // Context section, workflow suggestions, absence section, and handoff section use different data sources
+    const [contextSection, workflowSection, absenceSection, handoffSection] = await Promise.all([
       // 4. Context section (intelligent contextualization + recommendations)
       // Story ACT-7 AC5: References previous agent handoff intelligently
       this._safeBuildSection(() =>
         this.buildContextSection(agent, context, sessionType, projectStatus, sectionContext),
       ),
       // 5. Workflow suggestions (Story ACT-5: relaxed trigger + fixed method call)
+      // Story ACT-5 (Bob integration): Pass userProfile for profile-aware filtering
       this._safeBuildSection(() => {
         if (sessionType !== 'new') {
-          return this.buildWorkflowSuggestions(context);
+          return this.buildWorkflowSuggestions(context, userProfile);
+        }
+        return null;
+      }),
+      // 6. Absence section (Story ACT-7: return after extended absence)
+      this._safeBuildSection(() => {
+        if (sectionContext.absenceInfo) {
+          return this.buildAbsenceSection(sectionContext.absenceInfo, projectStatus);
+        }
+        return null;
+      }),
+      // 7. Handoff section (Story WIS-16: workflow-aware greeting handoffs)
+      this._safeBuildSection(() => {
+        if (sectionContext.handoffData) {
+          return this.buildHandoffSection(sectionContext.handoffData, agent, sectionContext);
         }
         return null;
       }),
@@ -255,6 +285,12 @@ class GreetingBuilder {
     }
     if (workflowSection) {
       sections.push(workflowSection);
+    }
+    if (absenceSection) {
+      sections.push(absenceSection);
+    }
+    if (handoffSection) {
+      sections.push(handoffSection);
     }
 
     // 7. Commands (filtered by visibility and user profile)
@@ -834,6 +870,156 @@ class GreetingBuilder {
   }
 
   /**
+   * Build "return after absence" section.
+   * Story ACT-7: Shown when user returns after an extended absence (>= ABSENCE_THRESHOLD).
+   * Shows elapsed time, last worked story, and any recent commits.
+   *
+   * @param {Object} absenceInfo - Absence metadata from UnifiedActivationPipeline._detectAbsenceInfo()
+   *   - elapsedHours: number
+   *   - lastCommands: string[]
+   *   - lastStory: string|null
+   * @param {Object|null} projectStatus - Project status (may have recentCommits)
+   * @returns {string} Absence section text
+   */
+  buildAbsenceSection(absenceInfo, projectStatus = null) {
+    if (!absenceInfo) {
+      return null;
+    }
+
+    const parts = [];
+
+    // Elapsed time headline
+    const hours = absenceInfo.elapsedHours;
+    const timeLabel = hours >= 24
+      ? `${Math.round(hours / 24)} day${Math.round(hours / 24) !== 1 ? 's' : ''}`
+      : `${hours} hour${hours !== 1 ? 's' : ''}`;
+    parts.push(`Welcome back! You've been away for ~${timeLabel}.`);
+
+    // Last story worked on
+    if (absenceInfo.lastStory) {
+      parts.push(`Last active story: **${absenceInfo.lastStory}**`);
+    }
+
+    // Recent commits since absence started (use projectStatus recentCommits as proxy)
+    if (projectStatus?.recentCommits && projectStatus.recentCommits.length > 0) {
+      const recentCount = projectStatus.recentCommits.length;
+      const commitWord = recentCount === 1 ? 'commit' : 'commits';
+      parts.push(`${recentCount} recent ${commitWord} since you were last here.`);
+    }
+
+    return `🕐 **Since Your Last Session:** ${parts.join(' ')}`;
+  }
+
+  /**
+   * Build handoff section from a parsed handoff artifact.
+   * Story WIS-16: Workflow-Aware Greeting Handoffs.
+   *
+   * Renders a compact, informative section when an agent is activated and there
+   * is a recent handoff artifact written by the previous agent. Shows:
+   * - Who handed off and the story context
+   * - Key decisions made
+   * - What to do next (next_action)
+   * - Any active blockers
+   * - Workflow suggestions if handoff indicates a workflow in progress
+   *
+   * @param {Object} handoffData - Parsed handoff from HandoffReader.readLatestHandoff()
+   * @param {Object} agent - Current agent definition
+   * @param {Object} [sectionContext] - Enriched section context
+   * @returns {string|null} Formatted handoff section or null
+   */
+  buildHandoffSection(handoffData, _agent, sectionContext = null) {
+    if (!handoffData || !handoffData.fromAgent) {
+      return null;
+    }
+
+    const parts = [];
+
+    // Header: who handed off and basic story context
+    const fromAgent = handoffData.fromAgent;
+    const storyId = handoffData.storyId;
+
+    let headerLine = `Handoff from @${fromAgent}`;
+    if (storyId) {
+      const status = handoffData.storyStatus ? ` (${handoffData.storyStatus})` : '';
+      headerLine += ` — Story **${storyId}**${status}`;
+    }
+    parts.push(`**${headerLine}**`);
+
+    // Current task
+    if (handoffData.currentTask) {
+      parts.push(`   Last task: ${handoffData.currentTask}`);
+    }
+
+    // Branch
+    if (handoffData.branch) {
+      parts.push(`   Branch: \`${handoffData.branch}\``);
+    }
+
+    // Key decisions (if any)
+    if (handoffData.decisions && handoffData.decisions.length > 0) {
+      parts.push('   Key decisions:');
+      handoffData.decisions.slice(0, 3).forEach(d => {
+        parts.push(`   - ${d}`);
+      });
+    }
+
+    // Files modified (condensed — show count + top 3)
+    if (handoffData.filesModified && handoffData.filesModified.length > 0) {
+      const total = handoffData.filesModified.length;
+      const shown = handoffData.filesModified.slice(0, 3);
+      const suffix = total > 3 ? ` (+${total - 3} more)` : '';
+      parts.push(`   Modified: ${shown.join(', ')}${suffix}`);
+    }
+
+    // Active blockers (if any)
+    if (handoffData.blockers && handoffData.blockers.length > 0) {
+      parts.push('   Blockers:');
+      handoffData.blockers.forEach(b => {
+        parts.push(`   - ${b}`);
+      });
+    }
+
+    // Next action (most important — show prominently)
+    if (handoffData.nextAction) {
+      parts.push(`   Next: ${handoffData.nextAction}`);
+    }
+
+    // Workflow integration: if there is an active workflow in context, note it
+    const workflowState = sectionContext?.workflowState;
+    if (workflowState && workflowState.workflow) {
+      const suggestions = this.workflowNavigator.suggestNextCommands(
+        workflowState,
+        sectionContext?.userProfile || 'advanced',
+      );
+      if (suggestions && suggestions.length > 0) {
+        const topSuggestion = suggestions[0];
+        parts.push(`   Workflow continues: \`${topSuggestion.command}\``);
+      }
+    }
+
+    return parts.length > 0
+      ? `Handoff\n${parts.join('\n')}`
+      : null;
+  }
+
+  /**
+   * Safe wrapper for HandoffReader.readLatestHandoff().
+   * Gracefully returns null on any error.
+   * Story WIS-16.
+   * @private
+   * @param {string} agentId - Target agent ID
+   * @returns {Object|null} Handoff data or null
+   */
+  _safeReadHandoff(agentId) {
+    try {
+      return this.handoffReader.readLatestHandoff(agentId);
+    } catch (error) {
+      console.warn('[GreetingBuilder] Handoff read failed:', error.message);
+      return null;
+    }
+  }
+
+  /**
    * Build current context section (legacy - kept for compatibility)
    * @param {Object} context - Session context
    * @param {string} sessionType - Session type
@@ -856,18 +1042,23 @@ class GreetingBuilder {
    * Build workflow suggestions section
    * Story ACT-5: Enhanced with SessionState integration for cross-terminal
    * workflow continuity and SurfaceChecker for proactive suggestions.
+   * Story ACT-5 (Bob integration): Profile-aware suggestion filtering.
+   *   - bob: shows only 1 top suggestion with simplified header
+   *   - intermediate: shows up to 2 suggestions
+   *   - advanced: shows all suggestions (existing behavior)
    *
    * Detection priority:
    *   1. SessionState (cross-terminal persistence from Epic 11 Story 11.5)
    *   2. Command history (pattern-based detection from workflow-patterns.yaml)
    *
    * @param {Object} context - Session context
+   * @param {string} [userProfile='advanced'] - User profile for suggestion filtering
    * @returns {string|null} Workflow suggestions or null
    */
-  buildWorkflowSuggestions(context) {
+  buildWorkflowSuggestions(context, userProfile = DEFAULT_USER_PROFILE) {
     try {
       // Story ACT-5 (AC: 3, 6): Check SessionState first for cross-terminal continuity
-      const sessionStateResult = this._detectWorkflowFromSessionState();
+      const sessionStateResult = this._detectWorkflowFromSessionState(userProfile);
       if (sessionStateResult) {
         return sessionStateResult;
       }
@@ -880,18 +1071,23 @@ class GreetingBuilder {
         return null;
       }
 
-      const suggestions = this.workflowNavigator.suggestNextCommands(workflowState);
+      // Story ACT-5 (Bob integration): Pass userProfile for profile-aware filtering
+      const suggestions = this.workflowNavigator.suggestNextCommands(workflowState, userProfile);
       if (!suggestions || suggestions.length === 0) {
         return null;
       }
 
       // Story ACT-5 (AC: 4): Enhance suggestions with SurfaceChecker proactive triggers
-      const enhancedSuggestions = this._enhanceSuggestionsWithSurface(suggestions, context);
+      // Note: SurfaceChecker enhancement skipped for bob mode (simplicity over comprehensiveness)
+      const enhancedSuggestions = userProfile === 'bob'
+        ? suggestions
+        : this._enhanceSuggestionsWithSurface(suggestions, context);
 
       const greetingMessage = this.workflowNavigator.getGreetingMessage(workflowState);
       const header = greetingMessage || 'Next steps:';
 
-      return this.workflowNavigator.formatSuggestions(enhancedSuggestions, header);
+      // Story ACT-5 (Bob integration): Pass userProfile for simplified header
+      return this.workflowNavigator.formatSuggestions(enhancedSuggestions, header, userProfile);
     } catch (error) {
       console.warn('[GreetingBuilder] Workflow suggestions failed:', error.message);
       return null;
@@ -902,10 +1098,12 @@ class GreetingBuilder {
    * Detect workflow state from SessionState for cross-terminal continuity.
    * Story ACT-5 (AC: 3, 6): Reads persisted session state to detect
    * active workflows that span terminal sessions.
+   * Story ACT-5 (Bob integration): Profile-aware suggestion filtering applied here too.
    * @private
+   * @param {string} [userProfile='advanced'] - User profile for suggestion filtering
    * @returns {string|null} Formatted workflow section or null
    */
-  _detectWorkflowFromSessionState() {
+  _detectWorkflowFromSessionState(userProfile = DEFAULT_USER_PROFILE) {
     try {
       const projectRoot = process.cwd();
       const sessionState = new SessionState(projectRoot);
@@ -945,7 +1143,9 @@ class GreetingBuilder {
         args: currentStory,
       });
 
-      if (storiesDone > 0 && totalStories > 0) {
+      // Story ACT-5 (Bob integration): for bob, show only the single primary action.
+      // For advanced/intermediate, also show build-status when applicable.
+      if (userProfile !== 'bob' && storiesDone > 0 && totalStories > 0) {
         suggestions.push({
           command: `*build-status ${currentStory}`,
           description: `Check build status (${storiesDone}/${totalStories} stories done)`,
@@ -955,7 +1155,8 @@ class GreetingBuilder {
       }
 
       const header = `Workflow in progress: ${ss.epic?.title || 'Active Epic'} (${storiesDone}/${totalStories})`;
-      return this.workflowNavigator.formatSuggestions(suggestions, header);
+      // Story ACT-5 (Bob integration): Pass userProfile for simplified header
+      return this.workflowNavigator.formatSuggestions(suggestions, header, userProfile);
     } catch (error) {
       // Graceful degradation: if SessionState is unavailable, return null
       console.warn('[GreetingBuilder] SessionState workflow detection failed:', error.message);

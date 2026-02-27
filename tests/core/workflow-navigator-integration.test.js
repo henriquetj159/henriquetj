@@ -182,11 +182,15 @@ describe('WorkflowNavigator Integration (Story ACT-5)', () => {
         ['validate-story-draft completed'],
         expect.any(Object),
       );
-      expect(suggestSpy).toHaveBeenCalledWith({
-        workflow: 'story_development',
-        state: 'validated',
-        context: { story_path: 'docs/stories/test.md' },
-      });
+      // Story ACT-5 (Bob integration): suggestNextCommands now accepts optional userProfile param
+      expect(suggestSpy).toHaveBeenCalledWith(
+        {
+          workflow: 'story_development',
+          state: 'validated',
+          context: { story_path: 'docs/stories/test.md' },
+        },
+        expect.any(String), // userProfile (defaults to 'advanced')
+      );
       expect(result).toContain('develop-yolo');
     });
   });
@@ -907,6 +911,403 @@ describe('WorkflowNavigator Integration (Story ACT-5)', () => {
       const result = pipeline._detectWorkflowState(null, 'existing');
 
       expect(result).toBeNull();
+    });
+  });
+
+  // =========================================================================
+  // ACT-5 Bob integration: Profile-aware suggestion filtering
+  // =========================================================================
+  describe('Bob integration: Profile-aware suggestion filtering', () => {
+    // WorkflowNavigator.suggestNextCommands with userProfile
+    describe('WorkflowNavigator.suggestNextCommands profile filtering', () => {
+      test('bob profile returns only 1 suggestion (top priority)', () => {
+        const navigator = new WorkflowNavigator();
+
+        const state = {
+          workflow: 'story_development',
+          state: 'validated',
+          context: { story_path: 'docs/stories/test.md' },
+        };
+
+        const suggestions = navigator.suggestNextCommands(state, 'bob');
+
+        // bob gets max 1 suggestion
+        expect(suggestions.length).toBe(1);
+        expect(suggestions[0].raw_command).toBe('develop-yolo');
+      });
+
+      test('intermediate profile returns at most 2 suggestions', () => {
+        const navigator = new WorkflowNavigator();
+
+        const state = {
+          workflow: 'story_development',
+          state: 'validated',
+          context: { story_path: 'docs/stories/test.md' },
+        };
+
+        const suggestions = navigator.suggestNextCommands(state, 'intermediate');
+
+        // intermediate gets max 2 suggestions
+        expect(suggestions.length).toBeLessThanOrEqual(2);
+        expect(suggestions.length).toBeGreaterThan(0);
+      });
+
+      test('advanced profile returns all suggestions', () => {
+        const navigator = new WorkflowNavigator();
+
+        const state = {
+          workflow: 'story_development',
+          state: 'validated',
+          context: { story_path: 'docs/stories/test.md' },
+        };
+
+        const advancedSuggestions = navigator.suggestNextCommands(state, 'advanced');
+        const defaultSuggestions = navigator.suggestNextCommands(state);
+
+        // advanced and default should be equal (full list)
+        expect(advancedSuggestions.length).toBe(defaultSuggestions.length);
+        expect(advancedSuggestions.length).toBeGreaterThan(1);
+      });
+
+      test('bob gets fewer suggestions than advanced for same state', () => {
+        const navigator = new WorkflowNavigator();
+
+        const state = {
+          workflow: 'story_development',
+          state: 'validated',
+          context: {},
+        };
+
+        const bobSuggestions = navigator.suggestNextCommands(state, 'bob');
+        const advancedSuggestions = navigator.suggestNextCommands(state, 'advanced');
+
+        expect(bobSuggestions.length).toBeLessThan(advancedSuggestions.length);
+      });
+
+      test('suggestions include priority field when returned', () => {
+        const navigator = new WorkflowNavigator();
+
+        const state = {
+          workflow: 'story_development',
+          state: 'validated',
+          context: {},
+        };
+
+        const suggestions = navigator.suggestNextCommands(state, 'advanced');
+
+        // Each suggestion should have a priority field
+        suggestions.forEach((s) => {
+          expect(s).toHaveProperty('priority');
+        });
+      });
+    });
+
+    // WorkflowNavigator.formatSuggestions with userProfile
+    describe('WorkflowNavigator.formatSuggestions profile formatting', () => {
+      test('bob profile uses simplified header "Suggested next step:"', () => {
+        const navigator = new WorkflowNavigator();
+
+        const suggestions = [
+          { command: '*develop-yolo test.md', description: 'YOLO mode', raw_command: 'develop-yolo', args: 'test.md' },
+        ];
+
+        const result = navigator.formatSuggestions(suggestions, 'Story validated! Ready to implement.', 'bob');
+
+        // bob header should be the simplified one
+        expect(result).toContain('Suggested next step:');
+        // Should NOT contain the original header
+        expect(result).not.toContain('Story validated! Ready to implement.');
+      });
+
+      test('advanced profile uses original header from greeting message', () => {
+        const navigator = new WorkflowNavigator();
+
+        const suggestions = [
+          { command: '*develop-yolo test.md', description: 'YOLO mode', raw_command: 'develop-yolo', args: 'test.md' },
+        ];
+
+        const result = navigator.formatSuggestions(suggestions, 'Story validated! Ready to implement.', 'advanced');
+
+        // advanced profile keeps original header
+        expect(result).toContain('Story validated! Ready to implement.');
+        expect(result).not.toContain('Suggested next step:');
+      });
+
+      test('default (no profile) uses original header', () => {
+        const navigator = new WorkflowNavigator();
+
+        const suggestions = [
+          { command: '*develop-yolo test.md', description: 'YOLO mode', raw_command: 'develop-yolo', args: 'test.md' },
+        ];
+
+        const result = navigator.formatSuggestions(suggestions, 'Next steps:');
+
+        // No profile: default header unchanged
+        expect(result).toContain('Next steps:');
+      });
+    });
+
+    // GreetingBuilder.buildWorkflowSuggestions with bob profile
+    describe('GreetingBuilder.buildWorkflowSuggestions with bob profile', () => {
+      test('bob profile receives only 1 suggestion from WorkflowNavigator', () => {
+        const originalExistsSync = fs.existsSync;
+        fs.existsSync = jest.fn().mockReturnValue(false); // No session state
+
+        const detectSpy = jest.spyOn(builder.workflowNavigator, 'detectWorkflowState')
+          .mockReturnValue({
+            workflow: 'story_development',
+            state: 'validated',
+            context: {},
+          });
+        const suggestSpy = jest.spyOn(builder.workflowNavigator, 'suggestNextCommands')
+          .mockReturnValue([
+            { command: '*develop-yolo', description: 'YOLO mode', raw_command: 'develop-yolo', args: '' },
+          ]);
+        jest.spyOn(builder.workflowNavigator, 'getGreetingMessage').mockReturnValue('Ready!');
+        jest.spyOn(builder.workflowNavigator, 'formatSuggestions').mockReturnValue('Suggested next step:\n\n1. `*develop-yolo` - YOLO mode');
+
+        builder.buildWorkflowSuggestions({ lastCommands: ['validate-story-draft completed'] }, 'bob');
+
+        // suggestNextCommands should be called with 'bob' profile
+        expect(suggestSpy).toHaveBeenCalledWith(
+          expect.any(Object),
+          'bob',
+        );
+
+        fs.existsSync = originalExistsSync;
+      });
+
+      test('bob profile skips SurfaceChecker enhancement', () => {
+        const originalExistsSync = fs.existsSync;
+        fs.existsSync = jest.fn().mockReturnValue(false);
+
+        SurfaceChecker.mockImplementation(() => ({
+          load: jest.fn().mockReturnValue(true),
+          shouldSurface: jest.fn().mockReturnValue({
+            should_surface: true,
+            criterion_id: 'risk',
+            message: 'High risk',
+            severity: 'warning',
+            can_bypass: true,
+          }),
+        }));
+
+        jest.spyOn(builder.workflowNavigator, 'detectWorkflowState')
+          .mockReturnValue({
+            workflow: 'story_development',
+            state: 'validated',
+            context: {},
+          });
+        jest.spyOn(builder.workflowNavigator, 'suggestNextCommands')
+          .mockReturnValue([
+            { command: '*develop-yolo', description: 'YOLO mode', raw_command: 'develop-yolo', args: '' },
+          ]);
+        jest.spyOn(builder.workflowNavigator, 'getGreetingMessage').mockReturnValue('Ready!');
+        const formatSpy = jest.spyOn(builder.workflowNavigator, 'formatSuggestions')
+          .mockImplementation((suggestions) => `suggestions: ${suggestions.length}`);
+
+        builder.buildWorkflowSuggestions({ lastCommands: ['validate-story-draft completed'] }, 'bob');
+
+        // For bob: formatSuggestions called with ONLY the original suggestions (no surface warning prepended)
+        const suggestionsArg = formatSpy.mock.calls[0][0];
+        expect(suggestionsArg.length).toBe(1); // No surface warning added
+        expect(suggestionsArg[0].command).toBe('*develop-yolo');
+
+        fs.existsSync = originalExistsSync;
+      });
+
+      test('bob profile passes userProfile to formatSuggestions', () => {
+        const originalExistsSync = fs.existsSync;
+        fs.existsSync = jest.fn().mockReturnValue(false);
+
+        jest.spyOn(builder.workflowNavigator, 'detectWorkflowState')
+          .mockReturnValue({
+            workflow: 'story_development',
+            state: 'validated',
+            context: {},
+          });
+        jest.spyOn(builder.workflowNavigator, 'suggestNextCommands')
+          .mockReturnValue([
+            { command: '*develop-yolo', description: 'YOLO mode', raw_command: 'develop-yolo', args: '' },
+          ]);
+        jest.spyOn(builder.workflowNavigator, 'getGreetingMessage').mockReturnValue('Ready!');
+        const formatSpy = jest.spyOn(builder.workflowNavigator, 'formatSuggestions')
+          .mockReturnValue('Suggested next step:\n\n1. `*develop-yolo` - YOLO mode');
+
+        builder.buildWorkflowSuggestions({ lastCommands: ['validate-story-draft completed'] }, 'bob');
+
+        // formatSuggestions should be called with 'bob' as userProfile
+        expect(formatSpy).toHaveBeenCalledWith(
+          expect.any(Array),
+          expect.any(String),
+          'bob',
+        );
+
+        fs.existsSync = originalExistsSync;
+      });
+
+      test('advanced profile still shows SurfaceChecker enhancement', () => {
+        const originalExistsSync = fs.existsSync;
+        fs.existsSync = jest.fn().mockReturnValue(false);
+
+        SurfaceChecker.mockImplementation(() => ({
+          load: jest.fn().mockReturnValue(true),
+          shouldSurface: jest.fn().mockReturnValue({
+            should_surface: true,
+            criterion_id: 'risk',
+            message: 'High risk',
+            severity: 'warning',
+            can_bypass: true,
+          }),
+        }));
+
+        jest.spyOn(builder.workflowNavigator, 'detectWorkflowState')
+          .mockReturnValue({
+            workflow: 'story_development',
+            state: 'validated',
+            context: {},
+          });
+        jest.spyOn(builder.workflowNavigator, 'suggestNextCommands')
+          .mockReturnValue([
+            { command: '*develop-yolo', description: 'YOLO mode', raw_command: 'develop-yolo', args: '' },
+          ]);
+        jest.spyOn(builder.workflowNavigator, 'getGreetingMessage').mockReturnValue('Ready!');
+        const formatSpy = jest.spyOn(builder.workflowNavigator, 'formatSuggestions')
+          .mockImplementation((suggestions) => `suggestions: ${suggestions.length}`);
+
+        builder.buildWorkflowSuggestions({ lastCommands: ['validate-story-draft completed'] }, 'advanced');
+
+        // For advanced: formatSuggestions called with enhanced suggestions (surface warning prepended)
+        const suggestionsArg = formatSpy.mock.calls[0][0];
+        expect(suggestionsArg.length).toBe(2); // warning + original
+        expect(suggestionsArg[0].command).toBe('*help'); // surface warning
+        expect(suggestionsArg[1].command).toBe('*develop-yolo');
+
+        fs.existsSync = originalExistsSync;
+      });
+    });
+
+    // Session state detection with bob profile
+    describe('SessionState detection with bob profile', () => {
+      test('bob profile shows only develop-yolo (no build-status) from session state', () => {
+        const originalExistsSync = fs.existsSync;
+        const originalReadFileSync = fs.readFileSync;
+
+        const sessionStateData = {
+          session_state: {
+            version: '1.2',
+            epic: { id: 'EPIC-ACT', title: 'Activation Pipeline', total_stories: 5 },
+            progress: {
+              current_story: 'ACT-5',
+              stories_done: ['ACT-1', 'ACT-2'],
+              stories_pending: ['ACT-5', 'ACT-6', 'ACT-7'],
+            },
+            workflow: {
+              current_phase: 'development',
+              attempt_count: 1,
+            },
+          },
+        };
+
+        fs.existsSync = jest.fn().mockReturnValue(true);
+        fs.readFileSync = jest.fn().mockReturnValue(yaml.dump(sessionStateData));
+
+        const result = builder.buildWorkflowSuggestions({}, 'bob');
+
+        // bob profile: only develop-yolo, no build-status
+        expect(result).not.toBeNull();
+        expect(result).toContain('ACT-5');
+        // bob gets simplified header
+        expect(result).toContain('Suggested next step:');
+        // bob should NOT show build-status suggestion
+        expect(result).not.toContain('build-status');
+
+        fs.existsSync = originalExistsSync;
+        fs.readFileSync = originalReadFileSync;
+      });
+
+      test('advanced profile shows both develop-yolo and build-status from session state', () => {
+        const originalExistsSync = fs.existsSync;
+        const originalReadFileSync = fs.readFileSync;
+
+        const sessionStateData = {
+          session_state: {
+            version: '1.2',
+            epic: { id: 'EPIC-ACT', title: 'Activation Pipeline', total_stories: 5 },
+            progress: {
+              current_story: 'ACT-5',
+              stories_done: ['ACT-1', 'ACT-2'],
+              stories_pending: ['ACT-5', 'ACT-6', 'ACT-7'],
+            },
+            workflow: {
+              current_phase: 'development',
+              attempt_count: 1,
+            },
+          },
+        };
+
+        fs.existsSync = jest.fn().mockReturnValue(true);
+        fs.readFileSync = jest.fn().mockReturnValue(yaml.dump(sessionStateData));
+
+        const result = builder.buildWorkflowSuggestions({}, 'advanced');
+
+        // advanced profile: shows both develop-yolo AND build-status
+        expect(result).not.toBeNull();
+        expect(result).toContain('ACT-5');
+        expect(result).toContain('build-status');
+        // advanced: no simplified header
+        expect(result).not.toContain('Suggested next step:');
+
+        fs.existsSync = originalExistsSync;
+        fs.readFileSync = originalReadFileSync;
+      });
+    });
+
+    // Integration: bob profile greeting flow
+    describe('Bob profile greeting integration', () => {
+      test('bob + non-PM: workflow section not reached (redirect shows first)', async () => {
+        const bobAgent = {
+          id: 'dev', // non-PM
+          name: 'Dex',
+          icon: '\uD83D\uDCBB',
+          persona_profile: {
+            greeting_levels: {
+              archetypal: '\uD83D\uDCBB Dex the Builder ready!',
+            },
+            communication: {
+              greeting_levels: {
+                archetypal: '\uD83D\uDCBB Dex the Builder ready!',
+              },
+              signature_closing: '-- Dex',
+            },
+          },
+          persona: { role: 'Senior Dev' },
+          commands: [
+            { name: 'help', visibility: ['full'], description: 'Help' },
+          ],
+        };
+
+        // Mock resolveConfig to return bob profile
+        const { resolveConfig } = require('../../.aios-core/core/config/config-resolver');
+        resolveConfig.mockReturnValue({ config: { user_profile: 'bob' }, warnings: [], legacy: false });
+
+        const workflowSpy = jest.spyOn(builder, 'buildWorkflowSuggestions');
+
+        const context = {
+          sessionType: 'existing',
+          lastCommands: ['validate-story-draft completed'],
+          projectStatus: null,
+          gitConfig: { configured: false },
+          permissions: { badge: '[Ask]' },
+          _coreConfig: { user_profile: 'bob' },
+        };
+
+        const greeting = await builder.buildGreeting(bobAgent, context);
+
+        // For bob + non-PM: redirect message shown, buildWorkflowSuggestions never called
+        expect(greeting).toContain('Modo Assistido');
+        expect(workflowSpy).not.toHaveBeenCalled();
+      });
     });
   });
 });

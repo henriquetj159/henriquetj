@@ -84,7 +84,7 @@ Criar camada de code intelligence provider-agnostic em todas as tasks do AIOS, c
 ### Wave 9: Post-Epic Validation
 | Story | Title | Agent | Points | Status | Blocked By |
 |-------|-------|-------|--------|--------|------------|
-| [NOG-23](story-NOG-23-post-migration-validation.md) | Post-Migration Validation & Benchmark | @dev + @analyst | 3 | Ready for Review | None |
+| [NOG-23](story-NOG-23-post-migration-validation.md) | Post-Migration Validation & Benchmark | @dev + @analyst | 3 | Done | None |
 
 ### Wave 7: Registry Quality (from GD-7 gap analysis + registry governance research)
 | Story | Title | Agent | Points | Status | Blocked By |

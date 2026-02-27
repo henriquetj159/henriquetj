@@ -5,11 +5,16 @@
  * - Current workflow state (detected from command history)
  * - Workflow transitions (defined in workflow-patterns.yaml)
  * - Context data (story path, branch, epic)
+ * - User profile (bob = simplified, advanced = full)
  *
  * Features:
  * - State detection from successful command completion
  * - Pre-populated command templates
  * - Numbered list formatting for user selection
+ * - Profile-aware suggestion filtering (Story ACT-5: Bob integration)
+ *   - bob: shows only top-priority suggestion (max 1), simplified language
+ *   - intermediate: shows top 2 suggestions
+ *   - advanced: shows all suggestions (full list)
  */
 
 const fs = require('fs');
@@ -17,6 +22,18 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const WORKFLOW_PATTERNS_PATH = path.join(process.cwd(), '.aios-core', 'data', 'workflow-patterns.yaml');
+
+/**
+ * Maximum suggestions per user profile (Story ACT-5: Bob integration)
+ * bob: 1 — one clear action, no confusion
+ * intermediate: 2 — some choice without overwhelm
+ * advanced: unlimited — full list
+ */
+const PROFILE_MAX_SUGGESTIONS = {
+  bob: 1,
+  intermediate: 2,
+  advanced: Infinity,
+};
 
 class WorkflowNavigator {
   constructor() {
@@ -58,10 +75,15 @@ class WorkflowNavigator {
 
   /**
    * Suggest next commands for current workflow state
+   * Story ACT-5: Bob integration — profile-aware filtering.
+   * bob: returns only the single top-priority suggestion (max 1)
+   * intermediate: returns up to 2 suggestions
+   * advanced: returns all suggestions (full list, existing behavior)
    * @param {Object} workflowState - { workflow, state, context }
+   * @param {string} [userProfile='advanced'] - User profile ('bob' | 'intermediate' | 'advanced')
    * @returns {Array} Array of suggestions with pre-populated commands
    */
-  suggestNextCommands(workflowState) {
+  suggestNextCommands(workflowState, userProfile = 'advanced') {
     if (!workflowState || !workflowState.workflow || !workflowState.state) {
       return [];
     }
@@ -77,17 +99,20 @@ class WorkflowNavigator {
     }
 
     // Generate suggestions with pre-populated templates
-    const suggestions = transition.next_steps.map(step => {
+    const allSuggestions = transition.next_steps.map(step => {
       const command = this.populateTemplate(step.args_template, workflowState.context);
       return {
         command: `*${step.command}${command ? ' ' + command : ''}`,
         description: step.description || '',
         raw_command: step.command,
         args: command,
+        priority: step.priority || 999,
       };
     });
 
-    return suggestions;
+    // Story ACT-5: Bob integration — cap suggestions based on profile
+    const maxSuggestions = PROFILE_MAX_SUGGESTIONS[userProfile] ?? Infinity;
+    return allSuggestions.slice(0, maxSuggestions);
   }
 
   /**
@@ -118,16 +143,23 @@ class WorkflowNavigator {
 
   /**
    * Format suggestions as numbered list
+   * Story ACT-5: Bob integration — simplified format for bob profile.
+   * bob: uses "Suggested next step:" header (singular, clear action)
+   * advanced: uses the header as-is (full list)
    * @param {Array} suggestions - Suggestion objects
    * @param {string} header - Optional header text
+   * @param {string} [userProfile='advanced'] - User profile ('bob' | 'intermediate' | 'advanced')
    * @returns {string} Formatted suggestions
    */
-  formatSuggestions(suggestions, header = 'Next steps:') {
+  formatSuggestions(suggestions, header = 'Next steps:', userProfile = 'advanced') {
     if (!suggestions || suggestions.length === 0) {
       return '';
     }
 
-    const lines = [header, ''];
+    // Story ACT-5: Bob integration — override header for bob profile
+    const displayHeader = userProfile === 'bob' ? 'Suggested next step:' : header;
+
+    const lines = [displayHeader, ''];
 
     suggestions.forEach((suggestion, index) => {
       const number = index + 1;

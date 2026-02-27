@@ -745,4 +745,121 @@ describe('Story ACT-7: Context-Aware Greeting Sections', () => {
       expect(greeting).toContain('develop');
     });
   });
+
+  // ========================================================================
+  // ACT-7: buildAbsenceSection — "Return after extended absence"
+  // ========================================================================
+  describe('ACT-7: buildAbsenceSection', () => {
+    test('returns null when absenceInfo is null', () => {
+      expect(builder.buildAbsenceSection(null)).toBeNull();
+    });
+
+    test('returns null when absenceInfo is undefined', () => {
+      expect(builder.buildAbsenceSection(undefined)).toBeNull();
+    });
+
+    test('includes welcome-back message with elapsed hours', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toBeTruthy();
+      expect(result).toContain('Welcome back');
+      expect(result).toContain('6 hour');
+    });
+
+    test('uses singular "hour" for exactly 1 hour', () => {
+      const absenceInfo = { elapsedMs: 3600000, elapsedHours: 1, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('1 hour');
+      expect(result).not.toContain('1 hours');
+    });
+
+    test('uses plural "hours" for multiple hours', () => {
+      const absenceInfo = { elapsedMs: 7200000, elapsedHours: 2, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('2 hours');
+    });
+
+    test('shows elapsed time in days when >= 24 hours', () => {
+      const absenceInfo = { elapsedMs: 48 * 3600000, elapsedHours: 48, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('day');
+      expect(result).not.toContain('48 hour');
+    });
+
+    test('uses singular "day" for exactly 1 day', () => {
+      const absenceInfo = { elapsedMs: 24 * 3600000, elapsedHours: 24, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('1 day');
+      expect(result).not.toContain('1 days');
+    });
+
+    test('includes last active story when lastStory is provided', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*develop'], lastStory: 'ACT-7' };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('ACT-7');
+      expect(result).toContain('Last active story');
+    });
+
+    test('does not mention last story when lastStory is null', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).not.toContain('Last active story');
+    });
+
+    test('shows recent commit count when projectStatus has recentCommits', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const projectStatus = { recentCommits: ['feat: add X', 'fix: bug Y', 'chore: cleanup'] };
+      const result = builder.buildAbsenceSection(absenceInfo, projectStatus);
+      expect(result).toContain('3 recent commits');
+    });
+
+    test('uses singular "commit" for a single recent commit', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const projectStatus = { recentCommits: ['feat: add something'] };
+      const result = builder.buildAbsenceSection(absenceInfo, projectStatus);
+      expect(result).toContain('1 recent commit');
+      expect(result).not.toContain('1 recent commits');
+    });
+
+    test('does not mention commits when projectStatus is null', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const result = builder.buildAbsenceSection(absenceInfo, null);
+      expect(result).not.toContain('commit');
+    });
+
+    test('does not mention commits when recentCommits is empty array', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: null };
+      const projectStatus = { recentCommits: [] };
+      const result = builder.buildAbsenceSection(absenceInfo, projectStatus);
+      expect(result).not.toContain('commit');
+    });
+
+    test('section header contains "Since Your Last Session"', () => {
+      const absenceInfo = { elapsedMs: 6 * 3600000, elapsedHours: 6, lastCommands: ['*help'], lastStory: 'W3.6' };
+      const result = builder.buildAbsenceSection(absenceInfo);
+      expect(result).toContain('Since Your Last Session');
+    });
+
+    test('full greeting includes absence section when absenceInfo is provided', async () => {
+      const absenceContext = {
+        ...baseEnrichedContext,
+        absenceInfo: {
+          elapsedMs: 6 * 3600000,
+          elapsedHours: 6,
+          lastCommands: ['*develop-story'],
+          lastStory: 'ACT-7',
+        },
+      };
+      const greeting = await builder.buildGreeting(mockAgent, absenceContext);
+      expect(greeting).toContain('Since Your Last Session');
+      expect(greeting).toContain('Welcome back');
+      expect(greeting).toContain('ACT-7');
+    });
+
+    test('full greeting does NOT include absence section when absenceInfo is null', async () => {
+      const normalContext = { ...baseEnrichedContext, absenceInfo: null };
+      const greeting = await builder.buildGreeting(mockAgent, normalContext);
+      expect(greeting).not.toContain('Since Your Last Session');
+    });
+  });
 });

@@ -19,6 +19,10 @@ const _BOOT_TIME = process.hrtime.bigint();
  * - Removed language extraction/propagation from pipeline
  * - FALLBACK_PHRASES simplified to single English FALLBACK_PHRASE constant
  *
+ * Story ACT-7 (absence detection):
+ * - Sessions expired beyond ABSENCE_THRESHOLD (4h) inject absenceInfo into enriched context
+ * - GreetingBuilder uses absenceInfo to render "what changed since last session" section
+ *
  * Architecture (ACT-11 Tiered):
  *   Phase 0: Load CoreConfig (shared, fast)
  *   Phase 1 (Critical, 80ms): AgentConfigLoader — greeting is broken without this
@@ -47,6 +51,8 @@ const yaml = require('js-yaml');
 const GreetingBuilder = require('./greeting-builder');
 const { AgentConfigLoader } = require('./agent-config-loader');
 const SessionContextLoader = require('../../core/session/context-loader');
+// Story WIS-16: Handoff reader for workflow-aware greeting handoffs
+const HandoffReader = require('./handoff-reader');
 // NOG-18: loadProjectStatus removed — gitStatus is native in Claude Code system prompt.
 // const { loadProjectStatus } = require('../../infrastructure/scripts/project-status-loader');
 const GitConfigDetector = require('../../infrastructure/scripts/git-config-detector');
@@ -96,6 +102,21 @@ const LOADER_TIERS = {
  * @type {number}
  */
 const DEFAULT_PIPELINE_TIMEOUT_MS = 500;
+
+/**
+ * ACT-7: Absence threshold in ms. Sessions with lastActivity older than this are
+ * considered "return after absence" and receive an additional context section.
+ * 4 hours: long enough to be meaningful, short enough to be recent.
+ * @type {number}
+ */
+const ABSENCE_THRESHOLD_MS = 4 * 60 * 60 * 1000; // 4 hours
+
+/**
+ * ACT-7: Session state file path (relative to project root).
+ * Mirrors the constant in context-detector.js to avoid circular dependency.
+ * @type {string}
+ */
+const SESSION_STATE_REL_PATH = '.aios/session-state.json';
 
 /**
  * All 12 supported agent IDs.
@@ -284,10 +305,17 @@ class UnifiedActivationPipeline {
     // NOG-18: projectStatus loader removed — gitStatus is native in Claude Code system prompt.
     // The loadProjectStatus() function ran 5+ git commands (~76ms) duplicating native features.
     // GreetingBuilder handles projectStatus: null gracefully (null-checks everywhere).
-    const [sessionContext] = await Promise.all([
+    // Story WIS-16: handoffData loaded as best-effort alongside sessionContext
+    const [sessionContext, handoffData] = await Promise.all([
       this._profileLoader('sessionContext', metrics, tier3Remaining, () => {
         const loader = new SessionContextLoader();
         return loader.loadContext(agentId);
+      }),
+      this._profileLoader('handoffData', metrics, tier3Remaining, () => {
+        // Story WIS-16: Sync read of the most recent handoff artifact for this agent.
+        // HandoffReader.readLatestHandoff() is fully synchronous; wrap in resolved promise.
+        const reader = new HandoffReader(this.projectRoot);
+        return Promise.resolve(reader.readLatestHandoff(agentId));
       }),
     ]);
     const projectStatus = null;
@@ -304,6 +332,9 @@ class UnifiedActivationPipeline {
 
     // Step 8: Workflow state detection
     const workflowState = this._detectWorkflowState(sessionContext, sessionType);
+
+    // Step 9: Absence detection (ACT-7 — return after extended absence)
+    const absenceInfo = this._detectAbsenceInfo();
 
     // --- Assemble enriched context ---
     const enrichedContext = {
@@ -328,6 +359,10 @@ class UnifiedActivationPipeline {
       sessionMessage: sessionContext?.message || null,
       workflowActive: sessionContext?.workflowActive || null,
       sessionStory: sessionContext?.currentStory || null,
+      // ACT-7: Absence info — non-null when returning after >= ABSENCE_THRESHOLD_MS
+      absenceInfo: absenceInfo || null,
+      // Story WIS-16: Handoff data — non-null when a recent handoff artifact exists
+      handoffData: handoffData || null,
     };
 
     // --- Build greeting via GreetingBuilder ---
@@ -546,6 +581,59 @@ class UnifiedActivationPipeline {
   }
 
   /**
+   * ACT-7: Detect absence info — whether the user is returning after an extended absence.
+   *
+   * An "absence" is defined as a session where:
+   * - The session state file exists (prior history)
+   * - lastActivity is older than ABSENCE_THRESHOLD_MS
+   * - There are prior commands (meaningful session history)
+   *
+   * Returns an object with absence metadata, or null if not applicable.
+   *
+   * @private
+   * @returns {Object|null} absenceInfo or null
+   *   - elapsedMs: number (ms since last activity)
+   *   - elapsedHours: number (rounded to 1 decimal)
+   *   - lastCommands: string[] (last commands from prior session)
+   *   - lastStory: string|null
+   */
+  _detectAbsenceInfo() {
+    try {
+      const stateFilePath = path.join(this.projectRoot, SESSION_STATE_REL_PATH);
+      if (!fsSync.existsSync(stateFilePath)) {
+        return null;
+      }
+
+      const raw = fsSync.readFileSync(stateFilePath, 'utf8');
+      const sessionData = JSON.parse(raw);
+
+      const now = Date.now();
+      const lastActivity = sessionData.lastActivity || 0;
+      const elapsedMs = now - lastActivity;
+
+      // Only flag as absence if elapsed time exceeds threshold AND there is prior history
+      if (elapsedMs < ABSENCE_THRESHOLD_MS) {
+        return null;
+      }
+
+      const lastCommands = sessionData.lastCommands || [];
+      if (lastCommands.length === 0) {
+        return null; // No meaningful prior session
+      }
+
+      return {
+        elapsedMs,
+        elapsedHours: Math.round((elapsedMs / (60 * 60 * 1000)) * 10) / 10,
+        lastCommands,
+        lastStory: sessionData.currentStory || null,
+      };
+    } catch {
+      // Graceful degradation: any parse or IO error means no absence info
+      return null;
+    }
+  }
+
+  /**
    * Detect workflow state from session context and session type.
    * Story ACT-5: Relaxed trigger - now detects workflows for any non-new session.
    * @private
@@ -665,6 +753,7 @@ class UnifiedActivationPipeline {
       permissions: { mode: 'ask', badge: '[Ask]' },
       preference: 'auto',
       sessionType: 'new',
+      handoffData: null,
       workflowState: null,
       userProfile: 'advanced',
       // MIS-6: Include memories field in fallback context
@@ -675,6 +764,8 @@ class UnifiedActivationPipeline {
       sessionMessage: null,
       workflowActive: null,
       sessionStory: null,
+      // ACT-7: No absence info in fallback context
+      absenceInfo: null,
     };
   }
 
@@ -794,6 +885,9 @@ module.exports = {
   DEFAULT_PIPELINE_TIMEOUT_MS,
   // ACT-12: Single English fallback (language delegated to Claude Code settings.json)
   FALLBACK_PHRASE,
+  // ACT-7: Absence detection constants (exported for testing)
+  ABSENCE_THRESHOLD_MS,
+  SESSION_STATE_REL_PATH,
 };
 
 // CLI entrypoint: `node unified-activation-pipeline.js <agentId>`

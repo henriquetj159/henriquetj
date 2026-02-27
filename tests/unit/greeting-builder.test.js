@@ -14,6 +14,7 @@
  * - Backwards compatibility
  * - Story 10.3: User profile-based command filtering
  * - Story ACT-12: Language delegated to Claude Code settings.json
+ * - Story WIS-16: Workflow-aware greeting handoffs
  */
 
 const GreetingBuilder = require('../../.aios-core/development/scripts/greeting-builder');
@@ -42,6 +43,13 @@ jest.mock('../../.aios-core/development/scripts/greeting-preference-manager', ()
     getConfig: jest.fn().mockReturnValue({}),
   }));
 });
+// Story WIS-16: Mock HandoffReader so tests control handoff data
+jest.mock('../../.aios-core/development/scripts/handoff-reader', () => {
+  return jest.fn().mockImplementation(() => ({
+    readLatestHandoff: jest.fn().mockReturnValue(null),
+  }));
+});
+const HandoffReader = require('../../.aios-core/development/scripts/handoff-reader');
 
 const { loadProjectStatus, formatStatusDisplay } = require('../../.aios-core/infrastructure/scripts/project-status-loader');
 
@@ -664,6 +672,229 @@ describe('GreetingBuilder', () => {
       const footer = builder.buildFooter(mockAgent, sectionContext);
       expect(footer).toContain('Type `*help`');
       expect(footer).toContain('*session-info');
+    });
+  });
+
+  describe('WIS-16: Workflow-Aware Greeting Handoffs', () => {
+    /** Minimal valid handoff object as returned by HandoffReader.readLatestHandoff() */
+    const makeHandoff = (overrides = {}) => ({
+      fromAgent: 'dev',
+      toAgent: 'qa',
+      timestamp: '2026-02-26T14:00:00Z',
+      storyId: 'WIS-16',
+      storyPath: 'docs/stories/WIS-16.md',
+      storyStatus: 'In Progress',
+      currentTask: 'Task 3: Integration',
+      branch: 'feat/wis-16',
+      decisions: ['Used HandoffReader', 'Graceful degradation'],
+      filesModified: ['greeting-builder.js', 'handoff-reader.js'],
+      blockers: [],
+      nextAction: 'Run QA gate on WIS-16.',
+      ...overrides,
+    });
+
+    beforeEach(() => {
+      // Restore default mock: no handoff
+      HandoffReader.mockImplementation(() => ({
+        readLatestHandoff: jest.fn().mockReturnValue(null),
+      }));
+      // Reset builder to pick up the new HandoffReader mock
+      builder = new GreetingBuilder();
+    });
+
+    describe('buildHandoffSection()', () => {
+      test('returns null when handoffData is null', () => {
+        const result = builder.buildHandoffSection(null, mockAgent, {});
+        expect(result).toBeNull();
+      });
+
+      test('returns null when handoffData has no fromAgent', () => {
+        const result = builder.buildHandoffSection({ toAgent: 'qa' }, mockAgent, {});
+        expect(result).toBeNull();
+      });
+
+      test('renders from_agent and story ID', () => {
+        const result = builder.buildHandoffSection(makeHandoff(), mockAgent, {});
+        expect(result).not.toBeNull();
+        expect(result).toContain('@dev');
+        expect(result).toContain('WIS-16');
+      });
+
+      test('renders story status when available', () => {
+        const result = builder.buildHandoffSection(makeHandoff(), mockAgent, {});
+        expect(result).toContain('In Progress');
+      });
+
+      test('renders current task', () => {
+        const result = builder.buildHandoffSection(makeHandoff(), mockAgent, {});
+        expect(result).toContain('Task 3: Integration');
+      });
+
+      test('renders branch reference', () => {
+        const result = builder.buildHandoffSection(makeHandoff(), mockAgent, {});
+        expect(result).toContain('feat/wis-16');
+      });
+
+      test('renders key decisions (max 3)', () => {
+        const handoff = makeHandoff({
+          decisions: ['d1', 'd2', 'd3', 'd4'],
+        });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).toContain('d1');
+        expect(result).toContain('d2');
+        expect(result).toContain('d3');
+        expect(result).not.toContain('d4'); // Only top 3 shown
+      });
+
+      test('renders files modified (max 3 + count)', () => {
+        const handoff = makeHandoff({
+          filesModified: ['f1.js', 'f2.js', 'f3.js', 'f4.js'],
+        });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).toContain('f1.js');
+        expect(result).toContain('+1 more');
+      });
+
+      test('renders next action prominently', () => {
+        const result = builder.buildHandoffSection(makeHandoff(), mockAgent, {});
+        expect(result).toContain('Run QA gate on WIS-16.');
+        expect(result).toContain('Next:');
+      });
+
+      test('renders blockers when present', () => {
+        const handoff = makeHandoff({ blockers: ['API not ready'] });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).toContain('API not ready');
+        expect(result).toContain('Blockers:');
+      });
+
+      test('does not render blockers section when array is empty', () => {
+        const handoff = makeHandoff({ blockers: [] });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).not.toContain('Blockers:');
+      });
+
+      test('renders without storyId gracefully', () => {
+        const handoff = makeHandoff({ storyId: null, storyStatus: null });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).not.toBeNull();
+        expect(result).toContain('@dev');
+      });
+
+      test('does not render decisions section when array is empty', () => {
+        const handoff = makeHandoff({ decisions: [] });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).not.toContain('Key decisions:');
+      });
+
+      test('does not render files section when array is empty', () => {
+        const handoff = makeHandoff({ filesModified: [] });
+        const result = builder.buildHandoffSection(handoff, mockAgent, {});
+        expect(result).not.toContain('Modified:');
+      });
+    });
+
+    describe('_safeReadHandoff()', () => {
+      test('returns null when HandoffReader throws', () => {
+        HandoffReader.mockImplementation(() => ({
+          readLatestHandoff: jest.fn().mockImplementation(() => {
+            throw new Error('IO error');
+          }),
+        }));
+        builder = new GreetingBuilder();
+        const result = builder._safeReadHandoff('qa');
+        expect(result).toBeNull();
+      });
+
+      test('returns handoff data when reader succeeds', () => {
+        const handoff = makeHandoff();
+        HandoffReader.mockImplementation(() => ({
+          readLatestHandoff: jest.fn().mockReturnValue(handoff),
+        }));
+        builder = new GreetingBuilder();
+        const result = builder._safeReadHandoff('qa');
+        expect(result).toEqual(handoff);
+      });
+    });
+
+    describe('Integration: handoff section in buildGreeting()', () => {
+      test('renders handoff section when handoffData is provided in context', async () => {
+        builder.contextDetector.detectSessionType.mockReturnValue('existing');
+
+        const greeting = await builder.buildGreeting(mockAgent, {
+          handoffData: makeHandoff(),
+        });
+
+        expect(greeting).toContain('Handoff');
+        expect(greeting).toContain('@dev');
+        expect(greeting).toContain('WIS-16');
+        expect(greeting).toContain('Run QA gate on WIS-16.');
+      });
+
+      test('does not render handoff section when no handoffData', async () => {
+        // HandoffReader returns null by default (set in beforeEach)
+        builder.contextDetector.detectSessionType.mockReturnValue('existing');
+
+        const greeting = await builder.buildGreeting(mockAgent, {});
+
+        expect(greeting).not.toContain('Handoff from');
+      });
+
+      test('renders handoff section when HandoffReader returns data', async () => {
+        const handoff = makeHandoff();
+        HandoffReader.mockImplementation(() => ({
+          readLatestHandoff: jest.fn().mockReturnValue(handoff),
+        }));
+        builder = new GreetingBuilder();
+        builder.contextDetector.detectSessionType.mockReturnValue('existing');
+
+        const greeting = await builder.buildGreeting(mockAgent, {});
+
+        expect(greeting).toContain('Handoff');
+        expect(greeting).toContain('@dev');
+      });
+
+      test('works normally when handoff is absent (backward compat)', async () => {
+        builder.contextDetector.detectSessionType.mockReturnValue('new');
+
+        const greeting = await builder.buildGreeting(mockAgent, {});
+
+        expect(greeting).toContain('TestAgent');
+        expect(greeting).not.toContain('Handoff from');
+      });
+
+      test('works with handoff in workflow context', async () => {
+        builder.contextDetector.detectSessionType.mockReturnValue('workflow');
+
+        const greeting = await builder.buildGreeting(mockAgent, {
+          handoffData: makeHandoff({ storyId: 'WIS-16', storyStatus: 'Ready for Review' }),
+        });
+
+        expect(greeting).toContain('Handoff');
+        expect(greeting).toContain('WIS-16');
+      });
+    });
+
+    describe('sectionContext.handoffData propagation', () => {
+      test('handoffData from context is used over HandoffReader when both present', async () => {
+        // Set up reader to return a different handoff
+        const readerHandoff = makeHandoff({ storyId: 'FROM-READER' });
+        HandoffReader.mockImplementation(() => ({
+          readLatestHandoff: jest.fn().mockReturnValue(readerHandoff),
+        }));
+        builder = new GreetingBuilder();
+        builder.contextDetector.detectSessionType.mockReturnValue('existing');
+
+        // Provide a different handoff in the context
+        const contextHandoff = makeHandoff({ storyId: 'FROM-CONTEXT' });
+        const greeting = await builder.buildGreeting(mockAgent, {
+          handoffData: contextHandoff,
+        });
+
+        // FROM-CONTEXT takes priority (context.handoffData checked first)
+        expect(greeting).toContain('FROM-CONTEXT');
+        expect(greeting).not.toContain('FROM-READER');
+      });
     });
   });
 });

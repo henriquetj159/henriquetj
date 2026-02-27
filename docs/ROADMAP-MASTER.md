@@ -1,7 +1,7 @@
 # ROADMAP MASTER - AIOS + JARVIS
 
 > Documento vivo. Atualizar checkboxes conforme progresso.
-> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-28 (W2.7/W2.9/W2.10 + W3.1/W3.2/W3.3/W3.5/W3.12/W3.14 verified DONE)
+> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-27 (W3 100% DONE — W3.16 HandoffReader + W3.17 GitHub Actions)
 > Referencia cruzada: `docs/stories/backlog.json`, `docs/roadmap.md`
 
 ---
@@ -10,7 +10,7 @@
 
 | Area | Progresso | Notas |
 |------|-----------|-------|
-| AIOS Core Framework | ~85% | 14 modulos completos, 5 gaps ativos |
+| AIOS Core Framework | ~95% | 14 modulos completos, W3 100% gaps resolvidos |
 | JARVIS CLI Engine | ~95% | 7/7 stories DONE, pipeline integrado, 330 testes |
 | JARVIS Voice Hub | ~90% | v6 cockpit + Core integration (W2.1-W2.6 DONE) |
 | Squads & Marketplace | ~5% | Apenas _example/ existe |
@@ -115,9 +115,9 @@
 - [x] W3.1 - ACT-2: Audit user_profile impact across agents — VERIFIED DONE (31 testes, cascade wired)
 - [x] W3.2 - ACT-3: ProjectStatusLoader reliability overhaul — VERIFIED DONE (90 testes)
 - [x] W3.3 - ACT-4: PermissionMode integration (wiring permissions/ to CLI) — VERIFIED DONE (67 testes)
-- [ ] W3.4 - ACT-5: WorkflowNavigator + Bob integration
+- [x] W3.4 - ACT-5: WorkflowNavigator + Bob integration — DONE 2026-02-26 (profile-aware filtering: bob=1 suggestion, intermediate=2, advanced=all; simplified header; SurfaceChecker bypass for bob; 51 testes)
 - [x] W3.5 - ACT-6: Unified Activation Pipeline — VERIFIED DONE (QA PASS, 67 testes)
-- [ ] W3.6 - ACT-7: Context-Aware Greeting Sections
+- [x] W3.6 - ACT-7: Context-Aware Greeting Sections — DONE (4 session types: new/existing/workflow/absence; buildAbsenceSection; _detectAbsenceInfo; 25+ testes)
 - [x] W3.7 - ACT-8: Agent Config Loading governance — DONE 2026-02-28 (4-phase validator, JSON Schema, 53 testes, 12 agents validados)
 
 ### Core Gaps
@@ -132,9 +132,9 @@
 ### Stories Pendentes
 
 - [x] W3.14 - CODEINTEL-RP-001: RegistryProvider completion — VERIFIED DONE (QA PASS, 351 testes)
-- [ ] W3.15 - NOG-23: post-migration validation benchmark
-- [ ] W3.16 - WIS-16: workflow-aware greeting handoffs
-- [ ] W3.17 - GHIM-001 Phase 3: GitHub Actions execution
+- [x] W3.15 - NOG-23: post-migration validation benchmark — DONE (QA PASS 100/100, zero regressions NOG-17→NOG-22, benchmark report at docs/qa/NOG-23-benchmark-comparison.md)
+- [x] W3.16 - WIS-16: workflow-aware greeting handoffs — DONE (HandoffReader module, buildHandoffSection, Tier 3 pipeline integration, 17+25 testes)
+- [x] W3.17 - GHIM-001 Phase 3: GitHub Actions execution — DONE (code 100% complete, awaiting @devops live validation of 3 workflows)
 
 ---
 
@@ -195,12 +195,12 @@
 | W0 Quick Wins | 10 | 10 | 100% |
 | W1 JARVIS CLI | 19 | 18 | 95% |
 | W2 Integration | 12 | 12 | 100% |
-| W3 Core | 17 | 13 | 76% |
+| W3 Core | 17 | 17 | 100% |
 | W4 Dashboard | 7 | 0 | 0% |
 | W5 Squads | 5 | 0 | 0% |
 | W6 Pro | 4 | 0 | 0% |
 | W7 Cleanup | 10 | 0 | 0% |
-| **TOTAL** | **84** | **53** | **63%** |
+| **TOTAL** | **84** | **57** | **68%** |
 
 ---
 

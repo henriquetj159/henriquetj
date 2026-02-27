@@ -225,7 +225,7 @@ jest.mock('../../.aios-core/infrastructure/scripts/performance-tracker', () => (
 }));
 
 // --- Require modules AFTER mocks ---
-const { UnifiedActivationPipeline, ALL_AGENT_IDS, LOADER_TIERS, DEFAULT_PIPELINE_TIMEOUT_MS, FALLBACK_PHRASE } = require('../../.aios-core/development/scripts/unified-activation-pipeline');
+const { UnifiedActivationPipeline, ALL_AGENT_IDS, LOADER_TIERS, DEFAULT_PIPELINE_TIMEOUT_MS, FALLBACK_PHRASE, ABSENCE_THRESHOLD_MS, SESSION_STATE_REL_PATH } = require('../../.aios-core/development/scripts/unified-activation-pipeline');
 const { AgentConfigLoader } = require('../../.aios-core/development/scripts/agent-config-loader');
 const SessionContextLoader = require('../../.aios-core/core/session/context-loader');
 const { loadProjectStatus } = require('../../.aios-core/infrastructure/scripts/project-status-loader');
@@ -1247,6 +1247,168 @@ describe('UnifiedActivationPipeline', () => {
         expect(result.metrics.loaders.agentConfig).toBeDefined();
         expect(result.metrics.loaders.agentConfig.status).toBe('ok');
       });
+    });
+  });
+
+  // -----------------------------------------------------------
+  // 28. ACT-7: Absence detection constants and _detectAbsenceInfo
+  // -----------------------------------------------------------
+  describe('ACT-7: absence detection', () => {
+    // Default readFileSync implementation (mirrors jest.mock factory)
+    const defaultReadFileSyncImpl = (filePath) => {
+      if (String(filePath).includes('core-config.yaml')) {
+        const yaml = jest.requireActual('js-yaml');
+        return yaml.dump(mockCoreConfig);
+      }
+      if (String(filePath).includes('workflow-patterns.yaml')) { return 'workflows: {}'; }
+      if (String(filePath).includes('session-state.json')) { return JSON.stringify({}); }
+      return '';
+    };
+
+    // Helper: mock existsSync to return true for session-state.json
+    function mockSessionStateExists(fsModule) {
+      const original = fsModule.existsSync;
+      fsModule.existsSync = jest.fn().mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) { return true; }
+        return original(filePath);
+      });
+      return () => { fsModule.existsSync = original; }; // returns cleanup fn
+    }
+
+    let restoreExistsSync = null;
+
+    afterEach(() => {
+      // Restore existsSync if overridden
+      if (restoreExistsSync) { restoreExistsSync(); restoreExistsSync = null; }
+      // Restore readFileSync to default implementation
+      const fs = require('fs');
+      fs.readFileSync.mockImplementation(defaultReadFileSyncImpl);
+    });
+
+    it('should export ABSENCE_THRESHOLD_MS as a positive number', () => {
+      expect(ABSENCE_THRESHOLD_MS).toBeDefined();
+      expect(typeof ABSENCE_THRESHOLD_MS).toBe('number');
+      expect(ABSENCE_THRESHOLD_MS).toBeGreaterThan(0);
+    });
+
+    it('should export ABSENCE_THRESHOLD_MS equal to 4 hours in ms', () => {
+      expect(ABSENCE_THRESHOLD_MS).toBe(4 * 60 * 60 * 1000);
+    });
+
+    it('should export SESSION_STATE_REL_PATH as a string pointing to session state', () => {
+      expect(SESSION_STATE_REL_PATH).toBeDefined();
+      expect(typeof SESSION_STATE_REL_PATH).toBe('string');
+      expect(SESSION_STATE_REL_PATH).toBe('.aios/session-state.json');
+    });
+
+    it('should include absenceInfo key in enriched context output', async () => {
+      // existsSync real: .aios/session-state.json does not exist in test env → absenceInfo is null
+      const result = await pipeline.activate('dev');
+      expect(Object.prototype.hasOwnProperty.call(result, 'absenceInfo')).toBe(true);
+    });
+
+    it('should return null absenceInfo when session-state.json does not exist (file absent)', async () => {
+      // existsSync real: returns false for .aios/session-state.json in test env
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).toBeNull();
+    });
+
+    it('should return null absenceInfo when session-state.json contains empty object (no commands)', async () => {
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      // readFileSync default already returns {} for session-state.json — no lastCommands
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).toBeNull();
+    });
+
+    it('should return null absenceInfo when session is fresh (< 4h elapsed)', async () => {
+      const freshTimestamp = Date.now() - (1 * 60 * 60 * 1000); // 1 hour ago
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      fs.readFileSync.mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) {
+          return JSON.stringify({
+            lastActivity: freshTimestamp,
+            lastCommands: ['*develop-story'],
+            currentStory: 'ACT-7',
+          });
+        }
+        return defaultReadFileSyncImpl(filePath);
+      });
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).toBeNull();
+    });
+
+    it('should return null absenceInfo when session is stale but no prior commands', async () => {
+      const staleTimestamp = Date.now() - (5 * 60 * 60 * 1000); // 5 hours ago
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      fs.readFileSync.mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) {
+          return JSON.stringify({
+            lastActivity: staleTimestamp,
+            lastCommands: [],
+            currentStory: null,
+          });
+        }
+        return defaultReadFileSyncImpl(filePath);
+      });
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).toBeNull();
+    });
+
+    it('should return absenceInfo when returning after > 4h with prior history', async () => {
+      const staleTimestamp = Date.now() - (6 * 60 * 60 * 1000); // 6 hours ago
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      fs.readFileSync.mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) {
+          return JSON.stringify({
+            lastActivity: staleTimestamp,
+            lastCommands: ['*develop-story', '*run-tests'],
+            currentStory: 'ACT-7',
+          });
+        }
+        return defaultReadFileSyncImpl(filePath);
+      });
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).not.toBeNull();
+      expect(result.absenceInfo.elapsedMs).toBeGreaterThanOrEqual(6 * 60 * 60 * 1000);
+      expect(result.absenceInfo.elapsedHours).toBeGreaterThanOrEqual(6);
+      expect(result.absenceInfo.lastCommands).toEqual(['*develop-story', '*run-tests']);
+      expect(result.absenceInfo.lastStory).toBe('ACT-7');
+    });
+
+    it('should return absenceInfo without lastStory when currentStory is absent', async () => {
+      const staleTimestamp = Date.now() - (8 * 60 * 60 * 1000); // 8 hours ago
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      fs.readFileSync.mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) {
+          return JSON.stringify({
+            lastActivity: staleTimestamp,
+            lastCommands: ['*help'],
+            // currentStory intentionally absent — lastStory should be null
+          });
+        }
+        return defaultReadFileSyncImpl(filePath);
+      });
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).not.toBeNull();
+      expect(result.absenceInfo.lastStory).toBeNull();
+    });
+
+    it('should return null absenceInfo gracefully on malformed JSON', async () => {
+      const fs = require('fs');
+      restoreExistsSync = mockSessionStateExists(fs);
+      fs.readFileSync.mockImplementation((filePath) => {
+        if (String(filePath).includes('session-state.json')) {
+          return 'not valid json {{{';
+        }
+        return defaultReadFileSyncImpl(filePath);
+      });
+      const result = await pipeline.activate('dev');
+      expect(result.absenceInfo).toBeNull();
     });
   });
 });

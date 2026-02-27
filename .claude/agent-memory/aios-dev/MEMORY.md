@@ -96,6 +96,16 @@
 - DO NOT mock `populate-entity-registry.js` in tests - functions work on any filesystem path; just use `os.tmpdir()` temp dirs
 - `jest.mock()` path hoisting: cannot use `path.resolve()` in mock path argument because `jest.mock()` is hoisted before `const path = require('path')`
 
+### WorkflowNavigator Bob Integration (Story ACT-5 W3.4)
+- `PROFILE_MAX_SUGGESTIONS` in `workflow-navigator.js`: bob=1, intermediate=2, advanced=Infinity
+- `suggestNextCommands(workflowState, userProfile='advanced')` — profile-aware filtering, also adds `priority` field to each suggestion
+- `formatSuggestions(suggestions, header, userProfile='advanced')` — bob uses "Suggested next step:" header
+- `buildWorkflowSuggestions(context, userProfile)` — passes userProfile; bob skips SurfaceChecker enhancement
+- `_detectWorkflowFromSessionState(userProfile)` — bob gets 1 suggestion (no build-status)
+- bob + non-PM: workflow section not reached because redirect shows at line ~230 in `_buildContextualGreeting` and returns early
+- bob + PM: workflow suggestions shown but simplified (1 suggestion, simplified header)
+- When updating suggestNextCommands test expectations, must include the new userProfile string arg: `expect(suggestSpy).toHaveBeenCalledWith(state, expect.any(String))`
+
 ## Gotchas
 - Double `loadUserProfile()` call caused test failures when `mockReturnValueOnce` was used for resolveConfig
 - `console.warn` with template literal is one argument, not two -- match with `stringContaining()` only
