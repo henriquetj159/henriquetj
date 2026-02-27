@@ -1,7 +1,7 @@
 # ROADMAP MASTER - AIOS + JARVIS
 
 > Documento vivo. Atualizar checkboxes conforme progresso.
-> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-27 (W3 100% DONE — W3.16 HandoffReader + W3.17 GitHub Actions)
+> Criado: 2026-02-26 | Ultima atualizacao: 2026-02-28 (W4 100% DONE — Cloud Brain completo, 18/18 items)
 > Referencia cruzada: `docs/stories/backlog.json`, `docs/roadmap.md`
 
 ---
@@ -15,7 +15,7 @@
 | JARVIS Voice Hub | ~90% | v6 cockpit + Core integration (W2.1-W2.6 DONE) |
 | Squads & Marketplace | ~5% | Apenas _example/ existe |
 | Pro Module | ~10% | Scaffolding existe, PRO-11 pendente |
-| Dashboard/Observability | 0% | Nao iniciado |
+| JARVIS Cloud Brain (W4) | 100% | 18/18 DONE — Cloud Brain + LLM Strategy + Git & CI + Cockpit UX |
 
 ---
 
@@ -138,17 +138,40 @@
 
 ---
 
-## WAVE 4 — OBSERVABILITY & DASHBOARD (2-3 sessoes)
+## WAVE 4 — JARVIS CLOUD BRAIN: AUTONOMOUS VPS (4-6 sessoes)
 
-> CLI First → Observability Second → UI Third
+> JARVIS na VPS com autonomia total: voz → agentes → codigo → testes → push.
+> O cockpit E o dashboard. Acesso de qualquer lugar, celular ou PC.
 
-- [ ] W4.1 - Dashboard web (Express/WS) — real-time system monitor
-- [ ] W4.2 - Agent activity timeline (quem fez o que, quando)
-- [ ] W4.3 - Story progress tracker visual
-- [ ] W4.4 - Git activity graph
-- [ ] W4.5 - GD-5: HTML web viewer para graph-dashboard
-- [ ] W4.6 - GD-6: VS Code extension
-- [ ] W4.7 - Integrar dashboard com JARVIS cockpit (tab adicional ou merge)
+### Phase 1: Foundation (VPS = Dev Environment)
+
+- [x] W4.1 - Clone aios-core repo na VPS + npm install (dev environment completo) — DONE 2026-02-28
+- [x] W4.2 - Anthropic SDK integration em server.js (Claude API como backend de agentes) — DONE 2026-02-28 (cloud-brain.js + callClaude())
+- [x] W4.3 - Agent prompt loader (carrega definicoes YAML dos agentes como system prompts) — DONE 2026-02-28 (loadAgentPrompt() carrega 12 agents)
+- [x] W4.4 - Claude-powered tool execution (read/write/edit/search no repo real da VPS) — DONE 2026-02-28 (9 tools: read/write/edit/search/list/run/git_status/git_commit/git_push)
+
+### Phase 2: Agent Orchestration (Agentes funcionando via Cloud)
+
+- [x] W4.5 - DelegationBridge cloud adapter (chama Claude API per-agent com contexto) — DONE 2026-02-28 (executeAgent() agentic loop, max 25 rounds)
+- [x] W4.6 - IntentEngine cloud mode (classifica comandos de voz → agente correto) — DONE 2026-02-28 (orchestrate() Opus 4.6 analisa intent + detectAgent() fallback)
+- [x] W4.7 - MissionPlanner cloud mode (quebra missoes em steps executaveis) — DONE 2026-02-28 (Opus routing + refined_command para agents)
+- [x] W4.8 - AutonomyController cloud mode (risk assessment, approval gates) — DONE 2026-02-28 (BLOCKED_PATTERNS, path traversal, dangerous command blocking)
+
+### Phase 3: Git & CI (Push direto da VPS)
+
+- [x] W4.9 - SSH key para GitHub na VPS (clone/pull/push sem senha) — DONE 2026-02-28 (SSH key ed25519 gerada, git config, setup endpoint /api/brain/github/setup para token)
+- [x] W4.10 - Git operations via JARVIS (commit, push, branch, PR via gh CLI) — DONE 2026-02-28 (3 tools: git_branch/git_log/git_diff + 4 REST endpoints)
+- [x] W4.11 - Test runner integration (npm test executado pelo JARVIS, resultados no cockpit) — DONE 2026-02-28 (run_tests tool + parseTestResults() + WebSocket broadcast)
+- [x] W4.12 - CI feedback loop (testes falham → JARVIS corrige automaticamente) — DONE 2026-02-28 (autoFixTests() max 3 iterations, Sonnet analyzes + fixes)
+
+### Phase 4: Cockpit UX (Dashboard integrado)
+
+- [x] W4.13 - Agent activity timeline no cockpit (quem fez o que, quando) — DONE 2026-02-28 (nova tab Activity, timeline vertical, cores por agente, max 100 FIFO)
+- [x] W4.14 - Story progress tracker visual (checkboxes, file list, status) — DONE 2026-02-28 (card Monitor, parseia markdown checkboxes, progress bar)
+- [x] W4.15 - Git activity graph (commits, branches, PRs) — DONE 2026-02-28 (card Monitor, 10 commits timeline, auto-refresh 60s)
+- [x] W4.16 - Mission history (historico de missoes com replay) — DONE 2026-02-28 (localStorage max 50, expandivel, badge diario)
+- [x] W4.17 - Autonomy mode selector no cockpit (supervised/assisted/autonomous) — DONE 2026-02-28 (dropdown topbar, 3 modos, persiste localStorage)
+- [x] W4.18 - Real-time streaming de progresso (steps executando ao vivo) — DONE 2026-02-28 (progress overlay, spinner, tool indicators, collapse on complete)
 
 ---
 
@@ -196,11 +219,11 @@
 | W1 JARVIS CLI | 19 | 18 | 95% |
 | W2 Integration | 12 | 12 | 100% |
 | W3 Core | 17 | 17 | 100% |
-| W4 Dashboard | 7 | 0 | 0% |
+| W4 Cloud Brain | 18 | 18 | 100% |
 | W5 Squads | 5 | 0 | 0% |
 | W6 Pro | 4 | 0 | 0% |
 | W7 Cleanup | 10 | 0 | 0% |
-| **TOTAL** | **84** | **57** | **68%** |
+| **TOTAL** | **95** | **75** | **79%** |
 
 ---
 
