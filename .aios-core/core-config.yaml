@@ -104,7 +104,7 @@ projectStatus:
   maxModifiedFiles: 5
   maxRecentCommits: 2
 boundary:
-  frameworkProtection: false
+  frameworkProtection: true
   protected:
     - .aios-core/core/**
     - .aios-core/development/tasks/**

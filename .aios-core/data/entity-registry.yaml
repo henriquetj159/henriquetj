@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-02-27T02:30:37.916Z'
-  entityCount: 744
+  lastUpdated: '2026-02-27T02:50:16.622Z'
+  entityCount: 745
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -7130,7 +7130,9 @@ entities:
         - git-config-detector
         - workflow-navigator
         - greeting-preference-manager
+        - handoff-reader
         - project-status-loader
+        - permissions
         - config-resolver
         - validate-user-profile
         - session-state
@@ -7143,8 +7145,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:90d85d7271398a98c28d76386cef13c99c024fcec023de059ef6a75bce8775f1
-      lastVerified: '2026-02-27T02:30:37.317Z'
+      checksum: sha256:5a40be381b585870e175274e1cc1ebdf9da528b29da5808f3d1f2a65744e97c1
+      lastVerified: '2026-02-27T02:50:16.614Z'
     greeting-config-cli:
       path: .aios-core/development/scripts/greeting-config-cli.js
       layer: L2
@@ -7633,12 +7635,15 @@ entities:
         - greeting-builder
         - agent-config-loader
         - context-loader
+        - handoff-reader
         - project-status-loader
         - git-config-detector
+        - permissions
         - greeting-preference-manager
         - context-detector
         - workflow-navigator
         - atomic-write
+        - pro-detector
       externalDeps: []
       plannedDeps:
         - permissions
@@ -7648,8 +7653,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:7fc6a3bf85983beab7722e30b93347547b2b009a7afc158caea279208f3e4dd8
-      lastVerified: '2026-02-27T02:30:37.335Z'
+      checksum: sha256:a4540a350684e89c295b4ba4aaf10cf8bea479399a758e0444509c4ffbb1b6dc
+      lastVerified: '2026-02-27T02:50:16.617Z'
     usage-tracker:
       path: .aios-core/development/scripts/usage-tracker.js
       layer: L2
@@ -7775,7 +7780,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:ac36116a605662b5c1377708426485a472915ae7aaa04e3be3386bd2fd0af8c9
-      lastVerified: '2026-02-27T02:30:37.339Z'
+      lastVerified: '2026-02-27T02:50:16.618Z'
     workflow-state-manager:
       path: .aios-core/development/scripts/workflow-state-manager.js
       layer: L2
@@ -8076,6 +8081,24 @@ entities:
         extensionPoints: []
       checksum: sha256:36b02cbc8f83d6a309ca07dd79e503fd9ed9f7406db6922876db0bc7afebe894
       lastVerified: '2026-02-27T02:30:37.348Z'
+    handoff-reader:
+      path: .aios-core/development/scripts/handoff-reader.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\handoff-reader.js
+      keywords:
+        - handoff
+        - reader
+      usedBy:
+        - greeting-builder
+        - unified-activation-pipeline
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:085209bd730925e9da6a0d65723222b3bfbd1629e375e507be1580dafd3bb5e3
+      lastVerified: '2026-02-27T02:50:16.616Z'
   modules:
     index.esm:
       path: .aios-core/core/index.esm.js
