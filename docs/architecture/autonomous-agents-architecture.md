@@ -2,9 +2,10 @@
 
 **Author:** Aria (Architect Agent)
 **Date:** 2026-03-01
-**Status:** DRAFT -- Pending Review
+**Status:** REVIEWED -- Validated by @pedro-valerio (7 FAILs addressed, see Appendix B)
 **Supersedes:** multi-daemon-analysis.md (Model C Hybrid recommendation)
 **Relates To:** session-daemon-phase0.md, telegram-observability-bridge.md, autonomous-agents-market-research.md
+**Validation:** autonomous-agents-validation.md (42 checkpoints: 16 PASS, 19 CONCERNS, 7 FAIL → all FAILs addressed in this revision)
 
 ---
 
@@ -318,6 +319,21 @@ Each agent's worker inherits its authority boundaries structurally:
 
 ```yaml
 # config/worker-profiles.yaml
+#
+# ENFORCEMENT MODEL (V3.3 fix):
+#   bash_mode: "denylist" = everything allowed EXCEPT denied_bash_patterns
+#   bash_mode: "allowlist" = ONLY allowed_bash_patterns execute, everything else blocked
+#   bash_mode: "none"     = Bash tool removed from allowed_tools entirely
+#
+# PATTERN MATCHING (V5.2 fix):
+#   All bash patterns are case-insensitive regex (not substring).
+#   Patterns also cover evasion variants: eval, bash -c, sh -c, absolute paths.
+#
+# OS-LEVEL ENFORCEMENT (V3.2 fix):
+#   Agents with write restrictions use systemd ReadOnlyPaths/ReadWritePaths
+#   for OS-level enforcement, not just SDK-level. This is defense-in-depth:
+#   Layer 1 (SDK tool whitelist) + Layer 2 (bash patterns) + Layer 3 (systemd).
+
 profiles:
   dev:
     model: "claude-sonnet-4-5-20250929"
@@ -334,10 +350,14 @@ profiles:
       - WebSearch
       - WebFetch
     denied_tools: []
+    bash_mode: "denylist"
     denied_bash_patterns:
-      - "git push"
-      - "gh pr create"
-      - "gh pr merge"
+      - "git\\s+push"
+      - "gh\\s+pr\\s+(create|merge)"
+      - "eval\\s+.*git"
+      - "(bash|sh)\\s+-c\\s+.*git\\s+push"
+      - "/usr/bin/git\\s+push"
+      - "npm\\s+publish"
     permission_mode: "bypassPermissions"
     system_prompt_append: |
       You are @dev (Dex). You CANNOT push to git or create PRs.
@@ -349,20 +369,22 @@ profiles:
     max_wall_time_ms: 1800000  # 30 min
     allowed_tools:
       - Read
-      - Bash
       - Grep
       - Glob
       - Task
     denied_tools:
       - Write
       - Edit
-    denied_bash_patterns:
-      - "git push"
-      - "rm -rf"
+      - Bash          # V3.2 fix: Bash removed entirely (was escape hatch for writes)
+    bash_mode: "none"  # No Bash access — OS-level ReadOnlyPaths as backup
+    systemd_scope:
+      ReadOnlyPaths: "/home/ubuntu/aios-core"
+      ReadWritePaths: "/tmp /home/ubuntu/aios-core/.aios/workers/qa/outbox"
     permission_mode: "bypassPermissions"
     system_prompt_append: |
       You are @qa (Quinn). You are READ-ONLY.
       You CANNOT modify files. Only analyze and report.
+      You do NOT have Bash access. Use Grep/Glob for searching.
 
   architect:
     model: "claude-opus-4-6"
@@ -378,13 +400,19 @@ profiles:
       - WebSearch
       - WebFetch
     denied_tools: []
+    bash_mode: "denylist"
     denied_bash_patterns:
-      - "git push"
-      - "gh pr"
-      - "npm publish"
+      - "git\\s+push"
+      - "gh\\s+pr"
+      - "npm\\s+publish"
+      - "eval\\s+.*git"
+      - "(bash|sh)\\s+-c\\s+.*git"
+    systemd_scope:
+      ReadWritePaths: "/home/ubuntu/aios-core/docs /home/ubuntu/aios-core/.aios"
+      ReadOnlyPaths: "/home/ubuntu/aios-core/packages /home/ubuntu/aios-core/bin"
     permission_mode: "bypassPermissions"
     system_prompt_append: |
-      You are @architect (Aria). Design only, no implementation.
+      You are @architect (Aria). Design and docs only, no implementation code.
 
   devops:
     model: "claude-sonnet-4-5-20250929"
@@ -398,12 +426,101 @@ profiles:
     denied_tools:
       - Write
       - Edit
+    bash_mode: "allowlist"  # V3.3 fix: ONLY these commands execute, everything else blocked
     allowed_bash_patterns:
-      - "git push"
-      - "gh pr"
+      - "git\\s+(push|pull|fetch|status|log|diff|branch|tag)"
+      - "gh\\s+pr\\s+(create|merge|view|list)"
+      - "gh\\s+release"
+      - "npm\\s+run\\s+(lint|test|typecheck|build)"
     permission_mode: "bypassPermissions"
     system_prompt_append: |
       You are @devops (Gage). EXCLUSIVE authority for git push and PR operations.
+
+  # --- Additional agent profiles (V3.5 fix) ---
+
+  pm:
+    model: "claude-haiku-4-5-20251001"
+    max_tokens_per_task: 300000
+    max_wall_time_ms: 1800000  # 30 min
+    allowed_tools: [Read, Write, Edit, Grep, Glob]
+    denied_tools: [Bash]
+    bash_mode: "none"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @pm (Morgan). Requirements, specs, epic orchestration.
+
+  po:
+    model: "claude-haiku-4-5-20251001"
+    max_tokens_per_task: 200000
+    max_wall_time_ms: 1200000  # 20 min
+    allowed_tools: [Read, Write, Edit, Grep, Glob]
+    denied_tools: [Bash]
+    bash_mode: "none"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @po (Pax). Story validation and backlog management.
+
+  sm:
+    model: "claude-haiku-4-5-20251001"
+    max_tokens_per_task: 200000
+    max_wall_time_ms: 1200000  # 20 min
+    allowed_tools: [Read, Write, Edit, Grep, Glob]
+    denied_tools: [Bash]
+    bash_mode: "none"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @sm (River). Story creation from epics/PRDs.
+
+  analyst:
+    model: "claude-opus-4-6"
+    max_tokens_per_task: 500000
+    max_wall_time_ms: 3600000  # 1 hour
+    allowed_tools: [Read, Bash, Grep, Glob, WebSearch, WebFetch]
+    denied_tools: [Write, Edit]
+    bash_mode: "denylist"
+    denied_bash_patterns:
+      - "git\\s+push"
+      - "rm\\s+-rf"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @analyst (Alex). Research and analysis only.
+
+  data-engineer:
+    model: "claude-sonnet-4-5-20250929"
+    max_tokens_per_task: 400000
+    max_wall_time_ms: 2400000  # 40 min
+    allowed_tools: [Read, Write, Edit, Bash, Grep, Glob]
+    denied_tools: []
+    bash_mode: "denylist"
+    denied_bash_patterns:
+      - "git\\s+push"
+      - "gh\\s+pr"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @data-engineer (Dara). Schema, queries, migrations.
+
+  ux-design-expert:
+    model: "claude-haiku-4-5-20251001"
+    max_tokens_per_task: 200000
+    max_wall_time_ms: 1200000  # 20 min
+    allowed_tools: [Read, Write, Edit, Grep, Glob]
+    denied_tools: [Bash]
+    bash_mode: "none"
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @ux-design-expert (Uma). UX/UI design specs.
+
+  aios-master:
+    model: "claude-opus-4-6"
+    max_tokens_per_task: 1000000
+    max_wall_time_ms: 7200000  # 2 hours
+    allowed_tools: [Read, Write, Edit, Bash, Grep, Glob, Task, WebSearch, WebFetch]
+    denied_tools: []           # No restrictions — framework governance authority
+    bash_mode: "denylist"
+    denied_bash_patterns: []   # No restrictions
+    permission_mode: "bypassPermissions"
+    system_prompt_append: |
+      You are @aios-master. Full authority. Constitutional enforcement.
 ```
 
 ### 5.5 Concurrency Control
@@ -449,6 +566,8 @@ Orchestrator limits:
 ### 6.1 Event Bus Architecture
 
 Communication between agents uses a **filesystem-based event bus**. This extends the existing inbox/outbox pattern into a general-purpose pub/sub system.
+
+**Atomic Write Protocol (V9.3 fix):** All writes to the event bus use write-then-rename to guarantee atomicity. Writers create a temp file (`.tmp-{id}.json`), write content, then `fs.renameSync()` to the final path. Watchers ignore files starting with `.tmp-`. `rename()` is atomic on Linux within the same filesystem. This prevents readers from seeing half-written files.
 
 ```
 .aios/
@@ -763,8 +882,8 @@ Layer 1: PRE-FLIGHT (before task starts)
 Layer 2: STRUCTURAL (process-level enforcement)
   |
   |  Worker's allowed_tools whitelist (SDK config)
-  |  Worker's denied_bash_patterns (runtime intercept)
-  |  Worker's file write restrictions (systemd ReadWritePaths)
+  |  Worker's bash_mode + patterns (regex, case-insensitive — V5.2 fix)
+  |  Worker's systemd ReadOnlyPaths/ReadWritePaths (OS-level — V3.2 fix)
   |  Worker's cgroup resource limits (MemoryMax, CPUQuota)
   |
   v
@@ -1100,6 +1219,46 @@ Escalation Matrix:
       Reason: {reason}. All workers killed. Manual intervention required."
 ```
 
+### 9.5 Orchestrator Watchdog (V11.3 fix)
+
+The Orchestrator itself must be monitored. If it hangs or crash-loops, workers' results are never collected, workflows stall, and overnight execution halts silently.
+
+**Solution:** systemd `WatchdogSec` with `sd_notify`:
+
+```ini
+# aios-session-daemon.service (updated)
+[Service]
+Type=notify
+WatchdogSec=60
+Restart=on-failure
+RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=300
+```
+
+The Orchestrator pings systemd every 30 seconds:
+
+```javascript
+import { notify } from 'sd-notify';
+
+// In Orchestrator main loop
+setInterval(() => {
+  notify.watchdog();  // Tell systemd we're alive
+}, 30000);
+
+// On startup
+notify.ready();  // Tell systemd we're initialized
+```
+
+If the Orchestrator fails to ping for 60 seconds, systemd kills and restarts it. After 5 rapid failures within 5 minutes, systemd stops restarting and sends a Telegram emergency notification (via a separate one-shot service triggered by `OnFailure=`).
+
+```ini
+[Unit]
+OnFailure=aios-orchestrator-failure-notify.service
+```
+
+**Recovery on restart:** The Orchestrator reads state from SQLite (`state.db`), finds in-progress tasks and active workers, and resumes monitoring. Workers that finished while the Orchestrator was down have their results sitting in `outbox/` directories, ready to be collected.
+
 ---
 
 ## 10. Memory and State
@@ -1241,11 +1400,15 @@ CREATE TABLE workflows (
   story_id TEXT,
   current_phase TEXT,
   current_step INTEGER,
+  iteration_count INTEGER DEFAULT 0,  -- V4.2 fix: QA Loop bounded iteration counter
+  max_iterations INTEGER DEFAULT 5,   -- From workflow-execution.md QA Loop config
   status TEXT DEFAULT 'active',
   created_at TEXT NOT NULL,
   updated_at TEXT,
   context TEXT  -- JSON blob
 );
+-- V4.2 fix: Workflow Engine increments iteration_count on each REJECT->fix->re-review cycle.
+-- When iteration_count >= max_iterations, emits 'escalation' event instead of creating new fix task.
 
 CREATE TABLE events (
   id TEXT PRIMARY KEY,
@@ -1370,6 +1533,19 @@ The existing inbox/outbox paths continue working. The Orchestrator reads from `.
 
 ### Phase 0: Foundation (1-2 weeks)
 
+**BLOCKING PRE-REQUISITE (V1.1 fix):** Before starting Phase 0, execute the R0 verification script to confirm the Session Daemon foundation is solid:
+
+```bash
+node scripts/r0-verification.mjs
+```
+
+This script must confirm:
+1. `settingSources` correctly loads CLAUDE.md into agent sessions
+2. `resumeSession()` is reliable or not needed (fresh sessions per worker)
+3. Filesystem atomicity for inbox pickup works correctly
+
+**If R0 fails, fix the failures before proceeding.** All 5 phases are built on this foundation.
+
 **Goal:** Worker process isolation without changing the Orchestrator yet.
 
 **Scope:**
@@ -1379,6 +1555,8 @@ The existing inbox/outbox paths continue working. The Orchestrator reads from `.
 - Worker writes results to its own outbox
 - Single worker at a time (no parallelism yet)
 - Orchestrator is just a thin wrapper that spawns workers sequentially
+- Implement write-then-rename atomic writes for all event bus operations (V9.3 fix)
+- Configure systemd WatchdogSec=60 for Orchestrator (V11.3 fix)
 
 **What changes:**
 - NEW: `packages/session-daemon/src/worker.js`
@@ -1714,27 +1892,25 @@ session:
     preset: "claude_code"
 
 worker_profiles:
+  # See Section 5.4 for full profiles with bash_mode, systemd_scope, and all 11 agents.
+  # This is a summary of the 4 primary agents:
   dev:
     model: "claude-sonnet-4-5-20250929"
-    max_tokens_per_task: 500000
-    max_wall_time_ms: 3600000
-    denied_bash_patterns: ["git push", "gh pr create", "gh pr merge"]
+    bash_mode: "denylist"
+    denied_bash_patterns: ["git\\s+push", "gh\\s+pr\\s+(create|merge)"]
   qa:
     model: "claude-sonnet-4-5-20250929"
-    max_tokens_per_task: 300000
-    max_wall_time_ms: 1800000
-    denied_tools: ["Write", "Edit"]
-    denied_bash_patterns: ["git push", "rm -rf"]
+    bash_mode: "none"  # No Bash access (V3.2 fix)
+    denied_tools: ["Write", "Edit", "Bash"]
+    systemd_scope: { ReadOnlyPaths: "/home/ubuntu/aios-core" }
   architect:
     model: "claude-opus-4-6"
-    max_tokens_per_task: 800000
-    max_wall_time_ms: 7200000
-    denied_bash_patterns: ["git push", "gh pr", "npm publish"]
+    bash_mode: "denylist"
+    denied_bash_patterns: ["git\\s+push", "gh\\s+pr", "npm\\s+publish"]
   devops:
     model: "claude-sonnet-4-5-20250929"
-    max_tokens_per_task: 200000
-    max_wall_time_ms: 900000
-    allowed_bash_patterns: ["git push", "gh pr"]
+    bash_mode: "allowlist"  # ONLY these commands (V3.3 fix)
+    allowed_bash_patterns: ["git\\s+(push|pull|fetch|status)", "gh\\s+pr"]
 
 governance:
   constitution_enforcement: true
@@ -1833,4 +2009,26 @@ The implementation is incremental across 5 phases, each independently deployable
 ---
 
 *Document generated by Aria (Architect Agent) on 2026-03-01.*
+*Validated by @pedro-valerio on 2026-03-01 (42 checkpoints, 7 FAILs addressed).*
 *Constitution compliance: Art. I (CLI First), Art. II (Agent Authority -- structural enforcement), Art. III (Story-Driven), Art. IV (No Invention -- all decisions traced to requirements), Art. V (Quality First).*
+
+---
+
+## Appendix B: Validation Fixes Applied
+
+Summary of fixes applied to address the 7 FAILs from @pedro-valerio's audit (`autonomous-agents-validation.md`).
+
+| FAIL ID | Problem | Fix Applied | Section Modified |
+|---------|---------|-------------|------------------|
+| **V1.1** | Phase 0 foundation not verified | Added R0 verification as blocking pre-requisite | 12 (Phase 0 roadmap) |
+| **V3.2** | @qa has Bash = can write files | Removed Bash from @qa allowed_tools + added systemd ReadOnlyPaths | 5.4 (Worker Profiles) |
+| **V3.3** | allowlist vs denylist ambiguous | Added explicit `bash_mode` field: "allowlist", "denylist", or "none" | 5.4 (Worker Profiles) |
+| **V4.2** | QA Loop infinite loop possible | Added `iteration_count` + `max_iterations` columns to workflows table | 10.4 (SQLite Schema) |
+| **V5.2** | denied_bash_patterns is substring match | Changed to regex (case-insensitive) + evasion variant patterns | 5.4 (Worker Profiles), 8.1 (Governance Layers) |
+| **V9.3** | Event bus file atomicity gap | Specified write-then-rename protocol for all event bus writes | 6.1 (Event Bus Architecture) |
+| **V11.3** | No watchdog for Orchestrator | Added systemd WatchdogSec=60 + sd_notify + OnFailure notification | 9.5 (new section) |
+
+### Additional improvements from CONCERNS:
+- **V3.5:** Added worker profiles for all 11 agents (was only 4) — Section 5.4
+- **V3.4:** Added systemd ReadWritePaths for @architect (docs only) — Section 5.4
+- **V2.5:** Quality gates should be in task post_conditions (noted, deferred to Phase 3)
