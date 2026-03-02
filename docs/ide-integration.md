@@ -15,6 +15,17 @@ Guide for integrating AIOS with supported IDEs and AI development platforms.
 
 AIOS supports 9 AI-powered development platforms. Choose the one that best fits your workflow.
 
+### AIOS Compatibility Status
+
+| IDE | Status |
+|-----|--------|
+| Claude Code | Works |
+| Gemini CLI | Works |
+| Codex CLI | Limited |
+| Cursor | Limited |
+| GitHub Copilot | Limited |
+| AntiGravity | Limited |
+
 ### Quick Comparison Table
 
 | Feature              | Claude Code |  Cursor  | Windsurf |  Cline   | Copilot | AntiGravity | Roo Code | Gemini CLI |   Trae   |

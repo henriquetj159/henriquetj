@@ -36,6 +36,7 @@
     "validate:manifest": "node scripts/validate-manifest.js",
     "validate:structure": "node .aios-core/infrastructure/scripts/source-tree-guardian/index.js",
     "validate:agents": "node .aios-core/infrastructure/scripts/validate-agents.js",
+    "validate:parity": "node .aios-core/infrastructure/scripts/validate-parity.js",
     "sync:ide": "node .aios-core/infrastructure/scripts/ide-sync/index.js sync",
     "sync:ide:validate": "node .aios-core/infrastructure/scripts/ide-sync/index.js validate",
     "sync:ide:check": "node .aios-core/infrastructure/scripts/ide-sync/index.js validate --strict",
