@@ -1,5 +1,7 @@
 # Synkra AIOS: Framework Universal de Agentes IA 🚀
 
+> 🌍 [English](README.en.md) | **[Português](README.md)**
+
 [![Versão NPM](https://img.shields.io/npm/v/aios-core.svg)](https://www.npmjs.com/package/aios-core)
 [![Licença: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Versão Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
@@ -9,6 +11,8 @@
 [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-success.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant-blue.svg)](CODE_OF_CONDUCT.md)
+
+> 🌐 README por idioma: [EN](docs/README.md) | [PT](docs/pt/README.md) | [ES](docs/es/README.md) | [ZH](docs/zh/README.md)
 
 Framework de Desenvolvimento Auto-Modificável Alimentado por IA. Fundado em Desenvolvimento Ágil Dirigido por Agentes, oferecendo capacidades revolucionárias para desenvolvimento dirigido por IA e muito mais. Transforme qualquer domínio com expertise especializada de IA: desenvolvimento de software, entretenimento, escrita criativa, estratégia de negócios, bem-estar pessoal e muito mais.
 
@@ -110,7 +114,7 @@ Esta abordagem de duas fases elimina tanto a **inconsistência de planejamento**
 - 📖 [Guia de Instalação para Windows](docs/installation/windows.md)
 - 📖 [Guia de Instalação para Linux](docs/installation/linux.md)
 
-**Documentação multilíngue disponível:** [Português](docs/pt/installation/) | [Español](docs/es/installation/)
+**Documentação multilíngue disponível:** [English](docs/README.md) | [Português](docs/pt/README.md) | [Español](docs/es/README.md) | [中文](docs/zh/README.md)
 
 ## Navegação Rápida
 
@@ -479,7 +483,7 @@ O Synkra AIOS vem com 11 agentes especializados:
 ### Guias Essenciais
 
 - 📖 **[Guia do Usuário](docs/guides/user-guide.md)** - Passo a passo completo desde a concepção até a conclusão do projeto
-- 🏗️ **[Arquitetura Principal](docs/architecture/ARCHITECTURE-INDEX.md)** - Mergulho técnico profundo e design do sistema
+- 🏗️ **[Arquitetura Principal](docs/architecture/AIOS-VISUAL-OVERVIEW.md)** - Mergulho técnico profundo e design do sistema
 - 🚀 **[Guia de Squads](docs/guides/squads-guide.md)** - Estenda o AIOS para qualquer domínio além do desenvolvimento de software
 
 ### Documentação Adicional
@@ -488,7 +492,7 @@ O Synkra AIOS vem com 11 agentes especializados:
 - 📋 **[Primeiros Passos](docs/getting-started.md)** - Tutorial passo a passo para iniciantes
 - 🔧 **[Solução de Problemas](docs/troubleshooting.md)** - Soluções para problemas comuns
 - 🎯 **[Princípios Orientadores](docs/GUIDING-PRINCIPLES.md)** - Filosofia e melhores práticas do AIOS
-- 🏛️ **[Visão Geral da Arquitetura](docs/architecture/ARCHITECTURE-INDEX.md)** - Visão detalhada da arquitetura do sistema
+- 🏛️ **[Visão Geral da Arquitetura](docs/architecture/AIOS-VISUAL-OVERVIEW.md)** - Visão detalhada da arquitetura do sistema
 - ⚙️ **[Guia de Ajuste de Performance](docs/performance-tuning-guide.md)** - Otimize seu fluxo de trabalho AIOS
 - 🔒 **[Melhores Práticas de Segurança](docs/security-best-practices.md)** - Segurança e proteção de dados
 - 🔄 **[Guia de Migração](docs/migration-guide.md)** - Migração de versões anteriores

@@ -165,7 +165,7 @@ class AIOSUpdater {
     }
 
     // Fallback to package.json
-    const packageJsonPath = path.join(this.projectRoot, 'node_modules', '@synkra', 'aios-core', 'package.json');
+    const packageJsonPath = path.join(this.projectRoot, 'node_modules', 'aios-core', 'package.json');
     if (fs.existsSync(packageJsonPath)) {
       try {
         const pkg = await fs.readJson(packageJsonPath);

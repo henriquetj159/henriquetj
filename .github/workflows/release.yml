@@ -130,6 +130,8 @@ jobs:
         run: |
           VERSION="${{ needs.create-release.outputs.version }}"
 
+          # Create output directory
+          mkdir -p dist
 
           # Use tar with || true to ignore "file changed" warnings
           tar -czf aios-core-${VERSION}.tar.gz \
