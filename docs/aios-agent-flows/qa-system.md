@@ -76,7 +76,7 @@ O agente **@qa (Quinn)** e o Test Architect & Quality Advisor do AIOS. Seu papel
 
 | Arquivo | Propósito |
 |---------|-----------|
-| `.aios-core/development/agent-teams/team-qa-focused.yaml` | Configuracao do time focado em QA (@dev, @qa, @github-devops) |
+| `.aios-core/development/agent-teams/team-qa-focused.yaml` | Configuracao do time focado em QA (@dev, @qa, @devops) |
 
 ### Arquivos de Dados (Outputs)
 
@@ -449,7 +449,7 @@ flowchart TB
             SM_CMDS["Colabora em: Sprint planning"]
         end
 
-        subgraph DEVOPS_BOX["@github-devops - DevOps"]
+        subgraph DEVOPS_BOX["@devops - DevOps"]
             DEVOPS_DESC["Quality gates para PRs<br/>e deployments"]
             DEVOPS_CMDS["Usa: CodeRabbit integration"]
         end
@@ -525,9 +525,9 @@ git_restrictions:
     - git branch -a   # Listar branches
 
   blocked_operations:
-    - git push        # APENAS @github-devops pode push
+    - git push        # APENAS @devops pode push
     - git commit      # QA revisa, não commita
-    - gh pr create    # APENAS @github-devops cria PRs
+    - gh pr create    # APENAS @devops cria PRs
 ```
 
 ---

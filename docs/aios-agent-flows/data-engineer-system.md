@@ -503,7 +503,7 @@ O @architect delega para @data-engineer:
 | System architecture | @architect | Padroes de app-level, design de API |
 | Application code | @dev | Implementacao de repository pattern, DAL |
 | Frontend design | @ux-design-expert | Design de UI/UX |
-| Git operations | @github-devops | Push, PR, deploy |
+| Git operations | @devops | Push, PR, deploy |
 
 ---
 
@@ -639,7 +639,7 @@ coderabbit_integration:
 **NAO USE @data-engineer para:**
 - System architecture (use @architect)
 - Codigo de aplicacao (use @dev)
-- Git operations (use @github-devops)
+- Git operations (use @devops)
 - Frontend/UI (use @ux-design-expert)
 
 ### Workflow de Migracao Segura

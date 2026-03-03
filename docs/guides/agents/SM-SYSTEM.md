@@ -63,7 +63,7 @@ O agente **@sm (River)** e o Scrum Master tecnico do AIOS, especializado em prep
 | `.aios-core/development/agents/po.md` | @po | Coordena com @sm em backlog e sprint planning |
 | `.aios-core/development/agents/dev.md` | @dev | Recebe stories do @sm para implementacao |
 | `.aios-core/development/agents/pm.md` | @pm | Cria epics que @sm quebra em stories |
-| `.aios-core/development/agents/devops.md` | @github-devops | Recebe stories completas para push/PR |
+| `.aios-core/development/agents/devops.md` | @devops | Recebe stories completas para push/PR |
 | `.aios-core/development/agents/qa.md` | @qa | Coordena em risk profiling |
 
 ### Arquivos de Workflows que Utilizam @sm
@@ -147,7 +147,7 @@ flowchart TB
     subgraph COLLABORATION["👥 COLABORACAO"]
         DEV_AGENT["@dev (Dex)<br/>Recebe stories"]
         PO_AGENT["@po (Pax)<br/>Valida stories"]
-        DEVOPS_AGENT["@github-devops (Gage)<br/>Push/PR apos conclusao"]
+        DEVOPS_AGENT["@devops (Gage)<br/>Push/PR apos conclusao"]
     end
 
     HANDOFF --> DEV_AGENT
@@ -207,7 +207,7 @@ flowchart LR
         MERGE_LOCAL["git merge<br/>Merge local"]
     end
 
-    subgraph DEVOPS_SCOPE["⚙️ @github-devops - Escopo Remoto"]
+    subgraph DEVOPS_SCOPE["⚙️ @devops - Escopo Remoto"]
         PUSH["git push<br/>Enviar para origin"]
         CREATE_PR["gh pr create<br/>Criar Pull Request"]
         DELETE_REMOTE["git push origin --delete<br/>Deletar branch remoto"]
@@ -256,7 +256,7 @@ flowchart TB
     end
 
     subgraph LATERAL["↔️ LATERAL - Coordena com @sm"]
-        DEVOPS_LAT["@github-devops (Gage)<br/>Push/PR workflow"]
+        DEVOPS_LAT["@devops (Gage)<br/>Push/PR workflow"]
     end
 
     PM_UP -->|"Epic structure"| SM_CENTRAL
@@ -283,12 +283,12 @@ flowchart TB
 | **@po (Pax)** | Coordena com | Backlog prioritization, sprint planning |
 | **@dev (Dex)** | Entrega para | Stories prontas para implementacao |
 | **@qa (Quinn)** | Solicita | Risk profiling para stories |
-| **@github-devops (Gage)** | Delega para | Push branches, criar PRs |
+| **@devops (Gage)** | Delega para | Push branches, criar PRs |
 | **@analyst (Sage)** | Consulta | Pesquisa e insights tecnicos |
 
-### Delegacao para @github-devops
+### Delegacao para @devops
 
-O @sm gerencia APENAS operacoes locais de Git. Para operacoes remotas, **sempre** delegar para @github-devops:
+O @sm gerencia APENAS operacoes locais de Git. Para operacoes remotas, **sempre** delegar para @devops:
 
 **Operacoes Permitidas para @sm:**
 - `git checkout -b feature/X.Y-story-name` - Criar branch local
@@ -297,7 +297,7 @@ O @sm gerencia APENAS operacoes locais de Git. Para operacoes remotas, **sempre*
 - `git checkout branch-name` - Trocar de branch
 - `git merge branch-name` - Merge local
 
-**Operacoes Bloqueadas (usar @github-devops):**
+**Operacoes Bloqueadas (usar @devops):**
 - `git push` - Enviar para remoto
 - `git push origin --delete` - Deletar branch remoto
 - `gh pr create` - Criar Pull Request
@@ -363,7 +363,7 @@ dependencies:
 
 1. **Use naming convention** - `feature/X.Y-story-name` (X.Y = epic.story)
 2. **Crie branch ao iniciar story** - Isola desenvolvimento
-3. **Nao tente push** - Sempre delegar para @github-devops
+3. **Nao tente push** - Sempre delegar para @devops
 4. **Resolva conflitos localmente** - Antes de pedir push
 
 ### Colaboracao com Outros Agentes
@@ -371,7 +371,7 @@ dependencies:
 1. **Respeite limites** - Nao implemente codigo, nao crie PRs
 2. **Documente handoffs** - Deixe claro o que @dev precisa fazer
 3. **Coordene com @po** - Backlog prioritization antes de criar stories
-4. **Notifique @github-devops** - Quando story estiver pronta para push
+4. **Notifique @devops** - Quando story estiver pronta para push
 
 ### Validacao de Stories
 
@@ -426,7 +426,7 @@ dependencies:
 **Solucao:**
 1. Fazer `git fetch origin` para atualizar referencias
 2. Merge branch base localmente: `git merge main`
-3. Resolver conflitos antes de pedir push para @github-devops
+3. Resolver conflitos antes de pedir push para @devops
 
 ### CodeRabbit section nao aparece na story
 
@@ -478,8 +478,8 @@ dependencies:
 | **Checklists Utilizados** | 4 checklists |
 | **Workflows que Usam @sm** | 7 workflows |
 | **Ferramentas** | git (local), clickup, context7 |
-| **Colabora com** | @pm, @po, @dev, @qa, @github-devops, @analyst |
-| **Delega para** | @github-devops (operacoes remotas) |
+| **Colabora com** | @pm, @po, @dev, @qa, @devops, @analyst |
+| **Delega para** | @devops (operacoes remotas) |
 | **Responsabilidade Principal** | Criacao de stories detalhadas e acionaveis |
 
 ---

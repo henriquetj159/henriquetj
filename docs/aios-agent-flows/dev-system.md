@@ -71,7 +71,7 @@ O agente **@dev (Dex)** e o Full Stack Developer do AIOS, responsavel pela imple
 |---------|--------|-----------|
 | `.aios-core/development/tasks/qa-backlog-add-followup.md` | @qa | QA adiciona follow-ups ao backlog |
 | `.aios-core/development/tasks/qa-review-story.md` | @qa | QA revisa implementacao do @dev |
-| `.aios-core/development/tasks/github-devops-pre-push-quality-gate.md` | @github-devops | Quality gate antes de push |
+| `.aios-core/development/tasks/github-devops-pre-push-quality-gate.md` | @devops | Quality gate antes de push |
 | `.aios-core/development/tasks/sm-create-next-story.md` | @sm | Scrum Master cria stories para @dev |
 
 ### Arquivos de Workflows que Usam @dev
@@ -146,7 +146,7 @@ flowchart TB
     end
 
     subgraph COLLABORATION["COLABORACAO"]
-        AE --> AF["@github-devops<br/>(git push, PR)"]
+        AE --> AF["@devops<br/>(git push, PR)"]
         AE --> AG["@qa<br/>(Review)"]
         AG -->|"Issues"| I
     end
@@ -317,7 +317,7 @@ flowchart TB
     end
 
     subgraph DOWNSTREAM["DOWNSTREAM - Recebe Output"]
-        GHDEVOPS["@github-devops (Gage)<br/>Git Operations"]
+        GHDEVOPS["@devops (Gage)<br/>Git Operations"]
     end
 
     SM -->|"Cria story<br/>*create-next-story"| DEV
@@ -344,7 +344,7 @@ flowchart TB
 | @po | @dev | Story validada | @dev pode comecar implementacao |
 | @dev | @qa | Story "Ready for Review" | @qa revisa implementacao |
 | @qa | @dev | Feedback com issues | @dev aplica correcoes (*apply-qa-fixes) |
-| @dev | @github-devops | Codigo completo | @github-devops faz push/PR |
+| @dev | @devops | Codigo completo | @devops faz push/PR |
 
 ### Restricoes de Git
 
@@ -360,7 +360,7 @@ O @dev tem operacoes Git limitadas:
 - `git checkout` - Switch branches
 - `git merge` - Merge local
 
-**Operacoes BLOQUEADAS (somente @github-devops):**
+**Operacoes BLOQUEADAS (somente @devops):**
 - `git push`
 - `git push --force`
 - `gh pr create`
@@ -436,7 +436,7 @@ decision_logging:
 
 **NAO USE @dev para:**
 - Criar stories (use @sm)
-- Push para remote (use @github-devops)
+- Push para remote (use @devops)
 - Validar arquitetura (use @architect)
 - Gerenciar backlog (use @po)
 
@@ -561,7 +561,7 @@ O @dev deve **HALT** e perguntar ao usuario quando:
 | **Modos de Execucao** | 3 (YOLO, Interactive, Pre-flight) |
 | **Checklists Usados** | 3 (story-dod, pre-push, change) |
 | **Workflows Integrados** | 6 (brownfield + greenfield variants) |
-| **Agentes Colaboradores** | 4 (@sm, @po, @qa, @github-devops) |
+| **Agentes Colaboradores** | 4 (@sm, @po, @qa, @devops) |
 | **Operacoes Git Permitidas** | 8 (add, commit, status, diff, log, branch, checkout, merge) |
 | **Operacoes Git Bloqueadas** | 4 (push, push --force, gh pr create, gh pr merge) |
 | **CodeRabbit Self-Healing** | Light mode (max 2 iteracoes, CRITICAL only) |

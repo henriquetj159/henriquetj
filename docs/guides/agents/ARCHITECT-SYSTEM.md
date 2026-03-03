@@ -553,11 +553,11 @@ git_restrictions:
     - git branch -a
 
   blocked_operations:
-    - git push        # ONLY @github-devops
+    - git push        # ONLY @devops
     - git push --force
     - gh pr create
 
-  redirect_message: "Para operacoes git push, ative @github-devops"
+  redirect_message: "Para operacoes git push, ative @devops"
 ```
 
 ---
@@ -666,9 +666,9 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 
 **Solucao:**
 ```
-Ative @github-devops para operacoes de push:
+Ative @devops para operacoes de push:
 1. *exit (sair do @architect)
-2. @github-devops
+2. @devops
 3. Fazer push/PR
 ```
 

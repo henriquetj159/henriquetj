@@ -745,11 +745,11 @@ Quando todas as stories estão completas:
 
 ## Repository Integrity e GitHub DevOps Agent
 
-### O Agente @github-devops
+### O Agente @devops
 
 O AIOS-FullStack impõe integridade de repositório através de um agente centralizado de DevOps.
 
-**Regra Crítica**: APENAS @github-devops pode fazer push para repositórios GitHub.
+**Regra Crítica**: APENAS @devops pode fazer push para repositórios GitHub.
 
 #### Por Que Isso Importa
 
@@ -759,17 +759,17 @@ Sem controle centralizado:
 - ❌ Conflitos de versão
 - ❌ Gerenciamento de release inconsistente
 
-Com @github-devops:
+Com @devops:
 - ✅ Quality gates automatizados antes do push
 - ✅ Gerenciamento de versão sistemático
 - ✅ Criação de PR automatizada
 - ✅ Orquestração de CI/CD
 
-#### Usando @github-devops
+#### Usando @devops
 
 **Ativar o agente**:
 ```
-@github-devops
+@devops
 *help
 ```
 
@@ -785,10 +785,10 @@ Com @github-devops:
 
 1. **Faça mudanças** no seu codebase
 2. **Commit localmente** (git commit)
-3. **Ative @github-devops**
+3. **Ative @devops**
 4. **Execute pre-push quality gate**:
    ```
-   @github-devops
+   @devops
    *pre-push
    ```
 
@@ -805,7 +805,7 @@ Com @github-devops:
 
 #### Design Repository-Agnostic
 
-O agente @github-devops funciona com QUALQUER repositório git:
+O agente @devops funciona com QUALQUER repositório git:
 - Detecta seu repositório automaticamente
 - Adapta quality gates aos seus npm scripts
 - Funciona em framework-dev E project-dev modes (quando disponível)
@@ -814,7 +814,7 @@ O agente @github-devops funciona com QUALQUER repositório git:
 **Modo Framework Development** (futuro):
 ```bash
 # No repositório aios-core
-@github-devops
+@devops
 *detect-repo
 # Output:
 # Repository: github.com/SynkraAI/aios-core
@@ -825,7 +825,7 @@ O agente @github-devops funciona com QUALQUER repositório git:
 **Modo Project Development** (futuro):
 ```bash
 # No seu projeto
-@github-devops
+@devops
 *detect-repo
 # Output:
 # Repository: github.com/seuusuario/seu-projeto
@@ -842,18 +842,18 @@ Um git hook pre-push previne pushes diretos acidentais:
 git push origin main
 
 # Erro: Git push bloqueado!
-# Apenas o agente @github-devops pode fazer push ao repositório remoto.
+# Apenas o agente @devops pode fazer push ao repositório remoto.
 ```
 
 **Para fazer push de mudanças**:
-1. Ative @github-devops
+1. Ative @devops
 2. Execute `*pre-push`
 3. Siga o workflow do quality gate
 
 #### Criando Pull Requests
 
 ```
-@github-devops
+@devops
 *create-pr
 ```
 
@@ -867,7 +867,7 @@ O agente irá:
 #### Configuração do GitHub Actions
 
 ```
-@github-devops
+@devops
 *configure-ci
 ```
 

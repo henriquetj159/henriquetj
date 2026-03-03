@@ -344,21 +344,21 @@ To comprehensively validate a story draft before implementation begins, ensuring
 - Are type-specific agents assigned appropriately?
   - Database stories → @db-sage
   - Frontend stories → @ux-expert
-  - Deployment stories → @github-devops
+  - Deployment stories → @devops
   - Security stories → @architect
 
 **Quality Gate Tasks:**
 - Are all applicable quality gates defined as checkboxes?
 - Pre-Commit (@dev) - REQUIRED for all stories
-- Pre-PR (@github-devops) - Required if PR will be created
-- Pre-Deployment (@github-devops) - Required for production stories
+- Pre-PR (@devops) - Required if PR will be created
+- Pre-Deployment (@devops) - Required for production stories
 
 **Self-Healing Configuration (Story 6.3.3):**
 - Is the self-healing configuration present?
 - Does the mode match the primary agent?
   - @dev: light mode (2 iterations, 15 min, CRITICAL only)
   - @qa: full mode (3 iterations, 30 min, CRITICAL+HIGH)
-  - @github-devops: check mode (report only)
+  - @devops: check mode (report only)
 - Is the severity behavior documented?
 
 **Focus Areas:**

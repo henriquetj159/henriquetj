@@ -160,11 +160,11 @@ git_restrictions:
     - git branch -a
 
   blocked_operations:
-    - git push        # 仅 @github-devops
+    - git push        # 仅 @devops
     - git push --force
     - gh pr create
 
-  redirect_message: "要进行 git push 操作，请激活 @github-devops"
+  redirect_message: "要进行 git push 操作，请激活 @devops"
 ```
 
 ---

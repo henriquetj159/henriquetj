@@ -378,7 +378,7 @@ flowchart LR
 | Decisoes de arquitetura | @architect | Expertise tecnica |
 | Operacoes de database | @data-engineer | Expertise em dados |
 | Design de UX/UI | @ux-design-expert | Expertise em design |
-| Operacoes Git | @github-devops | Expertise em DevOps |
+| Operacoes Git | @devops | Expertise em DevOps |
 | Pesquisa e analise | @analyst | Expertise analitica |
 
 ---

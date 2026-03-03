@@ -4,7 +4,7 @@
 
 **Purpose**: Automate PR creation from story context using GitHub CLI, works with ANY repository.
 
-**When to use**: After pushing feature branch, via `@github-devops *create-pr` command.
+**When to use**: After pushing feature branch, via `@devops *create-pr` command.
 
 ## Execution Modes
 
@@ -646,7 +646,7 @@ module.exports = { createPullRequest };
 
 ## Integration
 
-Called by `@github-devops` via `*create-pr` command.
+Called by `@devops` via `*create-pr` command.
 
 ## Validation
 

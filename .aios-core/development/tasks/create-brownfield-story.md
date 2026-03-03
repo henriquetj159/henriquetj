@@ -452,7 +452,7 @@ Analyze the story's integration risks based on:
 - **Quality Gates**: Pre-Commit (contract validation), Pre-PR (backward compat check)
 
 **If touching deployment/infrastructure:**
-- **Assign**: @github-devops, @dev
+- **Assign**: @devops, @dev
 - **Rationale**: Infrastructure changes need rollback safety:
   - Environment-specific configuration validation
   - Rollback procedure verification
@@ -529,8 +529,8 @@ Regardless of story type, ALL brownfield stories must include these focus areas:
 
   Quality Gate Tasks:
     - [ ] Pre-Commit (@dev): Run `coderabbit --prompt-only -t uncommitted` before story complete
-    - [ ] Pre-PR (@github-devops): Run `coderabbit --prompt-only --base main` before PR creation
-    - [ ] Pre-Deployment (@github-devops): Run `coderabbit --prompt-only -t committed --base HEAD~10` before production deploy (HIGH RISK stories only)
+    - [ ] Pre-PR (@devops): Run `coderabbit --prompt-only --base main` before PR creation
+    - [ ] Pre-Deployment (@devops): Run `coderabbit --prompt-only -t committed --base HEAD~10` before production deploy (HIGH RISK stories only)
 
   CodeRabbit Focus Areas:
     Primary Focus (Brownfield-Specific):
@@ -568,12 +568,12 @@ Regardless of story type, ALL brownfield stories must include these focus areas:
       - @architect (API contract changes, backward compatibility)
 
     Supporting Agents:
-      - @github-devops (phased rollout, rollback procedure)
+      - @devops (phased rollout, rollback procedure)
 
   Quality Gate Tasks:
     - [ ] Pre-Commit (@dev): Run before story complete
-    - [ ] Pre-PR (@github-devops): Run before PR creation
-    - [ ] Pre-Deployment (@github-devops): Run before production deploy with rollback plan validation
+    - [ ] Pre-PR (@devops): Run before PR creation
+    - [ ] Pre-Deployment (@devops): Run before production deploy with rollback plan validation
 
   CodeRabbit Focus Areas:
     Primary Focus (Brownfield-Specific):

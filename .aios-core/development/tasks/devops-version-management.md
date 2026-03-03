@@ -458,7 +458,7 @@ async function manageVersion() {
   console.log(`\nNext steps:`);
   console.log(`  - Review changes: git show v${newVersion}`);
   console.log(`  - Push tag: git push origin v${newVersion}`);
-  console.log(`  - Create release with @github-devops *release`);
+  console.log(`  - Create release with @devops *release`);
 }
 
 module.exports = { manageVersion };
@@ -466,7 +466,7 @@ module.exports = { manageVersion };
 
 ## Usage
 
-Called by `@github-devops` agent via `*version-check` command.
+Called by `@devops` agent via `*version-check` command.
 
 ## Validation
 

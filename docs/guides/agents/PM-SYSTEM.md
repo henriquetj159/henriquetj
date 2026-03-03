@@ -358,7 +358,7 @@ flowchart LR
 | Database Changes | @dev, @db-sage |
 | API/Backend Changes | @dev, @architect |
 | Frontend/UI Changes | @dev, @ux-expert |
-| Deployment/Infrastructure | @dev, @github-devops |
+| Deployment/Infrastructure | @dev, @devops |
 | Security Features | @dev (foco OWASP) |
 
 ---

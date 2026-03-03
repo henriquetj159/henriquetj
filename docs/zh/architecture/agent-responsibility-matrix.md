@@ -16,12 +16,12 @@
 ## 执行摘要
 
 本文档为所有 AIOS 代理定义了清晰的责任界限，特别关注:
-1. **GitHub DevOps 集中化** - 仅 @github-devops 可推送到远程存储库
+1. **GitHub DevOps 集中化** - 仅 @devops 可推送到远程存储库
 2. **数据架构专业化** - @data-architect 管理数据库/数据科学
-3. **分支管理划分** - @sm (本地) vs @github-devops (远程)
+3. **分支管理划分** - @sm (本地) vs @devops (远程)
 4. **Git 操作限制** - 哪些代理可以执行哪些 git/GitHub 操作
 
-**关键规则**: 仅 @github-devops 代理可执行 `git push` 到远程存储库。
+**关键规则**: 仅 @devops 代理可执行 `git push` 到远程存储库。
 
 ---
 
@@ -29,7 +29,7 @@
 
 ### 完全操作权限
 
-| 操作 | @github-devops | @dev | @sm | @qa | @architect | @po |
+| 操作 | @devops | @dev | @sm | @qa | @architect | @po |
 |-----|:--------------:|:----:|:---:|:---:|:----------:|:---:|
 | **git push** | ✅ 唯一 | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **git push --force** | ✅ 唯一 | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -62,7 +62,7 @@
 3. **代理定义** (文档 + 限制)
    - 所有代理都有 `git_restrictions` 部分
    - 清晰的 `allowed_operations` 和 `blocked_operations` 列表
-   - 重定向消息指向 @github-devops
+   - 重定向消息指向 @devops
 
 4. **IDE 配置** (UX 层)
    ```json
@@ -95,7 +95,7 @@
 
 **委托给**:
 - **@data-architect**: 数据库 schema 设计、查询优化、ETL 管道
-- **@github-devops**: Git 推送、创建 PR、CI/CD 配置
+- **@devops**: Git 推送、创建 PR、CI/CD 配置
 
 **保持**:
 - 系统角度的数据库技术选择
@@ -120,7 +120,7 @@
 
 **协作对象**:
 - **@architect**: 数据库技术选择、数据层集成
-- **@github-devops**: 提交后推送迁移文件
+- **@devops**: 提交后推送迁移文件
 
 **专门知识**: Supabase 专家 (行级安全、实时、边界函数、存储)
 
@@ -142,7 +142,7 @@
 
 **故事完成后的工作流**:
 1. 标记故事状态: "准备审查"
-2. 通知用户: "故事完成。激活 @github-devops 推送变更"
+2. 通知用户: "故事完成。激活 @devops 推送变更"
 3. 不尝试 git push
 
 ---
@@ -164,13 +164,13 @@
 **分支管理工作流**:
 1. 故事开始 → 创建本地功能分支: `git checkout -b feature/X.Y-story-name`
 2. 开发者本地提交
-3. 故事完成 → 通知 @github-devops 推送并创建 PR
+3. 故事完成 → 通知 @devops 推送并创建 PR
 
-**注意**: @sm 在开发期间管理本地分支，@github-devops 管理远程操作
+**注意**: @sm 在开发期间管理本地分支，@devops 管理远程操作
 
 ---
 
-### @github-devops (DevOps) 🚀
+### @devops (DevOps) 🚀
 **角色**: GitHub 仓库经理和 DevOps 专家
 
 **主要权限**: 唯一获授权推送到远程存储库的代理
@@ -219,7 +219,7 @@
 
 **Git 操作**: 仅读取 (status、log、diff 用于审查) - 无提交、无推送
 
-**注意**: QA 审查代码但不提交。@dev 提交，@github-devops 推送。
+**注意**: QA 审查代码但不提交。@dev 提交，@devops 推送。
 
 ---
 
@@ -254,9 +254,9 @@
    - 实现故事任务
    - 本地提交: `git add . && git commit -m "feat: implement pre-push quality gate"`
    - 标记故事: "准备审查"
-   - 通知用户: "故事完成。激活 @github-devops 推送变更"
+   - 通知用户: "故事完成。激活 @devops 推送变更"
 
-4. @github-devops 激活:
+4. @devops 激活:
    - 执行 *pre-push (质量门)
    - 全部通过 → 呈现摘要
    - 用户确认
@@ -281,9 +281,9 @@
    - 设计行级安全策略以确保安全
    - 生成迁移: `20251025_create_auth_schema.sql`
    - 本地提交: `git add migrations/ && git commit -m "feat: add auth schema"`
-   - 通知: "Schema 设计完成。激活 @github-devops 推送迁移"
+   - 通知: "Schema 设计完成。激活 @devops 推送迁移"
 
-4. @github-devops 激活:
+4. @devops 激活:
    - 执行 *pre-push (质量门)
    - 推送迁移到存储库
 ```
@@ -293,7 +293,7 @@
 ```
 1. 用户: "创建发布版本 v4.32.0"
 
-2. @github-devops 激活:
+2. @devops 激活:
    - 执行 *version-check
    - 分析自 v4.31.0 以来的提交
    - 推荐: "MINOR 版本碰撞 (新功能，向后兼容)"
@@ -355,7 +355,7 @@ git branch -d feature/old-branch
 git merge feature/branch-to-integrate
 ```
 
-### 远程分支 (@github-devops 用于存储库)
+### 远程分支 (@devops 用于存储库)
 
 **责任**:
 - 推送分支到远程
@@ -365,7 +365,7 @@ git merge feature/branch-to-integrate
 
 **命令**:
 ```bash
-# 仅 @github-devops 可执行:
+# 仅 @devops 可执行:
 git push -u origin feature/3.14-github-devops
 git push origin --delete feature/old-branch
 gh pr create
@@ -386,7 +386,7 @@ gh pr merge
   - [x] @dev - 移除 git push，添加工作流重定向
   - [x] @sm - 澄清仅本地分支管理
   - [x] @qa - 操作仅读取 git
-  - [x] @github-devops - 创建有独占推送权限
+  - [x] @devops - 创建有独占推送权限
   - [x] @data-architect - 创建有数据专业化
 
 - [ ] **更新代理激活脚本**
@@ -404,7 +404,7 @@ gh pr merge
 
 - [ ] **测试**
   - 测试 @dev 尝试 git push (应被阻止)
-  - 测试 @github-devops git push (应工作)
+  - 测试 @devops git push (应工作)
   - 测试推送前质量门
   - 测试 PR 创建工作流
 
@@ -428,9 +428,9 @@ gh pr merge
 ## 总结
 
 **关键点**:
-1. ✅ 仅 @github-devops 可推送到远程存储库 (通过 git 钩子应用)
+1. ✅ 仅 @devops 可推送到远程存储库 (通过 git 钩子应用)
 2. ✅ @architect 管理系统架构，@data-architect 管理数据层
-3. ✅ @sm 管理本地分支，@github-devops 管理远程操作
+3. ✅ @sm 管理本地分支，@devops 管理远程操作
 4. ✅ 质量门在任何推送前都是必需的
 5. ✅ 所有代理都有清晰且文件记录的界限
 

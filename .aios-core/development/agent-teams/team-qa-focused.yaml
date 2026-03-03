@@ -31,13 +31,13 @@ purpose: |
      - Validate story acceptance criteria
      - Block completion on CRITICAL issues
 
-  3. **PR Phase** (@github-devops):
+  3. **PR Phase** (@devops):
      - Pre-PR quality gate (0 CRITICAL issues required)
      - Automated PR validation workflow
      - Lint + Tests + CodeRabbit scan
      - Generate comprehensive PR validation report
 
-  4. **Deployment Phase** (@github-devops):
+  4. **Deployment Phase** (@devops):
      - Deep security scan with CodeRabbit
      - Risk analysis and blocking issue detection
      - Environment configuration validation
@@ -133,16 +133,16 @@ usage_example: |
   → Validates acceptance criteria
   → Reports any quality gate failures
 
-  ## 3. PR Creation (by @github-devops)
+  ## 3. PR Creation (by @devops)
   "Create PR for this feature"
-  → @github-devops runs pr-validation workflow
+  → @devops runs pr-validation workflow
   → Checks: sync, CodeRabbit, lint, tests, coverage
   → Generates validation report
   → Creates PR with report link
 
-  ## 4. Deployment (by @github-devops)
+  ## 4. Deployment (by @devops)
   "Run deployment safety check for production"
-  → @github-devops runs deployment-safety-check workflow
+  → @devops runs deployment-safety-check workflow
   → Deep scan, risk analysis, env check, migrations, tests
   → Generates safety report with GO/NO-GO decision
   → Blocks if critical issues found

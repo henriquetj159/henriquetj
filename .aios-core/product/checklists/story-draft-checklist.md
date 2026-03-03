@@ -148,20 +148,20 @@ CodeRabbit integration ensures automated code review and quality gates. Verify:
 - [ ] Type-specific agents assigned appropriately:
   - Database stories → @db-sage
   - Frontend stories → @ux-expert
-  - Deployment stories → @github-devops
+  - Deployment stories → @devops
   - Security stories → @architect
 
 **Quality Gate Tasks:**
 - [ ] Pre-Commit (@dev) defined - REQUIRED for all stories
-- [ ] Pre-PR (@github-devops) defined if PR will be created
-- [ ] Pre-Deployment (@github-devops) defined for production stories
+- [ ] Pre-PR (@devops) defined if PR will be created
+- [ ] Pre-Deployment (@devops) defined for production stories
 
 **Self-Healing Configuration (Story 6.3.3):**
 - [ ] Self-healing configuration section is present
 - [ ] Mode matches primary agent:
   - @dev: light mode (2 iterations, 15 min, CRITICAL only)
   - @qa: full mode (3 iterations, 30 min, CRITICAL+HIGH)
-  - @github-devops: check mode (report only)
+  - @devops: check mode (report only)
 - [ ] Severity behavior is documented
 
 **Focus Areas:**

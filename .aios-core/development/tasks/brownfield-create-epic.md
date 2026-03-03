@@ -217,7 +217,7 @@ quality_gate_tools: [schema_validation, migration_review, rls_test]
 
 3. **Story 3: {{Deployment Story}}**
    - Description: {{Deploy feature X to production with configuration}}
-   - **Predicted Agents**: @dev, @github-devops (deployment coordination)
+   - **Predicted Agents**: @dev, @devops (deployment coordination)
    - **Quality Gates**:
      - Pre-Commit: Configuration validation
      - Pre-PR: Environment consistency check
@@ -231,14 +231,14 @@ When breaking down epic into stories, predict agents based on:
 - **Database Changes** → Include @db-sage in story planning
 - **API/Backend Changes** → Include @architect for contract review
 - **Frontend/UI Changes** → Include @ux-expert for accessibility
-- **Deployment/Infrastructure** → Include @github-devops for coordination
+- **Deployment/Infrastructure** → Include @devops for coordination
 - **Security Features** → Ensure @dev focuses on OWASP validation
 
 **Quality Gate Prediction Guidance:**
 
 - **All Stories**: Must include Pre-Commit review (@dev)
-- **Stories Creating PRs**: Include Pre-PR validation (@github-devops)
-- **Production Deployments**: Include Pre-Deployment scan (@github-devops)
+- **Stories Creating PRs**: Include Pre-PR validation (@devops)
+- **Production Deployments**: Include Pre-Deployment scan (@devops)
 - **HIGH RISK Stories**: Consider feature flags and phased rollout
 
 This quality planning during epic creation ensures:
@@ -267,7 +267,7 @@ Proactive quality validation reduces risk to existing systems:
 - **CodeRabbit Validation**: All stories include pre-commit reviews
   - Database stories: @db-sage validates schema compliance, service filters, RLS policies
   - API stories: @architect validates contracts, backward compatibility
-  - Deployment stories: @github-devops validates configuration, rollback readiness
+  - Deployment stories: @devops validates configuration, rollback readiness
 
 - **Specialized Expertise**: Agent assignment ensures domain experts review relevant changes
   - Prevents architectural drift

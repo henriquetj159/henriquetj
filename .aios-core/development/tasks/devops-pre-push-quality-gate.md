@@ -4,7 +4,7 @@
 
 **Purpose**: Execute comprehensive quality checks before pushing code to remote repository, ensuring code quality, tests, and security standards are met.
 
-**When to use**: Before pushing code to GitHub, always via `@github-devops *pre-push` command.
+**When to use**: Before pushing code to GitHub, always via `@devops *pre-push` command.
 
 ## Execution Modes
 
@@ -834,9 +834,9 @@ async function requestPushApproval(gateStatus) {
 }
 ```
 
-## Integration with @github-devops Agent
+## Integration with @devops Agent
 
-Called via `@github-devops *pre-push` command.
+Called via `@devops *pre-push` command.
 
 ## Exit Codes
 

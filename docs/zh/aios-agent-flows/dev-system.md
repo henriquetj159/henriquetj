@@ -134,7 +134,7 @@
 - `git checkout` - 切换分支
 - `git merge` - 本地合并
 
-**被阻止的操作(仅 @github-devops):**
+**被阻止的操作(仅 @devops):**
 - `git push`
 - `git push --force`
 - `gh pr create`
@@ -156,7 +156,7 @@
 
 **不要使用 @dev 来:**
 - 创建故事(使用 @sm)
-- 推送到远程(使用 @github-devops)
+- 推送到远程(使用 @devops)
 - 验证架构(使用 @architect)
 - 管理待办事项(使用 @po)
 
@@ -191,7 +191,7 @@
 | **执行模式** | 3 种(YOLO、交互、预飞行) |
 | **使用的检查清单** | 3 个(故事 DoD、推送前、变更) |
 | **集成工作流** | 6 个(brownfield + greenfield 变体) |
-| **协作代理** | 4 个(@sm、@po、@qa、@github-devops) |
+| **协作代理** | 4 个(@sm、@po、@qa、@devops) |
 | **允许的 Git 操作** | 8 个(add、commit、status、diff、log、branch、checkout、merge) |
 | **被阻止的 Git 操作** | 4 个(push、push --force、gh pr create、gh pr merge) |
 | **CodeRabbit 自我修复** | 轻模式(最多 2 个迭代，仅 CRITICAL) |

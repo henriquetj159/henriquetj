@@ -69,7 +69,7 @@
 | `.aios-core/development/agents/po.md` | @po | 与 @sm 在待办和冲刺规划上协调 |
 | `.aios-core/development/agents/dev.md` | @dev | 从 @sm 接收故事进行实现 |
 | `.aios-core/development/agents/pm.md` | @pm | 创建 @sm 分解为故事的史诗 |
-| `.aios-core/development/agents/devops.md` | @github-devops | 接收已完成故事进行 push/PR |
+| `.aios-core/development/agents/devops.md` | @devops | 接收已完成故事进行 push/PR |
 | `.aios-core/development/agents/qa.md` | @qa | 在风险分析上协调 |
 
 ### 使用 @sm 的工作流文件
@@ -153,7 +153,7 @@ flowchart TB
     subgraph COLLABORATION["协作"]
         DEV_AGENT["@dev (Dex)<br/>接收故事"]
         PO_AGENT["@po (Pax)<br/>验证故事"]
-        DEVOPS_AGENT["@github-devops (Gage)<br/>完成后 Push/PR"]
+        DEVOPS_AGENT["@devops (Gage)<br/>完成后 Push/PR"]
     end
 
     HANDOFF --> DEV_AGENT
@@ -213,7 +213,7 @@ flowchart LR
         MERGE_LOCAL["git merge<br/>本地合并"]
     end
 
-    subgraph DEVOPS_SCOPE["@github-devops - 远程范围"]
+    subgraph DEVOPS_SCOPE["@devops - 远程范围"]
         PUSH["git push<br/>发送到 origin"]
         CREATE_PR["gh pr create<br/>创建 Pull Request"]
         DELETE_REMOTE["git push origin --delete<br/>删除远程分支"]
@@ -262,7 +262,7 @@ flowchart TB
     end
 
     subgraph LATERAL["横向 - 与 @sm 协调"]
-        DEVOPS_LAT["@github-devops (Gage)<br/>Push/PR 工作流"]
+        DEVOPS_LAT["@devops (Gage)<br/>Push/PR 工作流"]
     end
 
     PM_UP -->|"史诗结构"| SM_CENTRAL
@@ -289,12 +289,12 @@ flowchart TB
 | **@po (Pax)** | 协调 | 待办优先排序、冲刺规划 |
 | **@dev (Dex)** | 交付给 | 准备实现的故事 |
 | **@qa (Quinn)** | 请求 | 故事的风险分析 |
-| **@github-devops (Gage)** | 委派给 | 推送分支、创建 PR |
+| **@devops (Gage)** | 委派给 | 推送分支、创建 PR |
 | **@analyst (Sage)** | 咨询 | 研究和技术见解 |
 
-### 委派给 @github-devops
+### 委派给 @devops
 
-@sm 只管理本地 Git 操作。远程操作**始终**委派给 @github-devops：
+@sm 只管理本地 Git 操作。远程操作**始终**委派给 @devops：
 
 **@sm 允许的操作：**
 - `git checkout -b feature/X.Y-story-name` - 创建本地分支
@@ -303,7 +303,7 @@ flowchart TB
 - `git checkout branch-name` - 切换分支
 - `git merge branch-name` - 本地合并
 
-**禁止的操作（使用 @github-devops）：**
+**禁止的操作（使用 @devops）：**
 - `git push` - 发送到远程
 - `git push origin --delete` - 删除远程分支
 - `gh pr create` - 创建 Pull Request
@@ -369,7 +369,7 @@ dependencies:
 
 1. **使用命名约定** - `feature/X.Y-story-name`（X.Y = 史诗.故事）
 2. **开始故事时创建分支** - 隔离开发
-3. **不要尝试 push** - 始终委派给 @github-devops
+3. **不要尝试 push** - 始终委派给 @devops
 4. **本地解决冲突** - 在请求 push 之前
 
 ### 与其他代理的协作
@@ -377,7 +377,7 @@ dependencies:
 1. **尊重边界** - 不要实现代码，不要创建 PR
 2. **记录交接** - 清楚说明 @dev 需要做什么
 3. **与 @po 协调** - 创建故事前进行待办优先排序
-4. **通知 @github-devops** - 当故事准备好 push 时
+4. **通知 @devops** - 当故事准备好 push 时
 
 ### 故事验证
 
@@ -432,7 +432,7 @@ dependencies:
 **解决方案：**
 1. 执行 `git fetch origin` 更新引用
 2. 本地合并基础分支：`git merge main`
-3. 在请求 @github-devops push 之前解决冲突
+3. 在请求 @devops push 之前解决冲突
 
 ### CodeRabbit 部分未出现在故事中
 
@@ -484,8 +484,8 @@ dependencies:
 | **使用的检查清单** | 4 个检查清单 |
 | **使用 @sm 的工作流** | 7 个工作流 |
 | **工具** | git（本地）、clickup、context7 |
-| **协作** | @pm、@po、@dev、@qa、@github-devops、@analyst |
-| **委派给** | @github-devops（远程操作） |
+| **协作** | @pm、@po、@dev、@qa、@devops、@analyst |
+| **委派给** | @devops（远程操作） |
 | **主要职责** | 创建详细、可操作的故事 |
 
 ---

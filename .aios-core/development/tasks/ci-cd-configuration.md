@@ -701,7 +701,7 @@ token_usage: ~3,000-10,000 tokens
 ### Example 1: Node.js Project with CodeRabbit
 
 ```bash
-aios activate Otto  # github-devops agent
+aios activate Gage  # devops agent
 aios ci-cd setup \
   --repo="." \
   --provider="github-actions" \

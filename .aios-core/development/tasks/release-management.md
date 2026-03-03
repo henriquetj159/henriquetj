@@ -648,7 +648,7 @@ Release notes: {release_url}
 ### Example 1: Automatic Semantic Release
 
 ```bash
-aios activate Otto  # github-devops agent
+aios activate Gage  # devops agent
 aios release create --repo="." --type="auto"
 ````
 

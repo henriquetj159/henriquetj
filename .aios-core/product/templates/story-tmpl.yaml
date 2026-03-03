@@ -165,7 +165,7 @@ sections:
 
           **Conditional Assignment**:
           - @db-sage: Database/SQL changes, schema modifications, RLS policies
-          - @github-devops: PR creation, deployment, CI/CD configuration
+          - @devops: PR creation, deployment, CI/CD configuration
           - @architect: Architecture decisions, new patterns, scalability
           - @ux-expert: Frontend/UX work, accessibility (WCAG 2.1 AA)
           - @qa: Story validation, test coverage verification
@@ -190,17 +190,17 @@ sections:
           - Before marking story complete
           - Focus: Code quality, security basics, patterns
 
-          **Pre-PR** (@github-devops - when creating PR):
+          **Pre-PR** (@devops - when creating PR):
           - Before creating pull request
           - Focus: Integration safety, backward compatibility
 
-          **Pre-Deployment** (@github-devops - production stories only):
+          **Pre-Deployment** (@devops - production stories only):
           - Before deploying to production
           - Focus: Security scan, configuration validation, rollback readiness
         template: |
           - [ ] Pre-Commit (@dev): Run before marking story complete
-          - [ ] Pre-PR (@github-devops): Run before creating pull request
-          - [ ] Pre-Deployment (@github-devops): Run before production deploy (if applicable)
+          - [ ] Pre-PR (@devops): Run before creating pull request
+          - [ ] Pre-Deployment (@devops): Run before production deploy (if applicable)
         elicit: true
         owner: scrum-master
         editors: [scrum-master]
@@ -215,7 +215,7 @@ sections:
 
           **Severity Handling by Agent**:
 
-          | Severity | @dev (light) | @qa (full) | @github-devops (check) |
+          | Severity | @dev (light) | @qa (full) | @devops (check) |
           |----------|--------------|------------|------------------------|
           | CRITICAL | auto_fix (2 iter, 15min) | auto_fix (3 iter, 30min) | report_only |
           | HIGH     | document_only | auto_fix | report_only |
@@ -225,7 +225,7 @@ sections:
           **Workflow Triggers**:
           - @dev: story_completion (before marking "Ready for Review")
           - @qa: review_start (at beginning of QA review)
-          - @github-devops: pr_creation (before creating PR)
+          - @devops: pr_creation (before creating PR)
         template: |
           **Expected Self-Healing**:
           - Primary Agent: @{{primary_agent}} ({{self_healing_type}} mode)

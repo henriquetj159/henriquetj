@@ -775,7 +775,7 @@ graph TD
 | @dev -> @qa | Receives | Story marked "Ready for Review" triggers QA review |
 | @qa -> @dev | Handoff | `*create-fix-request` generates `QA_FIX_REQUEST.md` for @dev |
 | @coderabbit -> @qa | Receives | Automated code review findings consumed by QA analysis |
-| @qa -> @github-devops | Delegate | Git push operations, PR creation after QA approval |
+| @qa -> @devops | Delegate | Git push operations, PR creation after QA approval |
 | @sm -> @qa | Receives | Sprint risk profiling requests |
 | @po -> @qa | Receives | Spec critique requests via `*critique-spec` |
 
@@ -790,7 +790,7 @@ graph TD
 - QA findings require code fixes (`*create-fix-request`)
 - Self-healing loop identifies CRITICAL/HIGH issues needing fix
 
-**Delegates to @github-devops when:**
+**Delegates to @devops when:**
 - Git push operations to remote repository
 - Pull request creation and management
 
@@ -822,7 +822,7 @@ self_healing:
 **Git restrictions:**
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git commit`, `gh pr create`
-- Redirect: QA reviews, doesn't commit. Use @dev for commits, @github-devops for push.
+- Redirect: QA reviews, doesn't commit. Use @dev for commits, @devops for push.
 
 **Story file permissions:**
 - ONLY authorized to update "QA Results" section of story files

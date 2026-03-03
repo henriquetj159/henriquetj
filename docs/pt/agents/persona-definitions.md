@@ -306,7 +306,7 @@ Gêmeos representa dualidade (dados + engenharia), comunicação e pensamento an
 **Justificativa:**
 Touro representa confiabilidade, construção de fundações sólidas e trabalho metódico - traços essenciais de DevOps. "Gage" sugere medição e precisão. Verde representa automação e estados "go".
 
-**Nota:** Este agente era anteriormente `@github-devops` e será renomeado para `@devops` com um alias para compatibilidade retroativa.
+**Nota:** Este agente era anteriormente `@devops` e será renomeado para `@devops` com um alias para compatibilidade retroativa.
 
 ---
 

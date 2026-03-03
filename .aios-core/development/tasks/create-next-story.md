@@ -567,7 +567,7 @@ Analyze the story's technical characteristics based on:
 - File locations include `.github/workflows/`, `docker/`, or config files
 
 **Assignment:**
-- **Primary Agents**: @github-devops, @dev
+- **Primary Agents**: @devops, @dev
 - **Quality Gates**: Pre-Commit (config validation), Pre-Deployment (deep scan)
 - **Focus Areas**:
   - CI/CD: Pipeline configuration, test coverage enforcement
@@ -615,7 +615,7 @@ Analyze the story's technical characteristics based on:
 - Connects to external systems
 
 **Assignment:**
-- **Primary Agents**: @dev, @architect, @github-devops
+- **Primary Agents**: @dev, @architect, @devops
 - **Quality Gates**: Pre-Commit, Pre-PR (integration safety)
 - **Focus Areas**:
   - Backward compatibility: Existing integrations unaffected
@@ -646,8 +646,8 @@ Based on the detected story type(s), populate the template fields:
 
   Quality Gate Tasks:
     - [ ] Pre-Commit (@dev): Run `coderabbit --prompt-only -t uncommitted` before marking story complete
-    - [ ] Pre-PR (@github-devops): Run `coderabbit --prompt-only --base main` before creating pull request
-    - [ ] Pre-Deployment (@github-devops): Run `coderabbit --prompt-only -t committed --base HEAD~10` before production deploy (only for production/deployment stories)
+    - [ ] Pre-PR (@devops): Run `coderabbit --prompt-only --base main` before creating pull request
+    - [ ] Pre-Deployment (@devops): Run `coderabbit --prompt-only -t committed --base HEAD~10` before production deploy (only for production/deployment stories)
 
   CodeRabbit Focus Areas:
     Primary Focus:
@@ -691,12 +691,12 @@ If story spans multiple types (e.g., Database + API):
       - @architect (API contract changes)
 
     Supporting Agents:
-      - @github-devops (deployment coordination)
+      - @devops (deployment coordination)
 
   Quality Gate Tasks:
     - [ ] Pre-Commit (@dev): Run before story complete
-    - [ ] Pre-PR (@github-devops): Run before PR creation
-    - [ ] Pre-Deployment (@github-devops): Run before production deploy
+    - [ ] Pre-PR (@devops): Run before PR creation
+    - [ ] Pre-Deployment (@devops): Run before production deploy
 
   CodeRabbit Focus Areas:
     Primary Focus:
@@ -729,11 +729,11 @@ After populating the basic CodeRabbit sections, add the Self-Healing Configurati
 |---------------|------|----------------|---------|-----------------|
 | @dev | light | 2 | 15 min | CRITICAL |
 | @qa | full | 3 | 30 min | CRITICAL, HIGH |
-| @github-devops | check | 0 | N/A | report_only |
+| @devops | check | 0 | N/A | report_only |
 
 **Severity Behavior Matrix:**
 
-| Severity | @dev (light) | @qa (full) | @github-devops (check) |
+| Severity | @dev (light) | @qa (full) | @devops (check) |
 |----------|--------------|------------|------------------------|
 | CRITICAL | auto_fix | auto_fix | report_only |
 | HIGH | document_only | auto_fix | report_only |

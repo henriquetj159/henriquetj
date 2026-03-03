@@ -16,12 +16,12 @@
 ## Resumo Executivo
 
 Este documento define limites claros de responsabilidade para todos os agentes AIOS, com foco particular em:
-1. **Centralização do GitHub DevOps** - Apenas @github-devops pode fazer push para repositório remoto
+1. **Centralização do GitHub DevOps** - Apenas @devops pode fazer push para repositório remoto
 2. **Especialização em Arquitetura de Dados** - @data-architect gerencia banco de dados/ciência de dados
-3. **Divisão de Gerenciamento de Branches** - @sm (local) vs @github-devops (remoto)
+3. **Divisão de Gerenciamento de Branches** - @sm (local) vs @devops (remoto)
 4. **Restrições de Operações Git** - Quais agentes podem fazer o quê com git/GitHub
 
-**Regra Crítica**: SOMENTE o agente @github-devops pode executar `git push` para o repositório remoto.
+**Regra Crítica**: SOMENTE o agente @devops pode executar `git push` para o repositório remoto.
 
 ---
 
@@ -29,7 +29,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 ### Autoridade Total de Operações
 
-| Operação | @github-devops | @dev | @sm | @qa | @architect | @po |
+| Operação | @devops | @dev | @sm | @qa | @architect | @po |
 |----------|:--------------:|:----:|:---:|:---:|:----------:|:---:|
 | **git push** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **git push --force** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -62,7 +62,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 3. **Definições dos Agentes** (Documentação + Restrições)
    - Todos os agentes têm seção `git_restrictions`
    - Listas claras de `allowed_operations` e `blocked_operations`
-   - Mensagens de redirecionamento apontam para @github-devops
+   - Mensagens de redirecionamento apontam para @devops
 
 4. **Configuração da IDE** (Camada de UX)
    ```json
@@ -95,7 +95,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 **Delegar Para**:
 - **@data-architect**: Design de schema de banco de dados, otimização de queries, pipelines ETL
-- **@github-devops**: Git push, criação de PR, configuração de CI/CD
+- **@devops**: Git push, criação de PR, configuração de CI/CD
 
 **Manter**:
 - Seleção de tecnologia de banco de dados da perspectiva do sistema
@@ -120,7 +120,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 **Colaborar Com**:
 - **@architect**: Seleção de tecnologia de banco de dados, integração da camada de dados
-- **@github-devops**: Push de arquivos de migração após commit local
+- **@devops**: Push de arquivos de migração após commit local
 
 **Especialização**: Expert em Supabase (Row-Level Security, realtime, edge functions, storage)
 
@@ -142,7 +142,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 **Workflow Após Story Completa**:
 1. Marcar status da story: "Pronta para Revisão"
-2. Notificar usuário: "Story completa. Ative @github-devops para fazer push das mudanças"
+2. Notificar usuário: "Story completa. Ative @devops para fazer push das mudanças"
 3. NÃO tentar git push
 
 ---
@@ -164,13 +164,13 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 **Workflow de Gerenciamento de Branch**:
 1. Story inicia → Criar feature branch local: `git checkout -b feature/X.Y-story-name`
 2. Desenvolvedor faz commits localmente
-3. Story completa → Notificar @github-devops para fazer push e criar PR
+3. Story completa → Notificar @devops para fazer push e criar PR
 
-**Nota**: @sm gerencia branches LOCAIS durante desenvolvimento, @github-devops gerencia operações REMOTAS
+**Nota**: @sm gerencia branches LOCAIS durante desenvolvimento, @devops gerencia operações REMOTAS
 
 ---
 
-### @github-devops (DevOps) 🚀
+### @devops (DevOps) 🚀
 **Papel**: Gerente de Repositório GitHub e Especialista DevOps
 
 **AUTORIDADE PRINCIPAL**: ÚNICO agente autorizado a fazer push para repositório remoto
@@ -219,7 +219,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 **Operações Git**: Somente leitura (status, log, diff para revisão) - SEM COMMIT, SEM PUSH
 
-**Nota**: QA revisa código mas não commita. @dev commita, @github-devops faz push.
+**Nota**: QA revisa código mas não commita. @dev commita, @devops faz push.
 
 ---
 
@@ -254,9 +254,9 @@ Este documento define limites claros de responsabilidade para todos os agentes A
    - Implementa tarefas da story
    - Commita localmente: `git add . && git commit -m "feat: implement pre-push quality gate"`
    - Marca story: "Pronta para Revisão"
-   - Notifica usuário: "Story completa. Ative @github-devops para fazer push"
+   - Notifica usuário: "Story completa. Ative @devops para fazer push"
 
-4. @github-devops ativa:
+4. @devops ativa:
    - Executa *pre-push (quality gates)
    - TODOS PASSAM → Apresenta resumo
    - Usuário confirma
@@ -281,9 +281,9 @@ Este documento define limites claros de responsabilidade para todos os agentes A
    - Projeta políticas RLS para segurança em nível de linha
    - Gera migração: `20251025_create_auth_schema.sql`
    - Commita localmente: `git add migrations/ && git commit -m "feat: add auth schema"`
-   - Notifica: "Schema projetado. Ative @github-devops para fazer push da migração"
+   - Notifica: "Schema projetado. Ative @devops para fazer push da migração"
 
-4. @github-devops ativa:
+4. @devops ativa:
    - Executa *pre-push (quality gates)
    - Faz push da migração para o repositório
 ```
@@ -293,7 +293,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ```
 1. Usuário: "Criar release v4.32.0"
 
-2. @github-devops ativa:
+2. @devops ativa:
    - Executa *version-check
    - Analisa commits desde v4.31.0
    - Recomenda: "Bump de versão MINOR (novas features, compatível com versões anteriores)"
@@ -355,7 +355,7 @@ git branch -d feature/old-branch
 git merge feature/branch-to-integrate
 ```
 
-### Branches Remotas (@github-devops para repositório)
+### Branches Remotas (@devops para repositório)
 
 **Responsabilidades**:
 - Fazer push de branches para remoto
@@ -365,7 +365,7 @@ git merge feature/branch-to-integrate
 
 **Comandos**:
 ```bash
-# SOMENTE @github-devops pode executar:
+# SOMENTE @devops pode executar:
 git push -u origin feature/3.14-github-devops
 git push origin --delete feature/old-branch
 gh pr create
@@ -386,7 +386,7 @@ gh pr merge
   - [x] @dev - Removido git push, adicionado redirecionamento de workflow
   - [x] @sm - Clarificado gerenciamento apenas de branch local
   - [x] @qa - Operações git somente leitura
-  - [x] @github-devops - Criado com autoridade exclusiva de push
+  - [x] @devops - Criado com autoridade exclusiva de push
   - [x] @data-architect - Criado com especialização em dados
 
 - [ ] **Atualizar Scripts de Ativação de Agentes**
@@ -404,7 +404,7 @@ gh pr merge
 
 - [ ] **Testes**
   - Testar @dev tentando git push (deve ser bloqueado)
-  - Testar @github-devops git push (deve funcionar)
+  - Testar @devops git push (deve funcionar)
   - Testar quality gates antes do push
   - Testar workflow de criação de PR
 
@@ -428,9 +428,9 @@ Se novos agentes forem adicionados via Squads:
 ## Resumo
 
 **Pontos-Chave**:
-1. ✅ Apenas @github-devops pode fazer push para repositório remoto (aplicado via git hooks)
+1. ✅ Apenas @devops pode fazer push para repositório remoto (aplicado via git hooks)
 2. ✅ @architect gerencia arquitetura de sistema, @data-architect gerencia camada de dados
-3. ✅ @sm gerencia branches locais, @github-devops gerencia operações remotas
+3. ✅ @sm gerencia branches locais, @devops gerencia operações remotas
 4. ✅ Quality gates são obrigatórios antes de qualquer push
 5. ✅ Todos os agentes têm limites claros e documentados
 

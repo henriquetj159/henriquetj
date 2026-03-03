@@ -364,7 +364,7 @@ flowchart LR
 | 数据库变更 | @dev、@db-sage |
 | API/后端变更 | @dev、@architect |
 | 前端/UI 变更 | @dev、@ux-expert |
-| 部署/基础设施 | @dev、@github-devops |
+| 部署/基础设施 | @dev、@devops |
 | 安全功能 | @dev（OWASP 焦点） |
 
 ---

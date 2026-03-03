@@ -635,7 +635,7 @@ updated_at: 2025-11-17
 ### Example 1: Submit New Squad
 
 ```bash
-aios activate Otto  # github-devops agent
+aios activate Gage  # devops agent
 aios pr create \
   --type="Squad" \
   --path="Squads/content-creator/" \

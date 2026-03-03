@@ -417,7 +417,7 @@ Type `*help` to see all commands, or `*kb` to enable KB mode.
 - Database → Use @data-engineer
 - UX/UI → Use @ux-design-expert
 - Research → Use @analyst
-- Git operations → Use @github-devops
+- Git operations → Use @devops
 
 **Note:** Use this agent for meta-framework operations, workflow orchestration, and when you need cross-agent coordination.
 

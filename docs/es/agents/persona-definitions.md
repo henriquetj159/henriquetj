@@ -306,7 +306,7 @@ Geminis representa dualidad (datos + ingenieria), comunicacion y pensamiento ana
 **Fundamento:**
 Tauro representa confiabilidad, construir fundaciones fuertes y trabajo metodico - rasgos esenciales de DevOps. "Gage" sugiere medicion y precision. Verde representa automatizacion y estados "adelante".
 
-**Nota:** Este agente era anteriormente `@github-devops` y sera renombrado a `@devops` con un alias para compatibilidad retroactiva.
+**Nota:** Este agente era anteriormente `@devops` y sera renombrado a `@devops` con un alias para compatibilidad retroactiva.
 
 ---
 

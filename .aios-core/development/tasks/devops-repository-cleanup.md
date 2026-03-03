@@ -4,7 +4,7 @@
 
 **Purpose**: Identify and remove stale branches and temporary files from ANY repository.
 
-**When to use**: Periodic maintenance via `@github-devops *cleanup` command.
+**When to use**: Periodic maintenance via `@devops *cleanup` command.
 
 ## Execution Modes
 
@@ -358,7 +358,7 @@ async function executeCleanup(staleBranches, tempFiles, projectRoot) {
 
 ## Integration
 
-Called by `@github-devops` via `*cleanup` command.
+Called by `@devops` via `*cleanup` command.
 
 ## Validation
 

@@ -357,7 +357,7 @@ class NotificationManager {
 
     if (isApproved) {
       lines.push('---');
-      lines.push('_This change is approved for merge. Proceed with @github-devops._');
+      lines.push('_This change is approved for merge. Proceed with @devops._');
     } else {
       lines.push('---');
       lines.push('_Address the requested changes and re-submit for review._');

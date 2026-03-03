@@ -224,7 +224,7 @@ flowchart TB
 | 系统架构 | @architect | 应用级模式、API设计 |
 | 应用代码 | @dev | 仓库模式、DAL实现 |
 | 前端设计 | @ux-design-expert | UI/UX设计 |
-| Git操作 | @github-devops | 推送、PR、部署 |
+| Git操作 | @devops | 推送、PR、部署 |
 
 ---
 
@@ -278,7 +278,7 @@ supabase/
 **不要使用@data-engineer进行:**
 - 系统架构(使用@architect)
 - 应用代码(使用@dev)
-- Git操作(使用@github-devops)
+- Git操作(使用@devops)
 - 前端/UI(使用@ux-design-expert)
 
 ### 安全迁移工作流

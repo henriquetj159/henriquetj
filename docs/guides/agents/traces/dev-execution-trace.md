@@ -184,7 +184,7 @@ flowchart TD
     N -->|no| O[Run CodeRabbit self-healing loop]
     O --> P[Execute story-dod-checklist]
     P --> Q["Set status: 'Ready for Review'"]
-    Q --> R[HALT - notify user to activate @github-devops]
+    Q --> R[HALT - notify user to activate @devops]
 ```
 
 **Expected output:** Completed story with all tasks implemented, tested, and validated.
@@ -623,7 +623,7 @@ graph TD
 | @sm -> @dev | Receives | Story assignment for implementation |
 | @dev -> @qa | Handoff | Story "Ready for Review" triggers QA review |
 | @qa -> @dev | Receives | QA feedback via `*apply-qa-fixes` or `QA_FIX_REQUEST.md` |
-| @dev -> @github-devops | Delegate | Git push, PR creation, remote operations |
+| @dev -> @devops | Delegate | Git push, PR creation, remote operations |
 | @pm -> @dev | Receives | Requirements and strategic direction via stories |
 
 ### Delegation Rules (from agent definition)
@@ -637,7 +637,7 @@ graph TD
 - Receiving story assignments
 - Reporting story completion
 
-**Delegates to @github-devops when:**
+**Delegates to @devops when:**
 - Git push operations to remote repository
 - Pull request creation and management
 - Any remote git operations
