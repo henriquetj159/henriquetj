@@ -339,7 +339,7 @@ describe('SquadDownloader', () => {
         setImmediate(() => {
           if (url.includes('registry.json')) {
             cb(createMockResponse(200, mockRegistry));
-          } else if (url.includes('api.github.com')) {
+          } else if (new URL(url).hostname === 'api.github.com') {
             // Return empty array to avoid recursive downloads
             cb(createMockResponse(200, []));
           } else {
@@ -378,7 +378,7 @@ describe('SquadDownloader', () => {
         setImmediate(() => {
           if (url.includes('registry.json')) {
             cb(createMockResponse(200, mockRegistry));
-          } else if (url.includes('api.github.com')) {
+          } else if (new URL(url).hostname === 'api.github.com') {
             // Return empty array to avoid recursive downloads
             cb(createMockResponse(200, []));
           } else {

@@ -44,11 +44,17 @@ const FALLBACK_EXCEPTIONS = [
  * @returns {RegExp}
  */
 function globToRegex(glob) {
-  let pattern = glob
-    .replace(/\./g, '\\.')           // escape dots
-    .replace(/\*\*/g, '\u0000')      // placeholder for **
-    .replace(/\*/g, '[^/]+')         // * = single segment
-    .replace(/\u0000/g, '.+');       // ** = any depth
+  // 1. Replace ** with placeholder before processing
+  let pattern = glob.replace(/\*\*/g, '\u0000');
+
+  // 2. Escape all regex-special chars (dots, plus, etc.) — but NOT * or placeholder
+  pattern = pattern.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+
+  // 3. Convert remaining single * to single-segment matcher
+  pattern = pattern.replace(/\*/g, '[^/]+');
+
+  // 4. Restore ** placeholder to any-depth matcher
+  pattern = pattern.replace(/\u0000/g, '.+');
 
   // If pattern ends with .+ (was **), match prefix
   if (glob.endsWith('**')) {

@@ -14,7 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, '.synapse-package');
@@ -151,10 +151,10 @@ function main() {
 
   try {
     // Use PowerShell Compress-Archive on Windows
-    execSync(
-      `powershell -Command "Compress-Archive -Path '${OUT_DIR}\\*' -DestinationPath '${zipPath}' -Force"`,
-      { stdio: 'inherit' },
-    );
+    execFileSync('powershell', [
+      '-Command',
+      `Compress-Archive -Path '${OUT_DIR}\\*' -DestinationPath '${zipPath}' -Force`,
+    ], { stdio: 'inherit' });
     console.log(`\nZIP created: ${ZIP_NAME}`);
     console.log(`Size: ${(fs.statSync(zipPath).size / 1024).toFixed(1)} KB`);
   } catch (err) {
