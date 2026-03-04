@@ -9,7 +9,7 @@
 
 ## 概览
 
-**@architect 代理 (Aria)** 是 AIOS 的**全系统架构师和全栈技术领导**。该代理负责:
+**@architect 代理 (Aria)** 是 AIOX 的**全系统架构师和全栈技术领导**。该代理负责:
 
 - **完整系统架构**(微服务、单体、无服务器、混合)
 - **技术栈选择**(框架、语言、平台)
@@ -43,29 +43,29 @@
 
 | 文件 | 命令 | 目的 |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/architect-analyze-impact.md` | `*analyze-impact` | 分析修改对框架组件的影响 |
-| `.aios-core/development/tasks/document-project.md` | `*document-project` | 生成现有项目的 brownfield 文档 |
-| `.aios-core/development/tasks/create-doc.md` | `*create-doc` | 从 YAML 模板创建文档 |
-| `.aios-core/development/tasks/collaborative-edit.md` | `*collaborative-edit` | 管理协作编辑会话 |
-| `.aios-core/development/tasks/create-deep-research-prompt.md` | `*research` | 生成深度研究提示 |
-| `.aios-core/development/tasks/execute-checklist.md` | `*execute-checklist` | 执行验证检查清单 |
-| `.aios-core/development/tasks/spec-assess-complexity.md` | `*assess-complexity` | 评估故事复杂性(规范管道) |
+| `.aiox-core/development/tasks/architect-analyze-impact.md` | `*analyze-impact` | 分析修改对框架组件的影响 |
+| `.aiox-core/development/tasks/document-project.md` | `*document-project` | 生成现有项目的 brownfield 文档 |
+| `.aiox-core/development/tasks/create-doc.md` | `*create-doc` | 从 YAML 模板创建文档 |
+| `.aiox-core/development/tasks/collaborative-edit.md` | `*collaborative-edit` | 管理协作编辑会话 |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research` | 生成深度研究提示 |
+| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist` | 执行验证检查清单 |
+| `.aiox-core/development/tasks/spec-assess-complexity.md` | `*assess-complexity` | 评估故事复杂性(规范管道) |
 
 ### 代理定义文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/agents/architect.md` | 架构师代理的核心定义 |
-| `.claude/commands/AIOS/agents/architect.md` | Claude Code 命令用于激活 @architect |
+| `.aiox-core/development/agents/architect.md` | 架构师代理的核心定义 |
+| `.claude/commands/AIOX/agents/architect.md` | Claude Code 命令用于激活 @architect |
 
 ### @architect 的模板文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/product/templates/architecture-tmpl.yaml` | 后端架构模板 |
-| `.aios-core/product/templates/front-end-architecture-tmpl.yaml` | 前端架构模板 |
-| `.aios-core/product/templates/fullstack-architecture-tmpl.yaml` | 全栈架构模板 |
-| `.aios-core/product/templates/brownfield-architecture-tmpl.yaml` | Brownfield 项目模板 |
+| `.aiox-core/product/templates/architecture-tmpl.yaml` | 后端架构模板 |
+| `.aiox-core/product/templates/front-end-architecture-tmpl.yaml` | 前端架构模板 |
+| `.aiox-core/product/templates/fullstack-architecture-tmpl.yaml` | 全栈架构模板 |
+| `.aiox-core/product/templates/brownfield-architecture-tmpl.yaml` | Brownfield 项目模板 |
 
 ---
 

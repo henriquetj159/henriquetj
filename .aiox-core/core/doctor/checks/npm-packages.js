@@ -3,9 +3,9 @@
  *
  * Validates:
  * 1. node_modules/ exists in project root (quick sanity check)
- * 2. (INS-4.12) .aios-core/node_modules/ exists and contains all declared deps
+ * 2. (INS-4.12) .aiox-core/node_modules/ exists and contains all declared deps
  *
- * @module aios-core/doctor/checks/npm-packages
+ * @module aiox-core/doctor/checks/npm-packages
  * @story INS-4.1, INS-4.12
  */
 
@@ -26,29 +26,29 @@ async function run(context) {
     };
   }
 
-  // Check 2 (INS-4.12): .aios-core/node_modules/ completeness
-  const aiosCoreDir = path.join(context.projectRoot, '.aios-core');
-  const aiosCorePackageJson = path.join(aiosCoreDir, 'package.json');
-  const aiosCoreNodeModules = path.join(aiosCoreDir, 'node_modules');
+  // Check 2 (INS-4.12): .aiox-core/node_modules/ completeness
+  const aioxCoreDir = path.join(context.projectRoot, '.aiox-core');
+  const aioxCorePackageJson = path.join(aioxCoreDir, 'package.json');
+  const aioxCoreNodeModules = path.join(aioxCoreDir, 'node_modules');
 
-  if (fs.existsSync(aiosCorePackageJson)) {
-    if (!fs.existsSync(aiosCoreNodeModules)) {
+  if (fs.existsSync(aioxCorePackageJson)) {
+    if (!fs.existsSync(aioxCoreNodeModules)) {
       return {
         check: name,
         status: 'FAIL',
-        message: 'node_modules present, but .aios-core/node_modules/ missing',
-        fixCommand: 'cd .aios-core && npm install --production',
+        message: 'node_modules present, but .aiox-core/node_modules/ missing',
+        fixCommand: 'cd .aiox-core && npm install --production',
       };
     }
 
     // Verify all declared deps are installed
     try {
-      const pkg = JSON.parse(fs.readFileSync(aiosCorePackageJson, 'utf8'));
+      const pkg = JSON.parse(fs.readFileSync(aioxCorePackageJson, 'utf8'));
       const deps = Object.keys(pkg.dependencies || {});
       const missing = [];
 
       for (const dep of deps) {
-        const depPath = path.join(aiosCoreNodeModules, dep);
+        const depPath = path.join(aioxCoreNodeModules, dep);
         if (!fs.existsSync(depPath)) {
           missing.push(dep);
         }
@@ -58,8 +58,8 @@ async function run(context) {
         return {
           check: name,
           status: 'FAIL',
-          message: `node_modules present, but .aios-core missing deps: ${missing.join(', ')}`,
-          fixCommand: 'cd .aios-core && npm install --production',
+          message: `node_modules present, but .aiox-core missing deps: ${missing.join(', ')}`,
+          fixCommand: 'cd .aiox-core && npm install --production',
         };
       }
     } catch {
@@ -70,7 +70,7 @@ async function run(context) {
   return {
     check: name,
     status: 'PASS',
-    message: 'node_modules present' + (fs.existsSync(aiosCoreNodeModules) ? ', .aios-core deps complete' : ''),
+    message: 'node_modules present' + (fs.existsSync(aioxCoreNodeModules) ? ', .aiox-core deps complete' : ''),
     fixCommand: null,
   };
 }

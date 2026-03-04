@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * AIOS Unified Statusline v3 for Claude Code
+ * AIOX Unified Statusline v3 for Claude Code
  *
  * Displays: Session | Model | Context Bar | Time | Agent | Squad | Project:Branch | Git | Messages | Alert
  *
- * Installed automatically by `npx aios-core install` when no existing statusline is detected.
- * Source: .aios-core/product/templates/statusline/
+ * Installed automatically by `npx aiox-core install` when no existing statusline is detected.
+ * Source: .aiox-core/product/templates/statusline/
  */
 
 const fs = require('fs');

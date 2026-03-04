@@ -2,8 +2,8 @@
 
 ## Tech Presets
 
-AIOS provides pre-defined architecture presets for common technology stacks.
-Location: `.aios-core/data/tech-presets/`
+AIOX provides pre-defined architecture presets for common technology stacks.
+Location: `.aiox-core/data/tech-presets/`
 
 ### Available Presets
 
@@ -48,7 +48,7 @@ Each preset includes:
 The active preset is automatically loaded when @dev is activated. To change:
 
 ```yaml
-# .aios-core/core-config.yaml
+# .aiox-core/core-config.yaml
 techPreset:
   active: nextjs-react # Change to another preset name
 ```

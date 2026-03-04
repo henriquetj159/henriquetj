@@ -1,16 +1,16 @@
 # Story Development Cycle Workflow
 
-> **EN** | [PT](../../aios-workflows/story-development-cycle-workflow.md) | [ES](../../es/aios-workflows/story-development-cycle-workflow.md)
+> **EN** | [PT](../../aiox-workflows/story-development-cycle-workflow.md) | [ES](../../es/aiox-workflows/story-development-cycle-workflow.md)
 
 ---
 
-**Full documentation available in:** [Portuguese Version](../../aios-workflows/story-development-cycle-workflow.md)
+**Full documentation available in:** [Portuguese Version](../../aiox-workflows/story-development-cycle-workflow.md)
 
 ---
 
 ## Summary
 
-The **Story Development Cycle Workflow** is the core development process in AIOS. It orchestrates the complete lifecycle of implementing a user story:
+The **Story Development Cycle Workflow** is the core development process in AIOX. It orchestrates the complete lifecycle of implementing a user story:
 
 - Story breakdown and task creation
 - Test-first development approach
@@ -20,7 +20,7 @@ The **Story Development Cycle Workflow** is the core development process in AIOS
 
 ### When to Use
 
-- For every story implementation in AIOS
+- For every story implementation in AIOX
 - Called by greenfield and brownfield workflows
 - After spec-pipeline approval
 
@@ -47,4 +47,4 @@ The **Story Development Cycle Workflow** is the core development process in AIOS
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aios-workflows/story-development-cycle-workflow.md).*
+*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/story-development-cycle-workflow.md).*

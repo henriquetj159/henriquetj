@@ -1,4 +1,4 @@
-# AIOS Migration Configuration
+# AIOX Migration Configuration
 # Story 2.14 - Migration Script v2.0 → v4.0.4
 
 version: "1.0.0"
@@ -13,13 +13,13 @@ migrations:
 
 # Backup configuration
 backup:
-  prefix: ".aios-backup-"
+  prefix: ".aiox-backup-"
   format: "YYYY-MM-DD"
   include:
-    - ".aios-core/**"
-    - "aios.config.js"
-    - "aios.config.json"
-    - ".aios/config.yaml"
+    - ".aiox-core/**"
+    - "aiox.config.js"
+    - "aiox.config.json"
+    - ".aiox/config.yaml"
     - ".mcp.json"
   exclude:
     - "node_modules/**"

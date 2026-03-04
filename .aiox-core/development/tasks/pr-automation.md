@@ -16,9 +16,9 @@ checklists:
 
 ## Purpose
 
-To help users contribute to the AIOS open-source project (`aios-core`) by automating the PR creation process, ensuring contributions follow project standards, pass quality checks, and have proper formatting before submission.
+To help users contribute to the AIOX open-source project (`aiox-core`) by automating the PR creation process, ensuring contributions follow project standards, pass quality checks, and have proper formatting before submission.
 
-**Target Repository**: `aios-core` (open-source framework)
+**Target Repository**: `aiox-core` (open-source framework)
 
 **Contribution Types Supported**:
 - Squads (new agents, tasks, workflows)
@@ -39,7 +39,7 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
 
 - **contribution_path**: `string`
   - **Description**: Path to new/modified files
-  - **Example**: `"Squads/my-new-pack/"` or `"aios-core/agents/improved-agent.md"`
+  - **Example**: `"Squads/my-new-pack/"` or `"aiox-core/agents/improved-agent.md"`
   - **Validation**: Path must exist locally
 
 ### Optional Parameters
@@ -71,7 +71,7 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
 
 - **pr_url**: `string`
   - **Description**: URL of created pull request
-  - **Example**: `"https://github.com/SynkraAI/aios-core/pull/123"`
+  - **Example**: `"https://github.com/SynkraAI/aiox-core/pull/123"`
 
 - **pr_number**: `number`
   - **Description**: PR number
@@ -102,16 +102,16 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
    - Ensure naming conventions followed
 
 2. **Validate Repository State**
-   - Check if `aios-core` repository is set as upstream
+   - Check if `aiox-core` repository is set as upstream
    - Verify fork exists (or create one)
    - Ensure main branch is up-to-date
 
 3. **Detect Contribution Type** (if not provided)
    - Scan modified files:
      - `Squads/*` → "Squad"
-     - `aios-core/agents/*` → "agent"
-     - `aios-core/tasks/*` → "task"
-     - `aios-core/tools/*` → "tool"
+     - `aiox-core/agents/*` → "agent"
+     - `aiox-core/tasks/*` → "task"
+     - `aiox-core/tools/*` → "tool"
      - `*.md` in docs → "documentation"
      - `*.test.js` or bug fixes → "bug-fix"
 
@@ -246,14 +246,14 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
       
       ---
       
-      **First-time contributor?** Welcome! 🎉 This PR was created using AIOS PR Automation.
+      **First-time contributor?** Welcome! 🎉 This PR was created using AIOX PR Automation.
       ```
 
 15. **Create Pull Request**
     - Use GitHub CLI:
       ```bash
       gh pr create \
-        --repo SynkraAI/aios-core \
+        --repo SynkraAI/aiox-core \
         --title "{title}" \
         --body "{description}" \
         --base main \
@@ -292,7 +292,7 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
       - Maintainer review: 24-48 hours
       - Merge (if approved): Immediate
       
-      Thank you for contributing to AIOS! 🚀
+      Thank you for contributing to AIOX! 🚀
       ```
 
 ## Checklist
@@ -303,8 +303,8 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
   - **Validation**: Files at `contribution_path` exist
   - **Error**: "Files not found at {contribution_path}"
 
-- [ ] Fork of aios-core exists
-  - **Validation**: `gh repo view {user}/aios-core` succeeds
+- [ ] Fork of aiox-core exists
+  - **Validation**: `gh repo view {user}/aiox-core` succeeds
   - **Action**: If not found, create fork automatically
 
 - [ ] Main branch is up-to-date
@@ -356,7 +356,7 @@ To help users contribute to the AIOS open-source project (`aios-core`) by automa
 ### Contribution Guidelines Reference
 
 ```markdown
-## Contributing to AIOS
+## Contributing to AIOX
 
 Thank you for your interest in contributing! 🎉
 
@@ -465,7 +465,7 @@ Thank you for your interest in contributing! 🎉
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: prAutomation()
@@ -572,7 +572,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -635,8 +635,8 @@ updated_at: 2025-11-17
 ### Example 1: Submit New Squad
 
 ```bash
-aios activate Otto  # github-devops agent
-aios pr create \
+aiox activate Otto  # github-devops agent
+aiox pr create \
   --type="Squad" \
   --path="Squads/content-creator/" \
   --issue=42
@@ -647,9 +647,9 @@ aios pr create \
 ### Example 2: Submit Agent Improvement
 
 ```bash
-aios pr create \
+aiox pr create \
   --type="agent" \
-  --path="aios-core/agents/improved-po.md" \
+  --path="aiox-core/agents/improved-po.md" \
   --title="feat(agent): enhance PO agent with story validation"
 ```
 
@@ -658,9 +658,9 @@ aios pr create \
 ### Example 3: Submit Bug Fix
 
 ```bash
-aios pr create \
+aiox pr create \
   --type="bug-fix" \
-  --path="aios-core/tasks/create-next-story.md" \
+  --path="aiox-core/tasks/create-next-story.md" \
   --title="fix(task): correct file path validation in create-next-story"
 ```
 

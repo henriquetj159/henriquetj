@@ -1,6 +1,6 @@
-# AIOS Agent Flows - Detailed Agent Documentation
+# AIOX Agent Flows - Detailed Agent Documentation
 
-> **EN** | [PT](../../aios-agent-flows/README.md) | [ES](../../es/aios-agent-flows/README.md) | [ZH](../../zh/aios-agent-flows/README.md)
+> **EN** | [PT](../../aiox-agent-flows/README.md) | [ES](../../es/aiox-agent-flows/README.md) | [ZH](../../zh/aiox-agent-flows/README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Overview
 
-This folder contains detailed documentation for all AIOS agents, including:
+This folder contains detailed documentation for all AIOX agents, including:
 
 - **Complete system** for each agent
 - **Mermaid flowcharts** of operations
@@ -27,7 +27,7 @@ This folder contains detailed documentation for all AIOS agents, including:
 
 | Agent | Persona | Archetype | Document |
 |-------|---------|-----------|----------|
-| **@aios-master** | Orion | Orchestrator | [aios-master-system.md](./aios-master-system.md) |
+| **@aiox-master** | Orion | Orchestrator | [aiox-master-system.md](./aiox-master-system.md) |
 | **@analyst** | Atlas | Researcher | [analyst-system.md](./analyst-system.md) |
 | **@architect** | Aria | Visionary | [architect-system.md](./architect-system.md) |
 | **@data-engineer** | Dara | Data Sage | [data-engineer-system.md](./data-engineer-system.md) |
@@ -98,7 +98,7 @@ Each agent document follows this standard structure:
 ```mermaid
 flowchart TB
     subgraph ORCHESTRATION["Orchestration"]
-        MASTER["@aios-master\n(Orion)"]
+        MASTER["@aiox-master\n(Orion)"]
     end
 
     subgraph DISCOVERY["Discovery & Planning"]
@@ -171,7 +171,7 @@ flowchart TB
 |---------------|----------|---------|
 | Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md) | Quick reference |
 | Workflows Guide | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Workflows guide |
-| AIOS Workflows | [docs/aios-workflows/](../../aios-workflows/) | Detailed workflows |
+| AIOX Workflows | [docs/aiox-workflows/](../../aiox-workflows/) | Detailed workflows |
 | Architecture | [docs/architecture/](../../architecture/) | Technical architecture |
 
 ---
@@ -187,4 +187,4 @@ To add or update agent documentation:
 
 ---
 
-*AIOS Agent Flows Documentation v1.0 - Detailed documentation of the agent system*
+*AIOX Agent Flows Documentation v1.0 - Detailed documentation of the agent system*

@@ -3,13 +3,13 @@
 **版本:** 1.0.0
 **类型:** 绿地项目
 **最后更新:** 2026-02-04
-**源文件:** `.aios-core/development/workflows/greenfield-fullstack.yaml`
+**源文件:** `.aiox-core/development/workflows/greenfield-fullstack.yaml`
 
 ---
 
 ## 概述
 
-**绿地全栈工作流** 是 AIOS 从概念到开发的主要工作流,用于构建全栈应用。本工作流既支持复杂项目的全面规划,也支持简单项目的快速原型设计。
+**绿地全栈工作流** 是 AIOX 从概念到开发的主要工作流,用于构建全栈应用。本工作流既支持复杂项目的全面规划,也支持简单项目的快速原型设计。
 
 ### 支持的项目类型
 
@@ -141,7 +141,7 @@ flowchart TD
     subgraph FASE0["第 0 阶段: 环境引导"]
         START([开始]) --> CHECK{环境就绪?}
 
-        CHECK -->|验证| ENV_REPORT[".aios/environment-report.json 存在?"]
+        CHECK -->|验证| ENV_REPORT[".aiox/environment-report.json 存在?"]
         ENV_REPORT -->|是| SKIP[跳过引导]
         ENV_REPORT -->|否| BOOTSTRAP
 
@@ -166,14 +166,14 @@ flowchart TD
 
 | 步骤 | 代理 | 任务 | 输入 | 输出 | 必需 |
 |------|------|------|------|------|------|
-| 1 | @devops (Gage) | `environment-bootstrap.md` | `project_name`, `project_path`, `github_org` | `.aios/config.yaml`, `.aios/environment-report.json`, `.gitignore`, `README.md`, `package.json` | 是 |
+| 1 | @devops (Gage) | `environment-bootstrap.md` | `project_name`, `project_path`, `github_org` | `.aiox/config.yaml`, `.aiox/environment-report.json`, `.gitignore`, `README.md`, `package.json` | 是 |
 
 ### 创建的工件
 
 | 文件 | 描述 |
 |------|------|
-| `.aios/config.yaml` | AIOS 项目配置 |
-| `.aios/environment-report.json` | 完整的环境报告 |
+| `.aiox/config.yaml` | AIOX 项目配置 |
+| `.aiox/environment-report.json` | 完整的环境报告 |
 | `.gitignore` | Git 忽略规则 |
 | `README.md` | 初始项目文档 |
 | `package.json` | NPM 配置 |
@@ -195,7 +195,7 @@ flowchart TD
 
 ### 跳过条件
 
-- 仅在项目已有 `.aios/environment-report.json` 时跳过
+- 仅在项目已有 `.aiox/environment-report.json` 时跳过
 - 切换机器或新团队成员加入时重新执行
 
 ---
@@ -576,7 +576,7 @@ flowchart LR
     end
 
     subgraph 阶段0["阶段 0"]
-        E1[.aios/config.yaml]
+        E1[.aiox/config.yaml]
         E2[GitHub 仓库]
     end
 
@@ -637,7 +637,7 @@ flowchart LR
 
 | 阶段 | 输入 | 输出 |
 |------|------|------|
-| 0 | 项目名、GitHub 组织 | AIOS 配置、Git 仓库、文件夹结构 |
+| 0 | 项目名、GitHub 组织 | AIOX 配置、Git 仓库、文件夹结构 |
 | 1 | 需求、研究 | 简报、PRD、规范、架构 |
 | 2 | PRD、架构 | 分片文档、索引 |
 | 3 | 故事、分片文档 | 代码、测试、应用 |
@@ -650,7 +650,7 @@ flowchart LR
 
 | 阶段 | 决策点 | 选项 | 标准 |
 |------|--------|------|------|
-| 0 | 环境就绪? | 跳过/执行引导 | `.aios/environment-report.json` 存在 |
+| 0 | 环境就绪? | 跳过/执行引导 | `.aiox/environment-report.json` 存在 |
 | 1 | 生成 v0 提示? | 是/否 | 用户想要 AI UI 生成 |
 | 1 | 架构建议更改? | 更新 PRD/继续 | 架构师建议 |
 | 1 | PO 发现问题? | 更正/批准 | 检查列表结果 |
@@ -664,7 +664,7 @@ flowchart LR
 ```mermaid
 flowchart TD
     D1{环境就绪?}
-    D1 -->|检查 .aios/environment-report.json| D1_CHECK
+    D1 -->|检查 .aiox/environment-report.json| D1_CHECK
     D1_CHECK -->|存在| SKIP[跳过第 0 阶段]
     D1_CHECK -->|不存在| RUN[执行引导]
 
@@ -700,7 +700,7 @@ flowchart TD
 
 | 问题 | 原因 | 解决方案 |
 |------|------|---------|
-| 模板未找到 | 路径错误 | 检查 `.aios-core/development/templates/` |
+| 模板未找到 | 路径错误 | 检查 `.aiox-core/development/templates/` |
 | PRD 与架构冲突 | 需求分歧 | 召开 PM 和 Architect 会议对齐 |
 | 检查列表失败 | 工件不完整 | 返回相关代理 |
 
@@ -725,7 +725,7 @@ flowchart TD
 
 ```bash
 # 检查环境
-cat .aios/environment-report.json
+cat .aiox/environment-report.json
 
 # 检查 CLIs
 git --version && gh --version && node --version
@@ -736,7 +736,7 @@ supabase projects list
 railway whoami
 
 # 检查项目结构
-ls -la .aios/
+ls -la .aiox/
 ls -la docs/
 ```
 
@@ -765,13 +765,13 @@ ls -la docs/
 
 | 类型 | 文件 | 描述 |
 |------|------|------|
-| 工作流 | `.aios-core/development/workflows/greenfield-fullstack.yaml` | 工作流定义 |
-| 任务 | `.aios-core/development/tasks/environment-bootstrap.md` | 环境引导 |
-| 任务 | `.aios-core/development/tasks/shard-doc.md` | 文档分片 |
-| 任务 | `.aios-core/development/tasks/sm-create-next-story.md` | 故事创建 |
-| 代理 | `.aios-core/development/agents/*.md` | 代理定义 |
-| 模板 | `.aios-core/development/templates/*.yaml` | 文档模板 |
-| 检查列表 | `.aios-core/development/checklists/*.md` | 验证检查列表 |
+| 工作流 | `.aiox-core/development/workflows/greenfield-fullstack.yaml` | 工作流定义 |
+| 任务 | `.aiox-core/development/tasks/environment-bootstrap.md` | 环境引导 |
+| 任务 | `.aiox-core/development/tasks/shard-doc.md` | 文档分片 |
+| 任务 | `.aiox-core/development/tasks/sm-create-next-story.md` | 故事创建 |
+| 代理 | `.aiox-core/development/agents/*.md` | 代理定义 |
+| 模板 | `.aiox-core/development/templates/*.yaml` | 文档模板 |
+| 检查列表 | `.aiox-core/development/checklists/*.md` | 验证检查列表 |
 
 ### 外部文档
 
@@ -792,5 +792,5 @@ ls -la docs/
 
 ---
 
-**维护者:** AIOS 开发团队
+**维护者:** AIOX 开发团队
 **最后审阅:** 2026-02-04

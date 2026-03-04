@@ -9,10 +9,10 @@ function getDefaultOptions() {
   return {
     projectRoot,
     rulesFile: path.join(projectRoot, '.gemini', 'rules.md'),
-    agentsDir: path.join(projectRoot, '.gemini', 'rules', 'AIOS', 'agents'),
+    agentsDir: path.join(projectRoot, '.gemini', 'rules', 'AIOX', 'agents'),
     commandsDir: path.join(projectRoot, '.gemini', 'commands'),
-    extensionDir: path.join(projectRoot, 'packages', 'gemini-aios-extension'),
-    sourceAgentsDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    extensionDir: path.join(projectRoot, 'packages', 'gemini-aiox-extension'),
+    sourceAgentsDir: path.join(projectRoot, '.aiox-core', 'development', 'agents'),
     quiet: false,
     json: false,
   };
@@ -38,10 +38,10 @@ function validateGeminiIntegration(options = {}) {
     ...options,
     projectRoot,
     rulesFile: options.rulesFile || path.join(projectRoot, '.gemini', 'rules.md'),
-    agentsDir: options.agentsDir || path.join(projectRoot, '.gemini', 'rules', 'AIOS', 'agents'),
+    agentsDir: options.agentsDir || path.join(projectRoot, '.gemini', 'rules', 'AIOX', 'agents'),
     commandsDir: options.commandsDir || path.join(projectRoot, '.gemini', 'commands'),
-    extensionDir: options.extensionDir || path.join(projectRoot, 'packages', 'gemini-aios-extension'),
-    sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    extensionDir: options.extensionDir || path.join(projectRoot, 'packages', 'gemini-aiox-extension'),
+    sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aiox-core', 'development', 'agents'),
   };
   const errors = [];
   const warnings = [];
@@ -67,8 +67,8 @@ function validateGeminiIntegration(options = {}) {
   if (sourceCount > 0 && commandFiles.length !== expectedCommandCount) {
     warnings.push(`Gemini command count differs from source (${commandFiles.length}/${expectedCommandCount})`);
   }
-  if (!commandFiles.includes('aios-menu.toml')) {
-    errors.push(`Missing Gemini command file: ${path.relative(resolved.projectRoot, path.join(resolved.commandsDir, 'aios-menu.toml'))}`);
+  if (!commandFiles.includes('aiox-menu.toml')) {
+    errors.push(`Missing Gemini command file: ${path.relative(resolved.projectRoot, path.join(resolved.commandsDir, 'aiox-menu.toml'))}`);
   }
   if (sourceCount > 0 && geminiCount !== sourceCount) {
     warnings.push(`Gemini agent count differs from source (${geminiCount}/${sourceCount})`);
@@ -77,9 +77,9 @@ function validateGeminiIntegration(options = {}) {
   const requiredExtensionFiles = [
     'extension.json',
     'README.md',
-    path.join('commands', 'aios-status.js'),
-    path.join('commands', 'aios-agents.js'),
-    path.join('commands', 'aios-validate.js'),
+    path.join('commands', 'aiox-status.js'),
+    path.join('commands', 'aiox-agents.js'),
+    path.join('commands', 'aiox-validate.js'),
     path.join('hooks', 'hooks.json'),
   ];
 

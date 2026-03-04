@@ -11,7 +11,7 @@ function getDefaultOptions() {
     instructionsFile: path.join(projectRoot, 'AGENTS.md'),
     agentsDir: path.join(projectRoot, '.codex', 'agents'),
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
-    sourceAgentsDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentsDir: path.join(projectRoot, '.aiox-core', 'development', 'agents'),
     quiet: false,
     json: false,
   };
@@ -34,7 +34,7 @@ function countSkillFiles(skillsDir) {
   if (!fs.existsSync(skillsDir)) return 0;
   const entries = fs.readdirSync(skillsDir, { withFileTypes: true });
   return entries
-    .filter((entry) => entry.isDirectory() && entry.name.startsWith('aios-'))
+    .filter((entry) => entry.isDirectory() && entry.name.startsWith('aiox-'))
     .filter((entry) => fs.existsSync(path.join(skillsDir, entry.name, 'SKILL.md')))
     .length;
 }
@@ -48,7 +48,7 @@ function validateCodexIntegration(options = {}) {
     instructionsFile: options.instructionsFile || path.join(projectRoot, 'AGENTS.md'),
     agentsDir: options.agentsDir || path.join(projectRoot, '.codex', 'agents'),
     skillsDir: options.skillsDir || path.join(projectRoot, '.codex', 'skills'),
-    sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aiox-core', 'development', 'agents'),
   };
   const errors = [];
   const warnings = [];

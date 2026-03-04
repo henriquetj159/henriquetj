@@ -446,8 +446,8 @@ build_plan:
 When code intelligence is available, enrich each subtask with blast radius and risk assessment:
 
 ```javascript
-const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
-const { getImplementationImpact } = require('.aios-core/core/code-intel/helpers/planning-helper');
+const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
+const { getImplementationImpact } = require('.aiox-core/core/code-intel/helpers/planning-helper');
 
 if (isCodeIntelAvailable()) {
   // For each subtask, analyze the files it modifies

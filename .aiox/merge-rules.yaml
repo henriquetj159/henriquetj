@@ -1,7 +1,7 @@
-# AIOS Merge Rules Configuration
+# AIOX Merge Rules Configuration
 # Project-specific rules that override default SemanticMergeEngine behavior
 #
-# Usage: Place this file at .aios/merge-rules.yaml in your project root
+# Usage: Place this file at .aiox/merge-rules.yaml in your project root
 # The SemanticMergeEngine will automatically load and merge these rules
 # with the defaults, giving precedence to project-specific settings.
 #
@@ -187,8 +187,8 @@ ai:
   # Custom system prompt additions
   system_prompt_additions: |
     Additional context for this project:
-    - This is an AIOS Framework project
-    - Follow AIOS coding conventions
+    - This is an AIOX Framework project
+    - Follow AIOX coding conventions
     - Preserve existing patterns and styles
 
 # ============================================================================
@@ -258,7 +258,7 @@ notifications:
 
 metadata:
   # Project name
-  project: "aios-core"
+  project: "aiox-core"
 
   # Rules version
   version: "1.0.0"
@@ -267,4 +267,4 @@ metadata:
   updated: "2026-01-29"
 
   # Maintainer
-  maintainer: "AIOS Team"
+  maintainer: "AIOX Team"

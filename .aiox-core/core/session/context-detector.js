@@ -17,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 const { atomicWriteSync } = require('../synapse/utils/atomic-write');
 
-const SESSION_STATE_PATH = path.join(process.cwd(), '.aios', 'session-state.json');
+const SESSION_STATE_PATH = path.join(process.cwd(), '.aiox', 'session-state.json');
 const SESSION_TTL = 60 * 60 * 1000; // 1 hour
 
 class ContextDetector {

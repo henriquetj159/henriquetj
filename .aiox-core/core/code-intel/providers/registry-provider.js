@@ -11,7 +11,7 @@ const LAYER_PRIORITY = { L1: 0, L2: 1, L3: 2, L4: 3 };
  * RegistryProvider — Native code intelligence provider using Entity Registry.
  *
  * Implements 5 of 8 primitives without requiring any MCP server.
- * Data source: .aios-core/data/entity-registry.yaml (737+ entities, 14 categories).
+ * Data source: .aiox-core/data/entity-registry.yaml (737+ entities, 14 categories).
  *
  * AST-only primitives (findCallers, findCallees, analyzeComplexity) return null.
  */
@@ -51,7 +51,7 @@ class RegistryProvider extends CodeIntelProvider {
 
     // Default: resolve from project root
     const projectRoot = this.options.projectRoot || process.cwd();
-    const defaultPath = path.join(projectRoot, '.aios-core', 'data', 'entity-registry.yaml');
+    const defaultPath = path.join(projectRoot, '.aiox-core', 'data', 'entity-registry.yaml');
 
     if (fs.existsSync(defaultPath)) {
       this._registryPath = defaultPath;

@@ -74,7 +74,7 @@ flowchart TB
     PF2 -->|否| ERR2[错误: Git < 2.5]
 
     PF3 -->|存在| PF4
-    PF3 -->|不存在| ERR3[错误: AIOS 不完整]
+    PF3 -->|不存在| ERR3[错误: AIOX 不完整]
 
     PF4 -->|正常| S1
     PF4 -->|接近限制| WARN1[警告: 接近限制]
@@ -141,7 +141,7 @@ stateDiagram-v2
 
 ```mermaid
 graph TB
-    subgraph AIOS["AIOS 核心"]
+    subgraph AIOX["AIOX 核心"]
         WF[auto-worktree.yaml<br/>工作流定义]
         TK[create-worktree.md<br/>任务定义]
     end
@@ -152,8 +152,8 @@ graph TB
     end
 
     subgraph FS["文件系统"]
-        WT[.aios/worktrees/{storyId}/<br/>工作树目录]
-        LOG[.aios/logs/merges/<br/>合并审计日志]
+        WT[.aiox/worktrees/{storyId}/<br/>工作树目录]
+        LOG[.aiox/logs/merges/<br/>合并审计日志]
     end
 
     subgraph AGENTS["代理"]
@@ -169,7 +169,7 @@ graph TB
     GIT -->|创建| WT
     WM -->|记录| LOG
 
-    style AIOS fill:#e3f2fd
+    style AIOX fill:#e3f2fd
     style INFRA fill:#fce4ec
     style FS fill:#f3e5f5
     style AGENTS fill:#e8f5e9
@@ -300,7 +300,7 @@ interface CleanupResult {
 
 **创建的结构:**
 ```
-.aios/worktrees/{storyId}/     # 工作目录
+.aiox/worktrees/{storyId}/     # 工作目录
 分支: auto-claude/{storyId}   # Git 分支
 ```
 
@@ -322,7 +322,7 @@ interface CreateResult {
 
 **执行的 Git 命令:**
 ```bash
-git worktree add .aios/worktrees/{storyId} -b auto-claude/{storyId}
+git worktree add .aiox/worktrees/{storyId} -b auto-claude/{storyId}
 ```
 
 ---
@@ -341,8 +341,8 @@ git worktree add .aios/worktrees/{storyId} -b auto-claude/{storyId}
 
 **环境变量:**
 ```bash
-AIOS_WORKTREE=/path/to/.aios/worktrees/{storyId}
-AIOS_STORY={storyId}
+AIOX_WORKTREE=/path/to/.aiox/worktrees/{storyId}
+AIOX_STORY={storyId}
 ```
 
 **输出:**
@@ -432,7 +432,7 @@ interface SwitchResult {
 
 | 属性 | 值 |
 |------|-----|
-| **位置** | `.aios-core/development/tasks/create-worktree.md` |
+| **位置** | `.aiox-core/development/tasks/create-worktree.md` |
 | **代理** | @devops (Gage) |
 | **版本** | 1.0 |
 | **故事** | 1.3 |
@@ -463,7 +463,7 @@ interface SwitchResult {
 |------|-----------|-------|
 | **Git** | >= 2.5 | `git --version` |
 | **Node.js** | >= 18 | `node --version` |
-| **AIOS 核心** | 已安装 | 检查 `.aios-core/` |
+| **AIOX 核心** | 已安装 | 检查 `.aiox-core/` |
 
 ### NPM 依赖
 
@@ -475,7 +475,7 @@ interface SwitchResult {
 ### 必需的文件
 
 ```
-.aios-core/
+.aiox-core/
   infrastructure/
     scripts/
       worktree-manager.js     # WorktreeManager 类
@@ -517,7 +517,7 @@ interface SwitchResult {
 ```typescript
 interface WorktreeInfo {
   storyId: string;           // 'STORY-42'
-  path: string;              // '/abs/path/.aios/worktrees/STORY-42'
+  path: string;              // '/abs/path/.aiox/worktrees/STORY-42'
   branch: string;            // 'auto-claude/STORY-42'
   createdAt: Date;           // 创建日期
   uncommittedChanges: number; // 未提交的更改数
@@ -595,7 +595,7 @@ flowchart TD
 |------|------|---------|
 | `Not a git repository` | 目录不是 git 存储库 | 执行 `git init` |
 | `Git worktree not supported` | Git < 2.5 | 升级 Git |
-| `WorktreeManager not found` | AIOS 不完整 | 重新安装 AIOS |
+| `WorktreeManager not found` | AIOX 不完整 | 重新安装 AIOX |
 | `Maximum worktrees limit reached` | >= 10 个工作树 | 执行 `*cleanup-worktrees` |
 | `Could not determine story ID` | 未找到 ID | 明确提供 ID |
 | `Worktree creation failed` | git worktree 错误 | 检查 git 状态 |
@@ -650,7 +650,7 @@ git --version
 git worktree list
 
 # 检查 WorktreeManager 存在
-ls .aios-core/infrastructure/scripts/worktree-manager.js
+ls .aiox-core/infrastructure/scripts/worktree-manager.js
 ```
 
 **解决方案:**
@@ -678,7 +678,7 @@ git worktree list | wc -l
 **解决方案:**
 1. 清理过时工作树: `*cleanup-worktrees`
 2. 删除未使用的工作树: `*remove-worktree {storyId}`
-3. 增加限制 (如需): 在 `.aios/config.yaml` 中
+3. 增加限制 (如需): 在 `.aiox/config.yaml` 中
 
 ---
 
@@ -724,7 +724,7 @@ ls .git/worktrees/{storyId}/locked
 2. 强制删除工作树: `*remove-worktree {storyId} --force`
 3. 手动删除:
    ```bash
-   git worktree remove .aios/worktrees/{storyId} --force
+   git worktree remove .aiox/worktrees/{storyId} --force
    git branch -D auto-claude/{storyId}
    ```
 
@@ -760,9 +760,9 @@ ls .git/worktrees/{storyId}/locked
 
 | 文件 | 路径 |
 |------|------|
-| **工作流定义** | `.aios-core/development/workflows/auto-worktree.yaml` |
-| **任务创建** | `.aios-core/development/tasks/create-worktree.md` |
-| **WorktreeManager** | `.aios-core/infrastructure/scripts/worktree-manager.js` |
+| **工作流定义** | `.aiox-core/development/workflows/auto-worktree.yaml` |
+| **任务创建** | `.aiox-core/development/tasks/create-worktree.md` |
+| **WorktreeManager** | `.aiox-core/infrastructure/scripts/worktree-manager.js` |
 
 ### 相关文档
 
@@ -790,4 +790,4 @@ ls .git/worktrees/{storyId}/locked
 
 ---
 
-*自动由 AIOS-FULLSTACK 生成的文档*
+*自动由 AIOX-FULLSTACK 生成的文档*

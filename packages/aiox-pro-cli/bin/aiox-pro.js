@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * aios-pro CLI
+ * aiox-pro CLI
  *
- * Thin CLI wrapper for @aios-fullstack/pro.
- * Provides a clean npx interface: npx aios-pro install
+ * Thin CLI wrapper for @aiox-fullstack/pro.
+ * Provides a clean npx interface: npx aiox-pro install
  *
  * Commands:
- *   install             Install @aios-fullstack/pro in the current project
+ *   install             Install @aiox-fullstack/pro in the current project
  *   activate --key X    Activate a license key
  *   deactivate          Deactivate the current license
  *   status              Show license status
@@ -22,7 +22,7 @@ const path = require('path');
 const fs = require('fs');
 const { recoverLicense } = require('../src/recover');
 
-const PRO_PACKAGE = '@aios-fullstack/pro';
+const PRO_PACKAGE = '@aiox-fullstack/pro';
 const VERSION = require('../package.json').version;
 
 const args = process.argv.slice(2);
@@ -42,39 +42,39 @@ function run(cmd, options = {}) {
 
 function isProInstalled() {
   try {
-    const pkgPath = path.join(process.cwd(), 'node_modules', '@aios-fullstack', 'pro', 'package.json');
+    const pkgPath = path.join(process.cwd(), 'node_modules', '@aiox-fullstack', 'pro', 'package.json');
     return fs.existsSync(pkgPath);
   } catch {
     return false;
   }
 }
 
-function findAiosCli() {
+function findAioxCli() {
   // Check local node_modules first
-  const localBin = path.join(process.cwd(), 'node_modules', '.bin', 'aios');
+  const localBin = path.join(process.cwd(), 'node_modules', '.bin', 'aiox');
   if (fs.existsSync(localBin) || fs.existsSync(localBin + '.cmd')) {
-    return 'npx aios';
+    return 'npx aiox';
   }
 
   // Check global
   try {
-    execSync('aios --version', { stdio: 'pipe' });
-    return 'aios';
+    execSync('aiox --version', { stdio: 'pipe' });
+    return 'aiox';
   } catch {
     return null;
   }
 }
 
-function delegateToAios(subcommand) {
-  const aios = findAiosCli();
-  if (!aios) {
-    console.error('aios-core CLI not found.');
-    console.error('Install it first: npm install aios-core');
+function delegateToAiox(subcommand) {
+  const aiox = findAioxCli();
+  if (!aiox) {
+    console.error('aiox-core CLI not found.');
+    console.error('Install it first: npm install aiox-core');
     process.exit(1);
   }
 
   const spawnArgs = ['pro', subcommand, ...args.slice(1)];
-  const result = spawnSync(aios, spawnArgs, { stdio: 'inherit' });
+  const result = spawnSync(aiox, spawnArgs, { stdio: 'inherit' });
   process.exit(result.status ?? 0);
 }
 
@@ -104,7 +104,7 @@ function runProWizard(key) {
     proSetup = require('../../installer/src/wizard/pro-setup');
   } catch {
     console.error('Pro wizard module not found.');
-    console.error('Ensure aios-core installer is available.\n');
+    console.error('Ensure aiox-core installer is available.\n');
     process.exit(1);
   }
 
@@ -127,10 +127,10 @@ function runProWizard(key) {
 
 function showHelp() {
   console.log(`
-aios-pro v${VERSION} — AIOS Pro CLI
+aiox-pro v${VERSION} — AIOX Pro CLI
 
 Usage:
-  npx aios-pro <command> [options]
+  npx aiox-pro <command> [options]
 
 Commands:
   install              Install ${PRO_PACKAGE} in the current project
@@ -146,12 +146,12 @@ Commands:
   help                 Show this help message
 
 Examples:
-  npx aios-pro install
-  npx aios-pro setup
-  npx aios-pro wizard --key PRO-XXXX-XXXX-XXXX-XXXX
-  npx aios-pro activate --key PRO-XXXX-XXXX-XXXX-XXXX
-  npx aios-pro status
-  npx aios-pro recover
+  npx aiox-pro install
+  npx aiox-pro setup
+  npx aiox-pro wizard --key PRO-XXXX-XXXX-XXXX-XXXX
+  npx aiox-pro activate --key PRO-XXXX-XXXX-XXXX-XXXX
+  npx aiox-pro status
+  npx aiox-pro recover
 
 Documentation: https://synkra.ai/pro/docs
 `);
@@ -169,8 +169,8 @@ function installPro() {
 
   console.log(`\n✅ ${PRO_PACKAGE} installed successfully!\n`);
   console.log('Next steps:');
-  console.log('  npx aios-pro activate --key PRO-XXXX-XXXX-XXXX-XXXX');
-  console.log('  npx aios-pro status');
+  console.log('  npx aiox-pro activate --key PRO-XXXX-XXXX-XXXX-XXXX');
+  console.log('  npx aiox-pro status');
   console.log('');
 }
 
@@ -182,7 +182,7 @@ if (!command || command === 'help' || command === '--help' || command === '-h') 
 }
 
 if (command === '--version' || command === '-v') {
-  console.log(`aios-pro v${VERSION}`);
+  console.log(`aiox-pro v${VERSION}`);
   process.exit(0);
 }
 
@@ -220,10 +220,10 @@ switch (command) {
   case 'validate':
     if (!isProInstalled()) {
       console.error(`${PRO_PACKAGE} is not installed.`);
-      console.error('Run first: npx aios-pro install\n');
+      console.error('Run first: npx aiox-pro install\n');
       process.exit(1);
     }
-    delegateToAios(command);
+    delegateToAiox(command);
     break;
 
   default:

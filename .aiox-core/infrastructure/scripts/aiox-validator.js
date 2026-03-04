@@ -1,5 +1,5 @@
 /**
- * AIOS-FullStack Validation System
+ * AIOX-FullStack Validation System
  *
  * Provides multi-layer validation:
  * - ESLint code quality
@@ -201,7 +201,7 @@ async function validate(options = {}) {
     storyPath = null,
   } = options;
 
-  printHeader(`AIOS-FullStack Validation: ${type}`);
+  printHeader(`AIOX-FullStack Validation: ${type}`);
 
   const results = {
     success: true,

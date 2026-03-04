@@ -864,22 +864,22 @@ flowchart TD
 
 | 文件 | 位置 |
 |------|------|
-| 工作流定义 | `.aios-core/development/workflows/brownfield-discovery.yaml` |
-| 任务：brownfield-create-epic | `.aios-core/development/tasks/brownfield-create-epic.md` |
-| 任务：brownfield-create-story | `.aios-core/development/tasks/brownfield-create-story.md` |
-| 任务：db-schema-audit | `.aios-core/development/tasks/db-schema-audit.md` |
-| 任务：security-audit | `.aios-core/development/tasks/security-audit.md` |
+| 工作流定义 | `.aiox-core/development/workflows/brownfield-discovery.yaml` |
+| 任务：brownfield-create-epic | `.aiox-core/development/tasks/brownfield-create-epic.md` |
+| 任务：brownfield-create-story | `.aiox-core/development/tasks/brownfield-create-story.md` |
+| 任务：db-schema-audit | `.aiox-core/development/tasks/db-schema-audit.md` |
+| 任务：security-audit | `.aiox-core/development/tasks/security-audit.md` |
 
 ### 代理
 
 | 代理 | 位置 |
 |------|------|
-| @architect | `.aios-core/development/agents/architect.md` |
-| @data-engineer | `.aios-core/development/agents/data-engineer.md` |
-| @ux-design-expert | `.aios-core/development/agents/ux-design-expert.md` |
-| @qa | `.aios-core/development/agents/qa.md` |
-| @analyst | `.aios-core/development/agents/analyst.md` |
-| @pm | `.aios-core/development/agents/pm.md` |
+| @architect | `.aiox-core/development/agents/architect.md` |
+| @data-engineer | `.aiox-core/development/agents/data-engineer.md` |
+| @ux-design-expert | `.aiox-core/development/agents/ux-design-expert.md` |
+| @qa | `.aiox-core/development/agents/qa.md` |
+| @analyst | `.aiox-core/development/agents/analyst.md` |
+| @pm | `.aiox-core/development/agents/pm.md` |
 
 ---
 

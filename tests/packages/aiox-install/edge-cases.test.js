@@ -45,17 +45,17 @@ const { execa, execaSync } = require('execa');
 const {
   InstallLogger,
   createUserConfigDirect,
-} = require('../../../packages/aios-install/src/installer');
+} = require('../../../packages/aiox-install/src/installer');
 
 const {
   checkAllDependencies,
   checkDockerRunning,
-} = require('../../../packages/aios-install/src/dep-checker');
+} = require('../../../packages/aiox-install/src/dep-checker');
 
 const {
   checkDocker,
   ensureDocker,
-} = require('../../../packages/aios-install/src/edmcp');
+} = require('../../../packages/aiox-install/src/edmcp');
 
 describe('Edge Cases - Task 7.7', () => {
   beforeEach(() => {
@@ -85,7 +85,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', 'aios-core']);
+        await execa('npm', ['install', 'aiox-core']);
       }).rejects.toThrow('ENOTFOUND');
     });
 
@@ -261,7 +261,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', '-g', 'aios-core']);
+        await execa('npm', ['install', '-g', 'aiox-core']);
       }).rejects.toThrow('EACCES');
     });
 
@@ -272,7 +272,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', '-g', 'aios-core']);
+        await execa('npm', ['install', '-g', 'aiox-core']);
       }).rejects.toThrow('root/Administrator');
     });
   });
@@ -304,7 +304,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', 'aios-core']);
+        await execa('npm', ['install', 'aiox-core']);
       }).rejects.toThrow('EROFS');
     });
 
@@ -354,7 +354,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', 'aios-core']);
+        await execa('npm', ['install', 'aiox-core']);
       }).rejects.toThrow('Process terminated');
     });
 
@@ -367,7 +367,7 @@ describe('Edge Cases - Task 7.7', () => {
 
       // When/Then
       await expect(async () => {
-        await execa('npm', ['install', 'aios-core']);
+        await execa('npm', ['install', 'aiox-core']);
       }).rejects.toThrow('User cancelled');
     });
   });

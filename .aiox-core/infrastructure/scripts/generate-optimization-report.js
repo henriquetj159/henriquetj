@@ -3,14 +3,14 @@
 // generate-optimization-report.js — Optimization Report & Recommendations
 // =============================================================================
 // Story: TOK-5 (Tool Usage Analytics Pipeline)
-// Layer: L2 (.aios-core/infrastructure/scripts/)
+// Layer: L2 (.aiox-core/infrastructure/scripts/)
 // Purpose:
 //   - Compare post-optimization metrics against TOK-1.5 baseline (ACs 4-6)
 //   - Generate promote/demote recommendations (ACs 7-9, 13-15)
 //   - Produce summary optimization report (ACs 16-17)
 //
 // Usage:
-//   node .aios-core/infrastructure/scripts/generate-optimization-report.js [options]
+//   node .aiox-core/infrastructure/scripts/generate-optimization-report.js [options]
 //
 // Options:
 //   --dry-run      Show results without writing files
@@ -26,12 +26,12 @@ const yaml = require('js-yaml');
 
 // --- Paths ---
 const ROOT = process.cwd();
-const ANALYTICS_DIR = path.resolve(ROOT, '.aios', 'analytics');
+const ANALYTICS_DIR = path.resolve(ROOT, '.aiox', 'analytics');
 const BASELINE_FILE = path.join(ANALYTICS_DIR, 'token-baseline.json');
 const USAGE_FILE = path.join(ANALYTICS_DIR, 'tool-usage.json');
 const REPORT_FILE = path.join(ANALYTICS_DIR, 'optimization-report.json');
 const RECOMMENDATIONS_FILE = path.join(ANALYTICS_DIR, 'recommendations.yaml');
-const TOOL_REGISTRY_FILE = path.resolve(ROOT, '.aios-core', 'data', 'tool-registry.yaml');
+const TOOL_REGISTRY_FILE = path.resolve(ROOT, '.aiox-core', 'data', 'tool-registry.yaml');
 
 // --- Default Thresholds (overridden by tool-registry.yaml) ---
 const DEFAULT_THRESHOLDS = {
@@ -196,7 +196,7 @@ function compareBaseline(baseline, usageData, registry) {
   const workflowComparison = {};
   for (const [wfName, wfData] of Object.entries(baselineWorkflows)) {
     const baselineMedian = wfData.median?.totalTokens || 0;
-    const baselineOverheadPct = baseline.comparison?.aiosActual?.overheadPercentOfTypicalSession?.[wfName] || 0;
+    const baselineOverheadPct = baseline.comparison?.aioxActual?.overheadPercentOfTypicalSession?.[wfName] || 0;
     const baselineOverheadTokens = Math.round(baselineMedian * baselineOverheadPct / 100);
 
     workflowComparison[wfName] = {

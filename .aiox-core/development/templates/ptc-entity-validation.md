@@ -26,8 +26,8 @@ MCP tools are EXCLUDED. Uses: Bash, grep (via bash), file reads (via bash).
 # PTC-ENTITY-VALIDATION: Batch entity registry scan
 # Usage: Execute as single Bash tool call. Only the final summary enters context.
 
-REGISTRY=".aios-core/data/entity-registry.yaml"
-TOOL_REGISTRY=".aios-core/data/tool-registry.yaml"
+REGISTRY=".aiox-core/data/entity-registry.yaml"
+TOOL_REGISTRY=".aiox-core/data/tool-registry.yaml"
 
 PASS=0
 FAIL=0

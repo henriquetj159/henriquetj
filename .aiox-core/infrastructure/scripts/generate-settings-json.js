@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const CORE_CONFIG_FILE = '.aios-core/core-config.yaml';
+const CORE_CONFIG_FILE = '.aiox-core/core-config.yaml';
 const SETTINGS_FILE = '.claude/settings.json';
 const TOOLS = ['Edit', 'Write'];
 
@@ -139,7 +139,7 @@ function expandSubdirWithExceptions(subdirPath, exceptions, projectRoot) {
 
 /**
  * Expand protected paths according to the specific rules:
- * - .aios-core/core/** gets expanded one level deep
+ * - .aiox-core/core/** gets expanded one level deep
  *   - Subdirs with exceptions inside get expanded further (file-level)
  *   - Order: regular subdirs first (sorted), then root files (sorted),
  *     then exception-expanded subdirs (sorted) at the end
@@ -149,8 +149,8 @@ function expandProtectedPaths(protectedPaths, exceptions, projectRoot) {
   const allPaths = [];
 
   for (const globPath of protectedPaths) {
-    if (globPath === '.aios-core/core/**') {
-      const { dirs, files } = expandOneLevel('.aios-core/core', projectRoot);
+    if (globPath === '.aiox-core/core/**') {
+      const { dirs, files } = expandOneLevel('.aiox-core/core', projectRoot);
 
       // Separate dirs into regular (no exceptions inside) and special (has exceptions)
       const regularDirs = [];
@@ -215,7 +215,7 @@ function generatePermissions(boundary, projectRoot) {
     }
   }
 
-  allow.push('Read(.aios-core/**)');
+  allow.push('Read(.aiox-core/**)');
 
   return { deny, allow };
 }

@@ -6,9 +6,9 @@ const fs = require('fs');
 const os = require('os');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
-const VALIDATOR_PATH = path.join(PROJECT_ROOT, 'scripts', 'validate-aios-core-deps.js');
+const VALIDATOR_PATH = path.join(PROJECT_ROOT, 'scripts', 'validate-aiox-core-deps.js');
 
-describe('validate-aios-core-deps.js (INS-4.12)', () => {
+describe('validate-aiox-core-deps.js (INS-4.12)', () => {
   test('validator script exists', () => {
     expect(fs.existsSync(VALIDATOR_PATH)).toBe(true);
   });
@@ -22,38 +22,38 @@ describe('validate-aios-core-deps.js (INS-4.12)', () => {
     expect(result).toContain('PASS');
   });
 
-  test('.aios-core/package.json includes fast-glob', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+  test('.aiox-core/package.json includes fast-glob', () => {
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     expect(pkg.dependencies).toHaveProperty('fast-glob');
   });
 
-  test('.aios-core/package.json includes fs-extra', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+  test('.aiox-core/package.json includes fs-extra', () => {
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     expect(pkg.dependencies).toHaveProperty('fs-extra');
   });
 
-  test('.aios-core/package.json includes semver', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+  test('.aiox-core/package.json includes semver', () => {
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     expect(pkg.dependencies).toHaveProperty('semver');
   });
 
-  test('.aios-core/package.json includes ajv', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+  test('.aiox-core/package.json includes ajv', () => {
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     expect(pkg.dependencies).toHaveProperty('ajv');
   });
 
-  test('.aios-core/package.json includes tar', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+  test('.aiox-core/package.json includes tar', () => {
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     expect(pkg.dependencies).toHaveProperty('tar');
   });
 
   test('allowlisted packages (eslint, @babel/*) are not in deps', () => {
-    const pkgPath = path.join(PROJECT_ROOT, '.aios-core', 'package.json');
+    const pkgPath = path.join(PROJECT_ROOT, '.aiox-core', 'package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
     const deps = pkg.dependencies || {};
     expect(deps).not.toHaveProperty('eslint');
@@ -70,7 +70,7 @@ describe('validate-publish.js dependency check (INS-4.12)', () => {
       'utf8',
     );
     expect(content).toContain('INS-4.12');
-    expect(content).toContain('validate-aios-core-deps');
+    expect(content).toContain('validate-aiox-core-deps');
   });
 });
 
@@ -79,7 +79,7 @@ describe('wizard NODE_PATH fix (INS-4.12)', () => {
     const wizardPath = path.join(PROJECT_ROOT, 'packages', 'installer', 'src', 'wizard', 'index.js');
     const content = fs.readFileSync(wizardPath, 'utf8');
     expect(content).toContain('NODE_PATH');
-    expect(content).toContain('aiosCoreNodeModules');
+    expect(content).toContain('aioxCoreNodeModules');
   });
 
   test('wizard/index.js guards bootstrap on deps existence', () => {
@@ -90,11 +90,11 @@ describe('wizard NODE_PATH fix (INS-4.12)', () => {
 });
 
 describe('doctor npm-packages check (INS-4.12)', () => {
-  test('doctor check validates .aios-core/node_modules/', () => {
-    const checkPath = path.join(PROJECT_ROOT, '.aios-core', 'core', 'doctor', 'checks', 'npm-packages.js');
+  test('doctor check validates .aiox-core/node_modules/', () => {
+    const checkPath = path.join(PROJECT_ROOT, '.aiox-core', 'core', 'doctor', 'checks', 'npm-packages.js');
     const content = fs.readFileSync(checkPath, 'utf8');
-    expect(content).toContain('aiosCoreNodeModules');
-    expect(content).toContain('.aios-core');
+    expect(content).toContain('aioxCoreNodeModules');
+    expect(content).toContain('.aiox-core');
     expect(content).toContain('INS-4.12');
   });
 });

@@ -1,9 +1,9 @@
-# 📘 AIOS v2.2 - Livro de Ouro (Future Vision)
+# 📘 AIOX v2.2 - Livro de Ouro (Future Vision)
 
 **Version:** 2.2.0-with-memory-layer  
 **Date:** June 2026 (as-if-implemented)  
 **Status:** Production Release  
-**Base Documentation:** `AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md` + this document
+**Base Documentation:** `AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` + this document
 
 ---
 
@@ -12,8 +12,8 @@
 This is a **delta document** highlighting **ONLY what changed in v2.2** compared to v4.0.4.
 
 For complete content:
-- ✅ **`AIOS-LIVRO-DE-OURO.md`** (v2.0 base)
-- ✅ **`AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md`** (v4.0.4 changes)
+- ✅ **`AIOX-LIVRO-DE-OURO.md`** (v2.0 base)
+- ✅ **`AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md`** (v4.0.4 changes)
 - ✅ **This document** (v2.2 changes ONLY)
 
 **Combined reading:** v2.0 base + v4.0.4 delta + v2.2 delta = Complete v2.2 understanding
@@ -612,7 +612,7 @@ Time to create: 6-12 months
 **Usage:**
 ```yaml
 # Activate clone for review
-$ aios clone activate brad-frost
+$ aiox clone activate brad-frost
 
 # Use clone in workflow
 task: validateDesignSystem()
@@ -761,9 +761,9 @@ Features:
 1. ✅ Read this summary (done!)
 2. → Review [Memory Layer Architecture](#memory-layer)
 3. → Review [Agent Lightning Details](#agent-lightning)
-4. → Upgrade: `npx @SynkraAI/aios upgrade v2.2`
-5. → Configure: `aios memory setup`
-6. → Enable: `aios lightning enable`
+4. → Upgrade: `npx @SynkraAI/aiox upgrade v2.2`
+5. → Configure: `aiox memory setup`
+6. → Enable: `aiox lightning enable`
 
 ### If You Want Memory Layer Deep Dive
 
@@ -771,14 +771,14 @@ Features:
 2. → Read [Retrieval Strategy](#retrieval)
 3. → Read [RecallM Paper](https://arxiv.org/abs/2307.02738)
 4. → Read [Supermemory Docs](https://github.com/supermemoryai/supermemory)
-5. → Experiment: `aios memory query "show me past auth implementations"`
+5. → Experiment: `aiox memory query "show me past auth implementations"`
 
 ### If You Want to Try Clones
 
 1. → Browse [Clones Marketplace](#clones-marketplace)
 2. → Read [Clone Comparison](#clone-comparison)
-3. → Trial: `aios clone trial brad-frost --days 7`
-4. → Subscribe: `aios clone subscribe brad-frost`
+3. → Trial: `aiox clone trial brad-frost --days 7`
+4. → Subscribe: `aiox clone subscribe brad-frost`
 
 ---
 
@@ -795,8 +795,8 @@ Features:
 ### Complete Project Structure
 
 ```
-aios-core/                        # Root project
-├── .aios-core/                        # Modular Architecture
+aiox-core/                        # Root project
+├── .aiox-core/                        # Modular Architecture
 │   │
 │   ├── core/                          # Core Framework Module
 │   │   ├── config/
@@ -909,7 +909,7 @@ aios-core/                        # Root project
 │   │
 │   ├── infrastructure/                # Infrastructure Module
 │   │   ├── cli/                       # CLI system
-│   │   │   ├── aios.js
+│   │   │   ├── aiox.js
 │   │   │   ├── commands/
 │   │   │   │   ├── init.js
 │   │   │   │   ├── migrate.js
@@ -968,10 +968,10 @@ aios-core/                        # Root project
 │   │       └── ...
 │   │
 │   └── docs/                          # Framework documentation
-│       ├── AIOS-FRAMEWORK-MASTER.md
-│       ├── AIOS-LIVRO-DE-OURO.md
-│       ├── AIOS-LIVRO-DE-OURO-V2.1.md
-│       ├── AIOS-LIVRO-DE-OURO-V2.2.md # ⭐ NEW
+│       ├── AIOX-FRAMEWORK-MASTER.md
+│       ├── AIOX-LIVRO-DE-OURO.md
+│       ├── AIOX-LIVRO-DE-OURO-V2.1.md
+│       ├── AIOX-LIVRO-DE-OURO-V2.2.md # ⭐ NEW
 │       ├── EXECUTOR-DECISION-TREE.md
 │       ├── TASK-FORMAT-SPECIFICATION-V1.md
 │       └── ...
@@ -1043,7 +1043,7 @@ aios-core/                        # Root project
 │       └── executor-selection.json    # Executor choice rules
 │
 ├── bin/
-│   └── aios.js                        # Main CLI entry
+│   └── aiox.js                        # Main CLI entry
 │
 ├── .ai/                               # AI session artifacts
 │   ├── decision-logs/
@@ -1097,7 +1097,7 @@ aios-core/                        # Root project
 
 **1. Memory Layer:**
 ```
-NEW: .aios-core/core/memory/
+NEW: .aiox-core/core/memory/
   - memory-manager.js (orchestration)
   - storage/ (vector, structured, cache, graph)
   - retrieval/ (semantic search, temporal filtering)
@@ -1113,7 +1113,7 @@ Impact: Agents remember past interactions, learn from feedback
 
 **2. Agent Lightning:**
 ```
-NEW: .aios-core/core/orchestration/agent-lightning.js
+NEW: .aiox-core/core/orchestration/agent-lightning.js
   - RL-based workflow optimization
   - Dynamic step selection
   - Executor optimization
@@ -1124,17 +1124,17 @@ NEW: .lightning/ (RL data)
   - metrics/ (execution history)
   - policies/ (learned rules)
 
-NEW: .aios-core/infrastructure/cli/commands/lightning.js
-  - aios lightning enable
-  - aios lightning status
-  - aios lightning reset
+NEW: .aiox-core/infrastructure/cli/commands/lightning.js
+  - aiox lightning enable
+  - aiox lightning status
+  - aiox lightning reset
 
 Impact: 30% faster execution, 40% cost reduction
 ```
 
 **3. Team Collaboration:**
 ```
-ENHANCED: .aios-core/core/memory/types/shared.js
+ENHANCED: .aiox-core/core/memory/types/shared.js
   - Team-wide memory sharing
   - Real-time context sync
   - Collaborative workflows
@@ -1149,31 +1149,31 @@ Impact: Zero handoff delay, 95% team alignment
 
 **4. Advanced Analytics:**
 ```
-NEW: .aios-core/infrastructure/analytics/
+NEW: .aiox-core/infrastructure/analytics/
   - dashboard-server.js (web dashboard)
   - metrics-collector.js (data collection)
   - reports/ (velocity, quality, cost, patterns)
   - visualizations/ (charts & graphs)
 
-NEW: .aios-core/infrastructure/cli/commands/analytics.js
-  - aios analytics start (launch dashboard)
-  - aios analytics report (generate reports)
+NEW: .aiox-core/infrastructure/cli/commands/analytics.js
+  - aiox analytics start (launch dashboard)
+  - aiox analytics report (generate reports)
 
 Impact: Deep insights, data-driven decisions
 ```
 
 **5. Clones Marketplace:**
 ```
-NEW: .aios-core/infrastructure/integrations/clones-marketplace/
+NEW: .aiox-core/infrastructure/integrations/clones-marketplace/
   - clone-loader.js (load expert clones)
   - dna-mental-engine.js (cognitive emulation)
   - available-clones/ (10+ expert clones)
 
-NEW: .aios-core/infrastructure/cli/commands/clones.js
-  - aios clone list (browse clones)
-  - aios clone trial <name> --days 7
-  - aios clone subscribe <name>
-  - aios clone activate <name>
+NEW: .aiox-core/infrastructure/cli/commands/clones.js
+  - aiox clone list (browse clones)
+  - aiox clone trial <name> --days 7
+  - aiox clone subscribe <name>
+  - aiox clone activate <name>
 
 Available Clones:
   - Pedro Valério (Systems Architecture)
@@ -1187,7 +1187,7 @@ Impact: Expert-level validation on demand
 
 **6. Learning Quality Gates:**
 ```
-ENHANCED: .aios-core/core/validation/learning-feedback-loop.js
+ENHANCED: .aiox-core/core/validation/learning-feedback-loop.js
   - Quality gates learn from results
   - False positive reduction
   - Accuracy improvement over time
@@ -1255,33 +1255,33 @@ Impact: Never lose institutional knowledge
 
 ```bash
 # Memory management
-$ aios memory query "show me past auth implementations"
-$ aios memory stats
-$ aios memory clear --type short-term
-$ aios memory backup
-$ aios memory restore
+$ aiox memory query "show me past auth implementations"
+$ aiox memory stats
+$ aiox memory clear --type short-term
+$ aiox memory backup
+$ aiox memory restore
 
 # Agent Lightning
-$ aios lightning enable
-$ aios lightning disable
-$ aios lightning status
-$ aios lightning reset
-$ aios lightning optimize --workflow greenfield-fullstack
+$ aiox lightning enable
+$ aiox lightning disable
+$ aiox lightning status
+$ aiox lightning reset
+$ aiox lightning optimize --workflow greenfield-fullstack
 
 # Analytics
-$ aios analytics start           # Launch dashboard (http://localhost:3000)
-$ aios analytics report velocity # Generate velocity report
-$ aios analytics report quality  # Generate quality report
-$ aios analytics report cost     # Generate cost report
-$ aios analytics export --format csv
+$ aiox analytics start           # Launch dashboard (http://localhost:3000)
+$ aiox analytics report velocity # Generate velocity report
+$ aiox analytics report quality  # Generate quality report
+$ aiox analytics report cost     # Generate cost report
+$ aiox analytics export --format csv
 
 # Clones
-$ aios clone list                # Browse available clones
-$ aios clone info brad-frost     # Clone details
-$ aios clone trial brad-frost --days 7
-$ aios clone subscribe brad-frost
-$ aios clone activate brad-frost
-$ aios clone deactivate brad-frost
+$ aiox clone list                # Browse available clones
+$ aiox clone info brad-frost     # Clone details
+$ aiox clone trial brad-frost --days 7
+$ aiox clone subscribe brad-frost
+$ aiox clone activate brad-frost
+$ aiox clone deactivate brad-frost
 ```
 
 ---
@@ -1308,9 +1308,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=aios_memory
-      - POSTGRES_USER=aios
-      - POSTGRES_PASSWORD=aios_dev
+      - POSTGRES_DB=aiox_memory
+      - POSTGRES_USER=aiox
+      - POSTGRES_PASSWORD=aiox_dev
       
   redis:
     image: redis:7-alpine
@@ -1321,13 +1321,13 @@ services:
     command: redis-server --appendonly yes
     
   analytics:
-    build: .aios-core/infrastructure/analytics/
+    build: .aiox-core/infrastructure/analytics/
     ports:
       - "3000:3000"
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://aios:aios_dev@postgres:5432/aios_memory
+      - DATABASE_URL=postgresql://aiox:aiox_dev@postgres:5432/aiox_memory
       
 volumes:
   weaviate_data:

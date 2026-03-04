@@ -1,6 +1,6 @@
 # ============================================
-# AIOS User Configuration (L5)
-# Location: ~/.aios/user-config.yaml
+# AIOX User Configuration (L5)
+# Location: ~/.aiox/user-config.yaml
 # Scope: Cross-project, per-user preferences
 # Priority: Highest (overrides L1-L4)
 # ============================================

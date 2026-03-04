@@ -43,7 +43,7 @@ async function generateGreeting(agentId) {
   
   try {
     // Load core config
-    const coreConfigPath = path.join(process.cwd(), '.aios-core', 'core-config.yaml');
+    const coreConfigPath = path.join(process.cwd(), '.aiox-core', 'core-config.yaml');
     const coreConfigContent = await fs.readFile(coreConfigPath, 'utf8');
     const coreConfig = yaml.parse(coreConfigContent);
     

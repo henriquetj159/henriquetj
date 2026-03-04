@@ -50,16 +50,16 @@ const colors = {
  * @returns {object} - ideSync configuration
  */
 function loadConfig(projectRoot) {
-  const configPath = path.join(projectRoot, '.aios-core', 'core-config.yaml');
+  const configPath = path.join(projectRoot, '.aiox-core', 'core-config.yaml');
 
   // Default configuration
   const defaultConfig = {
     enabled: true,
-    source: '.aios-core/development/agents',
+    source: '.aiox-core/development/agents',
     targets: {
       'claude-code': {
         enabled: true,
-        path: '.claude/commands/AIOS/agents',
+        path: '.claude/commands/AIOX/agents',
         format: 'full-markdown-yaml',
       },
       codex: {
@@ -69,7 +69,7 @@ function loadConfig(projectRoot) {
       },
       gemini: {
         enabled: true,
-        path: '.gemini/rules/AIOS/agents',
+        path: '.gemini/rules/AIOX/agents',
         format: 'full-markdown-yaml',
       },
       'github-copilot': {
@@ -89,8 +89,8 @@ function loadConfig(projectRoot) {
       },
     },
     redirects: {
-      'aios-developer': 'aios-master',
-      'aios-orchestrator': 'aios-master',
+      'aiox-developer': 'aiox-master',
+      'aiox-orchestrator': 'aiox-master',
       'db-sage': 'data-engineer',
       'github-devops': 'devops',
     },
@@ -467,7 +467,7 @@ function parseArgs() {
  */
 function showHelp() {
   console.log(`
-${colors.bright}IDE Sync${colors.reset} - Sync AIOS agents to IDE command files
+${colors.bright}IDE Sync${colors.reset} - Sync AIOX agents to IDE command files
 
 ${colors.bright}Usage:${colors.reset}
   node ide-sync/index.js <command> [options]

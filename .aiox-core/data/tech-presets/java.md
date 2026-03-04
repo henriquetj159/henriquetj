@@ -458,7 +458,7 @@ public class OrdersController {
 
 ---
 
-## Integration with AIOS
+## Integration with AIOX
 
 ### Recommended Workflow
 
@@ -466,7 +466,7 @@ public class OrdersController {
 2. `@dev` implementa por camadas (`domain`, `application`, `infrastructure`)
 3. `@qa` valida transacoes, contratos e regressao
 
-### AIOS Commands
+### AIOX Commands
 
 ```bash
 @dev "Follow the java preset patterns for this service"
@@ -496,4 +496,4 @@ public class OrdersController {
 
 ---
 
-_AIOS Tech Preset - Synkra AIOS Framework_
+_AIOX Tech Preset - Synkra AIOX Framework_

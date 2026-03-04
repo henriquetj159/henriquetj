@@ -31,7 +31,7 @@ This task provides instructions for validating documentation against checklists.
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: executeChecklist()
@@ -137,11 +137,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -152,7 +152,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -212,7 +212,7 @@ updated_at: 2025-11-17
 
 ## Available Checklists
 
-If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .aios-core/checklists folder to select the appropriate one to run.
+If the user asks or does not specify a specific checklist, list the checklists available to the agent persona. If the task is being run not with a specific agent, tell the user to check the .aiox-core/checklists folder to select the appropriate one to run.
 
 ## Instructions
 
@@ -221,10 +221,10 @@ If the user asks or does not specify a specific checklist, list the checklists a
    - If user or the task being run provides a checklist name:
      - Try fuzzy matching (e.g. "architecture checklist" -> "architect-checklist")
      - If multiple matches found, ask user to clarify
-     - Load the appropriate checklist from .aios-core/product/checklists/
+     - Load the appropriate checklist from .aiox-core/product/checklists/
    - If no checklist specified:
      - Ask the user which checklist they want to use
-     - Present the available options from the files in the .aios-core/product/checklists/ folder
+     - Present the available options from the files in the .aiox-core/product/checklists/ folder
    - Confirm if they want to work through the checklist:
      - Section by section (interactive mode - very time consuming)
      - All at once (YOLO mode - recommended for checklists, there will be a summary of sections at the end to discuss)

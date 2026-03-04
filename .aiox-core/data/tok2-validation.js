@@ -44,16 +44,16 @@ function run() {
   console.log('--- Capability Detection (AC 1-3) ---');
 
   check(1, 'Runtime capability detection module exists', () => {
-    return fs.existsSync(path.join(PROJECT_ROOT, '.aios-core', 'data', 'capability-detection.js'));
+    return fs.existsSync(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'capability-detection.js'));
   });
 
   check(2, 'Detection runs at session init (module is importable)', () => {
-    const mod = require(path.join(PROJECT_ROOT, '.aios-core', 'data', 'capability-detection.js'));
+    const mod = require(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'capability-detection.js'));
     return typeof mod.run === 'function';
   });
 
-  check(3, 'Results stored in .aios/runtime-capabilities.json', () => {
-    const capPath = path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json');
+  check(3, 'Results stored in .aiox/runtime-capabilities.json', () => {
+    const capPath = path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json');
     const caps = JSON.parse(fs.readFileSync(capPath, 'utf8'));
     return caps.version && caps.runtime && caps.mcpServers && caps.strategy;
   });
@@ -62,7 +62,7 @@ function run() {
   console.log('\n--- Deferred Loading (AC 4-7) ---');
 
   check(4, 'Tier 3 tools deferred via best available strategy', () => {
-    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json'), 'utf8'));
+    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json'), 'utf8'));
     return caps.strategy.primary === 'tool-search-auto' ||
            caps.strategy.primary === 'mcp-discipline' ||
            caps.strategy.primary === 'claudemd-guidance';
@@ -76,7 +76,7 @@ function run() {
   });
 
   check(7, 'Search accuracy validated (7/7 test queries pass)', () => {
-    const { validate } = require(path.join(PROJECT_ROOT, '.aios-core', 'data', 'tool-search-validation.js'));
+    const { validate } = require(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'tool-search-validation.js'));
     return validate();
   });
 
@@ -84,16 +84,16 @@ function run() {
   console.log('\n--- Fallback Strategies (AC 8-12) ---');
 
   check(8, 'MCP discipline fallback module exists', () => {
-    return fs.existsSync(path.join(PROJECT_ROOT, '.aios-core', 'data', 'mcp-discipline.js'));
+    return fs.existsSync(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'mcp-discipline.js'));
   });
 
   check(9, 'Essential MCP servers defined in tool-registry.yaml', () => {
-    const registry = fs.readFileSync(path.join(PROJECT_ROOT, '.aios-core', 'data', 'tool-registry.yaml'), 'utf8');
+    const registry = fs.readFileSync(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'tool-registry.yaml'), 'utf8');
     return registry.includes('essential: true') && registry.includes('essential: false');
   });
 
   check(10, 'Non-essential servers can be re-enabled per-session', () => {
-    const mod = fs.readFileSync(path.join(PROJECT_ROOT, '.aios-core', 'data', 'mcp-discipline.js'), 'utf8');
+    const mod = fs.readFileSync(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'mcp-discipline.js'), 'utf8');
     return mod.includes('--enable') && mod.includes('--restore');
   });
 
@@ -112,20 +112,20 @@ function run() {
   console.log('\n--- Scope Separation (AC 13-15) ---');
 
   check(13, 'ACs separated by scope (project vs global)', () => {
-    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json'), 'utf8'));
+    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json'), 'utf8'));
     const hasProject = caps.mcpServers.project.length > 0;
     const hasGlobal = caps.mcpServers.global.length > 0;
     return hasProject && hasGlobal;
   });
 
   check(14, 'Capability detection validates against actual MCPs', () => {
-    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json'), 'utf8'));
+    const caps = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json'), 'utf8'));
     const projectNames = caps.mcpServers.project.map(s => s.name);
     return projectNames.includes('nogic') && projectNames.includes('code-graph');
   });
 
   check(15, 'Fallback for environments WITHOUT Docker Gateway', () => {
-    const mod = require(path.join(PROJECT_ROOT, '.aios-core', 'data', 'capability-detection.js'));
+    const mod = require(path.join(PROJECT_ROOT, '.aiox-core', 'data', 'capability-detection.js'));
     // Strategy determination handles no-docker case
     return typeof mod.detectDockerGateway === 'function';
   });

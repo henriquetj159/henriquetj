@@ -6,7 +6,7 @@
  * Integrates orchestrator with dashboard for real-time monitoring.
  *
  * Features:
- * - AC1: Updates `.aios/dashboard/status.json`
+ * - AC1: Updates `.aiox/dashboard/status.json`
  * - AC2: Status includes: currentEpic, progress, estimatedTime
  * - AC3: Event emitter for real-time updates
  * - AC4: getProgressPercentage() method for UI
@@ -63,9 +63,9 @@ class DashboardIntegration extends EventEmitter {
     this.updateInterval = options.updateInterval ?? 5000;
 
     // Paths
-    this.dashboardDir = path.join(this.projectRoot, '.aios', 'dashboard');
+    this.dashboardDir = path.join(this.projectRoot, '.aiox', 'dashboard');
     this.statusPath = path.join(this.dashboardDir, 'status.json');
-    this.logsDir = path.join(this.projectRoot, '.aios', 'logs');
+    this.logsDir = path.join(this.projectRoot, '.aiox', 'logs');
 
     // State
     this.history = [];

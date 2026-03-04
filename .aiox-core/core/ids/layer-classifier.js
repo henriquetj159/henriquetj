@@ -5,9 +5,9 @@
  * Used by: populate-entity-registry.js, registry-updater.js
  *
  * Layer Model:
- *   L1 (Framework Core)      — .aios-core/core/, bin/, constitution.md
- *   L2 (Framework Templates)  — .aios-core/development/, infrastructure/, product/
- *   L3 (Project Config)       — .aios-core/data/, MEMORY.md, .claude/, *-config.yaml
+ *   L1 (Framework Core)      — .aiox-core/core/, bin/, constitution.md
+ *   L2 (Framework Templates)  — .aiox-core/development/, infrastructure/, product/
+ *   L3 (Project Config)       — .aiox-core/data/, MEMORY.md, .claude/, *-config.yaml
  *   L4 (Project Runtime)      — docs/, tests/, packages/, everything else (fallback)
  *
  * Rule ordering: most specific first. First match wins.
@@ -18,21 +18,21 @@
 
 const LAYER_RULES = [
   // --- L1: Framework Core ---
-  { layer: 'L1', test: (p) => p.startsWith('.aios-core/core/') },
+  { layer: 'L1', test: (p) => p.startsWith('.aiox-core/core/') },
   { layer: 'L1', test: (p) => p.startsWith('bin/') },
-  { layer: 'L1', test: (p) => p === '.aios-core/constitution.md' },
+  { layer: 'L1', test: (p) => p === '.aiox-core/constitution.md' },
 
   // --- L3: Project Config (before L2 to catch MEMORY.md inside agents/) ---
-  { layer: 'L3', test: (p) => p.startsWith('.aios-core/data/') },
+  { layer: 'L3', test: (p) => p.startsWith('.aiox-core/data/') },
   { layer: 'L3', test: (p) => p.endsWith('/MEMORY.md') || p === 'MEMORY.md' },
   { layer: 'L3', test: (p) => p.startsWith('.claude/') },
   { layer: 'L3', test: (p) => p === 'core-config.yaml' || p === 'project-config.yaml' },
   { layer: 'L3', test: (p) => p.endsWith('-config.yaml') && !p.includes('/') },
 
   // --- L2: Framework Templates ---
-  { layer: 'L2', test: (p) => p.startsWith('.aios-core/development/') },
-  { layer: 'L2', test: (p) => p.startsWith('.aios-core/infrastructure/') },
-  { layer: 'L2', test: (p) => p.startsWith('.aios-core/product/') },
+  { layer: 'L2', test: (p) => p.startsWith('.aiox-core/development/') },
+  { layer: 'L2', test: (p) => p.startsWith('.aiox-core/infrastructure/') },
+  { layer: 'L2', test: (p) => p.startsWith('.aiox-core/product/') },
 
   // --- L4: Project Runtime (fallback — safest default for unknown files) ---
 ];

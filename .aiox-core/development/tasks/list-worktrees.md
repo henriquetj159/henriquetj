@@ -13,7 +13,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: listWorktrees()
@@ -63,7 +63,7 @@ pre-conditions:
   - [ ] WorktreeManager is available
     tipo: pre-condition
     blocker: true
-    validação: Script exists at .aios-core/infrastructure/scripts/worktree-manager.js
+    validação: Script exists at .aiox-core/infrastructure/scripts/worktree-manager.js
     error_message: "WorktreeManager not found."
 ```
 
@@ -71,11 +71,11 @@ pre-conditions:
 
 ## Description
 
-Lists all AIOS-managed worktrees with their current status, uncommitted changes, and age. Provides visibility into parallel development activities.
+Lists all AIOX-managed worktrees with their current status, uncommitted changes, and age. Provides visibility into parallel development activities.
 
 **Features:**
 
-- Shows all active worktrees managed by AIOS
+- Shows all active worktrees managed by AIOX
 - Displays uncommitted changes count
 - Highlights stale worktrees (> 30 days)
 - Multiple output formats (table, json, minimal)
@@ -121,10 +121,10 @@ git rev-parse --is-inside-work-tree 2>/dev/null
 
 ### Step 2: Load Worktrees
 
-**Action:** Get all AIOS-managed worktrees
+**Action:** Get all AIOX-managed worktrees
 
 ```javascript
-const WorktreeManager = require('./.aios-core/infrastructure/scripts/worktree-manager.js');
+const WorktreeManager = require('./.aiox-core/infrastructure/scripts/worktree-manager.js');
 const manager = new WorktreeManager();
 const worktrees = await manager.list();
 ```
@@ -185,7 +185,7 @@ console.log(JSON.stringify(filtered, null, 2));
 [
   {
     "storyId": "STORY-42",
-    "path": "/abs/path/.aios/worktrees/STORY-42",
+    "path": "/abs/path/.aiox/worktrees/STORY-42",
     "branch": "auto-claude/STORY-42",
     "createdAt": "2026-01-28T10:00:00.000Z",
     "uncommittedChanges": 3,
@@ -230,7 +230,7 @@ Total: 3  │  Active: 2  │  Stale: 1  │  Limit: 10
 ```
 📁 No Active Worktrees
 
-No AIOS-managed worktrees found.
+No AIOX-managed worktrees found.
 
 Create one with:
   *create-worktree {storyId}
@@ -289,10 +289,10 @@ Formatted list based on `format` parameter.
 
 ```
 ❌ WorktreeManager not found.
-   Ensure AIOS is properly installed.
+   Ensure AIOX is properly installed.
 ```
 
-**Resolution:** Check AIOS installation.
+**Resolution:** Check AIOX installation.
 
 ---
 
@@ -308,7 +308,7 @@ Formatted list based on `format` parameter.
 
 ### Scripts
 
-- `.aios-core/infrastructure/scripts/worktree-manager.js`
+- `.aiox-core/infrastructure/scripts/worktree-manager.js`
 
 ### Git Commands Used
 

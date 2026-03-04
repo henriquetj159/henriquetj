@@ -29,7 +29,7 @@ handoff:
 
   # Files created or modified by outgoing agent (max 10)
   files_modified:
-    - ""                  # e.g., ".aios-core/development/templates/agent-handoff-tmpl.yaml"
+    - ""                  # e.g., ".aiox-core/development/templates/agent-handoff-tmpl.yaml"
     # - ""
 
   # Active blockers or issues (max 3)

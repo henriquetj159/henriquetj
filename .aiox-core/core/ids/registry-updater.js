@@ -21,9 +21,9 @@ const {
 const { enrichRegistryEntry } = require(path.resolve(__dirname, '../code-intel/helpers/creation-helper'));
 const { classifyLayer } = require(path.resolve(__dirname, 'layer-classifier'));
 
-const LOCK_FILE = path.resolve(REPO_ROOT, '.aios-core/data/.entity-registry.lock');
-const BACKUP_DIR = path.resolve(REPO_ROOT, '.aios-core/data/registry-backups');
-const AUDIT_LOG_PATH = path.resolve(REPO_ROOT, '.aios-core/data/registry-update-log.jsonl');
+const LOCK_FILE = path.resolve(REPO_ROOT, '.aiox-core/data/.entity-registry.lock');
+const BACKUP_DIR = path.resolve(REPO_ROOT, '.aiox-core/data/registry-backups');
+const AUDIT_LOG_PATH = path.resolve(REPO_ROOT, '.aiox-core/data/registry-update-log.jsonl');
 const MAX_AUDIT_LOG_SIZE = 5 * 1024 * 1024; // 5MB
 const DEBOUNCE_MS = 100;
 const LOCK_TIMEOUT_MS = 5000;

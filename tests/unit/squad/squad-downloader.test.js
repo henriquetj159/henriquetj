@@ -23,7 +23,7 @@ const {
   REGISTRY_URL,
   GITHUB_API_BASE,
   DEFAULT_SQUADS_PATH,
-} = require('../../../.aios-core/development/scripts/squad');
+} = require('../../../.aiox-core/development/scripts/squad');
 
 // Mock https module
 jest.mock('https', () => ({
@@ -138,7 +138,7 @@ describe('SquadDownloader', () => {
   describe('Constants', () => {
     it('should export REGISTRY_URL', () => {
       expect(REGISTRY_URL).toBeDefined();
-      expect(REGISTRY_URL).toContain('aios-squads');
+      expect(REGISTRY_URL).toContain('aiox-squads');
       expect(REGISTRY_URL).toContain('registry.json');
     });
 

@@ -1,9 +1,9 @@
 /**
- * AIOS Directory Check
+ * AIOX Directory Check
  *
- * Verifies .aios/ directory structure and permissions.
+ * Verifies .aiox/ directory structure and permissions.
  *
- * @module aios-core/health-check/checks/project/aios-directory
+ * @module aiox-core/health-check/checks/project/aiox-directory
  * @version 1.0.0
  * @story HCS-2 - Health Check System Implementation
  */
@@ -13,33 +13,33 @@ const path = require('path');
 const { BaseCheck, CheckSeverity, CheckDomain } = require('../../base-check');
 
 /**
- * Expected .aios directory structure
+ * Expected .aiox directory structure
  */
 const EXPECTED_STRUCTURE = [
-  { path: '.aios', type: 'directory', required: false },
-  { path: '.aios/config.yaml', type: 'file', required: false },
-  { path: '.aios/reports', type: 'directory', required: false },
-  { path: '.aios/backups', type: 'directory', required: false },
+  { path: '.aiox', type: 'directory', required: false },
+  { path: '.aiox/config.yaml', type: 'file', required: false },
+  { path: '.aiox/reports', type: 'directory', required: false },
+  { path: '.aiox/backups', type: 'directory', required: false },
 ];
 
 /**
- * AIOS directory structure check
+ * AIOX directory structure check
  *
- * @class AiosDirectoryCheck
+ * @class AioxDirectoryCheck
  * @extends BaseCheck
  */
-class AiosDirectoryCheck extends BaseCheck {
+class AioxDirectoryCheck extends BaseCheck {
   constructor() {
     super({
-      id: 'project.aios-directory',
-      name: 'AIOS Directory Structure',
-      description: 'Verifies .aios/ directory structure',
+      id: 'project.aiox-directory',
+      name: 'AIOX Directory Structure',
+      description: 'Verifies .aiox/ directory structure',
       domain: CheckDomain.PROJECT,
       severity: CheckSeverity.MEDIUM,
       timeout: 2000,
       cacheable: true,
       healingTier: 1, // Can auto-create directories
-      tags: ['aios', 'directory', 'structure'],
+      tags: ['aiox', 'directory', 'structure'],
     });
   }
 
@@ -50,31 +50,31 @@ class AiosDirectoryCheck extends BaseCheck {
    */
   async execute(context) {
     const projectRoot = context.projectRoot || process.cwd();
-    const aiosPath = path.join(projectRoot, '.aios');
+    const aioxPath = path.join(projectRoot, '.aiox');
     const issues = [];
     const found = [];
 
-    // Check if .aios exists at all
+    // Check if .aiox exists at all
     try {
-      const stats = await fs.stat(aiosPath);
+      const stats = await fs.stat(aioxPath);
       if (!stats.isDirectory()) {
-        return this.fail('.aios exists but is not a directory', {
-          recommendation: 'Remove .aios file and run health check again',
+        return this.fail('.aiox exists but is not a directory', {
+          recommendation: 'Remove .aiox file and run health check again',
         });
       }
-      found.push('.aios');
+      found.push('.aiox');
     } catch {
-      // .aios doesn't exist - this is optional
-      return this.pass('.aios directory not present (optional)', {
+      // .aiox doesn't exist - this is optional
+      return this.pass('.aiox directory not present (optional)', {
         details: {
-          message: '.aios directory is created automatically when needed',
+          message: '.aiox directory is created automatically when needed',
           healable: true,
         },
       });
     }
 
     // Check subdirectories
-    for (const item of EXPECTED_STRUCTURE.filter((i) => i.path !== '.aios')) {
+    for (const item of EXPECTED_STRUCTURE.filter((i) => i.path !== '.aiox')) {
       const fullPath = path.join(projectRoot, item.path);
       try {
         const stats = await fs.stat(fullPath);
@@ -93,15 +93,15 @@ class AiosDirectoryCheck extends BaseCheck {
 
     // Check write permissions
     try {
-      const testFile = path.join(aiosPath, '.write-test');
+      const testFile = path.join(aioxPath, '.write-test');
       await fs.writeFile(testFile, 'test');
       await fs.unlink(testFile);
     } catch {
-      issues.push('.aios directory is not writable');
+      issues.push('.aiox directory is not writable');
     }
 
     if (issues.length > 0) {
-      return this.warning(`AIOS directory has issues: ${issues.join(', ')}`, {
+      return this.warning(`AIOX directory has issues: ${issues.join(', ')}`, {
         recommendation: 'Run health check with --fix to create missing directories',
         healable: true,
         healingTier: 1,
@@ -109,7 +109,7 @@ class AiosDirectoryCheck extends BaseCheck {
       });
     }
 
-    return this.pass('AIOS directory structure is valid', {
+    return this.pass('AIOX directory structure is valid', {
       details: { found },
     });
   }
@@ -120,22 +120,22 @@ class AiosDirectoryCheck extends BaseCheck {
    */
   getHealer() {
     return {
-      name: 'create-aios-directories',
+      name: 'create-aiox-directories',
       action: 'create-directories',
-      successMessage: 'Created missing AIOS directories',
+      successMessage: 'Created missing AIOX directories',
       fix: async (_result) => {
         const projectRoot = process.cwd();
-        const dirs = ['.aios', '.aios/reports', '.aios/backups', '.aios/backups/health-check'];
+        const dirs = ['.aiox', '.aiox/reports', '.aiox/backups', '.aiox/backups/health-check'];
 
         for (const dir of dirs) {
           const fullPath = path.join(projectRoot, dir);
           await fs.mkdir(fullPath, { recursive: true });
         }
 
-        return { success: true, message: 'Created AIOS directories' };
+        return { success: true, message: 'Created AIOX directories' };
       },
     };
   }
 }
 
-module.exports = AiosDirectoryCheck;
+module.exports = AioxDirectoryCheck;

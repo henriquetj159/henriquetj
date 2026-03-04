@@ -30,7 +30,7 @@ const {
   checkDocker,
   ensureDocker,
   parseMcpSource,
-} = require('../../../packages/aios-install/src/edmcp');
+} = require('../../../packages/aiox-install/src/edmcp');
 
 describe('edmcp', () => {
   beforeEach(() => {

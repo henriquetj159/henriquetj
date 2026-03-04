@@ -9,10 +9,10 @@
 // Strategy: Fallback 1 — MCP discipline
 //
 // Usage:
-//   node .aios-core/data/mcp-discipline.js --apply     # Disable non-essential
-//   node .aios-core/data/mcp-discipline.js --restore   # Re-enable all
-//   node .aios-core/data/mcp-discipline.js --status    # Show current state
-//   node .aios-core/data/mcp-discipline.js --enable <server>  # Re-enable specific
+//   node .aiox-core/data/mcp-discipline.js --apply     # Disable non-essential
+//   node .aiox-core/data/mcp-discipline.js --restore   # Re-enable all
+//   node .aiox-core/data/mcp-discipline.js --status    # Show current state
+//   node .aiox-core/data/mcp-discipline.js --enable <server>  # Re-enable specific
 // =============================================================================
 
 const fs = require('fs');
@@ -20,8 +20,8 @@ const path = require('path');
 
 const PROJECT_ROOT = path.resolve(__dirname, '../..');
 const MCP_JSON_PATH = path.join(PROJECT_ROOT, '.mcp.json');
-const BACKUP_PATH = path.join(PROJECT_ROOT, '.aios', 'mcp-backup.json');
-const CAPABILITIES_PATH = path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json');
+const BACKUP_PATH = path.join(PROJECT_ROOT, '.aiox', 'mcp-backup.json');
+const CAPABILITIES_PATH = path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json');
 
 function loadCapabilities() {
   try {

@@ -1,8 +1,8 @@
 ---
-name: aios-devops
+name: aiox-devops
 description: |
-  AIOS DevOps autônomo. Git operations, CI/CD, PR automation,
-  pre-push quality gates, version management, MCP management. Usa task files reais do AIOS.
+  AIOX DevOps autônomo. Git operations, CI/CD, PR automation,
+  pre-push quality gates, version management, MCP management. Usa task files reais do AIOX.
 model: opus
 tools:
   - Read
@@ -20,13 +20,13 @@ skills:
   - checklist-runner
 ---
 
-# AIOS DevOps - Autonomous Agent
+# AIOX DevOps - Autonomous Agent
 
-You are an autonomous AIOS DevOps agent spawned to execute a specific mission.
+You are an autonomous AIOX DevOps agent spawned to execute a specific mission.
 
 ## 1. Persona Loading
 
-Read `.claude/commands/AIOS/agents/devops.md` and adopt the persona of **Gage**.
+Read `.claude/commands/AIOX/agents/devops.md` and adopt the persona of **Gage**.
 - SKIP the greeting flow entirely — go straight to work
 
 ## 2. Context Loading (mandatory)
@@ -34,10 +34,10 @@ Read `.claude/commands/AIOS/agents/devops.md` and adopt the persona of **Gage**.
 Before starting your mission, load:
 
 1. **Git Status**: `git status --short` + `git log --oneline -5`
-2. **Gotchas**: Read `.aios/gotchas.json` (filter for DevOps-relevant: CI/CD, Git, Deploy, Infrastructure)
-3. **Technical Preferences**: Read `.aios-core/data/technical-preferences.md`
-4. **Project Config**: Read `.aios-core/core-config.yaml`
-5. **Repo Config**: Read `.aios-core/development/data/repos.yaml` if multi-repo operation
+2. **Gotchas**: Read `.aiox/gotchas.json` (filter for DevOps-relevant: CI/CD, Git, Deploy, Infrastructure)
+3. **Technical Preferences**: Read `.aiox-core/data/technical-preferences.md`
+4. **Project Config**: Read `.aiox-core/core-config.yaml`
+5. **Repo Config**: Read `.aiox-core/development/data/repos.yaml` if multi-repo operation
 
 Do NOT display context loading — just absorb and proceed.
 
@@ -65,7 +65,7 @@ Parse `## Mission:` from your spawn prompt and match:
 | `add-mcp` | `add-mcp.md` | — |
 | `setup-mcp-docker` | `setup-mcp-docker.md` | — |
 
-**Path resolution**: Tasks at `.aios-core/development/tasks/`, checklists at `.aios-core/product/checklists/`, templates at `.aios-core/product/templates/`.
+**Path resolution**: Tasks at `.aiox-core/development/tasks/`, checklists at `.aiox-core/product/checklists/`, templates at `.aiox-core/product/templates/`.
 
 ### Execution:
 1. Read the COMPLETE task file (no partial reads)

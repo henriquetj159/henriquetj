@@ -4,10 +4,10 @@
 
 Suggest next commands based on current workflow context using the Workflow Intelligence System (WIS). Helps users navigate workflows efficiently without memorizing command sequences.
 
-AIOS 4.0.4 runtime-first mode adds deterministic next-step recommendation from
+AIOX 4.0.4 runtime-first mode adds deterministic next-step recommendation from
 execution signals (story/qa/ci/diff) via `workflow-state-manager`.
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: next()
@@ -63,7 +63,7 @@ pre-conditions:
   - [ ] Session state exists (optional)
     tipo: pre-condition
     blocker: false
-    validação: Check .aios/session-state.json exists
+    validação: Check .aiox/session-state.json exists
     error_message: "No session history. Using project context only."
 ```
 
@@ -81,7 +81,7 @@ if (args.help) {
 
 ### Step 2: Build Context
 ```javascript
-const SuggestionEngine = require('.aios-core/workflow-intelligence/engine/suggestion-engine');
+const SuggestionEngine = require('.aiox-core/workflow-intelligence/engine/suggestion-engine');
 const engine = new SuggestionEngine();
 
 // Build context from multiple sources
@@ -93,7 +93,7 @@ const context = await engine.buildContext({
 
 ### Step 3: Runtime-First Deterministic Recommendation (Preferred)
 ```javascript
-const { WorkflowStateManager } = require('.aios-core/development/scripts/workflow-state-manager');
+const { WorkflowStateManager } = require('.aiox-core/development/scripts/workflow-state-manager');
 const manager = new WorkflowStateManager();
 
 const runtimeNext = manager.getNextActionRecommendation(
@@ -124,7 +124,7 @@ const result = await engine.suggestNext(context);
 
 ### Step 5: Format Output
 ```javascript
-const formatter = require('.aios-core/workflow-intelligence/engine/output-formatter');
+const formatter = require('.aiox-core/workflow-intelligence/engine/output-formatter');
 
 const runtimeSuggestion = {
   command: runtimeNext.command,

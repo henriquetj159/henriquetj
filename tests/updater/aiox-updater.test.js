@@ -1,5 +1,5 @@
 /**
- * AIOS Updater Tests
+ * AIOX Updater Tests
  *
  * @story Epic 7 - CLI Update Command
  */
@@ -8,21 +8,21 @@ const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
 
-const { AIOSUpdater, UpdateStatus, formatCheckResult, formatUpdateResult } = require('../../packages/installer/src/updater');
+const { AIOXUpdater, UpdateStatus, formatCheckResult, formatUpdateResult } = require('../../packages/installer/src/updater');
 
-describe('AIOSUpdater', () => {
+describe('AIOXUpdater', () => {
   let tempDir;
   let updater;
 
   beforeEach(async () => {
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'aios-updater-test-'));
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'aiox-updater-test-'));
 
-    // Create minimal .aios-core structure
-    await fs.ensureDir(path.join(tempDir, '.aios-core'));
-    await fs.ensureDir(path.join(tempDir, '.aios'));
+    // Create minimal .aiox-core structure
+    await fs.ensureDir(path.join(tempDir, '.aiox-core'));
+    await fs.ensureDir(path.join(tempDir, '.aiox'));
 
     // Create version.json
-    await fs.writeJson(path.join(tempDir, '.aios-core', 'version.json'), {
+    await fs.writeJson(path.join(tempDir, '.aiox-core', 'version.json'), {
       version: '1.0.0',
       installedAt: '2025-01-01T00:00:00Z',
       mode: 'project-development',
@@ -31,7 +31,7 @@ describe('AIOSUpdater', () => {
       },
     });
 
-    updater = new AIOSUpdater(tempDir, { verbose: false });
+    updater = new AIOXUpdater(tempDir, { verbose: false });
   });
 
   afterEach(async () => {
@@ -42,7 +42,7 @@ describe('AIOSUpdater', () => {
 
   describe('constructor', () => {
     it('should initialize with default options', () => {
-      const u = new AIOSUpdater(tempDir);
+      const u = new AIOXUpdater(tempDir);
       expect(u.projectRoot).toBe(path.resolve(tempDir));
       expect(u.options.verbose).toBe(false);
       expect(u.options.force).toBe(false);
@@ -50,7 +50,7 @@ describe('AIOSUpdater', () => {
     });
 
     it('should accept custom options', () => {
-      const u = new AIOSUpdater(tempDir, {
+      const u = new AIOXUpdater(tempDir, {
         verbose: true,
         force: true,
         preserveAll: false,
@@ -72,13 +72,13 @@ describe('AIOSUpdater', () => {
     });
 
     it('should return null if version.json not found', async () => {
-      await fs.remove(path.join(tempDir, '.aios-core', 'version.json'));
+      await fs.remove(path.join(tempDir, '.aiox-core', 'version.json'));
       const version = await updater.getInstalledVersion();
       expect(version).toBeNull();
     });
 
     it('should handle corrupted version.json', async () => {
-      await fs.writeFile(path.join(tempDir, '.aios-core', 'version.json'), 'invalid json');
+      await fs.writeFile(path.join(tempDir, '.aiox-core', 'version.json'), 'invalid json');
       const version = await updater.getInstalledVersion();
       expect(version).toBeNull();
     });
@@ -134,7 +134,7 @@ describe('AIOSUpdater', () => {
     });
 
     it('should handle missing installation', async () => {
-      await fs.remove(path.join(tempDir, '.aios-core', 'version.json'));
+      await fs.remove(path.join(tempDir, '.aiox-core', 'version.json'));
       const result = await updater.checkForUpdates();
       expect(result.status).toBe(UpdateStatus.CHECK_FAILED);
       expect(result.error).toContain('not installed');
@@ -144,14 +144,14 @@ describe('AIOSUpdater', () => {
   describe('detectCustomizations', () => {
     it('should detect unchanged files', async () => {
       // Create a file with matching hash
-      const testFile = path.join(tempDir, '.aios-core', 'test-file.md');
+      const testFile = path.join(tempDir, '.aiox-core', 'test-file.md');
       await fs.writeFile(testFile, 'test content');
 
       // Update version.json with correct hash
       const { hashFile } = require('../../packages/installer/src/installer/file-hasher');
       const hash = `sha256:${hashFile(testFile)}`;
 
-      await fs.writeJson(path.join(tempDir, '.aios-core', 'version.json'), {
+      await fs.writeJson(path.join(tempDir, '.aiox-core', 'version.json'), {
         version: '1.0.0',
         fileHashes: {
           'test-file.md': hash,
@@ -169,7 +169,7 @@ describe('AIOSUpdater', () => {
 
     it('should detect customized files', async () => {
       // Create a file with different content than hash
-      const testFile = path.join(tempDir, '.aios-core', 'test-file.md');
+      const testFile = path.join(tempDir, '.aiox-core', 'test-file.md');
       await fs.writeFile(testFile, 'modified content');
 
       const result = await updater.detectCustomizations();
@@ -201,7 +201,7 @@ describe('AIOSUpdater', () => {
       await updater.createBackup();
 
       // Modify version.json
-      await fs.writeJson(path.join(tempDir, '.aios-core', 'version.json'), {
+      await fs.writeJson(path.join(tempDir, '.aiox-core', 'version.json'), {
         version: '2.0.0',
       });
 
@@ -209,7 +209,7 @@ describe('AIOSUpdater', () => {
       await updater.rollback();
 
       // Verify restored
-      const restored = await fs.readJson(path.join(tempDir, '.aios-core', 'version.json'));
+      const restored = await fs.readJson(path.join(tempDir, '.aiox-core', 'version.json'));
       expect(restored.version).toBe('1.0.0');
     });
   });
@@ -230,7 +230,7 @@ describe('AIOSUpdater', () => {
     it('should update version.json with new version', async () => {
       await updater.updateVersionInfo('2.0.0');
 
-      const versionJson = await fs.readJson(path.join(tempDir, '.aios-core', 'version.json'));
+      const versionJson = await fs.readJson(path.join(tempDir, '.aiox-core', 'version.json'));
       expect(versionJson.version).toBe('2.0.0');
       expect(versionJson.updatedAt).toBeDefined();
     });

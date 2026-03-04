@@ -1,15 +1,15 @@
-# Task: Update AIOS Framework
+# Task: Update AIOX Framework
 
 > **Version:** 4.0.0
 > **Created:** 2026-01-29
 > **Updated:** 2026-01-31
 > **Type:** SYNC (git-native framework synchronization)
-> **Agent:** @devops (Gage) or @aios (Orion)
+> **Agent:** @devops (Gage) or @aiox (Orion)
 > **Execution:** Simple bash script (~15 lines)
 
 ## Purpose
 
-Git-native sync of AIOS framework from upstream repository. Uses sparse clone + file comparison for safe review before applying changes. All local customizations preserved automatically by backup/restore.
+Git-native sync of AIOX framework from upstream repository. Uses sparse clone + file comparison for safe review before applying changes. All local customizations preserved automatically by backup/restore.
 
 ---
 
@@ -17,12 +17,12 @@ Git-native sync of AIOS framework from upstream repository. Uses sparse clone + 
 
 ```bash
 # Run the update script
-bash .aios-core/scripts/update-aios.sh
+bash .aiox-core/scripts/update-aiox.sh
 
 # Review changes shown by the script, then:
-git add .aios-core && git commit -m "chore: sync AIOS framework"   # Apply changes
+git add .aiox-core && git commit -m "chore: sync AIOX framework"   # Apply changes
 # OR
-git checkout -- .aios-core/                                         # Cancel changes
+git checkout -- .aiox-core/                                         # Cancel changes
 ```
 
 ---
@@ -31,7 +31,7 @@ git checkout -- .aios-core/                                         # Cancel cha
 
 The script uses sparse clone + file comparison:
 
-1. **Clone upstream** - Sparse shallow clone of SynkraAI/aios-core (only `.aios-core/`)
+1. **Clone upstream** - Sparse shallow clone of SynkraAI/aiox-core (only `.aiox-core/`)
 2. **Compare files** - Uses `comm` for O(n) file list comparison
 3. **Backup local-only** - Files that exist only locally are backed up
 4. **Sync** - Copy upstream files, restore local-only files
@@ -52,11 +52,11 @@ These paths are automatically preserved (local-only files are backed up and rest
 
 | Path | Reason |
 |------|--------|
-| `.aios-core/squads/` | Custom copywriters, data, ralph |
-| `.aios-core/marketing/` | Marketing-specific agents/tasks |
+| `.aiox-core/squads/` | Custom copywriters, data, ralph |
+| `.aiox-core/marketing/` | Marketing-specific agents/tasks |
 | `source/` | Business context YAML |
 | `Knowledge/` | Knowledge bases |
-| `.aios-core/context/` | Compiled contexts |
+| `.aiox-core/context/` | Compiled contexts |
 | `CLAUDE.md` | Project rules |
 | `.claude/commands/` | Custom commands |
 | `.claude/rules/` | Custom rules |
@@ -74,20 +74,20 @@ These paths are automatically preserved (local-only files are backed up and rest
 ## Task Definition
 
 ```yaml
-task: updateAIOSFramework
+task: updateAIOXFramework
 agent: devops
 mode: simple
 timeout: 60  # 1 minute max
 
 execution:
-  script: .aios-core/scripts/update-aios.sh
+  script: .aiox-core/scripts/update-aiox.sh
 
 workflow:
   1. If dirty working tree: git add -A && git commit -m "chore: pre-update commit"
-  2. bash .aios-core/scripts/update-aios.sh
+  2. bash .aiox-core/scripts/update-aiox.sh
   3. Review changes displayed
-  4. git add .aios-core && git commit -m "chore: sync AIOS framework"  # to apply
-  5. git checkout -- .aios-core/                                        # to cancel
+  4. git add .aiox-core && git commit -m "chore: sync AIOX framework"  # to apply
+  5. git checkout -- .aiox-core/                                        # to cancel
 
 pre-conditions:
   - git status clean (if dirty, auto-commit with "chore: pre-update commit")
@@ -110,7 +110,7 @@ After running the script:
 
 ```bash
 # Check that local-only files are preserved
-ls -la .aios-core/squads/  # if exists
+ls -la .aiox-core/squads/  # if exists
 ls -la source/                       # if exists
 
 # See what changed (unstaged)
@@ -136,7 +136,7 @@ git diff --stat
 git reset --hard HEAD~1
 
 # If you haven't committed yet:
-git checkout -- .aios-core/
+git checkout -- .aiox-core/
 ```
 
 ---

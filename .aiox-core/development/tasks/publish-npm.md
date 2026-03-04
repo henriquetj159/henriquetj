@@ -53,16 +53,16 @@ Publishes a new version to npm under the `preview` dist-tag.
 
 5. PUBLISH
    - npm publish --tag preview
-   - Verify: npm view aios-core@preview version === {new_version}
+   - Verify: npm view aiox-core@preview version === {new_version}
 
 6. SMOKE TEST
    - Create temp directory
    - npm init -y
-   - npm install aios-core@preview
-   - Verify critical files exist in node_modules/aios-core/:
+   - npm install aiox-core@preview
+   - Verify critical files exist in node_modules/aiox-core/:
      - .claude/hooks/synapse-engine.cjs
-     - .aios-core/core-config.yaml
-     - bin/aios.js
+     - .aiox-core/core-config.yaml
+     - bin/aiox.js
    - Clean up temp directory
 
 7. PUSH VERSION COMMIT
@@ -70,7 +70,7 @@ Publishes a new version to npm under the `preview` dist-tag.
 
 8. REPORT
    - "v{X.Y.Z} published as preview"
-   - "Test with: npm install aios-core@preview"
+   - "Test with: npm install aiox-core@preview"
    - "When ready: *promote-latest"
 ```
 
@@ -85,7 +85,7 @@ Publishes a new version to npm under the `preview` dist-tag.
 #### Post-conditions
 
 - [ ] New version published to npm with `preview` tag
-- [ ] `npm view aios-core@preview` returns new version
+- [ ] `npm view aiox-core@preview` returns new version
 - [ ] Smoke test passes (critical files present in installed package)
 - [ ] Version bump committed and pushed to main
 
@@ -99,19 +99,19 @@ Promotes a tested `preview` version to the `latest` dist-tag.
 
 ```
 1. VERIFY PREVIEW EXISTS
-   - npm view aios-core@preview version
+   - npm view aiox-core@preview version
    - If no preview: HALT with "No preview version found"
 
 2. CONFIRM WITH USER
    - Display: "Promote v{X.Y.Z} from preview to latest?"
-   - Show current latest: npm view aios-core@latest version
+   - Show current latest: npm view aiox-core@latest version
    - Require explicit confirmation
 
 3. PROMOTE
-   - npm dist-tag add aios-core@{version} latest
+   - npm dist-tag add aiox-core@{version} latest
 
 4. VERIFY
-   - npm view aios-core@latest version === {version}
+   - npm view aiox-core@latest version === {version}
    - If mismatch: HALT with error
 
 5. TAG & RELEASE
@@ -122,19 +122,19 @@ Promotes a tested `preview` version to the `latest` dist-tag.
 6. REPORT
    - "v{X.Y.Z} promoted to latest"
    - Release URL
-   - "Install with: npm install aios-core"
+   - "Install with: npm install aiox-core"
 ```
 
 #### Pre-conditions
 
-- [ ] Preview version exists (`npm view aios-core@preview`)
+- [ ] Preview version exists (`npm view aiox-core@preview`)
 - [ ] User has tested the preview version
 - [ ] npm auth configured
 - [ ] GitHub CLI authenticated (`gh auth status`)
 
 #### Post-conditions
 
-- [ ] `npm view aios-core@latest` returns promoted version
+- [ ] `npm view aiox-core@latest` returns promoted version
 - [ ] Git tag `v{version}` created and pushed
 - [ ] GitHub Release created with auto-generated notes
 
@@ -152,29 +152,29 @@ Tests package installation from a specific dist-tag in a clean temporary directo
    - npm init -y
 
 2. INSTALL
-   - npm install aios-core@{tag} (default: latest)
+   - npm install aiox-core@{tag} (default: latest)
    - Record: install time, exit code, warnings
 
 3. VERIFY FILES
-   - Check node_modules/aios-core/ contains:
-     - .aios-core/core-config.yaml
-     - .aios-core/constitution.md
-     - .aios-core/development/agents/ (non-empty)
-     - .aios-core/development/tasks/ (non-empty)
+   - Check node_modules/aiox-core/ contains:
+     - .aiox-core/core-config.yaml
+     - .aiox-core/constitution.md
+     - .aiox-core/development/agents/ (non-empty)
+     - .aiox-core/development/tasks/ (non-empty)
      - .claude/hooks/synapse-engine.cjs
      - .claude/hooks/precompact-session-digest.cjs
      - .claude/rules/ (non-empty)
-     - bin/aios.js
-     - bin/aios-minimal.js
-   - Check node_modules/aios-core/ does NOT contain:
+     - bin/aiox.js
+     - bin/aiox-minimal.js
+   - Check node_modules/aiox-core/ does NOT contain:
      - pro/
      - .env
      - .git/
      - tests/
 
 4. TEST INSTALLER (optional, if --full flag)
-   - npx aios-core install --preset minimal
-   - Verify: .aios-core/ created
+   - npx aiox-core install --preset minimal
+   - Verify: .aiox-core/ created
    - Verify: .claude/hooks/ created
    - Verify: .claude/rules/ created
 
@@ -191,7 +191,7 @@ Tests package installation from a specific dist-tag in a clean temporary directo
 #### Parameters
 
 - `tag`: dist-tag to test (default: `latest`)
-- `--full`: Also test `npx aios-core install`
+- `--full`: Also test `npx aiox-core install`
 
 ---
 
@@ -201,20 +201,20 @@ If a broken version reaches `latest`:
 
 ```bash
 # 1. Identify previous good version
-npm view aios-core versions --json
+npm view aiox-core versions --json
 
 # 2. Point latest back to previous version
-npm dist-tag add aios-core@{previous-good-version} latest
+npm dist-tag add aiox-core@{previous-good-version} latest
 
 # 3. Deprecate broken version with message
-npm deprecate aios-core@{broken-version} "Known issues, use v{previous-good-version}"
+npm deprecate aiox-core@{broken-version} "Known issues, use v{previous-good-version}"
 
 # 4. Verify
-npm view aios-core@latest version
+npm view aiox-core@latest version
 ```
 
 **Important:** `npm deprecate` shows a warning on install but does NOT prevent installation.
-To fully block a version, use `npm unpublish aios-core@{version}` (within 72h of publish only).
+To fully block a version, use `npm unpublish aiox-core@{version}` (within 72h of publish only).
 
 ---
 

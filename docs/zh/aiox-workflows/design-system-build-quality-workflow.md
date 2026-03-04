@@ -787,12 +787,12 @@ WCAG AA 可访问性审计已完成。
 
 | 文档 | 路径 |
 |------|------|
-| 工作流定义 | `.aios-core/development/workflows/design-system-build-quality.yaml` |
-| UX 设计专家代理 | `.aios-core/development/agents/ux-design-expert.md` |
-| 任务: 构建组件 | `.aios-core/development/tasks/build-component.md` |
-| 任务: 生成文档 | `.aios-core/development/tasks/generate-documentation.md` |
-| 检查清单: WCAG A11y | `.aios-core/development/checklists/accessibility-wcag-checklist.md` |
-| 任务: 计算 ROI | `.aios-core/development/tasks/calculate-roi.md` |
+| 工作流定义 | `.aiox-core/development/workflows/design-system-build-quality.yaml` |
+| UX 设计专家代理 | `.aiox-core/development/agents/ux-design-expert.md` |
+| 任务: 构建组件 | `.aiox-core/development/tasks/build-component.md` |
+| 任务: 生成文档 | `.aiox-core/development/tasks/generate-documentation.md` |
+| 检查清单: WCAG A11y | `.aiox-core/development/checklists/accessibility-wcag-checklist.md` |
+| 任务: 计算 ROI | `.aiox-core/development/tasks/calculate-roi.md` |
 
 ### 外部参考
 
@@ -817,7 +817,7 @@ WCAG AA 可访问性审计已完成。
 
 | 版本 | 日期 | 作者 | 更改 |
 |------|------|------|------|
-| 1.0.0 | 2025-01-30 | Orion (AIOS 主机) | 工作流初始版本 |
+| 1.0.0 | 2025-01-30 | Orion (AIOX 主机) | 工作流初始版本 |
 
 ---
 
@@ -827,7 +827,7 @@ WCAG AA 可访问性审计已完成。
 workflow_id: design-system-build-quality
 version: 1.0.0
 type: brownfield
-author: Orion (AIOS Master)
+author: Orion (AIOX Master)
 created_date: 2025-01-30
 documentation_created: 2026-02-04
 tags:
@@ -842,4 +842,4 @@ tags:
 ---
 
 *由技术文档专家生成的文档*
-*AIOS-FULLSTACK 框架 v2.2*
+*AIOX-FULLSTACK 框架 v2.2*

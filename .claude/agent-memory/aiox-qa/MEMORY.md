@@ -1,7 +1,7 @@
 # Quinn (QA) Agent Memory
 
 ## IDS Module Patterns
-- IDS modules live in `.aios-core/core/ids/` with tests in `tests/core/ids/`
+- IDS modules live in `.aiox-core/core/ids/` with tests in `tests/core/ids/`
 - Test fixtures at `tests/core/ids/fixtures/` (valid-registry.yaml, empty-registry.yaml)
 - RegistryLoader uses underscore-prefixed "internal" methods (_findById, _getAllEntities, _ensureLoaded) that are used externally by FrameworkGovernor -- implicit contract risk
 - RegistryLoader.queryByPath() IS a public method (no underscore) -- safe for gates to use

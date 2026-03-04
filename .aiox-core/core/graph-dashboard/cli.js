@@ -123,13 +123,13 @@ async function handleDeps(args) {
 }
 
 /**
- * Write HTML graph to .aios/graph.html and open in default browser.
+ * Write HTML graph to .aiox/graph.html and open in default browser.
  * @param {Object} graphData - Normalized graph data
  * @param {Object} [options] - Options passed to formatAsHtml
  * @returns {string} Output file path
  */
 function handleHtmlOutput(graphData, options = {}) {
-  const outputDir = path.resolve(process.cwd(), '.aios');
+  const outputDir = path.resolve(process.cwd(), '.aiox');
   const outputPath = path.join(outputDir, 'graph.html');
 
   fs.mkdirSync(outputDir, { recursive: true });
@@ -161,7 +161,7 @@ function openInBrowser(filePath) {
 
 /**
  * Handle --watch mode: regenerate graph file on interval and on file changes.
- * Writes to .aios/graph.dot, .aios/graph.mmd, or .aios/graph.html.
+ * Writes to .aiox/graph.dot, .aiox/graph.mmd, or .aiox/graph.html.
  * @param {Object} args - Parsed CLI args
  * @returns {Object} Watch state for cleanup (used by tests)
  */
@@ -169,7 +169,7 @@ async function handleWatch(args) {
   const watchFormat = WATCH_FORMAT_MAP[args.format] ? args.format : 'dot';
   const { formatter, filename } = WATCH_FORMAT_MAP[watchFormat];
   const intervalMs = (args.interval || 5) * 1000;
-  const outputDir = path.resolve(process.cwd(), '.aios');
+  const outputDir = path.resolve(process.cwd(), '.aiox');
   const outputPath = path.join(outputDir, filename);
 
   fs.mkdirSync(outputDir, { recursive: true });
@@ -194,7 +194,7 @@ async function handleWatch(args) {
 
   let fileWatcher = null;
   let debounceTimer = null;
-  const registryPath = path.resolve(process.cwd(), '.aios-core/data/entity-registry.yaml');
+  const registryPath = path.resolve(process.cwd(), '.aiox-core/data/entity-registry.yaml');
 
   try {
     if (fs.existsSync(registryPath)) {
@@ -250,7 +250,7 @@ async function handleStats(_args) {
  */
 function handleHelp() {
   const usage = `
-Usage: aios graph [command] [options]
+Usage: aiox graph [command] [options]
 
 Commands:
   --deps          Show dependency tree as ASCII text
@@ -263,14 +263,14 @@ Options:
   --interval=N    Seconds between regeneration in watch mode (default: 5)
 
 Examples:
-  aios graph --deps                        Show dependency tree
-  aios graph --deps --format=json          Output as JSON
-  aios graph --deps --format=html          Interactive HTML graph (opens browser)
-  aios graph --deps --watch                Live DOT file for VS Code preview
-  aios graph --deps --watch --format=html  Live HTML with auto-refresh
-  aios graph --deps --watch --format=mermaid  Live Mermaid file
-  aios graph --deps --watch --interval=10  Refresh every 10 seconds
-  aios graph --stats                       Show entity stats and cache metrics
+  aiox graph --deps                        Show dependency tree
+  aiox graph --deps --format=json          Output as JSON
+  aiox graph --deps --format=html          Interactive HTML graph (opens browser)
+  aiox graph --deps --watch                Live DOT file for VS Code preview
+  aiox graph --deps --watch --format=html  Live HTML with auto-refresh
+  aiox graph --deps --watch --format=mermaid  Live Mermaid file
+  aiox graph --deps --watch --interval=10  Refresh every 10 seconds
+  aiox graph --stats                       Show entity stats and cache metrics
 `.trim();
 
   console.log(usage);
@@ -294,7 +294,7 @@ async function handleSummary(args) {
   const isTTY = !!process.stdout.isTTY;
   const sections = [];
 
-  sections.push('AIOS Graph Dashboard');
+  sections.push('AIOX Graph Dashboard');
   sections.push(isTTY ? '\u2550'.repeat(35) : '='.repeat(35));
   sections.push('');
 

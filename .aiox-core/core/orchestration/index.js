@@ -1,5 +1,5 @@
 /**
- * AIOS Core Orchestration Module
+ * AIOX Core Orchestration Module
  *
  * Multi-agent workflow orchestration with:
  * - Real subagent dispatch with persona transformation

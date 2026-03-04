@@ -4,12 +4,12 @@
  * @deprecated Superseded by session-state.js (Story 11.5).
  * Bob uses SessionState exclusively. This module is maintained for
  * backward compatibility with MasterOrchestrator (Epic 0) only.
- * New code should use: .aios-core/core/orchestration/session-state.js
+ * New code should use: .aiox-core/core/orchestration/session-state.js
  *
  * File-based state persistence for guided workflow automation.
  * Tracks workflow execution progress across Claude Code sessions.
  *
- * State files are stored at: .aios/{instance-id}-state.yaml
+ * State files are stored at: .aiox/{instance-id}-state.yaml
  *
  * Design constraints:
  * - Claude Code = one agent per session, no background processes
@@ -35,7 +35,7 @@ class WorkflowStateManager {
   constructor(options = {}) {
     this.basePath = options.basePath || process.cwd();
     this.verbose = options.verbose || false;
-    this.stateDir = path.join(this.basePath, '.aios');
+    this.stateDir = path.join(this.basePath, '.aiox');
   }
 
   /**
@@ -130,7 +130,7 @@ class WorkflowStateManager {
       }
     }
 
-    // Ensure .aios directory exists
+    // Ensure .aiox directory exists
     await this._ensureStateDir();
 
     // Save state
@@ -597,7 +597,7 @@ class WorkflowStateManager {
    * @returns {{ corePath: string, squadPath: string|null }} Agent directory paths
    */
   resolveAgentPaths(state) {
-    const corePath = path.join(this.basePath, '.aios-core', 'development', 'agents');
+    const corePath = path.join(this.basePath, '.aiox-core', 'development', 'agents');
 
     if (state.target_context === 'core') {
       return { corePath, squadPath: null };

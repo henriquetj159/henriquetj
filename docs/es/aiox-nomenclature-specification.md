@@ -1,12 +1,12 @@
 <!--
   Traducción: ES
-  Original: /docs/en/aios-nomenclature-specification.md
+  Original: /docs/en/aiox-nomenclature-specification.md
   Última sincronización: 2026-01-26
 -->
 
-# Especificación de Nomenclatura de AIOS
+# Especificación de Nomenclatura de AIOX
 
-> 🌐 [EN](../aios-nomenclature-specification.md) | [PT](../pt/aios-nomenclature-specification.md) | **ES**
+> 🌐 [EN](../aiox-nomenclature-specification.md) | [PT](../pt/aiox-nomenclature-specification.md) | **ES**
 
 ---
 
@@ -20,7 +20,7 @@
 
 ## Resumen Ejecutivo
 
-Este documento establece nomenclatura clara para AIOS para diferenciar entre:
+Este documento establece nomenclatura clara para AIOX para diferenciar entre:
 - **Task Workflow**: Pasos de ejecución interna dentro de una única tarea
 - **Workflow**: Orquestación multi-tarea a través de agentes con capacidades Fork/Join
 
@@ -35,7 +35,7 @@ Esta especificación incorpora conocimientos del paradigma AsyncThink de Microso
 **Definición:** La secuencia de pasos y acciones **dentro de una única tarea** que define cómo se ejecuta esa tarea.
 
 **Características:**
-- **Alcance:** Interno a un único archivo de tarea (`.aios-core/tasks/*.md`)
+- **Alcance:** Interno a un único archivo de tarea (`.aiox-core/tasks/*.md`)
 - **Ejecución:** Pasos secuenciales o paralelos dentro de los límites de la tarea
 - **Ubicación:** Definido en la sección `Step-by-Step Execution` del archivo de tarea
 - **Responsabilidad:** Un único agente ejecutando una tarea
@@ -70,7 +70,7 @@ Esta especificación incorpora conocimientos del paradigma AsyncThink de Microso
 **Características:**
 - **Alcance:** Orquestación entre tareas a través de múltiples agentes
 - **Ejecución:** Puede ser secuencial, paralelo (Fork), o convergente (Join)
-- **Ubicación:** Definido en `.aios-core/workflows/*.yaml` o secciones de workflow de stories
+- **Ubicación:** Definido en `.aiox-core/workflows/*.yaml` o secciones de workflow de stories
 - **Responsabilidad:** Múltiples agentes coordinando para lograr un objetivo
 - **Ejemplo:** Workflow de Desarrollo de Story: `po-create-story` → `dev-develop-story` → `qa-gate`
 
@@ -120,9 +120,9 @@ workflow:
 
 ### Patrón Organizer-Worker
 
-**Concepto:** Inspirado por el protocolo Organizer-Worker de AsyncThink, los workflows de AIOS pueden usar un **Agente Organizador** que coordina **Agentes Trabajadores** ejecutando tareas en paralelo.
+**Concepto:** Inspirado por el protocolo Organizer-Worker de AsyncThink, los workflows de AIOX pueden usar un **Agente Organizador** que coordina **Agentes Trabajadores** ejecutando tareas en paralelo.
 
-**Aplicación a AIOS:**
+**Aplicación a AIOX:**
 
 1. **Agente Organizador:**
    - Coordina la ejecución del workflow
@@ -140,7 +140,7 @@ workflow:
 ```yaml
 workflow:
   id: parallel-validation-workflow
-  organizer: aios-master
+  organizer: aiox-master
 
   stages:
     - id: fork-validation
@@ -186,7 +186,7 @@ workflow:
 
 **Concepto:** Agent Lightning permite optimizar CUALQUIER agente con CUALQUIER framework usando aprendizaje por refuerzo, sin modificar el código del agente.
 
-**Aplicación a AIOS:**
+**Aplicación a AIOX:**
 
 1. **Integración con Lightning Server:**
    - Recopilar trazas de ejecución de agentes
@@ -207,7 +207,7 @@ workflow:
 
 **Ejemplo de Integración:**
 ```yaml
-# .aios-core/core-config.yaml
+# .aiox-core/core-config.yaml
 agent_lightning:
   enabled: true
   server_host: localhost
@@ -256,14 +256,14 @@ agent_lightning:
 ### Regla 2: Convenciones de Nomenclatura de Archivos
 
 **Archivos de Tarea:**
-- Ubicación: `.aios-core/tasks/{task-name}.md`
+- Ubicación: `.aiox-core/tasks/{task-name}.md`
 - Contiene: Task workflow (Step-by-Step Execution)
-- Ejemplo: `.aios-core/tasks/security-scan.md`
+- Ejemplo: `.aiox-core/tasks/security-scan.md`
 
 **Archivos de Workflow:**
-- Ubicación: `.aios-core/workflows/{workflow-name}.yaml`
+- Ubicación: `.aiox-core/workflows/{workflow-name}.yaml`
 - Contiene: Definición de orquestación multi-tarea
-- Ejemplo: `.aios-core/workflows/story-development-workflow.yaml`
+- Ejemplo: `.aiox-core/workflows/story-development-workflow.yaml`
 
 **Documentación:**
 - Docs de task workflow: `docs/tasks/{task-name}-workflow.md` (si es necesario)
@@ -565,7 +565,7 @@ Workflow: Story Development
 ### Ejemplo 2: Workflow (Story Development)
 
 ```yaml
-# .aios-core/workflows/story-development-workflow.yaml
+# .aiox-core/workflows/story-development-workflow.yaml
 workflow:
   id: story-development-workflow
   name: Story Development Flow
@@ -650,7 +650,7 @@ workflow:
    - [Documentación](https://microsoft.github.io/agent-lightning/latest/)
    - Conceptos Clave: Optimización sin código, entrenamiento RL, soporte multi-agente
 
-3. **Gestión de Workflows AIOS:** Patrones de workflow existentes en AIOS
+3. **Gestión de Workflows AIOX:** Patrones de workflow existentes en AIOX
    - `common/utils/workflow-management.md`
    - `docs/WORKFLOW-COMPLETE-CONSOLIDATED-V3.md`
 

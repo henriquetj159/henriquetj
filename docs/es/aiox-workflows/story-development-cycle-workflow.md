@@ -1,10 +1,10 @@
 # Story Development Cycle Workflow
 
-> [PT](../../aios-workflows/story-development-cycle-workflow.md) | [EN](../../en/aios-workflows/story-development-cycle-workflow.md) | **ES**
+> [PT](../../aiox-workflows/story-development-cycle-workflow.md) | [EN](../../en/aiox-workflows/story-development-cycle-workflow.md) | **ES**
 
 ---
 
-> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aios-workflows/story-development-cycle-workflow.md).
+> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aiox-workflows/story-development-cycle-workflow.md).
 
 ---
 
@@ -35,7 +35,7 @@ Workflow para el ciclo completo de desarrollo de una story, incluyendo:
 
 ## Ver Mas
 
-- **[Documentacion completa (PT)](../../aios-workflows/story-development-cycle-workflow.md)**
+- **[Documentacion completa (PT)](../../aiox-workflows/story-development-cycle-workflow.md)**
 
 ---
 

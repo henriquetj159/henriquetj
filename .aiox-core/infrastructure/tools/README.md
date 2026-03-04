@@ -1,6 +1,6 @@
-# AIOS Tools - Integrations Directory
+# AIOX Tools - Integrations Directory
 
-This directory contains tool integration definitions for Synkra AIOS agents. Tools are external capabilities that agents can discover and use to accomplish tasks.
+This directory contains tool integration definitions for Synkra AIOX agents. Tools are external capabilities that agents can discover and use to accomplish tasks.
 
 ## Directory Structure
 
@@ -188,12 +188,12 @@ authentication:
 
 ```bash
 # Verify tool is in tools/ directory
-ls -la .aios-core/tools/cli/
-ls -la .aios-core/tools/local/
-ls -la .aios-core/tools/mcp/
+ls -la .aiox-core/tools/cli/
+ls -la .aiox-core/tools/local/
+ls -la .aiox-core/tools/mcp/
 
 # Test tool resolver
-node .aios-core/infrastructure/scripts/tool-resolver.js
+node .aiox-core/infrastructure/scripts/tool-resolver.js
 ```
 
 ### Authentication Issues

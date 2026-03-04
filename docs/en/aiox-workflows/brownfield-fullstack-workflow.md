@@ -1,10 +1,10 @@
 # Brownfield Fullstack Workflow
 
-> **EN** | [PT](../../aios-workflows/brownfield-fullstack-workflow.md) | [ES](../../es/aios-workflows/brownfield-fullstack-workflow.md)
+> **EN** | [PT](../../aiox-workflows/brownfield-fullstack-workflow.md) | [ES](../../es/aiox-workflows/brownfield-fullstack-workflow.md)
 
 ---
 
-**Full documentation available in:** [Portuguese Version](../../aios-workflows/brownfield-fullstack-workflow.md)
+**Full documentation available in:** [Portuguese Version](../../aiox-workflows/brownfield-fullstack-workflow.md)
 
 ---
 
@@ -47,4 +47,4 @@ The **Brownfield Fullstack Workflow** is designed for evolving existing full-sta
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aios-workflows/brownfield-fullstack-workflow.md).*
+*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/brownfield-fullstack-workflow.md).*

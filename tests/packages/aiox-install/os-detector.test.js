@@ -21,7 +21,7 @@ const {
   getWSLDistro,
   detectLinuxPackageManager,
   getOSDisplayName,
-} = require('../../../packages/aios-install/src/os-detector');
+} = require('../../../packages/aiox-install/src/os-detector');
 
 describe('os-detector', () => {
   beforeEach(() => {

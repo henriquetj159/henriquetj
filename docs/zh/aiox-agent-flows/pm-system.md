@@ -1,10 +1,10 @@
 <!--
   翻译：zh-CN（简体中文）
-  原文：/docs/aios-agent-flows/pm-system.md
+  原文：/docs/aiox-agent-flows/pm-system.md
   最后同步：2026-02-22
 -->
 
-# 产品经理 (PM) 代理系统 - AIOS
+# 产品经理 (PM) 代理系统 - AIOX
 
 > **版本：** 1.0.0
 > **创建日期：** 2026-02-04
@@ -15,7 +15,7 @@
 
 ## 概述
 
-本文档描述 AIOS 产品经理 (PM) 代理的完整系统，包括所有涉及的文件、工作流程、可用命令和代理之间的集成。
+本文档描述 AIOX 产品经理 (PM) 代理的完整系统，包括所有涉及的文件、工作流程、可用命令和代理之间的集成。
 
 PM 代理设计用于：
 - 为绿地和棕地项目创建和管理产品需求文档 (PRD)
@@ -46,40 +46,40 @@ PM 代理设计用于：
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/agents/pm.md` | PM 代理核心定义 |
-| `.claude/commands/AIOS/agents/pm.md` | 用于激活 @pm 的 Claude Code 命令 |
+| `.aiox-core/development/agents/pm.md` | PM 代理核心定义 |
+| `.claude/commands/AIOX/agents/pm.md` | 用于激活 @pm 的 Claude Code 命令 |
 
 ### @pm 任务
 
 | 文件 | 命令 | 目的 |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/create-doc.md` | `*create-prd` | 从 YAML 模板创建文档 |
-| `.aios-core/development/tasks/correct-course.md` | `*correct-course` | 分析并纠正项目偏差 |
-| `.aios-core/development/tasks/create-deep-research-prompt.md` | `*research` | 生成深度研究提示 |
-| `.aios-core/development/tasks/brownfield-create-epic.md` | `*create-epic` | 为棕地项目创建史诗 |
-| `.aios-core/development/tasks/brownfield-create-story.md` | `*create-story` | 为棕地创建故事 |
-| `.aios-core/development/tasks/execute-checklist.md` | `*checklist` | 执行检查清单验证 |
-| `.aios-core/development/tasks/shard-doc.md` | `*shard-prd` | 拆分大型文档 |
+| `.aiox-core/development/tasks/create-doc.md` | `*create-prd` | 从 YAML 模板创建文档 |
+| `.aiox-core/development/tasks/correct-course.md` | `*correct-course` | 分析并纠正项目偏差 |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research` | 生成深度研究提示 |
+| `.aiox-core/development/tasks/brownfield-create-epic.md` | `*create-epic` | 为棕地项目创建史诗 |
+| `.aiox-core/development/tasks/brownfield-create-story.md` | `*create-story` | 为棕地创建故事 |
+| `.aiox-core/development/tasks/execute-checklist.md` | `*checklist` | 执行检查清单验证 |
+| `.aiox-core/development/tasks/shard-doc.md` | `*shard-prd` | 拆分大型文档 |
 
 ### @pm 模板
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/product/templates/prd-tmpl.yaml` | 绿地项目 PRD 模板 |
-| `.aios-core/product/templates/brownfield-prd-tmpl.yaml` | 棕地项目 PRD 模板 |
+| `.aiox-core/product/templates/prd-tmpl.yaml` | 绿地项目 PRD 模板 |
+| `.aiox-core/product/templates/brownfield-prd-tmpl.yaml` | 棕地项目 PRD 模板 |
 
 ### @pm 检查清单
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/product/checklists/pm-checklist.md` | PRD 验证检查清单 |
-| `.aios-core/product/checklists/change-checklist.md` | 变更导航检查清单 |
+| `.aiox-core/product/checklists/pm-checklist.md` | PRD 验证检查清单 |
+| `.aiox-core/product/checklists/change-checklist.md` | 变更导航检查清单 |
 
 ### 使用 @pm 的工作流
 
 | 文件 | 阶段 | 目的 |
 |---------|------|-----------|
-| `.aios-core/development/workflows/brownfield-discovery.yaml` | 阶段 10 | 发现后创建史诗和故事 |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml` | 阶段 10 | 发现后创建史诗和故事 |
 
 ---
 
@@ -687,7 +687,7 @@ flowchart LR
 - 模板已重命名
 
 **解决方案：**
-- 检查 `.aios-core/product/templates/`
+- 检查 `.aiox-core/product/templates/`
 - 使用 create-doc 列出可用模板
 - 必要时更新代理中的引用
 
@@ -695,15 +695,15 @@ flowchart LR
 
 ## 参考
 
-- [代理定义：pm.md](.aios-core/development/agents/pm.md)
-- [任务：create-doc.md](.aios-core/development/tasks/create-doc.md)
-- [任务：brownfield-create-epic.md](.aios-core/development/tasks/brownfield-create-epic.md)
-- [任务：correct-course.md](.aios-core/development/tasks/correct-course.md)
-- [模板：prd-tmpl.yaml](.aios-core/product/templates/prd-tmpl.yaml)
-- [模板：brownfield-prd-tmpl.yaml](.aios-core/product/templates/brownfield-prd-tmpl.yaml)
-- [检查清单：pm-checklist.md](.aios-core/product/checklists/pm-checklist.md)
-- [检查清单：change-checklist.md](.aios-core/product/checklists/change-checklist.md)
-- [工作流：brownfield-discovery.yaml](.aios-core/development/workflows/brownfield-discovery.yaml)
+- [代理定义：pm.md](.aiox-core/development/agents/pm.md)
+- [任务：create-doc.md](.aiox-core/development/tasks/create-doc.md)
+- [任务：brownfield-create-epic.md](.aiox-core/development/tasks/brownfield-create-epic.md)
+- [任务：correct-course.md](.aiox-core/development/tasks/correct-course.md)
+- [模板：prd-tmpl.yaml](.aiox-core/product/templates/prd-tmpl.yaml)
+- [模板：brownfield-prd-tmpl.yaml](.aiox-core/product/templates/brownfield-prd-tmpl.yaml)
+- [检查清单：pm-checklist.md](.aiox-core/product/checklists/pm-checklist.md)
+- [检查清单：change-checklist.md](.aiox-core/product/checklists/change-checklist.md)
+- [工作流：brownfield-discovery.yaml](.aiox-core/development/workflows/brownfield-discovery.yaml)
 
 ---
 

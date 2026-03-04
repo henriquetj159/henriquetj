@@ -9,7 +9,7 @@
 
 ## 概览
 
-**@qa 代理 (Quinn)** 是 AIOS 的**测试架构师和质量顾问**。其角色是为开发团队提供全面的质量分析、质量门决策和可行的建议。
+**@qa 代理 (Quinn)** 是 AIOX 的**测试架构师和质量顾问**。其角色是为开发团队提供全面的质量分析、质量门决策和可行的建议。
 
 **原型:** 守护者
 **通信语气:** 分析、系统、教育、务实
@@ -34,29 +34,29 @@
 
 | 文件 | 命令 | 目的 |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/qa-gate.md` | `*gate {story}` | 创建质量门决策文件 |
-| `.aios-core/development/tasks/qa-review-story.md` | `*review {story}` | 完整故事审查和门决策 |
-| `.aios-core/development/tasks/qa-test-design.md` | `*test-design {story}` | 创建全面的测试场景 |
-| `.aios-core/development/tasks/qa-risk-profile.md` | `*risk-profile {story}` | 生成风险评估矩阵 |
-| `.aios-core/development/tasks/qa-nfr-assess.md` | `*nfr-assess {story}` | 验证非功能需求 |
-| `.aios-core/development/tasks/qa-trace-requirements.md` | `*trace {story}` | 将需求映射到测试(给定-当-然) |
-| `.aios-core/development/tasks/qa-generate-tests.md` | `*generate-tests` | 自动生成测试套件 |
-| `.aios-core/development/tasks/qa-run-tests.md` | `*run-tests` | 执行测试套件和质量门 |
-| `.aios-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add` | 添加后续项到待办事项 |
-| `.aios-core/development/tasks/qa-create-fix-request.md` | `*create-fix-request {story}` | 为 @dev 生成修复请求文档 |
+| `.aiox-core/development/tasks/qa-gate.md` | `*gate {story}` | 创建质量门决策文件 |
+| `.aiox-core/development/tasks/qa-review-story.md` | `*review {story}` | 完整故事审查和门决策 |
+| `.aiox-core/development/tasks/qa-test-design.md` | `*test-design {story}` | 创建全面的测试场景 |
+| `.aiox-core/development/tasks/qa-risk-profile.md` | `*risk-profile {story}` | 生成风险评估矩阵 |
+| `.aiox-core/development/tasks/qa-nfr-assess.md` | `*nfr-assess {story}` | 验证非功能需求 |
+| `.aiox-core/development/tasks/qa-trace-requirements.md` | `*trace {story}` | 将需求映射到测试(给定-当-然) |
+| `.aiox-core/development/tasks/qa-generate-tests.md` | `*generate-tests` | 自动生成测试套件 |
+| `.aiox-core/development/tasks/qa-run-tests.md` | `*run-tests` | 执行测试套件和质量门 |
+| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add` | 添加后续项到待办事项 |
+| `.aiox-core/development/tasks/qa-create-fix-request.md` | `*create-fix-request {story}` | 为 @dev 生成修复请求文档 |
 
 ### 代理定义文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/agents/qa.md` | QA 代理的完整定义 |
-| `.claude/commands/AIOS/agents/qa.md` | Claude Code 命令用于激活 @qa |
+| `.aiox-core/development/agents/qa.md` | QA 代理的完整定义 |
+| `.claude/commands/AIOX/agents/qa.md` | Claude Code 命令用于激活 @qa |
 
 ### 工作流文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/workflows/qa-loop.yaml` | QA 循环协调器(审查 -> 修复 -> 重新审查) |
+| `.aiox-core/development/workflows/qa-loop.yaml` | QA 循环协调器(审查 -> 修复 -> 重新审查) |
 
 ---
 

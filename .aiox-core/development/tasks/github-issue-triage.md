@@ -13,7 +13,7 @@ story: GHIM-001
 
 ## Description
 
-Systematic triage of GitHub issues for the aios-core repository. This task guides @devops through the process of reviewing, classifying, and labeling open issues.
+Systematic triage of GitHub issues for the aiox-core repository. This task guides @devops through the process of reviewing, classifying, and labeling open issues.
 
 ## Prerequisites
 
@@ -66,8 +66,8 @@ gh issue edit {number} --add-label "type: bug,priority: P2,area: installer,statu
 For bulk operations, use the triage script:
 
 ```bash
-node .aios-core/development/scripts/issue-triage.js --list
-node .aios-core/development/scripts/issue-triage.js --apply {number} --type bug --priority P2 --area installer
+node .aiox-core/development/scripts/issue-triage.js --list
+node .aiox-core/development/scripts/issue-triage.js --apply {number} --type bug --priority P2 --area installer
 ```
 
 ### Step 5: Report
@@ -75,7 +75,7 @@ node .aios-core/development/scripts/issue-triage.js --apply {number} --type bug 
 After triage session, generate summary:
 
 ```bash
-node .aios-core/development/scripts/issue-triage.js --report
+node .aiox-core/development/scripts/issue-triage.js --report
 ```
 
 ## Triage Decision Tree

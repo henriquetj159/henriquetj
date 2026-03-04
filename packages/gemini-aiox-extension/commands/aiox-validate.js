@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * AIOS Validate Command - Validate installation and skills
+ * AIOX Validate Command - Validate installation and skills
  */
 
 const path = require('path');
@@ -8,12 +8,12 @@ const path = require('path');
 async function main() {
   const projectDir = process.cwd();
 
-  console.log('🔍 AIOS Validation\n');
+  console.log('🔍 AIOX Validation\n');
 
   try {
     const validatorPath = path.join(
       projectDir,
-      '.aios-core',
+      '.aiox-core',
       'development',
       'scripts',
       'skill-validator.js',
@@ -26,7 +26,7 @@ async function main() {
     console.log(validator.generateReport(results));
   } catch (error) {
     console.log('❌ Validation failed:', error.message);
-    console.log('\nMake sure AIOS is installed: npx aios-core install');
+    console.log('\nMake sure AIOX is installed: npx aiox-core install');
   }
 }
 

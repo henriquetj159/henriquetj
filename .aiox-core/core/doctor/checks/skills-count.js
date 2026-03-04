@@ -4,7 +4,7 @@
  * Counts skill directories in .claude/skills/ that contain SKILL.md.
  * PASS: >=7, WARN: 1-6, FAIL: 0 or directory missing.
  *
- * @module aios-core/doctor/checks/skills-count
+ * @module aiox-core/doctor/checks/skills-count
  * @story INS-4.8
  */
 
@@ -21,7 +21,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Skills directory not found (.claude/skills/)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -33,7 +33,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Cannot read skills directory',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -48,7 +48,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'No skills found (expected >=7)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -65,7 +65,7 @@ async function run(context) {
     check: name,
     status: 'WARN',
     message: `Only ${count}/7 skills found`,
-    fixCommand: 'npx aios-core install --force',
+    fixCommand: 'npx aiox-core install --force',
   };
 }
 

@@ -42,7 +42,7 @@ Execute story development with selectable automation modes to accommodate differ
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: devDevelopStory()
@@ -212,7 +212,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -284,7 +284,7 @@ const {
   trackFile,
   trackTest,
   completeDecisionLogging
-} = require('./.aios-core/scripts/decision-recorder');
+} = require('./.aiox-core/scripts/decision-recorder');
 ```
 
 1. **Initialization** (On Yolo Mode Start)
@@ -479,8 +479,8 @@ const {
 
 1. Read (first or next) task
 2. **Code Intelligence Check (IDS G4)** — Before creating new files or functions:
-   - If code intelligence is available (`isCodeIntelAvailable()` from `.aios-core/core/code-intel`):
-     - Call `checkBeforeWriting(fileName, description)` from `.aios-core/core/code-intel/helpers/dev-helper`
+   - If code intelligence is available (`isCodeIntelAvailable()` from `.aiox-core/core/code-intel`):
+     - Call `checkBeforeWriting(fileName, description)` from `.aiox-core/core/code-intel/helpers/dev-helper`
      - If result is not null, display as **"Code Intelligence Suggestion"** (non-blocking advisory)
      - Log suggestion in decision-log if in YOLO mode
    - If code intelligence is NOT available: skip silently (zero impact on workflow)
@@ -529,7 +529,7 @@ const {
 4. Full regression test suite passes
 5. File List is complete
 6. **Execute CodeRabbit Self-Healing Loop** (see below)
-7. Execute `.aios-core/product/checklists/story-dod-checklist.md`
+7. Execute `.aiox-core/product/checklists/story-dod-checklist.md`
 8. Set story status: "Ready for Review"
 9. HALT (do not proceed further)
 
@@ -559,7 +559,7 @@ Execute **AFTER** all tasks are complete but **BEFORE** running the DOD checklis
 │  WHILE iteration < max_iterations:                           │
 │    ┌────────────────────────────────────────────────────┐   │
 │    │ 1. Run CodeRabbit CLI                              │   │
-│    │    wsl bash -c 'cd /mnt/c/.../aios-core &&    │   │
+│    │    wsl bash -c 'cd /mnt/c/.../aiox-core &&    │   │
 │    │    ~/.local/bin/coderabbit --prompt-only           │   │
 │    │    -t uncommitted'                                  │   │
 │    │                                                     │   │
@@ -899,7 +899,7 @@ Found 5 technical decisions needed.
 
 ## Dependencies
 
-- `.aios-core/product/checklists/story-dod-checklist.md` - Definition of Done checklist
+- `.aiox-core/product/checklists/story-dod-checklist.md` - Definition of Done checklist
 
 ## Tools
 

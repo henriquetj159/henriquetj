@@ -2,7 +2,7 @@
 
 **Task**: Semantic Version Management (Repository-Agnostic)
 
-**Purpose**: Analyze changes, recommend version bumps, and manage semantic versioning for ANY repository using AIOS.
+**Purpose**: Analyze changes, recommend version bumps, and manage semantic versioning for ANY repository using AIOX.
 
 **When to use**: Before creating a release, to determine appropriate version number based on changes.
 
@@ -29,7 +29,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: githubDevopsVersionManagement()
@@ -135,11 +135,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -150,7 +150,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -250,7 +250,7 @@ const { detectRepositoryContext } = require('./../scripts/repository-detector');
 const context = detectRepositoryContext();
 
 if (!context) {
-  throw new Error('Unable to detect repository context. Run "aios init" first.');
+  throw new Error('Unable to detect repository context. Run "aiox init" first.');
 }
 
 console.log(`📦 Analyzing version for: ${context.packageName}`);

@@ -3,7 +3,7 @@
  *
  * Validates .claude/CLAUDE.md exists and has required section headings.
  *
- * @module aios-core/doctor/checks/claude-md
+ * @module aiox-core/doctor/checks/claude-md
  * @story INS-4.1
  */
 
@@ -26,7 +26,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'CLAUDE.md not found',
-      fixCommand: 'aios doctor --fix',
+      fixCommand: 'aiox doctor --fix',
     };
   }
 
@@ -49,7 +49,7 @@ async function run(context) {
     check: name,
     status: 'WARN',
     message: `Missing sections: ${missingSections.join(', ')}`,
-    fixCommand: 'aios doctor --fix',
+    fixCommand: 'aiox doctor --fix',
   };
 }
 

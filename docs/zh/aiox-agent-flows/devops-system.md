@@ -1,6 +1,6 @@
 <!--
   翻译：zh-CN（简体中文）
-  原文：/docs/aios-agent-flows/devops-system.md
+  原文：/docs/aiox-agent-flows/devops-system.md
   最后同步：2026-02-22
 -->
 
@@ -27,7 +27,7 @@
 
 ## 概述
 
-`@devops` (Gage) 代理是 AIOS 框架的基础设施和运维专家。负责：
+`@devops` (Gage) 代理是 AIOX 框架的基础设施和运维专家。负责：
 
 - **MCP 治理**：MCP（模型上下文协议）服务器的独家管理
 - **CI/CD**：持续集成和交付管道的配置和维护
@@ -57,24 +57,24 @@
 
 | 文件 | 路径 | 描述 |
 |---------|---------|-----------|
-| 代理定义 | `.aios-core/development/agents/devops.md` | 角色、命令和行为 |
+| 代理定义 | `.aiox-core/development/agents/devops.md` | 角色、命令和行为 |
 
 ### 任务文件
 
 | 任务 | 路径 | 命令 |
 |------|---------|---------|
-| 推送前质量门禁 | `.aios-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push` |
-| 版本管理 | `.aios-core/development/tasks/github-devops-version-management.md` | `*version-check` |
-| 仓库清理 | `.aios-core/development/tasks/github-devops-repository-cleanup.md` | `*cleanup` |
-| CI/CD 配置 | `.aios-core/development/tasks/ci-cd-configuration.md` | `*ci-cd` |
-| 发布管理 | `.aios-core/development/tasks/release-management.md` | `*release` |
-| 环境引导 | `.aios-core/development/tasks/environment-bootstrap.md` | `*environment-bootstrap` |
-| 搜索 MCP | `.aios-core/development/tasks/search-mcp.md` | `*search-mcp` |
-| 添加 MCP | `.aios-core/development/tasks/add-mcp.md` | `*add-mcp` |
-| 设置 MCP Docker | `.aios-core/development/tasks/setup-mcp-docker.md` | `*setup-mcp-docker` |
-| 设置 GitHub | `.aios-core/development/tasks/setup-github.md` | `*setup-github` |
-| 安全审计 | `.aios-core/development/tasks/security-audit.md` | `*security-audit` |
-| 安全扫描 | `.aios-core/development/tasks/security-scan.md` | `*security-scan` |
+| 推送前质量门禁 | `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push` |
+| 版本管理 | `.aiox-core/development/tasks/github-devops-version-management.md` | `*version-check` |
+| 仓库清理 | `.aiox-core/development/tasks/github-devops-repository-cleanup.md` | `*cleanup` |
+| CI/CD 配置 | `.aiox-core/development/tasks/ci-cd-configuration.md` | `*ci-cd` |
+| 发布管理 | `.aiox-core/development/tasks/release-management.md` | `*release` |
+| 环境引导 | `.aiox-core/development/tasks/environment-bootstrap.md` | `*environment-bootstrap` |
+| 搜索 MCP | `.aiox-core/development/tasks/search-mcp.md` | `*search-mcp` |
+| 添加 MCP | `.aiox-core/development/tasks/add-mcp.md` | `*add-mcp` |
+| 设置 MCP Docker | `.aiox-core/development/tasks/setup-mcp-docker.md` | `*setup-mcp-docker` |
+| 设置 GitHub | `.aiox-core/development/tasks/setup-github.md` | `*setup-github` |
+| 安全审计 | `.aiox-core/development/tasks/security-audit.md` | `*security-audit` |
+| 安全扫描 | `.aiox-core/development/tasks/security-scan.md` | `*security-scan` |
 
 ### 配置和规则文件
 
@@ -258,7 +258,7 @@ flowchart TD
     STRUCTURE --> DIR1["apps/"]
     STRUCTURE --> DIR2["packages/"]
     STRUCTURE --> DIR3["docs/"]
-    STRUCTURE --> DIR4[".aios-core/"]
+    STRUCTURE --> DIR4[".aiox-core/"]
 
     DIR1 & DIR2 & DIR3 & DIR4 --> TEMPLATES["应用模板"]
     TEMPLATES --> DEPS["安装依赖"]
@@ -580,7 +580,7 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ## 参考
 
-### AIOS 文档
+### AIOX 文档
 
 - [MCP 使用规则](../../.claude/rules/mcp-usage.md)
 - [N8N 操作](../../.claude/rules/n8n-operations.md)
@@ -597,11 +597,11 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 | 任务 | 描述 |
 |------|-----------|
-| [推送前质量门禁](.aios-core/development/tasks/github-devops-pre-push-quality-gate.md) | 推送前验证 |
-| [版本管理](.aios-core/development/tasks/github-devops-version-management.md) | 版本管理 |
-| [CI/CD 配置](.aios-core/development/tasks/ci-cd-configuration.md) | 管道配置 |
-| [发布管理](.aios-core/development/tasks/release-management.md) | 发布管理 |
-| [环境引导](.aios-core/development/tasks/environment-bootstrap.md) | 环境引导 |
+| [推送前质量门禁](.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md) | 推送前验证 |
+| [版本管理](.aiox-core/development/tasks/github-devops-version-management.md) | 版本管理 |
+| [CI/CD 配置](.aiox-core/development/tasks/ci-cd-configuration.md) | 管道配置 |
+| [发布管理](.aiox-core/development/tasks/release-management.md) | 发布管理 |
+| [环境引导](.aiox-core/development/tasks/environment-bootstrap.md) | 环境引导 |
 
 ---
 
@@ -639,5 +639,5 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ---
 
-*文档由 AIOS 系统生成 - 2026-02-04*
+*文档由 AIOX 系统生成 - 2026-02-04*
 *维护者：@devops*

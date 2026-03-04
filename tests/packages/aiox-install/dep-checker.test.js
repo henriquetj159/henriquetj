@@ -20,7 +20,7 @@ const {
   checkDockerRunning,
   checkAllDependencies,
   formatDependencyStatus,
-} = require('../../../packages/aios-install/src/dep-checker');
+} = require('../../../packages/aiox-install/src/dep-checker');
 
 describe('dep-checker', () => {
   beforeEach(() => {

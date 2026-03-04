@@ -1,10 +1,10 @@
 # Brownfield UI Workflow
 
-> **EN** | [PT](../../aios-workflows/brownfield-ui-workflow.md) | [ES](../../es/aios-workflows/brownfield-ui-workflow.md)
+> **EN** | [PT](../../aiox-workflows/brownfield-ui-workflow.md) | [ES](../../es/aiox-workflows/brownfield-ui-workflow.md)
 
 ---
 
-**Full documentation available in:** [Portuguese Version](../../aios-workflows/brownfield-ui-workflow.md)
+**Full documentation available in:** [Portuguese Version](../../aiox-workflows/brownfield-ui-workflow.md)
 
 ---
 
@@ -48,4 +48,4 @@ The **Brownfield UI Workflow** is designed for evolving existing frontend applic
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aios-workflows/brownfield-ui-workflow.md).*
+*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/brownfield-ui-workflow.md).*

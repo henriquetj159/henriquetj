@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
 /**
- * AIOS IDS CLI — Incremental Development System
+ * AIOX IDS CLI — Incremental Development System
  * Standalone (no external dependencies for npx compatibility)
  *
  * Commands:
- *   aios ids:query {intent}     — Query registry for matching artifacts
- *   aios ids:create-review      — Review CREATE decisions for promotion/deprecation
- *   aios ids:health             — Run registry health check (self-healing)
- *   aios ids:check {intent}     — Pre-check registry (FrameworkGovernor advisory)
- *   aios ids:impact {entity-id} — Impact analysis for modifications
- *   aios ids:stats              — Registry statistics
- *   aios ids:register {path}    — Register entity after creation
+ *   aiox ids:query {intent}     — Query registry for matching artifacts
+ *   aiox ids:create-review      — Review CREATE decisions for promotion/deprecation
+ *   aiox ids:health             — Run registry health check (self-healing)
+ *   aiox ids:check {intent}     — Pre-check registry (FrameworkGovernor advisory)
+ *   aiox ids:impact {entity-id} — Impact analysis for modifications
+ *   aiox ids:stats              — Registry statistics
+ *   aiox ids:register {path}    — Register entity after creation
  *
  * Flags:
  *   --json                      — Machine-readable JSON output
@@ -25,15 +25,15 @@
 'use strict';
 
 const path = require('path');
-const { RegistryLoader } = require(path.resolve(__dirname, '..', '.aios-core', 'core', 'ids', 'registry-loader'));
-const { IncrementalDecisionEngine } = require(path.resolve(__dirname, '..', '.aios-core', 'core', 'ids', 'incremental-decision-engine'));
-const { RegistryUpdater } = require(path.resolve(__dirname, '..', '.aios-core', 'core', 'ids', 'registry-updater'));
-const { FrameworkGovernor } = require(path.resolve(__dirname, '..', '.aios-core', 'core', 'ids', 'framework-governor'));
+const { RegistryLoader } = require(path.resolve(__dirname, '..', '.aiox-core', 'core', 'ids', 'registry-loader'));
+const { IncrementalDecisionEngine } = require(path.resolve(__dirname, '..', '.aiox-core', 'core', 'ids', 'incremental-decision-engine'));
+const { RegistryUpdater } = require(path.resolve(__dirname, '..', '.aiox-core', 'core', 'ids', 'registry-updater'));
+const { FrameworkGovernor } = require(path.resolve(__dirname, '..', '.aiox-core', 'core', 'ids', 'framework-governor'));
 
 // Optional: RegistryHealer (IDS-4a — may not exist yet)
 let RegistryHealer = null;
 try {
-  RegistryHealer = require(path.resolve(__dirname, '..', '.aios-core', 'core', 'ids', 'registry-healer')).RegistryHealer;
+  RegistryHealer = require(path.resolve(__dirname, '..', '.aiox-core', 'core', 'ids', 'registry-healer')).RegistryHealer;
 } catch (_err) {
   // RegistryHealer not available — health commands degrade gracefully
 }
@@ -47,7 +47,7 @@ const fixFlag = flags.includes('--fix');
 
 function showHelp() {
   console.log(`
-AIOS IDS — Incremental Development System
+AIOX IDS — Incremental Development System
 
 Commands:
   ids:query {intent}       Query registry for matching artifacts
@@ -65,18 +65,18 @@ Flags:
   --fix                    Auto-heal fixable issues (ids:health only)
 
 Examples:
-  aios ids:query "validate story drafts"
-  aios ids:query "template rendering engine" --json
-  aios ids:query "database migration" --type script
-  aios ids:create-review
-  aios ids:create-review --json
-  aios ids:health
-  aios ids:health --fix
-  aios ids:check "validate yaml schema" --type task
-  aios ids:impact create-doc
-  aios ids:stats
-  aios ids:stats --json
-  aios ids:register .aios-core/development/tasks/my-new-task.md
+  aiox ids:query "validate story drafts"
+  aiox ids:query "template rendering engine" --json
+  aiox ids:query "database migration" --type script
+  aiox ids:create-review
+  aiox ids:create-review --json
+  aiox ids:health
+  aiox ids:health --fix
+  aiox ids:check "validate yaml schema" --type task
+  aiox ids:impact create-doc
+  aiox ids:stats
+  aiox ids:stats --json
+  aiox ids:register .aiox-core/development/tasks/my-new-task.md
 `);
 }
 
@@ -156,7 +156,7 @@ function runQuery() {
   const intent = collectPositionalArgs(1);
 
   if (!intent) {
-    console.error('Error: Intent is required. Usage: aios ids:query "your intent here"');
+    console.error('Error: Intent is required. Usage: aiox ids:query "your intent here"');
     process.exit(1);
   }
 
@@ -419,7 +419,7 @@ async function runCheck() {
   const intent = collectPositionalArgs(1);
 
   if (!intent) {
-    console.error('Error: Intent is required. Usage: aios ids:check "your intent here"');
+    console.error('Error: Intent is required. Usage: aiox ids:check "your intent here"');
     process.exit(1);
   }
 
@@ -441,7 +441,7 @@ async function runImpact() {
   const entityId = collectPositionalArgs(1);
 
   if (!entityId) {
-    console.error('Error: Entity ID is required. Usage: aios ids:impact {entity-id}');
+    console.error('Error: Entity ID is required. Usage: aiox ids:impact {entity-id}');
     process.exit(1);
   }
 
@@ -476,7 +476,7 @@ async function runRegister() {
   const filePath = collectPositionalArgs(1);
 
   if (!filePath) {
-    console.error('Error: File path is required. Usage: aios ids:register {file-path}');
+    console.error('Error: File path is required. Usage: aiox ids:register {file-path}');
     process.exit(1);
   }
 

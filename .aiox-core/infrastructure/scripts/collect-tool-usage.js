@@ -3,12 +3,12 @@
 // collect-tool-usage.js — Tool Usage Analytics Collection
 // =============================================================================
 // Story: TOK-5 (Tool Usage Analytics Pipeline)
-// Layer: L2 (.aios-core/infrastructure/scripts/)
-// Purpose: Collect tool usage data per session, store in .aios/analytics/,
+// Layer: L2 (.aiox-core/infrastructure/scripts/)
+// Purpose: Collect tool usage data per session, store in .aiox/analytics/,
 //          enforce data governance (sanitization, retention, schema).
 //
 // Usage:
-//   node .aios-core/infrastructure/scripts/collect-tool-usage.js [options]
+//   node .aiox-core/infrastructure/scripts/collect-tool-usage.js [options]
 //
 // Options:
 //   --session-id <id>   Session identifier (default: auto-generated)
@@ -28,7 +28,7 @@ const fs = require('fs');
 const path = require('path');
 
 // --- Configuration ---
-const ANALYTICS_DIR = path.resolve(process.cwd(), '.aios', 'analytics');
+const ANALYTICS_DIR = path.resolve(process.cwd(), '.aiox', 'analytics');
 const USAGE_FILE = path.join(ANALYTICS_DIR, 'tool-usage.json');
 const RETENTION_DAYS = 30;
 
@@ -106,7 +106,7 @@ function loadUsageData() {
   return {
     version: '1.0.0',
     schema: 'tool-usage-analytics',
-    description: 'Tool usage tracking data for AIOS token optimization (TOK-5)',
+    description: 'Tool usage tracking data for AIOX token optimization (TOK-5)',
     sessions: []
   };
 }

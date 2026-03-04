@@ -2,7 +2,7 @@
 
 ## Metadata
 - **Task ID:** sync-registry-intel
-- **Agent:** @aios-master
+- **Agent:** @aiox-master
 - **Story:** NOG-2
 - **Type:** Command Task
 - **Elicit:** false
@@ -18,7 +18,7 @@ Enrich the entity registry with code intelligence data (usedBy, dependencies, co
 ## Prerequisites
 
 - Code intelligence provider available (NOG-1 complete)
-- Entity registry exists at `.aios-core/data/entity-registry.yaml`
+- Entity registry exists at `.aiox-core/data/entity-registry.yaml`
 
 ---
 
@@ -36,7 +36,7 @@ Default: Incremental sync (only entities whose source file mtime > lastSynced)
 ### Step 2: Execute Sync
 
 ```javascript
-const { RegistrySyncer } = require('.aios-core/core/code-intel/registry-syncer');
+const { RegistrySyncer } = require('.aiox-core/core/code-intel/registry-syncer');
 
 const syncer = new RegistrySyncer();
 const stats = await syncer.sync({ full: hasFullFlag });

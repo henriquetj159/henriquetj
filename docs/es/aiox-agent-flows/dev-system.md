@@ -1,16 +1,16 @@
 # @dev (Dex) - Documentacion del Sistema
 
-> [PT](../../aios-agent-flows/dev-system.md) | [EN](../../en/aios-agent-flows/dev-system.md) | **ES**
+> [PT](../../aiox-agent-flows/dev-system.md) | [EN](../../en/aiox-agent-flows/dev-system.md) | **ES**
 
 ---
 
-> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aios-agent-flows/dev-system.md).
+> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aiox-agent-flows/dev-system.md).
 
 ---
 
 ## Vision General
 
-**@dev** (Dex) es el agente de desarrollo del AIOS, responsable por:
+**@dev** (Dex) es el agente de desarrollo del AIOX, responsable por:
 
 - Implementacion de codigo
 - Seguir stories y acceptance criteria
@@ -29,7 +29,7 @@
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
-- **[Documentacion completa (PT)](../../aios-agent-flows/dev-system.md)**
+- **[Documentacion completa (PT)](../../aiox-agent-flows/dev-system.md)**
 
 ---
 

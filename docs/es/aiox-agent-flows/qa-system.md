@@ -1,16 +1,16 @@
 # @qa (Quinn) - Documentacion del Sistema
 
-> [PT](../../aios-agent-flows/qa-system.md) | [EN](../../en/aios-agent-flows/qa-system.md) | **ES**
+> [PT](../../aiox-agent-flows/qa-system.md) | [EN](../../en/aiox-agent-flows/qa-system.md) | **ES**
 
 ---
 
-> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aios-agent-flows/qa-system.md).
+> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aiox-agent-flows/qa-system.md).
 
 ---
 
 ## Vision General
 
-**@qa** (Quinn) es el agente de calidad del AIOS, responsable por:
+**@qa** (Quinn) es el agente de calidad del AIOX, responsable por:
 
 - Tests y validacion
 - Revision de codigo
@@ -29,7 +29,7 @@
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
-- **[Documentacion completa (PT)](../../aios-agent-flows/qa-system.md)**
+- **[Documentacion completa (PT)](../../aiox-agent-flows/qa-system.md)**
 
 ---
 

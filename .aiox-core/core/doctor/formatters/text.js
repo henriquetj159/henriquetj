@@ -3,7 +3,7 @@
  *
  * Formats doctor results as human-readable text output.
  *
- * @module aios-core/doctor/formatters/text
+ * @module aiox-core/doctor/formatters/text
  * @story INS-4.1
  */
 
@@ -18,7 +18,7 @@ function formatText(output, options = {}) {
   const { quiet = false } = options;
   const lines = [];
 
-  lines.push(`AIOS Doctor v${output.version} — Environment Health Check`);
+  lines.push(`AIOX Doctor v${output.version} — Environment Health Check`);
   lines.push('');
 
   for (const result of output.checks) {

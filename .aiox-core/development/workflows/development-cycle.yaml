@@ -34,11 +34,11 @@ workflow:
   config:
     # Dynamic executor from Story 11.1
     use_dynamic_executor: true
-    executor_assignment_module: ".aios-core/core/orchestration/executor-assignment.js"
+    executor_assignment_module: ".aiox-core/core/orchestration/executor-assignment.js"
 
     # Terminal spawning from Story 11.2
     use_terminal_spawning: true
-    terminal_spawner_module: ".aios-core/core/orchestration/terminal-spawner.js"
+    terminal_spawner_module: ".aiox-core/core/orchestration/terminal-spawner.js"
 
     # Self-healing configuration
     self_healing:
@@ -356,7 +356,7 @@ workflow:
   state:
     persistence:
       enabled: true
-      location: ".aios/workflow-state/"
+      location: ".aiox/workflow-state/"
       format: yaml
 
     tracked_fields:

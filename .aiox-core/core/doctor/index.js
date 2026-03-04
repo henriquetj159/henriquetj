@@ -1,10 +1,10 @@
 /**
- * AIOS Doctor — Environment Health Check Orchestrator
+ * AIOX Doctor — Environment Health Check Orchestrator
  *
- * Runs 12 modular checks against the AIOS environment and returns
+ * Runs 12 modular checks against the AIOX environment and returns
  * structured results with optional --fix, --json, and --dry-run support.
  *
- * @module aios-core/doctor
+ * @module aiox-core/doctor
  * @version 2.0.0
  * @story INS-4.1
  */

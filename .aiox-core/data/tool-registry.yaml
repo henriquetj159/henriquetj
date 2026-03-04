@@ -1,11 +1,11 @@
 # =============================================================================
-# AIOS Unified Tool Registry
+# AIOX Unified Tool Registry
 # =============================================================================
 # Single source of truth for tool loading decisions, enabling deferred loading
 # and intelligent tool selection across agents, tasks, and squads.
 #
 # Consumer Module:
-#   This registry is loaded by `.aios-core/core/registry/registry-loader.js`.
+#   This registry is loaded by `.aiox-core/core/registry/registry-loader.js`.
 #   Extend the existing loader to read `tool-registry.yaml` alongside
 #   `entity-registry.yaml`. Both follow the same L3 YAML conventions.
 #
@@ -36,7 +36,7 @@
 #           required: [...]
 #
 # ADR References:
-#   ADR-1: Registry at L3 (.aios-core/data/) — consistent with entity-registry
+#   ADR-1: Registry at L3 (.aiox-core/data/) — consistent with entity-registry
 #   ADR-2: 3-Tier Tool Mesh (Always/Deferred/External) aligned with L1-L4
 #   ADR-3: PTC native ONLY — MCP tools CANNOT be used in programmatic/batch
 #          code blocks. Only tools with ptc_eligible: true (Tier 1 native) are
@@ -51,7 +51,7 @@ metadata:
   lastUpdated: '2026-02-23'
   runtimeDetection: true
   layer: L3
-  description: Unified tool registry for AIOS token optimization
+  description: Unified tool registry for AIOX token optimization
   epic: epic-token-optimization
   story: TOK-1
 

@@ -24,7 +24,7 @@ const yaml = require('js-yaml');
 const SESSION_STATE_VERSION = '1.2';
 const SESSION_STATE_FILENAME = '.session-state.yaml';
 const CRASH_THRESHOLD_MINUTES = 30;
-const LEGACY_WORKFLOW_STATE_DIR = '.aios/workflow-state';
+const LEGACY_WORKFLOW_STATE_DIR = '.aiox/workflow-state';
 
 /**
  * Action types for session state tracking

@@ -9,7 +9,7 @@ const path = require('path');
  * @property {string} repositoryUrl - Git remote URL
  * @property {string} mode - 'framework-development' or 'project-development'
  * @property {string} projectRoot - Current working directory
- * @property {string} frameworkLocation - Path to AIOS framework files
+ * @property {string} frameworkLocation - Path to AIOX framework files
  * @property {string} packageName - Name from package.json
  * @property {string} packageVersion - Version from package.json
  */
@@ -36,15 +36,15 @@ function detectRepositoryContext() {
 
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-  // Detect if we're in aios-core repo itself
+  // Detect if we're in aiox-core repo itself
   const isFrameworkRepo =
-    packageJson.name === '@aios/fullstack' ||
-    packageJson.name === 'aios-core' ||
-    remoteUrl.includes('aios-core');
+    packageJson.name === '@aiox/fullstack' ||
+    packageJson.name === 'aiox-core' ||
+    remoteUrl.includes('aiox-core');
 
   // Load installation config if exists
   let installConfig = null;
-  const configPath = path.join(cwd, '.aios-installation-config.yaml');
+  const configPath = path.join(cwd, '.aiox-installation-config.yaml');
   if (fs.existsSync(configPath)) {
     const yaml = require('js-yaml');
     installConfig = yaml.load(fs.readFileSync(configPath, 'utf8'));
@@ -55,7 +55,7 @@ function detectRepositoryContext() {
     mode: installConfig?.installation?.mode ||
           (isFrameworkRepo ? 'framework-development' : 'project-development'),
     projectRoot: cwd,
-    frameworkLocation: isFrameworkRepo ? cwd : path.join(cwd, 'node_modules/@aios/fullstack'),
+    frameworkLocation: isFrameworkRepo ? cwd : path.join(cwd, 'node_modules/@aiox/fullstack'),
     packageName: packageJson.name,
     packageVersion: packageJson.version,
   };

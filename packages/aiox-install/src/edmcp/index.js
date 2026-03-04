@@ -231,7 +231,7 @@ async function addMcp(nameOrUrl, options = {}) {
   if (source.url) {
     const spinner = ora(`Cloning ${source.url}...`).start();
 
-    const mcpDir = path.join(os.homedir(), '.aios', 'mcps', source.name);
+    const mcpDir = path.join(os.homedir(), '.aiox', 'mcps', source.name);
 
     try {
       // Clone repository
@@ -353,7 +353,7 @@ async function removeMcp(name, options = {}) {
     }
 
     // Clean up local directory
-    const mcpDir = path.join(os.homedir(), '.aios', 'mcps', name);
+    const mcpDir = path.join(os.homedir(), '.aiox', 'mcps', name);
     if (await fs.pathExists(mcpDir)) {
       if (options.force) {
         await fs.remove(mcpDir);

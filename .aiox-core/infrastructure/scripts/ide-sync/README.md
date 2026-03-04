@@ -3,15 +3,15 @@
 **Story 6.19** - IDE Command Auto-Sync System
 **Story TD-4** - Pre-commit Auto-Stage Integration
 
-Automatically synchronizes AIOS agent definitions to IDE command files.
+Automatically synchronizes AIOX agent definitions to IDE command files.
 
 ## Overview
 
-IDE Sync keeps agent definitions in `.aios-core/development/agents/` synchronized with IDE-specific command files in:
+IDE Sync keeps agent definitions in `.aiox-core/development/agents/` synchronized with IDE-specific command files in:
 
-- `.claude/commands/AIOS/agents/` (Claude Code)
+- `.claude/commands/AIOX/agents/` (Claude Code)
 - `.codex/agents/` (Codex CLI support files)
-- `.gemini/rules/AIOS/agents/` (Gemini CLI)
+- `.gemini/rules/AIOX/agents/` (Gemini CLI)
 - `.gemini/commands/` (Gemini slash command launcher files)
 - `.github/agents/` (GitHub Copilot support files)
 - `.cursor/rules/agents/` (Cursor)
@@ -51,7 +51,7 @@ Sync agents to all enabled IDEs:
 ```bash
 npm run sync:ide
 # or
-node .aios-core/infrastructure/scripts/ide-sync/index.js sync
+node .aiox-core/infrastructure/scripts/ide-sync/index.js sync
 ```
 
 Sync specific IDE only:
@@ -72,7 +72,7 @@ Check if IDE files are in sync (report mode):
 ```bash
 npm run sync:ide:validate
 # or
-node .aios-core/infrastructure/scripts/ide-sync/index.js validate
+node .aiox-core/infrastructure/scripts/ide-sync/index.js validate
 ```
 
 Strict mode (CI - exits with code 1 if drift detected):
@@ -80,7 +80,7 @@ Strict mode (CI - exits with code 1 if drift detected):
 ```bash
 npm run sync:ide:check
 # or
-node .aios-core/infrastructure/scripts/ide-sync/index.js validate --strict
+node .aiox-core/infrastructure/scripts/ide-sync/index.js validate --strict
 ```
 
 ## Options
@@ -95,16 +95,16 @@ node .aios-core/infrastructure/scripts/ide-sync/index.js validate --strict
 
 ## Configuration
 
-Configure in `.aios-core/core-config.yaml`:
+Configure in `.aiox-core/core-config.yaml`:
 
 ```yaml
 ideSync:
   enabled: true
-  source: .aios-core/development/agents
+  source: .aiox-core/development/agents
   targets:
     claude-code:
       enabled: true
-      path: .claude/commands/AIOS/agents
+      path: .claude/commands/AIOX/agents
       format: full-markdown-yaml
     codex:
       enabled: true
@@ -112,7 +112,7 @@ ideSync:
       format: full-markdown-yaml
     gemini:
       enabled: true
-      path: .gemini/rules/AIOS/agents
+      path: .gemini/rules/AIOX/agents
       format: full-markdown-yaml
     github-copilot:
       enabled: true
@@ -124,7 +124,7 @@ ideSync:
       format: condensed-rules
     # ... other IDEs
   redirects:
-    aios-developer: aios-master
+    aiox-developer: aiox-master
     db-sage: data-engineer
 ```
 
@@ -159,15 +159,15 @@ Deprecated or renamed agents are handled via redirects. When an old agent name i
 Example redirect file:
 
 ```markdown
-# Agent Redirect: aios-developer -> aios-master
+# Agent Redirect: aiox-developer -> aiox-master
 
-This agent has been renamed. Use `aios-master` instead.
+This agent has been renamed. Use `aiox-master` instead.
 ```
 
 ## File Structure
 
 ```
-.aios-core/infrastructure/scripts/ide-sync/
+.aiox-core/infrastructure/scripts/ide-sync/
 ├── index.js                 # Main orchestrator
 ├── agent-parser.js          # Parse agent YAML/MD files
 ├── redirect-generator.js    # Generate redirect files

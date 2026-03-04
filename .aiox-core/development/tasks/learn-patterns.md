@@ -25,7 +25,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: learnPatterns()
@@ -131,11 +131,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -146,7 +146,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -206,7 +206,7 @@ updated_at: 2025-11-17
 # No checklists needed - analytical pattern learning task, no deliverables requiring validation
 ---
 
-# Learn Patterns - AIOS Developer Task
+# Learn Patterns - AIOX Developer Task
 
 ## Purpose
 Learn patterns from successful modifications to improve future meta-agent suggestions and automation.
@@ -240,7 +240,7 @@ Learn patterns from successful modifications to improve future meta-agent sugges
 *learn-patterns --type code,refactoring --threshold 0.9
 
 # Analyze patterns for a component
-*learn-patterns --component aios-core/agents/developer.md --analyze
+*learn-patterns --component aiox-core/agents/developer.md --analyze
 
 # Get suggestions for upcoming modification
 *learn-patterns --suggest mod-123456 --type refactoring
@@ -269,7 +269,7 @@ class LearnPatternsTask {
 
   async execute(params) {
     try {
-      console.log(chalk.blue('🧠 AIOS Pattern Learning'));
+      console.log(chalk.blue('🧠 AIOX Pattern Learning'));
       console.log(chalk.gray('Learning from successful modifications\n'));
 
       // Parse parameters
@@ -725,9 +725,9 @@ class LearnPatternsTask {
   async loadModification(modificationId) {
     // Try multiple sources for modification data
     const sources = [
-      path.join(this.rootPath, '.aios', 'modifications', `${modificationId}.json`),
-      path.join(this.rootPath, '.aios', 'history', `${modificationId}.json`),
-      path.join(this.rootPath, '.aios', 'proposals', `${modificationId}.json`)
+      path.join(this.rootPath, '.aiox', 'modifications', `${modificationId}.json`),
+      path.join(this.rootPath, '.aiox', 'history', `${modificationId}.json`),
+      path.join(this.rootPath, '.aiox', 'proposals', `${modificationId}.json`)
     ];
 
     for (const source of sources) {

@@ -1,4 +1,4 @@
-# 数据工程师代理系统 (@data-engineer) - AIOS
+# 数据工程师代理系统 (@data-engineer) - AIOX
 
 > **版本:** 1.0.0
 > **创建于:** 2026-02-04
@@ -9,7 +9,7 @@
 
 ## 概览
 
-**@数据工程师(Dara)**是AIOS的数据库架构师和运营工程师，负责架构设计、迁移、安全性(RLS)、性能优化和DBA操作。该代理充当**Sage(智者)**，建模业务领域，使用快照和回滚实现安全迁移，并确保数据完整性和安全性。
+**@数据工程师(Dara)**是AIOX的数据库架构师和运营工程师，负责架构设计、迁移、安全性(RLS)、性能优化和DBA操作。该代理充当**Sage(智者)**，建模业务领域，使用快照和回滚实现安全迁移，并确保数据完整性和安全性。
 
 ### 主要特征
 
@@ -51,33 +51,33 @@
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/db-domain-modeling.md` | `*model-domain` | 交互式域建模会话 |
-| `.aios-core/development/tasks/setup-database.md` | `*setup-database [type]` | 数据库项目设置(Supabase、PostgreSQL、MongoDB、MySQL、SQLite) |
-| `.aios-core/development/tasks/db-bootstrap.md` | `*bootstrap` | 创建标准Supabase项目结构 |
-| `.aios-core/development/tasks/db-env-check.md` | `*env-check` | 验证数据库环境变量 |
-| `.aios-core/development/tasks/db-apply-migration.md` | `*apply-migration {path}` | 应用迁移(含快照和锁定建议) |
-| `.aios-core/development/tasks/db-dry-run.md` | `*dry-run {path}` | 测试迁移无提交 |
-| `.aios-core/development/tasks/db-seed.md` | `*seed {path}` | 应用种子数据(幂等) |
-| `.aios-core/development/tasks/db-snapshot.md` | `*snapshot {label}` | 创建架构快照 |
-| `.aios-core/development/tasks/db-rollback.md` | `*rollback {snapshot_or_file}` | 恢复快照或执行回滚 |
-| `.aios-core/development/tasks/db-smoke-test.md` | `*smoke-test {version}` | 全面的数据库测试 |
-| `.aios-core/development/tasks/security-audit.md` | `*security-audit {scope}` | 安全审计(rls、架构、完整) |
-| `.aios-core/development/tasks/analyze-performance.md` | `*analyze-performance {type}` | 性能分析(查询、热路径、交互) |
-| `.aios-core/development/tasks/db-policy-apply.md` | `*policy-apply {table} {mode}` | 安装RLS策略(KISS或详细) |
-| `.aios-core/development/tasks/test-as-user.md` | `*test-as-user {user_id}` | 模拟用户以测试RLS |
-| `.aios-core/development/tasks/db-verify-order.md` | `*verify-order {path}` | 验证DDL顺序以处理依赖 |
-| `.aios-core/development/tasks/db-load-csv.md` | `*load-csv {table} {file}` | 安全的CSV加载程序(staging->merge) |
-| `.aios-core/development/tasks/db-run-sql.md` | `*run-sql {file_or_inline}` | 执行原始SQL(含事务) |
-| `.aios-core/development/tasks/create-deep-research-prompt.md` | `*research {topic}` | 生成深度研究提示 |
-| `.aios-core/development/tasks/execute-checklist.md` | `*execute-checklist {checklist}` | 执行DBA检查清单 |
-| `.aios-core/development/tasks/create-doc.md` | `*doc-out` | 完整文档输出 |
+| `.aiox-core/development/tasks/db-domain-modeling.md` | `*model-domain` | 交互式域建模会话 |
+| `.aiox-core/development/tasks/setup-database.md` | `*setup-database [type]` | 数据库项目设置(Supabase、PostgreSQL、MongoDB、MySQL、SQLite) |
+| `.aiox-core/development/tasks/db-bootstrap.md` | `*bootstrap` | 创建标准Supabase项目结构 |
+| `.aiox-core/development/tasks/db-env-check.md` | `*env-check` | 验证数据库环境变量 |
+| `.aiox-core/development/tasks/db-apply-migration.md` | `*apply-migration {path}` | 应用迁移(含快照和锁定建议) |
+| `.aiox-core/development/tasks/db-dry-run.md` | `*dry-run {path}` | 测试迁移无提交 |
+| `.aiox-core/development/tasks/db-seed.md` | `*seed {path}` | 应用种子数据(幂等) |
+| `.aiox-core/development/tasks/db-snapshot.md` | `*snapshot {label}` | 创建架构快照 |
+| `.aiox-core/development/tasks/db-rollback.md` | `*rollback {snapshot_or_file}` | 恢复快照或执行回滚 |
+| `.aiox-core/development/tasks/db-smoke-test.md` | `*smoke-test {version}` | 全面的数据库测试 |
+| `.aiox-core/development/tasks/security-audit.md` | `*security-audit {scope}` | 安全审计(rls、架构、完整) |
+| `.aiox-core/development/tasks/analyze-performance.md` | `*analyze-performance {type}` | 性能分析(查询、热路径、交互) |
+| `.aiox-core/development/tasks/db-policy-apply.md` | `*policy-apply {table} {mode}` | 安装RLS策略(KISS或详细) |
+| `.aiox-core/development/tasks/test-as-user.md` | `*test-as-user {user_id}` | 模拟用户以测试RLS |
+| `.aiox-core/development/tasks/db-verify-order.md` | `*verify-order {path}` | 验证DDL顺序以处理依赖 |
+| `.aiox-core/development/tasks/db-load-csv.md` | `*load-csv {table} {file}` | 安全的CSV加载程序(staging->merge) |
+| `.aiox-core/development/tasks/db-run-sql.md` | `*run-sql {file_or_inline}` | 执行原始SQL(含事务) |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research {topic}` | 生成深度研究提示 |
+| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist {checklist}` | 执行DBA检查清单 |
+| `.aiox-core/development/tasks/create-doc.md` | `*doc-out` | 完整文档输出 |
 
 ### 代理定义文件
 
 | 文件 | 目的 |
 |------|------|
-| `.aios-core/development/agents/data-engineer.md` | @data-engineer代理核心定义(角色、命令、工作流) |
-| `.claude/commands/AIOS/agents/data-engineer.md` | Claude Code命令激活@data-engineer |
+| `.aiox-core/development/agents/data-engineer.md` | @data-engineer代理核心定义(角色、命令、工作流) |
+| `.claude/commands/AIOX/agents/data-engineer.md` | Claude Code命令激活@data-engineer |
 
 ### SQL模板文件
 
@@ -118,7 +118,7 @@
 
 | 文件 | 目的 |
 |------|------|
-| `.aios-core/development/workflows/brownfield-discovery.yaml` | Brownfield发现工作流(第2和第5阶段) |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml` | Brownfield发现工作流(第2和第5阶段) |
 
 ---
 
@@ -378,22 +378,22 @@ supabase/
 
 ### @data-engineer任务
 
-- [db-domain-modeling.md](.aios-core/development/tasks/db-domain-modeling.md)
-- [setup-database.md](.aios-core/development/tasks/setup-database.md)
-- [db-apply-migration.md](.aios-core/development/tasks/db-apply-migration.md)
-- [security-audit.md](.aios-core/development/tasks/security-audit.md)
-- [analyze-performance.md](.aios-core/development/tasks/analyze-performance.md)
-- [db-snapshot.md](.aios-core/development/tasks/db-snapshot.md)
-- [db-rollback.md](.aios-core/development/tasks/db-rollback.md)
-- [db-bootstrap.md](.aios-core/development/tasks/db-bootstrap.md)
+- [db-domain-modeling.md](.aiox-core/development/tasks/db-domain-modeling.md)
+- [setup-database.md](.aiox-core/development/tasks/setup-database.md)
+- [db-apply-migration.md](.aiox-core/development/tasks/db-apply-migration.md)
+- [security-audit.md](.aiox-core/development/tasks/security-audit.md)
+- [analyze-performance.md](.aiox-core/development/tasks/analyze-performance.md)
+- [db-snapshot.md](.aiox-core/development/tasks/db-snapshot.md)
+- [db-rollback.md](.aiox-core/development/tasks/db-rollback.md)
+- [db-bootstrap.md](.aiox-core/development/tasks/db-bootstrap.md)
 
 ### 代理
 
-- [data-engineer.md](.aios-core/development/agents/data-engineer.md)
+- [data-engineer.md](.aiox-core/development/agents/data-engineer.md)
 
 ### 工作流
 
-- [brownfield-discovery.yaml](.aios-core/development/workflows/brownfield-discovery.yaml)
+- [brownfield-discovery.yaml](.aiox-core/development/workflows/brownfield-discovery.yaml)
 
 ---
 

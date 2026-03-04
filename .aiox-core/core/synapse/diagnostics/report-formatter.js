@@ -200,7 +200,7 @@ function _collectGaps(data) {
       gaps.push({
         severity: 'HIGH',
         gap: `Hook: ${check.name} — ${check.detail}`,
-        recommendation: 'Run `npx aios-core install` to reinstall hooks',
+        recommendation: 'Run `npx aiox-core install` to reinstall hooks',
       });
     }
   }

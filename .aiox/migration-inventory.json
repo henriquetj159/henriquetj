@@ -1,6 +1,6 @@
 {
   "generated": "2026-01-29T02:18:28.507Z",
-  "rootPath": "/Users/alan/Code/aios-core",
+  "rootPath": "/Users/alan/Code/aiox-core",
   "summary": {
     "agents": 12,
     "tasks": 141,
@@ -16,267 +16,267 @@
     {
       "type": "task",
       "id": "analyst-facilitate-brainstorming",
-      "path": ".aios-core/development/tasks/analyst-facilitate-brainstorming.md"
+      "path": ".aiox-core/development/tasks/analyst-facilitate-brainstorming.md"
     },
     {
       "type": "task",
       "id": "analyze-brownfield",
-      "path": ".aios-core/development/tasks/analyze-brownfield.md"
+      "path": ".aiox-core/development/tasks/analyze-brownfield.md"
     },
     {
       "type": "task",
       "id": "audit-utilities",
-      "path": ".aios-core/development/tasks/audit-utilities.md"
+      "path": ".aiox-core/development/tasks/audit-utilities.md"
     },
     {
       "type": "task",
       "id": "cleanup-utilities",
-      "path": ".aios-core/development/tasks/cleanup-utilities.md"
+      "path": ".aiox-core/development/tasks/cleanup-utilities.md"
     },
     {
       "type": "task",
       "id": "create-suite",
-      "path": ".aios-core/development/tasks/create-suite.md"
+      "path": ".aiox-core/development/tasks/create-suite.md"
     },
     {
       "type": "task",
       "id": "db-analyze-hotpaths",
-      "path": ".aios-core/development/tasks/db-analyze-hotpaths.md"
+      "path": ".aiox-core/development/tasks/db-analyze-hotpaths.md"
     },
     {
       "type": "task",
       "id": "db-expansion-pack-integration",
-      "path": ".aios-core/development/tasks/db-expansion-pack-integration.md"
+      "path": ".aiox-core/development/tasks/db-expansion-pack-integration.md"
     },
     {
       "type": "task",
       "id": "db-explain",
-      "path": ".aios-core/development/tasks/db-explain.md"
+      "path": ".aiox-core/development/tasks/db-explain.md"
     },
     {
       "type": "task",
       "id": "db-impersonate",
-      "path": ".aios-core/development/tasks/db-impersonate.md"
+      "path": ".aiox-core/development/tasks/db-impersonate.md"
     },
     {
       "type": "task",
       "id": "db-rls-audit",
-      "path": ".aios-core/development/tasks/db-rls-audit.md"
+      "path": ".aiox-core/development/tasks/db-rls-audit.md"
     },
     {
       "type": "task",
       "id": "db-schema-audit",
-      "path": ".aios-core/development/tasks/db-schema-audit.md"
+      "path": ".aiox-core/development/tasks/db-schema-audit.md"
     },
     {
       "type": "task",
       "id": "db-supabase-setup",
-      "path": ".aios-core/development/tasks/db-supabase-setup.md"
+      "path": ".aiox-core/development/tasks/db-supabase-setup.md"
     },
     {
       "type": "task",
       "id": "dev-apply-qa-fixes",
-      "path": ".aios-core/development/tasks/dev-apply-qa-fixes.md"
+      "path": ".aiox-core/development/tasks/dev-apply-qa-fixes.md"
     },
     {
       "type": "task",
       "id": "dev-backlog-debt",
-      "path": ".aios-core/development/tasks/dev-backlog-debt.md"
+      "path": ".aiox-core/development/tasks/dev-backlog-debt.md"
     },
     {
       "type": "task",
       "id": "dev-validate-next-story",
-      "path": ".aios-core/development/tasks/dev-validate-next-story.md"
+      "path": ".aiox-core/development/tasks/dev-validate-next-story.md"
     },
     {
       "type": "task",
       "id": "init-project-status",
-      "path": ".aios-core/development/tasks/init-project-status.md"
+      "path": ".aiox-core/development/tasks/init-project-status.md"
     },
     {
       "type": "task",
       "id": "integrate-expansion-pack",
-      "path": ".aios-core/development/tasks/integrate-expansion-pack.md"
+      "path": ".aiox-core/development/tasks/integrate-expansion-pack.md"
     },
     {
       "type": "task",
       "id": "learn-patterns",
-      "path": ".aios-core/development/tasks/learn-patterns.md"
+      "path": ".aiox-core/development/tasks/learn-patterns.md"
     },
     {
       "type": "task",
       "id": "mcp-workflow",
-      "path": ".aios-core/development/tasks/mcp-workflow.md"
+      "path": ".aiox-core/development/tasks/mcp-workflow.md"
     },
     {
       "type": "task",
       "id": "next",
-      "path": ".aios-core/development/tasks/next.md"
+      "path": ".aiox-core/development/tasks/next.md"
     },
     {
       "type": "task",
       "id": "patterns",
-      "path": ".aios-core/development/tasks/patterns.md"
+      "path": ".aiox-core/development/tasks/patterns.md"
     },
     {
       "type": "task",
       "id": "po-backlog-add",
-      "path": ".aios-core/development/tasks/po-backlog-add.md"
+      "path": ".aiox-core/development/tasks/po-backlog-add.md"
     },
     {
       "type": "task",
       "id": "po-stories-index",
-      "path": ".aios-core/development/tasks/po-stories-index.md"
+      "path": ".aiox-core/development/tasks/po-stories-index.md"
     },
     {
       "type": "task",
       "id": "pr-automation",
-      "path": ".aios-core/development/tasks/pr-automation.md"
+      "path": ".aiox-core/development/tasks/pr-automation.md"
     },
     {
       "type": "task",
       "id": "qa-backlog-add-followup",
-      "path": ".aios-core/development/tasks/qa-backlog-add-followup.md"
+      "path": ".aiox-core/development/tasks/qa-backlog-add-followup.md"
     },
     {
       "type": "task",
       "id": "qa-generate-tests",
-      "path": ".aios-core/development/tasks/qa-generate-tests.md"
+      "path": ".aiox-core/development/tasks/qa-generate-tests.md"
     },
     {
       "type": "task",
       "id": "qa-nfr-assess",
-      "path": ".aios-core/development/tasks/qa-nfr-assess.md"
+      "path": ".aiox-core/development/tasks/qa-nfr-assess.md"
     },
     {
       "type": "task",
       "id": "qa-review-proposal",
-      "path": ".aios-core/development/tasks/qa-review-proposal.md"
+      "path": ".aiox-core/development/tasks/qa-review-proposal.md"
     },
     {
       "type": "task",
       "id": "qa-review-story",
-      "path": ".aios-core/development/tasks/qa-review-story.md"
+      "path": ".aiox-core/development/tasks/qa-review-story.md"
     },
     {
       "type": "task",
       "id": "qa-risk-profile",
-      "path": ".aios-core/development/tasks/qa-risk-profile.md"
+      "path": ".aiox-core/development/tasks/qa-risk-profile.md"
     },
     {
       "type": "task",
       "id": "qa-run-tests",
-      "path": ".aios-core/development/tasks/qa-run-tests.md"
+      "path": ".aiox-core/development/tasks/qa-run-tests.md"
     },
     {
       "type": "task",
       "id": "qa-test-design",
-      "path": ".aios-core/development/tasks/qa-test-design.md"
+      "path": ".aiox-core/development/tasks/qa-test-design.md"
     },
     {
       "type": "task",
       "id": "qa-trace-requirements",
-      "path": ".aios-core/development/tasks/qa-trace-requirements.md"
+      "path": ".aiox-core/development/tasks/qa-trace-requirements.md"
     },
     {
       "type": "task",
       "id": "security-scan",
-      "path": ".aios-core/development/tasks/security-scan.md"
+      "path": ".aiox-core/development/tasks/security-scan.md"
     },
     {
       "type": "task",
       "id": "setup-llm-routing",
-      "path": ".aios-core/development/tasks/setup-llm-routing.md"
+      "path": ".aiox-core/development/tasks/setup-llm-routing.md"
     },
     {
       "type": "task",
       "id": "setup-project-docs",
-      "path": ".aios-core/development/tasks/setup-project-docs.md"
+      "path": ".aiox-core/development/tasks/setup-project-docs.md"
     },
     {
       "type": "task",
       "id": "sm-create-next-story",
-      "path": ".aios-core/development/tasks/sm-create-next-story.md"
+      "path": ".aiox-core/development/tasks/sm-create-next-story.md"
     },
     {
       "type": "task",
       "id": "squad-creator-sync-ide-command",
-      "path": ".aios-core/development/tasks/squad-creator-sync-ide-command.md"
+      "path": ".aiox-core/development/tasks/squad-creator-sync-ide-command.md"
     },
     {
       "type": "task",
       "id": "test-validation-task",
-      "path": ".aios-core/development/tasks/test-validation-task.md"
+      "path": ".aiox-core/development/tasks/test-validation-task.md"
     },
     {
       "type": "template",
       "id": "activation-instructions-inline-greeting",
-      "path": ".aios-core/product/templates/activation-instructions-inline-greeting.yaml"
+      "path": ".aiox-core/product/templates/activation-instructions-inline-greeting.yaml"
     },
     {
       "type": "template",
       "id": "activation-instructions-template",
-      "path": ".aios-core/product/templates/activation-instructions-template.md"
+      "path": ".aiox-core/product/templates/activation-instructions-template.md"
     },
     {
       "type": "template",
       "id": "command-rationalization-matrix",
-      "path": ".aios-core/product/templates/command-rationalization-matrix.md"
+      "path": ".aiox-core/product/templates/command-rationalization-matrix.md"
     },
     {
       "type": "template",
       "id": "design-story-tmpl",
-      "path": ".aios-core/product/templates/design-story-tmpl.yaml"
+      "path": ".aiox-core/product/templates/design-story-tmpl.yaml"
     },
     {
       "type": "template",
       "id": "gordon-mcp",
-      "path": ".aios-core/product/templates/gordon-mcp.yaml"
+      "path": ".aiox-core/product/templates/gordon-mcp.yaml"
     },
     {
       "type": "template",
       "id": "personalized-agent-template",
-      "path": ".aios-core/product/templates/personalized-agent-template.md"
+      "path": ".aiox-core/product/templates/personalized-agent-template.md"
     },
     {
       "type": "template",
       "id": "personalized-checklist-template",
-      "path": ".aios-core/product/templates/personalized-checklist-template.md"
+      "path": ".aiox-core/product/templates/personalized-checklist-template.md"
     },
     {
       "type": "template",
       "id": "personalized-task-template-v2",
-      "path": ".aios-core/product/templates/personalized-task-template-v2.md"
+      "path": ".aiox-core/product/templates/personalized-task-template-v2.md"
     },
     {
       "type": "template",
       "id": "personalized-task-template",
-      "path": ".aios-core/product/templates/personalized-task-template.md"
+      "path": ".aiox-core/product/templates/personalized-task-template.md"
     },
     {
       "type": "template",
       "id": "personalized-template-file",
-      "path": ".aios-core/product/templates/personalized-template-file.yaml"
+      "path": ".aiox-core/product/templates/personalized-template-file.yaml"
     },
     {
       "type": "template",
       "id": "personalized-workflow-template",
-      "path": ".aios-core/product/templates/personalized-workflow-template.yaml"
+      "path": ".aiox-core/product/templates/personalized-workflow-template.yaml"
     },
     {
       "type": "template",
       "id": "task-execution-report",
-      "path": ".aios-core/product/templates/task-execution-report.md"
+      "path": ".aiox-core/product/templates/task-execution-report.md"
     }
   ],
   "assets": {
     "agents": [
       {
         "type": "agent",
-        "id": "aios-master",
+        "id": "aiox-master",
         "name": "Orion",
-        "title": "AIOS Master Orchestrator & Framework Developer",
-        "path": ".aios-core/development/agents/aios-master.md",
+        "title": "AIOX Master Orchestrator & Framework Developer",
+        "path": ".aiox-core/development/agents/aiox-master.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -328,7 +328,7 @@
             "story-draft-checklist.md"
           ],
           "data": [
-            "aios-kb.md",
+            "aiox-kb.md",
             "brainstorming-techniques.md",
             "elicitation-methods.md",
             "technical-preferences.md"
@@ -344,7 +344,7 @@
         "id": "analyst",
         "name": "Atlas",
         "title": "Business Analyst",
-        "path": ".aios-core/development/agents/analyst.md",
+        "path": ".aiox-core/development/agents/analyst.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -362,7 +362,7 @@
           ],
           "checklists": [],
           "data": [
-            "aios-kb.md",
+            "aiox-kb.md",
             "brainstorming-techniques.md"
           ],
           "tools": [
@@ -380,7 +380,7 @@
         "id": "architect",
         "name": "Aria",
         "title": "Architect",
-        "path": ".aios-core/development/agents/architect.md",
+        "path": ".aiox-core/development/agents/architect.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -422,7 +422,7 @@
         "id": "data-engineer",
         "name": "Dara",
         "title": "Database Architect & Operations Engineer",
-        "path": ".aios-core/development/agents/data-engineer.md",
+        "path": ".aiox-core/development/agents/data-engineer.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -490,7 +490,7 @@
         "id": "dev",
         "name": "Dex",
         "title": "Full Stack Developer",
-        "path": ".aios-core/development/agents/dev.md",
+        "path": ".aiox-core/development/agents/dev.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -530,7 +530,7 @@
         "id": "devops",
         "name": "Gage",
         "title": "GitHub Repository Manager & DevOps Specialist",
-        "path": ".aios-core/development/agents/devops.md",
+        "path": ".aiox-core/development/agents/devops.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -574,7 +574,7 @@
         "id": "pm",
         "name": "Morgan",
         "title": "Product Manager",
-        "path": ".aios-core/development/agents/pm.md",
+        "path": ".aiox-core/development/agents/pm.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -608,7 +608,7 @@
         "id": "po",
         "name": "Pax",
         "title": "Product Owner",
-        "path": ".aios-core/development/agents/po.md",
+        "path": ".aiox-core/development/agents/po.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -645,7 +645,7 @@
         "id": "qa",
         "name": "Quinn",
         "title": "Test Architect & Quality Advisor",
-        "path": ".aios-core/development/agents/qa.md",
+        "path": ".aiox-core/development/agents/qa.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -685,7 +685,7 @@
         "id": "sm",
         "name": "River",
         "title": "Scrum Master",
-        "path": ".aios-core/development/agents/sm.md",
+        "path": ".aiox-core/development/agents/sm.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -715,7 +715,7 @@
         "id": "squad-creator",
         "name": "Craft",
         "title": "Squad Creator",
-        "path": ".aios-core/development/agents/squad-creator.md",
+        "path": ".aiox-core/development/agents/squad-creator.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -747,7 +747,7 @@
         "id": "ux-design-expert",
         "name": "Uma",
         "title": "UX/UI Designer & Design System Architect",
-        "path": ".aios-core/development/agents/ux-design-expert.md",
+        "path": ".aiox-core/development/agents/ux-design-expert.md",
         "version": "v2",
         "dependencies": {
           "tasks": [
@@ -816,7 +816,7 @@
         "id": "add-mcp",
         "name": "add-mcp",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/add-mcp.md",
+        "path": ".aiox-core/development/tasks/add-mcp.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -833,7 +833,7 @@
         "id": "advanced-elicitation",
         "name": "advancedElicitation()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/advanced-elicitation.md",
+        "path": ".aiox-core/development/tasks/advanced-elicitation.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -850,7 +850,7 @@
         "id": "analyst-facilitate-brainstorming",
         "name": "analyst-facilitate-brainstorming",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/analyst-facilitate-brainstorming.md",
+        "path": ".aiox-core/development/tasks/analyst-facilitate-brainstorming.md",
         "version": "v2",
         "dependencies": {
           "templates": [
@@ -869,7 +869,7 @@
         "id": "analyze-brownfield",
         "name": "analyzeBrownfield()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/analyze-brownfield.md",
+        "path": ".aiox-core/development/tasks/analyze-brownfield.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -886,7 +886,7 @@
         "id": "analyze-framework",
         "name": "analyze-framework",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/analyze-framework.md",
+        "path": ".aiox-core/development/tasks/analyze-framework.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -903,7 +903,7 @@
         "id": "analyze-performance",
         "name": "analyze-performance",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/analyze-performance.md",
+        "path": ".aiox-core/development/tasks/analyze-performance.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -920,7 +920,7 @@
         "id": "analyze-project-structure",
         "name": "analyzeProjectStructure()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/analyze-project-structure.md",
+        "path": ".aiox-core/development/tasks/analyze-project-structure.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -937,7 +937,7 @@
         "id": "apply-qa-fixes",
         "name": "apply-qa-fixes",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/apply-qa-fixes.md",
+        "path": ".aiox-core/development/tasks/apply-qa-fixes.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -954,7 +954,7 @@
         "id": "architect-analyze-impact",
         "name": "architect-analyze-impact",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/architect-analyze-impact.md",
+        "path": ".aiox-core/development/tasks/architect-analyze-impact.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -971,7 +971,7 @@
         "id": "audit-codebase",
         "name": "audit-codebase",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/audit-codebase.md",
+        "path": ".aiox-core/development/tasks/audit-codebase.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -988,7 +988,7 @@
         "id": "audit-tailwind-config",
         "name": "audit-tailwind-config",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/audit-tailwind-config.md",
+        "path": ".aiox-core/development/tasks/audit-tailwind-config.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1005,7 +1005,7 @@
         "id": "audit-utilities",
         "name": "audit-utilities",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/audit-utilities.md",
+        "path": ".aiox-core/development/tasks/audit-utilities.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1022,7 +1022,7 @@
         "id": "bootstrap-shadcn-library",
         "name": "bootstrap-shadcn-library",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/bootstrap-shadcn-library.md",
+        "path": ".aiox-core/development/tasks/bootstrap-shadcn-library.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1039,7 +1039,7 @@
         "id": "brownfield-create-epic",
         "name": "brownfield-create-epic",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/brownfield-create-epic.md",
+        "path": ".aiox-core/development/tasks/brownfield-create-epic.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1056,7 +1056,7 @@
         "id": "brownfield-create-story",
         "name": "brownfield-create-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/brownfield-create-story.md",
+        "path": ".aiox-core/development/tasks/brownfield-create-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1073,7 +1073,7 @@
         "id": "build-component",
         "name": "build-component",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/build-component.md",
+        "path": ".aiox-core/development/tasks/build-component.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1090,7 +1090,7 @@
         "id": "calculate-roi",
         "name": "calculate-roi",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/calculate-roi.md",
+        "path": ".aiox-core/development/tasks/calculate-roi.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1107,7 +1107,7 @@
         "id": "check-docs-links",
         "name": "check-docs-links",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/check-docs-links.md",
+        "path": ".aiox-core/development/tasks/check-docs-links.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1124,7 +1124,7 @@
         "id": "ci-cd-configuration",
         "name": "ci-cd-configuration",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/ci-cd-configuration.md",
+        "path": ".aiox-core/development/tasks/ci-cd-configuration.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1141,7 +1141,7 @@
         "id": "cleanup-utilities",
         "name": "cleanup-utilities",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/cleanup-utilities.md",
+        "path": ".aiox-core/development/tasks/cleanup-utilities.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1158,7 +1158,7 @@
         "id": "collaborative-edit",
         "name": "collaborative-edit",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/collaborative-edit.md",
+        "path": ".aiox-core/development/tasks/collaborative-edit.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1175,7 +1175,7 @@
         "id": "compose-molecule",
         "name": "compose-molecule",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/compose-molecule.md",
+        "path": ".aiox-core/development/tasks/compose-molecule.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1192,7 +1192,7 @@
         "id": "consolidate-patterns",
         "name": "consolidate-patterns",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/consolidate-patterns.md",
+        "path": ".aiox-core/development/tasks/consolidate-patterns.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1209,7 +1209,7 @@
         "id": "correct-course",
         "name": "correct-course",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/correct-course.md",
+        "path": ".aiox-core/development/tasks/correct-course.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1228,7 +1228,7 @@
         "id": "create-agent",
         "name": "create-agent",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-agent.md",
+        "path": ".aiox-core/development/tasks/create-agent.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1245,7 +1245,7 @@
         "id": "create-brownfield-story",
         "name": "create-brownfield-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-brownfield-story.md",
+        "path": ".aiox-core/development/tasks/create-brownfield-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1262,7 +1262,7 @@
         "id": "create-deep-research-prompt",
         "name": "create-deep-research-prompt",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-deep-research-prompt.md",
+        "path": ".aiox-core/development/tasks/create-deep-research-prompt.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1279,7 +1279,7 @@
         "id": "create-doc",
         "name": "create-doc",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-doc.md",
+        "path": ".aiox-core/development/tasks/create-doc.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1296,7 +1296,7 @@
         "id": "create-next-story",
         "name": "create-next-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-next-story.md",
+        "path": ".aiox-core/development/tasks/create-next-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1313,7 +1313,7 @@
         "id": "create-service",
         "name": "createService()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-service.md",
+        "path": ".aiox-core/development/tasks/create-service.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1330,7 +1330,7 @@
         "id": "create-suite",
         "name": "create-suite",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-suite.md",
+        "path": ".aiox-core/development/tasks/create-suite.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1347,7 +1347,7 @@
         "id": "create-task",
         "name": "create-task",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-task.md",
+        "path": ".aiox-core/development/tasks/create-task.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1364,7 +1364,7 @@
         "id": "create-workflow",
         "name": "create-workflow",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/create-workflow.md",
+        "path": ".aiox-core/development/tasks/create-workflow.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1381,7 +1381,7 @@
         "id": "db-analyze-hotpaths",
         "name": "db-analyze-hotpaths",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-analyze-hotpaths.md",
+        "path": ".aiox-core/development/tasks/db-analyze-hotpaths.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1398,7 +1398,7 @@
         "id": "db-apply-migration",
         "name": "db-apply-migration",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-apply-migration.md",
+        "path": ".aiox-core/development/tasks/db-apply-migration.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1415,7 +1415,7 @@
         "id": "db-bootstrap",
         "name": "dbBootstrap()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-bootstrap.md",
+        "path": ".aiox-core/development/tasks/db-bootstrap.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1432,7 +1432,7 @@
         "id": "db-domain-modeling",
         "name": "db-domain-modeling",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-domain-modeling.md",
+        "path": ".aiox-core/development/tasks/db-domain-modeling.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1449,7 +1449,7 @@
         "id": "db-dry-run",
         "name": "db-dry-run",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-dry-run.md",
+        "path": ".aiox-core/development/tasks/db-dry-run.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1466,7 +1466,7 @@
         "id": "db-env-check",
         "name": "db-env-check",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-env-check.md",
+        "path": ".aiox-core/development/tasks/db-env-check.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1483,7 +1483,7 @@
         "id": "db-expansion-pack-integration",
         "name": "db-expansion-pack-integration",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-expansion-pack-integration.md",
+        "path": ".aiox-core/development/tasks/db-expansion-pack-integration.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1500,7 +1500,7 @@
         "id": "db-explain",
         "name": "db-explain",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-explain.md",
+        "path": ".aiox-core/development/tasks/db-explain.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1517,7 +1517,7 @@
         "id": "db-impersonate",
         "name": "db-impersonate",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-impersonate.md",
+        "path": ".aiox-core/development/tasks/db-impersonate.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1534,7 +1534,7 @@
         "id": "db-load-csv",
         "name": "db-load-csv",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-load-csv.md",
+        "path": ".aiox-core/development/tasks/db-load-csv.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1551,7 +1551,7 @@
         "id": "db-policy-apply",
         "name": "db-policy-apply",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-policy-apply.md",
+        "path": ".aiox-core/development/tasks/db-policy-apply.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1568,7 +1568,7 @@
         "id": "db-rls-audit",
         "name": "db-rls-audit",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-rls-audit.md",
+        "path": ".aiox-core/development/tasks/db-rls-audit.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1585,7 +1585,7 @@
         "id": "db-rollback",
         "name": "db-rollback",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-rollback.md",
+        "path": ".aiox-core/development/tasks/db-rollback.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1602,7 +1602,7 @@
         "id": "db-run-sql",
         "name": "db-run-sql",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-run-sql.md",
+        "path": ".aiox-core/development/tasks/db-run-sql.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1619,7 +1619,7 @@
         "id": "db-schema-audit",
         "name": "db-schema-audit",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-schema-audit.md",
+        "path": ".aiox-core/development/tasks/db-schema-audit.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1636,7 +1636,7 @@
         "id": "db-seed",
         "name": "db-seed",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-seed.md",
+        "path": ".aiox-core/development/tasks/db-seed.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1653,7 +1653,7 @@
         "id": "db-smoke-test",
         "name": "db-smoke-test",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-smoke-test.md",
+        "path": ".aiox-core/development/tasks/db-smoke-test.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1670,7 +1670,7 @@
         "id": "db-snapshot",
         "name": "db-snapshot",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-snapshot.md",
+        "path": ".aiox-core/development/tasks/db-snapshot.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1687,7 +1687,7 @@
         "id": "db-supabase-setup",
         "name": "db-supabase-setup",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-supabase-setup.md",
+        "path": ".aiox-core/development/tasks/db-supabase-setup.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1704,7 +1704,7 @@
         "id": "db-verify-order",
         "name": "db-verify-order",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/db-verify-order.md",
+        "path": ".aiox-core/development/tasks/db-verify-order.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1721,7 +1721,7 @@
         "id": "deprecate-component",
         "name": "deprecate-component",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/deprecate-component.md",
+        "path": ".aiox-core/development/tasks/deprecate-component.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1738,7 +1738,7 @@
         "id": "dev-apply-qa-fixes",
         "name": "dev-apply-qa-fixes",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-apply-qa-fixes.md",
+        "path": ".aiox-core/development/tasks/dev-apply-qa-fixes.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1755,7 +1755,7 @@
         "id": "dev-backlog-debt",
         "name": "dev-backlog-debt",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-backlog-debt.md",
+        "path": ".aiox-core/development/tasks/dev-backlog-debt.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1772,7 +1772,7 @@
         "id": "dev-develop-story",
         "name": "dev-develop-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-develop-story.md",
+        "path": ".aiox-core/development/tasks/dev-develop-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1791,7 +1791,7 @@
         "id": "dev-improve-code-quality",
         "name": "dev-improve-code-quality",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-improve-code-quality.md",
+        "path": ".aiox-core/development/tasks/dev-improve-code-quality.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1808,7 +1808,7 @@
         "id": "dev-optimize-performance",
         "name": "dev-optimize-performance",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-optimize-performance.md",
+        "path": ".aiox-core/development/tasks/dev-optimize-performance.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1825,7 +1825,7 @@
         "id": "dev-suggest-refactoring",
         "name": "dev-suggest-refactoring",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-suggest-refactoring.md",
+        "path": ".aiox-core/development/tasks/dev-suggest-refactoring.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1842,7 +1842,7 @@
         "id": "dev-validate-next-story",
         "name": "dev-validate-next-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/dev-validate-next-story.md",
+        "path": ".aiox-core/development/tasks/dev-validate-next-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [
@@ -1861,7 +1861,7 @@
         "id": "document-project",
         "name": "document-project",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/document-project.md",
+        "path": ".aiox-core/development/tasks/document-project.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1878,7 +1878,7 @@
         "id": "environment-bootstrap",
         "name": "environment-bootstrap",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/environment-bootstrap.md",
+        "path": ".aiox-core/development/tasks/environment-bootstrap.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1895,7 +1895,7 @@
         "id": "execute-checklist",
         "name": "execute-checklist",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/execute-checklist.md",
+        "path": ".aiox-core/development/tasks/execute-checklist.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1912,7 +1912,7 @@
         "id": "export-design-tokens-dtcg",
         "name": "export-design-tokens-dtcg",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/export-design-tokens-dtcg.md",
+        "path": ".aiox-core/development/tasks/export-design-tokens-dtcg.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1929,7 +1929,7 @@
         "id": "extend-pattern",
         "name": "extend-pattern",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/extend-pattern.md",
+        "path": ".aiox-core/development/tasks/extend-pattern.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1946,7 +1946,7 @@
         "id": "extract-tokens",
         "name": "extract-tokens",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/extract-tokens.md",
+        "path": ".aiox-core/development/tasks/extract-tokens.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1963,7 +1963,7 @@
         "id": "facilitate-brainstorming-session",
         "name": "facilitate-brainstorming-session",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/facilitate-brainstorming-session.md",
+        "path": ".aiox-core/development/tasks/facilitate-brainstorming-session.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1980,7 +1980,7 @@
         "id": "generate-ai-frontend-prompt",
         "name": "generate-ai-frontend-prompt",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/generate-ai-frontend-prompt.md",
+        "path": ".aiox-core/development/tasks/generate-ai-frontend-prompt.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -1997,7 +1997,7 @@
         "id": "generate-documentation",
         "name": "generate-documentation",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/generate-documentation.md",
+        "path": ".aiox-core/development/tasks/generate-documentation.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2014,7 +2014,7 @@
         "id": "generate-migration-strategy",
         "name": "generate-migration-strategy",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/generate-migration-strategy.md",
+        "path": ".aiox-core/development/tasks/generate-migration-strategy.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2033,7 +2033,7 @@
         "id": "generate-shock-report",
         "name": "generate-shock-report",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/generate-shock-report.md",
+        "path": ".aiox-core/development/tasks/generate-shock-report.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2050,7 +2050,7 @@
         "id": "github-devops-github-pr-automation",
         "name": "github-devops-github-pr-automation",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/github-devops-github-pr-automation.md",
+        "path": ".aiox-core/development/tasks/github-devops-github-pr-automation.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2067,7 +2067,7 @@
         "id": "github-devops-pre-push-quality-gate",
         "name": "github-devops-pre-push-quality-gate",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/github-devops-pre-push-quality-gate.md",
+        "path": ".aiox-core/development/tasks/github-devops-pre-push-quality-gate.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2084,7 +2084,7 @@
         "id": "github-devops-repository-cleanup",
         "name": "github-devops-repository-cleanup",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/github-devops-repository-cleanup.md",
+        "path": ".aiox-core/development/tasks/github-devops-repository-cleanup.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2101,7 +2101,7 @@
         "id": "github-devops-version-management",
         "name": "github-devops-version-management",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/github-devops-version-management.md",
+        "path": ".aiox-core/development/tasks/github-devops-version-management.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2118,7 +2118,7 @@
         "id": "improve-self",
         "name": "improve-self",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/improve-self.md",
+        "path": ".aiox-core/development/tasks/improve-self.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2135,7 +2135,7 @@
         "id": "index-docs",
         "name": "index-docs",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/index-docs.md",
+        "path": ".aiox-core/development/tasks/index-docs.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2152,7 +2152,7 @@
         "id": "init-project-status",
         "name": "init-project-status",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/init-project-status.md",
+        "path": ".aiox-core/development/tasks/init-project-status.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2169,7 +2169,7 @@
         "id": "integrate-expansion-pack",
         "name": "integrate-expansion-pack",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/integrate-expansion-pack.md",
+        "path": ".aiox-core/development/tasks/integrate-expansion-pack.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2186,7 +2186,7 @@
         "id": "kb-mode-interaction",
         "name": "kb-mode-interaction",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/kb-mode-interaction.md",
+        "path": ".aiox-core/development/tasks/kb-mode-interaction.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2203,7 +2203,7 @@
         "id": "learn-patterns",
         "name": "learn-patterns",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/learn-patterns.md",
+        "path": ".aiox-core/development/tasks/learn-patterns.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2220,7 +2220,7 @@
         "id": "mcp-workflow",
         "name": "mcp-workflow",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/mcp-workflow.md",
+        "path": ".aiox-core/development/tasks/mcp-workflow.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2237,7 +2237,7 @@
         "id": "modify-agent",
         "name": "modify-agent",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/modify-agent.md",
+        "path": ".aiox-core/development/tasks/modify-agent.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2254,7 +2254,7 @@
         "id": "modify-task",
         "name": "modify-task",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/modify-task.md",
+        "path": ".aiox-core/development/tasks/modify-task.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2271,7 +2271,7 @@
         "id": "modify-workflow",
         "name": "modify-workflow",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/modify-workflow.md",
+        "path": ".aiox-core/development/tasks/modify-workflow.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2288,7 +2288,7 @@
         "id": "next",
         "name": "next()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/next.md",
+        "path": ".aiox-core/development/tasks/next.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2305,7 +2305,7 @@
         "id": "patterns",
         "name": "patterns()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/patterns.md",
+        "path": ".aiox-core/development/tasks/patterns.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2322,7 +2322,7 @@
         "id": "po-backlog-add",
         "name": "po-backlog-add",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-backlog-add.md",
+        "path": ".aiox-core/development/tasks/po-backlog-add.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2339,7 +2339,7 @@
         "id": "po-manage-story-backlog",
         "name": "po-manage-story-backlog",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-manage-story-backlog.md",
+        "path": ".aiox-core/development/tasks/po-manage-story-backlog.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2356,7 +2356,7 @@
         "id": "po-pull-story-from-clickup",
         "name": "po-pull-story-from-clickup",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-pull-story-from-clickup.md",
+        "path": ".aiox-core/development/tasks/po-pull-story-from-clickup.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2373,7 +2373,7 @@
         "id": "po-pull-story",
         "name": "po-pull-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-pull-story.md",
+        "path": ".aiox-core/development/tasks/po-pull-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2390,7 +2390,7 @@
         "id": "po-stories-index",
         "name": "po-stories-index",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-stories-index.md",
+        "path": ".aiox-core/development/tasks/po-stories-index.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2407,7 +2407,7 @@
         "id": "po-sync-story-to-clickup",
         "name": "po-sync-story-to-clickup",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-sync-story-to-clickup.md",
+        "path": ".aiox-core/development/tasks/po-sync-story-to-clickup.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2424,7 +2424,7 @@
         "id": "po-sync-story",
         "name": "po-sync-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/po-sync-story.md",
+        "path": ".aiox-core/development/tasks/po-sync-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2441,7 +2441,7 @@
         "id": "pr-automation",
         "name": "pr-automation",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/pr-automation.md",
+        "path": ".aiox-core/development/tasks/pr-automation.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2458,7 +2458,7 @@
         "id": "propose-modification",
         "name": "propose-modification",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/propose-modification.md",
+        "path": ".aiox-core/development/tasks/propose-modification.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2475,7 +2475,7 @@
         "id": "qa-backlog-add-followup",
         "name": "qa-backlog-add-followup",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-backlog-add-followup.md",
+        "path": ".aiox-core/development/tasks/qa-backlog-add-followup.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2492,7 +2492,7 @@
         "id": "qa-gate",
         "name": "qa-gate",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-gate.md",
+        "path": ".aiox-core/development/tasks/qa-gate.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2509,7 +2509,7 @@
         "id": "qa-generate-tests",
         "name": "qa-generate-tests",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-generate-tests.md",
+        "path": ".aiox-core/development/tasks/qa-generate-tests.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2526,7 +2526,7 @@
         "id": "qa-nfr-assess",
         "name": "qa-nfr-assess",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-nfr-assess.md",
+        "path": ".aiox-core/development/tasks/qa-nfr-assess.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2543,7 +2543,7 @@
         "id": "qa-review-proposal",
         "name": "qa-review-proposal",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-review-proposal.md",
+        "path": ".aiox-core/development/tasks/qa-review-proposal.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2560,7 +2560,7 @@
         "id": "qa-review-story",
         "name": "qa-review-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-review-story.md",
+        "path": ".aiox-core/development/tasks/qa-review-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [
@@ -2579,7 +2579,7 @@
         "id": "qa-risk-profile",
         "name": "qa-risk-profile",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-risk-profile.md",
+        "path": ".aiox-core/development/tasks/qa-risk-profile.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2596,7 +2596,7 @@
         "id": "qa-run-tests",
         "name": "qa-run-tests",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-run-tests.md",
+        "path": ".aiox-core/development/tasks/qa-run-tests.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2613,7 +2613,7 @@
         "id": "qa-test-design",
         "name": "qa-test-design",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-test-design.md",
+        "path": ".aiox-core/development/tasks/qa-test-design.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2630,7 +2630,7 @@
         "id": "qa-trace-requirements",
         "name": "qa-trace-requirements",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/qa-trace-requirements.md",
+        "path": ".aiox-core/development/tasks/qa-trace-requirements.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2647,7 +2647,7 @@
         "id": "release-management",
         "name": "release-management",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/release-management.md",
+        "path": ".aiox-core/development/tasks/release-management.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2664,7 +2664,7 @@
         "id": "search-mcp",
         "name": "search-mcp",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/search-mcp.md",
+        "path": ".aiox-core/development/tasks/search-mcp.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2681,7 +2681,7 @@
         "id": "security-audit",
         "name": "security-audit",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/security-audit.md",
+        "path": ".aiox-core/development/tasks/security-audit.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2698,7 +2698,7 @@
         "id": "security-scan",
         "name": "security-scan",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/security-scan.md",
+        "path": ".aiox-core/development/tasks/security-scan.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2715,7 +2715,7 @@
         "id": "setup-database",
         "name": "setup-database",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-database.md",
+        "path": ".aiox-core/development/tasks/setup-database.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2732,7 +2732,7 @@
         "id": "setup-design-system",
         "name": "setup-design-system",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-design-system.md",
+        "path": ".aiox-core/development/tasks/setup-design-system.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2749,7 +2749,7 @@
         "id": "setup-github",
         "name": "setup-github",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-github.md",
+        "path": ".aiox-core/development/tasks/setup-github.md",
         "version": "v2",
         "dependencies": {
           "templates": [
@@ -2768,7 +2768,7 @@
         "id": "setup-llm-routing",
         "name": "setup-llm-routing",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-llm-routing.md",
+        "path": ".aiox-core/development/tasks/setup-llm-routing.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2785,7 +2785,7 @@
         "id": "setup-mcp-docker",
         "name": "setup-mcp-docker",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-mcp-docker.md",
+        "path": ".aiox-core/development/tasks/setup-mcp-docker.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2802,7 +2802,7 @@
         "id": "setup-project-docs",
         "name": "setupProjectDocs()",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/setup-project-docs.md",
+        "path": ".aiox-core/development/tasks/setup-project-docs.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2819,7 +2819,7 @@
         "id": "shard-doc",
         "name": "shard-doc",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/shard-doc.md",
+        "path": ".aiox-core/development/tasks/shard-doc.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2836,7 +2836,7 @@
         "id": "sm-create-next-story",
         "name": "sm-create-next-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/sm-create-next-story.md",
+        "path": ".aiox-core/development/tasks/sm-create-next-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2853,7 +2853,7 @@
         "id": "squad-creator-analyze",
         "name": "squad-creator-analyze",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-analyze.md",
+        "path": ".aiox-core/development/tasks/squad-creator-analyze.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2870,7 +2870,7 @@
         "id": "squad-creator-create",
         "name": "squad-creator-create",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-create.md",
+        "path": ".aiox-core/development/tasks/squad-creator-create.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2887,7 +2887,7 @@
         "id": "squad-creator-design",
         "name": "squad-creator-design",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-design.md",
+        "path": ".aiox-core/development/tasks/squad-creator-design.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2904,7 +2904,7 @@
         "id": "squad-creator-download",
         "name": "Download Squad",
         "responsavel": "@squad-creator",
-        "path": ".aios-core/development/tasks/squad-creator-download.md",
+        "path": ".aiox-core/development/tasks/squad-creator-download.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2921,7 +2921,7 @@
         "id": "squad-creator-extend",
         "name": "squad-creator-extend",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-extend.md",
+        "path": ".aiox-core/development/tasks/squad-creator-extend.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2938,7 +2938,7 @@
         "id": "squad-creator-list",
         "name": "squad-creator-list",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-list.md",
+        "path": ".aiox-core/development/tasks/squad-creator-list.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2955,7 +2955,7 @@
         "id": "squad-creator-migrate",
         "name": "squad-creator-migrate",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-migrate.md",
+        "path": ".aiox-core/development/tasks/squad-creator-migrate.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2972,7 +2972,7 @@
         "id": "squad-creator-publish",
         "name": "squad-creator-publish",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-publish.md",
+        "path": ".aiox-core/development/tasks/squad-creator-publish.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -2989,7 +2989,7 @@
         "id": "squad-creator-sync-ide-command",
         "name": "squad-creator-sync-ide-command",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-sync-ide-command.md",
+        "path": ".aiox-core/development/tasks/squad-creator-sync-ide-command.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3006,7 +3006,7 @@
         "id": "squad-creator-sync-synkra",
         "name": "Sync Squad to Synkra",
         "responsavel": "@squad-creator",
-        "path": ".aios-core/development/tasks/squad-creator-sync-synkra.md",
+        "path": ".aiox-core/development/tasks/squad-creator-sync-synkra.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3023,7 +3023,7 @@
         "id": "squad-creator-validate",
         "name": "squad-creator-validate",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/squad-creator-validate.md",
+        "path": ".aiox-core/development/tasks/squad-creator-validate.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3040,7 +3040,7 @@
         "id": "sync-documentation",
         "name": "sync-documentation",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/sync-documentation.md",
+        "path": ".aiox-core/development/tasks/sync-documentation.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3057,7 +3057,7 @@
         "id": "tailwind-upgrade",
         "name": "tailwind-upgrade",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/tailwind-upgrade.md",
+        "path": ".aiox-core/development/tasks/tailwind-upgrade.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3074,7 +3074,7 @@
         "id": "test-as-user",
         "name": "test-as-user",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/test-as-user.md",
+        "path": ".aiox-core/development/tasks/test-as-user.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3091,7 +3091,7 @@
         "id": "test-validation-task",
         "name": "test-validation-task",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/test-validation-task.md",
+        "path": ".aiox-core/development/tasks/test-validation-task.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3108,7 +3108,7 @@
         "id": "undo-last",
         "name": "undo-last",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/undo-last.md",
+        "path": ".aiox-core/development/tasks/undo-last.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3125,7 +3125,7 @@
         "id": "update-manifest",
         "name": "update-manifest",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/update-manifest.md",
+        "path": ".aiox-core/development/tasks/update-manifest.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3142,7 +3142,7 @@
         "id": "ux-create-wireframe",
         "name": "ux-create-wireframe",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/ux-create-wireframe.md",
+        "path": ".aiox-core/development/tasks/ux-create-wireframe.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3159,7 +3159,7 @@
         "id": "ux-ds-scan-artifact",
         "name": "ux-ds-scan-artifact",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/ux-ds-scan-artifact.md",
+        "path": ".aiox-core/development/tasks/ux-ds-scan-artifact.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3176,7 +3176,7 @@
         "id": "ux-user-research",
         "name": "ux-user-research",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/ux-user-research.md",
+        "path": ".aiox-core/development/tasks/ux-user-research.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3193,7 +3193,7 @@
         "id": "validate-next-story",
         "name": "validate-next-story",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/validate-next-story.md",
+        "path": ".aiox-core/development/tasks/validate-next-story.md",
         "version": "v2",
         "dependencies": {
           "templates": [
@@ -3212,7 +3212,7 @@
         "id": "waves",
         "name": "waves",
         "responsavel": "Unknown",
-        "path": ".aios-core/development/tasks/waves.md",
+        "path": ".aiox-core/development/tasks/waves.md",
         "version": "v2",
         "dependencies": {
           "templates": [],
@@ -3231,7 +3231,7 @@
         "id": "activation-instructions-inline-greeting",
         "name": "activation-instructions-inline-greeting",
         "format": "yaml",
-        "path": ".aios-core/product/templates/activation-instructions-inline-greeting.yaml",
+        "path": ".aiox-core/product/templates/activation-instructions-inline-greeting.yaml",
         "size": 2509,
         "modified": "2026-01-28T21:56:44.929Z",
         "referencedBy": 0
@@ -3241,7 +3241,7 @@
         "id": "activation-instructions-template",
         "name": "activation-instructions-template",
         "format": "md",
-        "path": ".aios-core/product/templates/activation-instructions-template.md",
+        "path": ".aiox-core/product/templates/activation-instructions-template.md",
         "size": 9082,
         "modified": "2026-01-28T21:56:44.929Z",
         "referencedBy": 0
@@ -3251,7 +3251,7 @@
         "id": "agent-template",
         "name": "agent-template",
         "format": "yaml",
-        "path": ".aios-core/product/templates/agent-template.yaml",
+        "path": ".aiox-core/product/templates/agent-template.yaml",
         "size": 3210,
         "modified": "2026-01-28T21:56:44.929Z",
         "referencedBy": 1
@@ -3261,7 +3261,7 @@
         "id": "architecture-tmpl",
         "name": "architecture-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/architecture-tmpl.yaml",
+        "path": ".aiox-core/product/templates/architecture-tmpl.yaml",
         "size": 28281,
         "modified": "2026-01-28T21:56:44.930Z",
         "referencedBy": 2
@@ -3271,7 +3271,7 @@
         "id": "brainstorming-output-tmpl",
         "name": "brainstorming-output-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/brainstorming-output-tmpl.yaml",
+        "path": ".aiox-core/product/templates/brainstorming-output-tmpl.yaml",
         "size": 4877,
         "modified": "2026-01-28T21:56:44.930Z",
         "referencedBy": 2
@@ -3281,7 +3281,7 @@
         "id": "brownfield-architecture-tmpl",
         "name": "brownfield-architecture-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/brownfield-architecture-tmpl.yaml",
+        "path": ".aiox-core/product/templates/brownfield-architecture-tmpl.yaml",
         "size": 21186,
         "modified": "2026-01-28T21:56:44.930Z",
         "referencedBy": 2
@@ -3291,7 +3291,7 @@
         "id": "brownfield-prd-tmpl",
         "name": "brownfield-prd-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/brownfield-prd-tmpl.yaml",
+        "path": ".aiox-core/product/templates/brownfield-prd-tmpl.yaml",
         "size": 14755,
         "modified": "2026-01-28T21:56:44.931Z",
         "referencedBy": 2
@@ -3301,7 +3301,7 @@
         "id": "changelog-template",
         "name": "changelog-template",
         "format": "md",
-        "path": ".aios-core/product/templates/changelog-template.md",
+        "path": ".aiox-core/product/templates/changelog-template.md",
         "size": 2462,
         "modified": "2026-01-28T21:56:44.931Z",
         "referencedBy": 1
@@ -3311,7 +3311,7 @@
         "id": "command-rationalization-matrix",
         "name": "command-rationalization-matrix",
         "format": "md",
-        "path": ".aios-core/product/templates/command-rationalization-matrix.md",
+        "path": ".aiox-core/product/templates/command-rationalization-matrix.md",
         "size": 4861,
         "modified": "2026-01-28T21:56:44.932Z",
         "referencedBy": 0
@@ -3321,7 +3321,7 @@
         "id": "competitor-analysis-tmpl",
         "name": "competitor-analysis-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/competitor-analysis-tmpl.yaml",
+        "path": ".aiox-core/product/templates/competitor-analysis-tmpl.yaml",
         "size": 11659,
         "modified": "2026-01-28T21:56:44.932Z",
         "referencedBy": 2
@@ -3331,7 +3331,7 @@
         "id": "design-story-tmpl",
         "name": "design-story-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/design-story-tmpl.yaml",
+        "path": ".aiox-core/product/templates/design-story-tmpl.yaml",
         "size": 19353,
         "modified": "2026-01-28T21:56:44.933Z",
         "referencedBy": 0
@@ -3341,7 +3341,7 @@
         "id": "ds-artifact-analysis",
         "name": "ds-artifact-analysis",
         "format": "md",
-        "path": ".aios-core/product/templates/ds-artifact-analysis.md",
+        "path": ".aiox-core/product/templates/ds-artifact-analysis.md",
         "size": 890,
         "modified": "2026-01-28T21:56:44.933Z",
         "referencedBy": 1
@@ -3351,7 +3351,7 @@
         "id": "front-end-architecture-tmpl",
         "name": "front-end-architecture-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/front-end-architecture-tmpl.yaml",
+        "path": ".aiox-core/product/templates/front-end-architecture-tmpl.yaml",
         "size": 10241,
         "modified": "2026-01-28T21:56:44.935Z",
         "referencedBy": 2
@@ -3361,7 +3361,7 @@
         "id": "front-end-spec-tmpl",
         "name": "front-end-spec-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/front-end-spec-tmpl.yaml",
+        "path": ".aiox-core/product/templates/front-end-spec-tmpl.yaml",
         "size": 13997,
         "modified": "2026-01-28T21:56:44.936Z",
         "referencedBy": 2
@@ -3371,7 +3371,7 @@
         "id": "fullstack-architecture-tmpl",
         "name": "fullstack-architecture-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/fullstack-architecture-tmpl.yaml",
+        "path": ".aiox-core/product/templates/fullstack-architecture-tmpl.yaml",
         "size": 33326,
         "modified": "2026-01-28T21:56:44.936Z",
         "referencedBy": 2
@@ -3381,7 +3381,7 @@
         "id": "github-actions-cd",
         "name": "CD",
         "format": "yml",
-        "path": ".aios-core/product/templates/github-actions-cd.yml",
+        "path": ".aiox-core/product/templates/github-actions-cd.yml",
         "size": 6992,
         "modified": "2026-01-28T21:56:44.937Z",
         "referencedBy": 1
@@ -3391,7 +3391,7 @@
         "id": "github-actions-ci",
         "name": "CI",
         "format": "yml",
-        "path": ".aios-core/product/templates/github-actions-ci.yml",
+        "path": ".aiox-core/product/templates/github-actions-ci.yml",
         "size": 4492,
         "modified": "2026-01-28T21:56:44.937Z",
         "referencedBy": 1
@@ -3401,7 +3401,7 @@
         "id": "github-pr-template",
         "name": "github-pr-template",
         "format": "md",
-        "path": ".aios-core/product/templates/github-pr-template.md",
+        "path": ".aiox-core/product/templates/github-pr-template.md",
         "size": 1721,
         "modified": "2026-01-28T21:56:44.937Z",
         "referencedBy": 1
@@ -3411,7 +3411,7 @@
         "id": "gordon-mcp",
         "name": "gordon-mcp",
         "format": "yaml",
-        "path": ".aios-core/product/templates/gordon-mcp.yaml",
+        "path": ".aiox-core/product/templates/gordon-mcp.yaml",
         "size": 3695,
         "modified": "2026-01-28T21:56:44.938Z",
         "referencedBy": 0
@@ -3421,7 +3421,7 @@
         "id": "index-strategy-tmpl",
         "name": "index-strategy-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/index-strategy-tmpl.yaml",
+        "path": ".aiox-core/product/templates/index-strategy-tmpl.yaml",
         "size": 1469,
         "modified": "2026-01-28T21:56:44.939Z",
         "referencedBy": 1
@@ -3431,7 +3431,7 @@
         "id": "market-research-tmpl",
         "name": "market-research-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/market-research-tmpl.yaml",
+        "path": ".aiox-core/product/templates/market-research-tmpl.yaml",
         "size": 10183,
         "modified": "2026-01-28T21:56:44.940Z",
         "referencedBy": 2
@@ -3441,7 +3441,7 @@
         "id": "migration-plan-tmpl",
         "name": "migration-plan-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/migration-plan-tmpl.yaml",
+        "path": ".aiox-core/product/templates/migration-plan-tmpl.yaml",
         "size": 30624,
         "modified": "2026-01-28T21:56:44.940Z",
         "referencedBy": 1
@@ -3451,7 +3451,7 @@
         "id": "migration-strategy-tmpl",
         "name": "migration-strategy-tmpl",
         "format": "md",
-        "path": ".aios-core/product/templates/migration-strategy-tmpl.md",
+        "path": ".aiox-core/product/templates/migration-strategy-tmpl.md",
         "size": 14442,
         "modified": "2026-01-28T21:56:44.941Z",
         "referencedBy": 1
@@ -3461,7 +3461,7 @@
         "id": "personalized-agent-template",
         "name": "personalized-agent-template",
         "format": "md",
-        "path": ".aios-core/product/templates/personalized-agent-template.md",
+        "path": ".aiox-core/product/templates/personalized-agent-template.md",
         "size": 9355,
         "modified": "2026-01-28T21:56:44.942Z",
         "referencedBy": 0
@@ -3471,7 +3471,7 @@
         "id": "personalized-checklist-template",
         "name": "personalized-checklist-template",
         "format": "md",
-        "path": ".aios-core/product/templates/personalized-checklist-template.md",
+        "path": ".aiox-core/product/templates/personalized-checklist-template.md",
         "size": 8288,
         "modified": "2026-01-28T21:56:44.942Z",
         "referencedBy": 0
@@ -3481,7 +3481,7 @@
         "id": "personalized-task-template-v2",
         "name": "personalized-task-template-v2",
         "format": "md",
-        "path": ".aios-core/product/templates/personalized-task-template-v2.md",
+        "path": ".aiox-core/product/templates/personalized-task-template-v2.md",
         "size": 23665,
         "modified": "2026-01-28T21:56:44.942Z",
         "referencedBy": 0
@@ -3491,7 +3491,7 @@
         "id": "personalized-task-template",
         "name": "personalized-task-template",
         "format": "md",
-        "path": ".aios-core/product/templates/personalized-task-template.md",
+        "path": ".aiox-core/product/templates/personalized-task-template.md",
         "size": 7935,
         "modified": "2026-01-28T21:56:44.943Z",
         "referencedBy": 0
@@ -3501,7 +3501,7 @@
         "id": "personalized-template-file",
         "name": "personalized-template-file",
         "format": "yaml",
-        "path": ".aios-core/product/templates/personalized-template-file.yaml",
+        "path": ".aiox-core/product/templates/personalized-template-file.yaml",
         "size": 8975,
         "modified": "2026-01-28T21:56:44.943Z",
         "referencedBy": 0
@@ -3511,7 +3511,7 @@
         "id": "personalized-workflow-template",
         "name": "personalized-workflow-template",
         "format": "yaml",
-        "path": ".aios-core/product/templates/personalized-workflow-template.yaml",
+        "path": ".aiox-core/product/templates/personalized-workflow-template.yaml",
         "size": 11268,
         "modified": "2026-01-28T21:56:44.943Z",
         "referencedBy": 0
@@ -3521,7 +3521,7 @@
         "id": "prd-tmpl",
         "name": "prd-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/prd-tmpl.yaml",
+        "path": ".aiox-core/product/templates/prd-tmpl.yaml",
         "size": 11952,
         "modified": "2026-01-28T21:56:44.944Z",
         "referencedBy": 2
@@ -3531,7 +3531,7 @@
         "id": "project-brief-tmpl",
         "name": "project-brief-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/project-brief-tmpl.yaml",
+        "path": ".aiox-core/product/templates/project-brief-tmpl.yaml",
         "size": 8297,
         "modified": "2026-01-28T21:56:44.944Z",
         "referencedBy": 2
@@ -3541,7 +3541,7 @@
         "id": "qa-gate-tmpl",
         "name": "qa-gate-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/qa-gate-tmpl.yaml",
+        "path": ".aiox-core/product/templates/qa-gate-tmpl.yaml",
         "size": 6876,
         "modified": "2026-01-28T21:56:44.944Z",
         "referencedBy": 2
@@ -3551,7 +3551,7 @@
         "id": "rls-policies-tmpl",
         "name": "rls-policies-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/rls-policies-tmpl.yaml",
+        "path": ".aiox-core/product/templates/rls-policies-tmpl.yaml",
         "size": 33739,
         "modified": "2026-01-28T21:56:44.945Z",
         "referencedBy": 1
@@ -3561,7 +3561,7 @@
         "id": "schema-design-tmpl",
         "name": "schema-design-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/schema-design-tmpl.yaml",
+        "path": ".aiox-core/product/templates/schema-design-tmpl.yaml",
         "size": 11950,
         "modified": "2026-01-28T21:56:44.945Z",
         "referencedBy": 1
@@ -3571,7 +3571,7 @@
         "id": "state-persistence-tmpl",
         "name": "state-persistence-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/state-persistence-tmpl.yaml",
+        "path": ".aiox-core/product/templates/state-persistence-tmpl.yaml",
         "size": 6763,
         "modified": "2026-01-28T21:56:44.946Z",
         "referencedBy": 1
@@ -3581,7 +3581,7 @@
         "id": "story-tmpl",
         "name": "story-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/story-tmpl.yaml",
+        "path": ".aiox-core/product/templates/story-tmpl.yaml",
         "size": 12432,
         "modified": "2026-01-28T21:56:44.946Z",
         "referencedBy": 6
@@ -3591,7 +3591,7 @@
         "id": "task-execution-report",
         "name": "task-execution-report",
         "format": "md",
-        "path": ".aios-core/product/templates/task-execution-report.md",
+        "path": ".aiox-core/product/templates/task-execution-report.md",
         "size": 10129,
         "modified": "2026-01-28T21:56:44.946Z",
         "referencedBy": 0
@@ -3601,7 +3601,7 @@
         "id": "task-template",
         "name": "task-template",
         "format": "md",
-        "path": ".aios-core/product/templates/task-template.md",
+        "path": ".aiox-core/product/templates/task-template.md",
         "size": 2474,
         "modified": "2026-01-28T21:56:44.947Z",
         "referencedBy": 1
@@ -3611,7 +3611,7 @@
         "id": "tokens-schema-tmpl",
         "name": "tokens-schema-tmpl",
         "format": "yaml",
-        "path": ".aios-core/product/templates/tokens-schema-tmpl.yaml",
+        "path": ".aiox-core/product/templates/tokens-schema-tmpl.yaml",
         "size": 8004,
         "modified": "2026-01-28T21:56:44.948Z",
         "referencedBy": 1
@@ -3621,7 +3621,7 @@
         "id": "workflow-template",
         "name": "workflow-template",
         "format": "yaml",
-        "path": ".aios-core/product/templates/workflow-template.yaml",
+        "path": ".aiox-core/product/templates/workflow-template.yaml",
         "size": 3484,
         "modified": "2026-01-28T21:56:44.948Z",
         "referencedBy": 1
@@ -3632,7 +3632,7 @@
         "type": "checklist",
         "id": "accessibility-wcag-checklist",
         "name": "accessibility-wcag-checklist",
-        "path": ".aios-core/product/checklists/accessibility-wcag-checklist.md",
+        "path": ".aiox-core/product/checklists/accessibility-wcag-checklist.md",
         "itemCount": 32,
         "size": 1963,
         "modified": "2026-01-28T21:56:44.920Z",
@@ -3642,7 +3642,7 @@
         "type": "checklist",
         "id": "architect-checklist",
         "name": "architect-checklist",
-        "path": ".aios-core/product/checklists/architect-checklist.md",
+        "path": ".aiox-core/product/checklists/architect-checklist.md",
         "itemCount": 195,
         "size": 18858,
         "modified": "2026-01-28T21:56:44.921Z",
@@ -3652,7 +3652,7 @@
         "type": "checklist",
         "id": "change-checklist",
         "name": "change-checklist",
-        "path": ".aios-core/product/checklists/change-checklist.md",
+        "path": ".aiox-core/product/checklists/change-checklist.md",
         "itemCount": 27,
         "size": 8402,
         "modified": "2026-01-28T21:56:44.921Z",
@@ -3662,7 +3662,7 @@
         "type": "checklist",
         "id": "component-quality-checklist",
         "name": "component-quality-checklist",
-        "path": ".aios-core/product/checklists/component-quality-checklist.md",
+        "path": ".aiox-core/product/checklists/component-quality-checklist.md",
         "itemCount": 34,
         "size": 2397,
         "modified": "2026-01-28T21:56:44.921Z",
@@ -3672,7 +3672,7 @@
         "type": "checklist",
         "id": "database-design-checklist",
         "name": "database-design-checklist",
-        "path": ".aios-core/product/checklists/database-design-checklist.md",
+        "path": ".aiox-core/product/checklists/database-design-checklist.md",
         "itemCount": 1,
         "size": 4104,
         "modified": "2026-01-28T21:56:44.922Z",
@@ -3682,7 +3682,7 @@
         "type": "checklist",
         "id": "dba-predeploy-checklist",
         "name": "dba-predeploy-checklist",
-        "path": ".aios-core/product/checklists/dba-predeploy-checklist.md",
+        "path": ".aiox-core/product/checklists/dba-predeploy-checklist.md",
         "itemCount": 1,
         "size": 3518,
         "modified": "2026-01-28T21:56:44.922Z",
@@ -3692,7 +3692,7 @@
         "type": "checklist",
         "id": "dba-rollback-checklist",
         "name": "dba-rollback-checklist",
-        "path": ".aios-core/product/checklists/dba-rollback-checklist.md",
+        "path": ".aiox-core/product/checklists/dba-rollback-checklist.md",
         "itemCount": 1,
         "size": 3268,
         "modified": "2026-01-28T21:56:44.922Z",
@@ -3702,7 +3702,7 @@
         "type": "checklist",
         "id": "migration-readiness-checklist",
         "name": "migration-readiness-checklist",
-        "path": ".aios-core/product/checklists/migration-readiness-checklist.md",
+        "path": ".aiox-core/product/checklists/migration-readiness-checklist.md",
         "itemCount": 32,
         "size": 1970,
         "modified": "2026-01-28T21:56:44.922Z",
@@ -3712,7 +3712,7 @@
         "type": "checklist",
         "id": "pattern-audit-checklist",
         "name": "pattern-audit-checklist",
-        "path": ".aios-core/product/checklists/pattern-audit-checklist.md",
+        "path": ".aiox-core/product/checklists/pattern-audit-checklist.md",
         "itemCount": 33,
         "size": 2126,
         "modified": "2026-01-28T21:56:44.922Z",
@@ -3722,7 +3722,7 @@
         "type": "checklist",
         "id": "pm-checklist",
         "name": "pm-checklist",
-        "path": ".aios-core/product/checklists/pm-checklist.md",
+        "path": ".aiox-core/product/checklists/pm-checklist.md",
         "itemCount": 139,
         "size": 13028,
         "modified": "2026-01-28T21:56:44.923Z",
@@ -3732,7 +3732,7 @@
         "type": "checklist",
         "id": "po-master-checklist",
         "name": "po-master-checklist",
-        "path": ".aios-core/product/checklists/po-master-checklist.md",
+        "path": ".aiox-core/product/checklists/po-master-checklist.md",
         "itemCount": 151,
         "size": 16585,
         "modified": "2026-01-28T21:56:44.923Z",
@@ -3742,7 +3742,7 @@
         "type": "checklist",
         "id": "pre-push-checklist",
         "name": "pre-push-checklist",
-        "path": ".aios-core/product/checklists/pre-push-checklist.md",
+        "path": ".aiox-core/product/checklists/pre-push-checklist.md",
         "itemCount": 1,
         "size": 3345,
         "modified": "2026-01-28T21:56:44.924Z",
@@ -3752,7 +3752,7 @@
         "type": "checklist",
         "id": "release-checklist",
         "name": "release-checklist",
-        "path": ".aios-core/product/checklists/release-checklist.md",
+        "path": ".aiox-core/product/checklists/release-checklist.md",
         "itemCount": 1,
         "size": 3731,
         "modified": "2026-01-28T21:56:44.924Z",
@@ -3762,7 +3762,7 @@
         "type": "checklist",
         "id": "story-dod-checklist",
         "name": "story-dod-checklist",
-        "path": ".aios-core/product/checklists/story-dod-checklist.md",
+        "path": ".aiox-core/product/checklists/story-dod-checklist.md",
         "itemCount": 1,
         "size": 5154,
         "modified": "2026-01-28T21:56:44.924Z",
@@ -3772,7 +3772,7 @@
         "type": "checklist",
         "id": "story-draft-checklist",
         "name": "story-draft-checklist",
-        "path": ".aios-core/product/checklists/story-draft-checklist.md",
+        "path": ".aiox-core/product/checklists/story-draft-checklist.md",
         "itemCount": 38,
         "size": 8496,
         "modified": "2026-01-28T21:56:44.924Z",
@@ -3782,8 +3782,8 @@
     "scripts": [
       {
         "type": "script",
-        "id": "aios-validator",
-        "path": ".aios-core/infrastructure/scripts/aios-validator.js",
+        "id": "aiox-validator",
+        "path": ".aiox-core/infrastructure/scripts/aiox-validator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3793,7 +3793,7 @@
       {
         "type": "script",
         "id": "approval-workflow",
-        "path": ".aios-core/infrastructure/scripts/approval-workflow.js",
+        "path": ".aiox-core/infrastructure/scripts/approval-workflow.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3803,7 +3803,7 @@
       {
         "type": "script",
         "id": "asset-inventory",
-        "path": ".aios-core/infrastructure/scripts/asset-inventory.js",
+        "path": ".aiox-core/infrastructure/scripts/asset-inventory.js",
         "description": "asset-inventory",
         "hasExports": true,
         "isCli": true,
@@ -3813,7 +3813,7 @@
       {
         "type": "script",
         "id": "atomic-layer-classifier",
-        "path": ".aios-core/infrastructure/scripts/atomic-layer-classifier.js",
+        "path": ".aiox-core/infrastructure/scripts/atomic-layer-classifier.js",
         "description": null,
         "hasExports": true,
         "isCli": true,
@@ -3823,7 +3823,7 @@
       {
         "type": "script",
         "id": "backup-manager",
-        "path": ".aios-core/infrastructure/scripts/backup-manager.js",
+        "path": ".aiox-core/infrastructure/scripts/backup-manager.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3833,7 +3833,7 @@
       {
         "type": "script",
         "id": "batch-creator",
-        "path": ".aios-core/infrastructure/scripts/batch-creator.js",
+        "path": ".aiox-core/infrastructure/scripts/batch-creator.js",
         "description": "batch-creator",
         "hasExports": true,
         "isCli": false,
@@ -3843,7 +3843,7 @@
       {
         "type": "script",
         "id": "branch-manager",
-        "path": ".aios-core/infrastructure/scripts/branch-manager.js",
+        "path": ".aiox-core/infrastructure/scripts/branch-manager.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3853,7 +3853,7 @@
       {
         "type": "script",
         "id": "capability-analyzer",
-        "path": ".aios-core/infrastructure/scripts/capability-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/capability-analyzer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3863,7 +3863,7 @@
       {
         "type": "script",
         "id": "clickup-helpers",
-        "path": ".aios-core/infrastructure/scripts/clickup-helpers.js",
+        "path": ".aiox-core/infrastructure/scripts/clickup-helpers.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3873,7 +3873,7 @@
       {
         "type": "script",
         "id": "code-quality-improver",
-        "path": ".aios-core/infrastructure/scripts/code-quality-improver.js",
+        "path": ".aiox-core/infrastructure/scripts/code-quality-improver.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3883,7 +3883,7 @@
       {
         "type": "script",
         "id": "commit-message-generator",
-        "path": ".aios-core/infrastructure/scripts/commit-message-generator.js",
+        "path": ".aiox-core/infrastructure/scripts/commit-message-generator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3893,7 +3893,7 @@
       {
         "type": "script",
         "id": "component-generator",
-        "path": ".aios-core/infrastructure/scripts/component-generator.js",
+        "path": ".aiox-core/infrastructure/scripts/component-generator.js",
         "description": "component-generator",
         "hasExports": true,
         "isCli": false,
@@ -3903,7 +3903,7 @@
       {
         "type": "script",
         "id": "component-metadata",
-        "path": ".aios-core/infrastructure/scripts/component-metadata.js",
+        "path": ".aiox-core/infrastructure/scripts/component-metadata.js",
         "description": "component-metadata",
         "hasExports": true,
         "isCli": false,
@@ -3913,7 +3913,7 @@
       {
         "type": "script",
         "id": "component-search",
-        "path": ".aios-core/infrastructure/scripts/component-search.js",
+        "path": ".aiox-core/infrastructure/scripts/component-search.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3923,7 +3923,7 @@
       {
         "type": "script",
         "id": "config-cache",
-        "path": ".aios-core/infrastructure/scripts/config-cache.js",
+        "path": ".aiox-core/infrastructure/scripts/config-cache.js",
         "description": "config-cache",
         "hasExports": true,
         "isCli": false,
@@ -3933,7 +3933,7 @@
       {
         "type": "script",
         "id": "config-loader",
-        "path": ".aios-core/infrastructure/scripts/config-loader.js",
+        "path": ".aiox-core/infrastructure/scripts/config-loader.js",
         "description": "config-loader",
         "hasExports": true,
         "isCli": false,
@@ -3943,7 +3943,7 @@
       {
         "type": "script",
         "id": "conflict-resolver",
-        "path": ".aios-core/infrastructure/scripts/conflict-resolver.js",
+        "path": ".aiox-core/infrastructure/scripts/conflict-resolver.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3953,7 +3953,7 @@
       {
         "type": "script",
         "id": "coverage-analyzer",
-        "path": ".aios-core/infrastructure/scripts/coverage-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/coverage-analyzer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3963,7 +3963,7 @@
       {
         "type": "script",
         "id": "dependency-analyzer",
-        "path": ".aios-core/infrastructure/scripts/dependency-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/dependency-analyzer.js",
         "description": "dependency-analyzer",
         "hasExports": true,
         "isCli": false,
@@ -3973,7 +3973,7 @@
       {
         "type": "script",
         "id": "dependency-impact-analyzer",
-        "path": ".aios-core/infrastructure/scripts/dependency-impact-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/dependency-impact-analyzer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3983,7 +3983,7 @@
       {
         "type": "script",
         "id": "diff-generator",
-        "path": ".aios-core/infrastructure/scripts/diff-generator.js",
+        "path": ".aiox-core/infrastructure/scripts/diff-generator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -3993,7 +3993,7 @@
       {
         "type": "script",
         "id": "documentation-synchronizer",
-        "path": ".aios-core/infrastructure/scripts/documentation-synchronizer.js",
+        "path": ".aiox-core/infrastructure/scripts/documentation-synchronizer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4003,7 +4003,7 @@
       {
         "type": "script",
         "id": "framework-analyzer",
-        "path": ".aios-core/infrastructure/scripts/framework-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/framework-analyzer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4013,7 +4013,7 @@
       {
         "type": "script",
         "id": "git-config-detector",
-        "path": ".aios-core/infrastructure/scripts/git-config-detector.js",
+        "path": ".aiox-core/infrastructure/scripts/git-config-detector.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4023,7 +4023,7 @@
       {
         "type": "script",
         "id": "git-wrapper",
-        "path": ".aios-core/infrastructure/scripts/git-wrapper.js",
+        "path": ".aiox-core/infrastructure/scripts/git-wrapper.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4033,7 +4033,7 @@
       {
         "type": "script",
         "id": "improvement-engine",
-        "path": ".aios-core/infrastructure/scripts/improvement-engine.js",
+        "path": ".aiox-core/infrastructure/scripts/improvement-engine.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4043,7 +4043,7 @@
       {
         "type": "script",
         "id": "improvement-validator",
-        "path": ".aios-core/infrastructure/scripts/improvement-validator.js",
+        "path": ".aiox-core/infrastructure/scripts/improvement-validator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4053,7 +4053,7 @@
       {
         "type": "script",
         "id": "modification-risk-assessment",
-        "path": ".aios-core/infrastructure/scripts/modification-risk-assessment.js",
+        "path": ".aiox-core/infrastructure/scripts/modification-risk-assessment.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4063,7 +4063,7 @@
       {
         "type": "script",
         "id": "modification-validator",
-        "path": ".aios-core/infrastructure/scripts/modification-validator.js",
+        "path": ".aiox-core/infrastructure/scripts/modification-validator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4073,7 +4073,7 @@
       {
         "type": "script",
         "id": "output-formatter",
-        "path": ".aios-core/infrastructure/scripts/output-formatter.js",
+        "path": ".aiox-core/infrastructure/scripts/output-formatter.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4083,7 +4083,7 @@
       {
         "type": "script",
         "id": "performance-analyzer",
-        "path": ".aios-core/infrastructure/scripts/performance-analyzer.js",
+        "path": ".aiox-core/infrastructure/scripts/performance-analyzer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4093,7 +4093,7 @@
       {
         "type": "script",
         "id": "performance-and-error-resolver",
-        "path": ".aios-core/infrastructure/scripts/performance-and-error-resolver.js",
+        "path": ".aiox-core/infrastructure/scripts/performance-and-error-resolver.js",
         "description": null,
         "hasExports": true,
         "isCli": true,
@@ -4103,7 +4103,7 @@
       {
         "type": "script",
         "id": "performance-optimizer",
-        "path": ".aios-core/infrastructure/scripts/performance-optimizer.js",
+        "path": ".aiox-core/infrastructure/scripts/performance-optimizer.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4113,7 +4113,7 @@
       {
         "type": "script",
         "id": "performance-tracker",
-        "path": ".aios-core/infrastructure/scripts/performance-tracker.js",
+        "path": ".aiox-core/infrastructure/scripts/performance-tracker.js",
         "description": "performance-tracker",
         "hasExports": true,
         "isCli": false,
@@ -4123,7 +4123,7 @@
       {
         "type": "script",
         "id": "pm-adapter-factory",
-        "path": ".aios-core/infrastructure/scripts/pm-adapter-factory.js",
+        "path": ".aiox-core/infrastructure/scripts/pm-adapter-factory.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4133,7 +4133,7 @@
       {
         "type": "script",
         "id": "pm-adapter",
-        "path": ".aios-core/infrastructure/scripts/pm-adapter.js",
+        "path": ".aiox-core/infrastructure/scripts/pm-adapter.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4143,7 +4143,7 @@
       {
         "type": "script",
         "id": "project-status-loader",
-        "path": ".aios-core/infrastructure/scripts/project-status-loader.js",
+        "path": ".aiox-core/infrastructure/scripts/project-status-loader.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4153,7 +4153,7 @@
       {
         "type": "script",
         "id": "refactoring-suggester",
-        "path": ".aios-core/infrastructure/scripts/refactoring-suggester.js",
+        "path": ".aiox-core/infrastructure/scripts/refactoring-suggester.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4163,7 +4163,7 @@
       {
         "type": "script",
         "id": "repository-detector",
-        "path": ".aios-core/infrastructure/scripts/repository-detector.js",
+        "path": ".aiox-core/infrastructure/scripts/repository-detector.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4173,7 +4173,7 @@
       {
         "type": "script",
         "id": "sandbox-tester",
-        "path": ".aios-core/infrastructure/scripts/sandbox-tester.js",
+        "path": ".aiox-core/infrastructure/scripts/sandbox-tester.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4183,7 +4183,7 @@
       {
         "type": "script",
         "id": "security-checker",
-        "path": ".aios-core/infrastructure/scripts/security-checker.js",
+        "path": ".aiox-core/infrastructure/scripts/security-checker.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4193,7 +4193,7 @@
       {
         "type": "script",
         "id": "spot-check-validator",
-        "path": ".aios-core/infrastructure/scripts/spot-check-validator.js",
+        "path": ".aiox-core/infrastructure/scripts/spot-check-validator.js",
         "description": null,
         "hasExports": true,
         "isCli": true,
@@ -4203,7 +4203,7 @@
       {
         "type": "script",
         "id": "status-mapper",
-        "path": ".aios-core/infrastructure/scripts/status-mapper.js",
+        "path": ".aiox-core/infrastructure/scripts/status-mapper.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4213,7 +4213,7 @@
       {
         "type": "script",
         "id": "template-engine",
-        "path": ".aios-core/infrastructure/scripts/template-engine.js",
+        "path": ".aiox-core/infrastructure/scripts/template-engine.js",
         "description": "template-engine",
         "hasExports": true,
         "isCli": false,
@@ -4223,7 +4223,7 @@
       {
         "type": "script",
         "id": "template-validator",
-        "path": ".aios-core/infrastructure/scripts/template-validator.js",
+        "path": ".aiox-core/infrastructure/scripts/template-validator.js",
         "description": "template-validator",
         "hasExports": true,
         "isCli": false,
@@ -4233,7 +4233,7 @@
       {
         "type": "script",
         "id": "test-generator",
-        "path": ".aios-core/infrastructure/scripts/test-generator.js",
+        "path": ".aiox-core/infrastructure/scripts/test-generator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4243,7 +4243,7 @@
       {
         "type": "script",
         "id": "test-quality-assessment",
-        "path": ".aios-core/infrastructure/scripts/test-quality-assessment.js",
+        "path": ".aiox-core/infrastructure/scripts/test-quality-assessment.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4253,7 +4253,7 @@
       {
         "type": "script",
         "id": "test-utilities-fast",
-        "path": ".aios-core/infrastructure/scripts/test-utilities-fast.js",
+        "path": ".aiox-core/infrastructure/scripts/test-utilities-fast.js",
         "description": null,
         "hasExports": true,
         "isCli": true,
@@ -4263,7 +4263,7 @@
       {
         "type": "script",
         "id": "test-utilities",
-        "path": ".aios-core/infrastructure/scripts/test-utilities.js",
+        "path": ".aiox-core/infrastructure/scripts/test-utilities.js",
         "description": null,
         "hasExports": true,
         "isCli": true,
@@ -4273,7 +4273,7 @@
       {
         "type": "script",
         "id": "tool-resolver",
-        "path": ".aios-core/infrastructure/scripts/tool-resolver.js",
+        "path": ".aiox-core/infrastructure/scripts/tool-resolver.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4283,7 +4283,7 @@
       {
         "type": "script",
         "id": "transaction-manager",
-        "path": ".aios-core/infrastructure/scripts/transaction-manager.js",
+        "path": ".aiox-core/infrastructure/scripts/transaction-manager.js",
         "description": "transaction-manager",
         "hasExports": true,
         "isCli": false,
@@ -4293,7 +4293,7 @@
       {
         "type": "script",
         "id": "usage-analytics",
-        "path": ".aios-core/infrastructure/scripts/usage-analytics.js",
+        "path": ".aiox-core/infrastructure/scripts/usage-analytics.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4303,7 +4303,7 @@
       {
         "type": "script",
         "id": "validate-output-pattern",
-        "path": ".aios-core/infrastructure/scripts/validate-output-pattern.js",
+        "path": ".aiox-core/infrastructure/scripts/validate-output-pattern.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4313,7 +4313,7 @@
       {
         "type": "script",
         "id": "visual-impact-generator",
-        "path": ".aios-core/infrastructure/scripts/visual-impact-generator.js",
+        "path": ".aiox-core/infrastructure/scripts/visual-impact-generator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4323,7 +4323,7 @@
       {
         "type": "script",
         "id": "worktree-manager",
-        "path": ".aios-core/infrastructure/scripts/worktree-manager.js",
+        "path": ".aiox-core/infrastructure/scripts/worktree-manager.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4333,7 +4333,7 @@
       {
         "type": "script",
         "id": "yaml-validator",
-        "path": ".aios-core/infrastructure/scripts/yaml-validator.js",
+        "path": ".aiox-core/infrastructure/scripts/yaml-validator.js",
         "description": null,
         "hasExports": true,
         "isCli": false,
@@ -4345,7 +4345,7 @@
       {
         "type": "schema",
         "id": "agent-v3-schema",
-        "path": ".aios-core/schemas/agent-v3-schema.json",
+        "path": ".aiox-core/schemas/agent-v3-schema.json",
         "format": "json",
         "size": 12234,
         "modified": "2026-01-29T02:04:34.081Z"
@@ -4353,7 +4353,7 @@
       {
         "type": "schema",
         "id": "squad-design-schema",
-        "path": ".aios-core/schemas/squad-design-schema.json",
+        "path": ".aiox-core/schemas/squad-design-schema.json",
         "format": "json",
         "size": 8523,
         "modified": "2026-01-26T19:06:30.846Z"
@@ -4361,7 +4361,7 @@
       {
         "type": "schema",
         "id": "squad-schema",
-        "path": ".aios-core/schemas/squad-schema.json",
+        "path": ".aiox-core/schemas/squad-schema.json",
         "format": "json",
         "size": 5318,
         "modified": "2026-01-26T19:06:30.846Z"
@@ -4369,7 +4369,7 @@
       {
         "type": "schema",
         "id": "task-v3-schema",
-        "path": ".aios-core/schemas/task-v3-schema.json",
+        "path": ".aiox-core/schemas/task-v3-schema.json",
         "format": "json",
         "size": 10520,
         "modified": "2026-01-29T02:05:06.739Z"
@@ -4377,7 +4377,7 @@
       {
         "type": "schema",
         "id": "validate-v3-schema",
-        "path": ".aios-core/schemas/validate-v3-schema.js",
+        "path": ".aiox-core/schemas/validate-v3-schema.js",
         "format": "js",
         "size": 12502,
         "modified": "2026-01-29T02:12:41.257Z"

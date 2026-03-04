@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * AIOS Status Command for Gemini CLI Extension
+ * AIOX Status Command for Gemini CLI Extension
  * Shows system status and provider information
  */
 
@@ -10,30 +10,30 @@ const path = require('path');
 async function main() {
   const projectDir = process.cwd();
 
-  console.log('🔷 AIOS Status\n');
+  console.log('🔷 AIOX Status\n');
   console.log('━'.repeat(40));
 
-  // Check AIOS installation
-  const aiosCorePath = path.join(projectDir, '.aios-core');
-  if (fs.existsSync(aiosCorePath)) {
-    console.log('✅ AIOS Core: Installed');
+  // Check AIOX installation
+  const aioxCorePath = path.join(projectDir, '.aiox-core');
+  if (fs.existsSync(aioxCorePath)) {
+    console.log('✅ AIOX Core: Installed');
 
     // Count agents
-    const agentsPath = path.join(aiosCorePath, 'development', 'agents');
+    const agentsPath = path.join(aioxCorePath, 'development', 'agents');
     if (fs.existsSync(agentsPath)) {
       const agents = fs.readdirSync(agentsPath).filter((f) => f.endsWith('.md'));
       console.log(`   Agents: ${agents.length}`);
     }
 
     // Count tasks
-    const tasksPath = path.join(aiosCorePath, 'development', 'tasks');
+    const tasksPath = path.join(aioxCorePath, 'development', 'tasks');
     if (fs.existsSync(tasksPath)) {
       const tasks = fs.readdirSync(tasksPath).filter((f) => f.endsWith('.md'));
       console.log(`   Tasks: ${tasks.length}`);
     }
   } else {
-    console.log('❌ AIOS Core: Not installed');
-    console.log('   Run: npx aios-core install');
+    console.log('❌ AIOX Core: Not installed');
+    console.log('   Run: npx aiox-core install');
   }
 
   // Check providers
@@ -54,9 +54,9 @@ async function main() {
   }
 
   // Check config
-  const configPath = path.join(projectDir, '.aios-ai-config.yaml');
+  const configPath = path.join(projectDir, '.aiox-ai-config.yaml');
   if (fs.existsSync(configPath)) {
-    console.log('\n⚙️  AI Config: .aios-ai-config.yaml found');
+    console.log('\n⚙️  AI Config: .aiox-ai-config.yaml found');
   }
 
   console.log('\n' + '━'.repeat(40));

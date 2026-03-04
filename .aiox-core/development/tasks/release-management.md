@@ -89,7 +89,7 @@ To automate the complete software release process, including:
 - **published_packages**: `array<object>`
   - **Description**: Published packages with URLs
   - **Structure**: `{ registry, package_name, version, url }`
-  - **Example**: `[{ registry: "npm", package_name: "aios-core", version: "2.1.3", url: "https://npmjs.com/package/aios-core" }]`
+  - **Example**: `[{ registry: "npm", package_name: "aiox-core", version: "2.1.3", url: "https://npmjs.com/package/aiox-core" }]`
 
 - **release_notes**: `string`
   - **Description**: Formatted release notes (for announcements)
@@ -407,7 +407,7 @@ pip install {package_name}=={new_version}
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: releaseManagement()
@@ -515,7 +515,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -648,8 +648,8 @@ Release notes: {release_url}
 ### Example 1: Automatic Semantic Release
 
 ```bash
-aios activate Otto  # github-devops agent
-aios release create --repo="." --type="auto"
+aiox activate Otto  # github-devops agent
+aiox release create --repo="." --type="auto"
 ````
 
 **Output**: Analyzes commits, determines version bump, creates release
@@ -657,7 +657,7 @@ aios release create --repo="." --type="auto"
 ### Example 2: Major Release (Breaking Changes)
 
 ```bash
-aios release create \
+aiox release create \
   --repo="." \
   --type="major" \
   --publish="npm,docker-hub"
@@ -668,7 +668,7 @@ aios release create \
 ### Example 3: Prerelease (Beta)
 
 ```bash
-aios release create \
+aiox release create \
   --repo="." \
   --type="prerelease" \
   --prerelease-tag="beta" \
@@ -680,7 +680,7 @@ aios release create \
 ### Example 4: Dry Run (Test Release Process)
 
 ```bash
-aios release create \
+aiox release create \
   --repo="." \
   --type="minor" \
   --dry-run=true

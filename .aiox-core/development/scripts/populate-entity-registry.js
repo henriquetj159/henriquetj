@@ -12,20 +12,20 @@ const REPO_ROOT = path.resolve(__dirname, '../../..');
 const REGISTRY_PATH = path.resolve(__dirname, '../../data/entity-registry.yaml');
 
 const SCAN_CONFIG = [
-  { category: 'tasks', basePath: '.aios-core/development/tasks', glob: '**/*.md', type: 'task' },
-  { category: 'templates', basePath: '.aios-core/product/templates', glob: '**/*.{yaml,yml,md}', type: 'template' },
-  { category: 'scripts', basePath: '.aios-core/development/scripts', glob: '**/*.{js,mjs}', type: 'script' },
-  { category: 'modules', basePath: '.aios-core/core', glob: '**/*.{js,mjs}', type: 'module' },
-  { category: 'agents', basePath: '.aios-core/development/agents', glob: '**/*.{md,yaml,yml}', type: 'agent' },
-  { category: 'checklists', basePath: '.aios-core/development/checklists', glob: '**/*.md', type: 'checklist' },
-  { category: 'data', basePath: '.aios-core/data', glob: '**/*.{yaml,yml,md}', type: 'data' },
-  { category: 'workflows', basePath: '.aios-core/development/workflows', glob: '**/*.{yaml,yml}', type: 'workflow' },
-  { category: 'utils', basePath: '.aios-core/core/utils', glob: '**/*.js', type: 'util' },
-  { category: 'tools', basePath: '.aios-core/development/tools', glob: '**/*.{md,js,sh}', type: 'tool' },
-  { category: 'infra-scripts', basePath: '.aios-core/infrastructure/scripts', glob: '**/*.js', type: 'script' },
-  { category: 'infra-tools', basePath: '.aios-core/infrastructure/tools', glob: '**/*.{yaml,yml,md}', type: 'tool' },
-  { category: 'product-checklists', basePath: '.aios-core/product/checklists', glob: '**/*.md', type: 'checklist' },
-  { category: 'product-data', basePath: '.aios-core/product/data', glob: '**/*.{yaml,yml,md}', type: 'data' }
+  { category: 'tasks', basePath: '.aiox-core/development/tasks', glob: '**/*.md', type: 'task' },
+  { category: 'templates', basePath: '.aiox-core/product/templates', glob: '**/*.{yaml,yml,md}', type: 'template' },
+  { category: 'scripts', basePath: '.aiox-core/development/scripts', glob: '**/*.{js,mjs}', type: 'script' },
+  { category: 'modules', basePath: '.aiox-core/core', glob: '**/*.{js,mjs}', type: 'module' },
+  { category: 'agents', basePath: '.aiox-core/development/agents', glob: '**/*.{md,yaml,yml}', type: 'agent' },
+  { category: 'checklists', basePath: '.aiox-core/development/checklists', glob: '**/*.md', type: 'checklist' },
+  { category: 'data', basePath: '.aiox-core/data', glob: '**/*.{yaml,yml,md}', type: 'data' },
+  { category: 'workflows', basePath: '.aiox-core/development/workflows', glob: '**/*.{yaml,yml}', type: 'workflow' },
+  { category: 'utils', basePath: '.aiox-core/core/utils', glob: '**/*.js', type: 'util' },
+  { category: 'tools', basePath: '.aiox-core/development/tools', glob: '**/*.{md,js,sh}', type: 'tool' },
+  { category: 'infra-scripts', basePath: '.aiox-core/infrastructure/scripts', glob: '**/*.js', type: 'script' },
+  { category: 'infra-tools', basePath: '.aiox-core/infrastructure/tools', glob: '**/*.{yaml,yml,md}', type: 'tool' },
+  { category: 'product-checklists', basePath: '.aiox-core/product/checklists', glob: '**/*.md', type: 'checklist' },
+  { category: 'product-data', basePath: '.aiox-core/product/data', glob: '**/*.{yaml,yml,md}', type: 'data' }
 ];
 
 const ADAPTABILITY_DEFAULTS = {
@@ -132,7 +132,7 @@ const YAML_DEP_FIELDS = {
 
 const KNOWN_AGENTS = [
   'dev', 'qa', 'pm', 'po', 'sm', 'architect', 'devops',
-  'analyst', 'data-engineer', 'ux-design-expert', 'aios-master'
+  'analyst', 'data-engineer', 'ux-design-expert', 'aiox-master'
 ];
 
 // Pattern A: YAML dependency block items (- name.md)
@@ -521,7 +521,7 @@ function assignLifecycles(allEntities) {
 }
 
 function populate(options = {}) {
-  const verbose = options.verbose || process.argv.includes('--verbose') || process.env.AIOS_DEBUG === 'true';
+  const verbose = options.verbose || process.argv.includes('--verbose') || process.env.AIOX_DEBUG === 'true';
 
   console.log('[IDS] Starting entity registry population...');
 

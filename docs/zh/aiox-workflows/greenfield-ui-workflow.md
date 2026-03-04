@@ -568,7 +568,7 @@ sequenceDiagram
 
 **描述:** 所有故事已实现和审阅。项目开发阶段完成。
 
-**参考:** `.aios-core/data/aios-kb.md#IDE Development Workflow`
+**参考:** `.aiox-core/data/aiox-kb.md#IDE Development Workflow`
 
 ---
 
@@ -670,10 +670,10 @@ graph LR
    - 配置了 Git
    - 包管理器 (npm/yarn/pnpm)
 
-2. **AIOS-Core 可用**
-   - `.aios-core/development/templates/` 中的模板
-   - `.aios-core/development/tasks/` 中的任务
-   - `.aios-core/development/checklists/` 中的检查列表
+2. **AIOX-Core 可用**
+   - `.aiox-core/development/templates/` 中的模板
+   - `.aiox-core/development/tasks/` 中的任务
+   - `.aiox-core/development/checklists/` 中的检查列表
 
 3. **项目结构**
    - 已创建 `docs/` 目录
@@ -836,7 +836,7 @@ flowchart TD
 
 | 问题 | 可能原因 | 解决方案 |
 |------|---------|---------|
-| 模板未找到 | 路径不正确 | 检查 `.aios-core/development/templates/` |
+| 模板未找到 | 路径不正确 | 检查 `.aiox-core/development/templates/` |
 | 代理未激活 | YAML 格式不当 | 验证代理文件的语法 |
 | 检查列表失败 | 缺少依赖 | 检查代理中的 `dependencies` |
 
@@ -870,43 +870,43 @@ flowchart TD
 
 | 文件 | 路径 |
 |------|------|
-| 工作流定义 | `.aios-core/development/workflows/greenfield-ui.yaml` |
-| 知识库 | `.aios-core/data/aios-kb.md` |
+| 工作流定义 | `.aiox-core/development/workflows/greenfield-ui.yaml` |
+| 知识库 | `.aiox-core/data/aiox-kb.md` |
 
 ### 代理
 
 | 代理 | 路径 |
 |------|------|
-| @analyst | `.aios-core/development/agents/analyst.md` |
-| @pm | `.aios-core/development/agents/pm.md` |
-| @ux-expert | `.aios-core/development/agents/ux-design-expert.md` |
-| @architect | `.aios-core/development/agents/architect.md` |
-| @po | `.aios-core/development/agents/po.md` |
-| @sm | `.aios-core/development/agents/sm.md` |
-| @dev | `.aios-core/development/agents/dev.md` |
-| @qa | `.aios-core/development/agents/qa.md` |
+| @analyst | `.aiox-core/development/agents/analyst.md` |
+| @pm | `.aiox-core/development/agents/pm.md` |
+| @ux-expert | `.aiox-core/development/agents/ux-design-expert.md` |
+| @architect | `.aiox-core/development/agents/architect.md` |
+| @po | `.aiox-core/development/agents/po.md` |
+| @sm | `.aiox-core/development/agents/sm.md` |
+| @dev | `.aiox-core/development/agents/dev.md` |
+| @qa | `.aiox-core/development/agents/qa.md` |
 
 ### 主要模板
 
 | 模板 | 路径 |
 |------|------|
-| 项目简报 | `.aios-core/development/templates/project-brief-tmpl.yaml` |
-| PRD | `.aios-core/development/templates/prd-tmpl.yaml` |
-| 前端规范 | `.aios-core/development/templates/front-end-spec-tmpl.yaml` |
-| 前端架构 | `.aios-core/development/templates/front-end-architecture-tmpl.yaml` |
-| 故事 | `.aios-core/development/templates/story-tmpl.yaml` |
+| 项目简报 | `.aiox-core/development/templates/project-brief-tmpl.yaml` |
+| PRD | `.aiox-core/development/templates/prd-tmpl.yaml` |
+| 前端规范 | `.aiox-core/development/templates/front-end-spec-tmpl.yaml` |
+| 前端架构 | `.aiox-core/development/templates/front-end-architecture-tmpl.yaml` |
+| 故事 | `.aiox-core/development/templates/story-tmpl.yaml` |
 
 ### 检查列表
 
 | 检查列表 | 路径 |
 |---------|------|
-| PO 主检查 | `.aios-core/development/checklists/po-master-checklist.md` |
-| 故事草稿 | `.aios-core/development/checklists/story-draft-checklist.md` |
-| 故事完成定义 | `.aios-core/development/checklists/story-dod-checklist.md` |
+| PO 主检查 | `.aiox-core/development/checklists/po-master-checklist.md` |
+| 故事草稿 | `.aiox-core/development/checklists/story-draft-checklist.md` |
+| 故事完成定义 | `.aiox-core/development/checklists/story-dod-checklist.md` |
 
 ### 相关文档
 
-- [AIOS 知识库](.aios-core/data/aios-kb.md) - 中央知识库
+- [AIOX 知识库](.aiox-core/data/aiox-kb.md) - 中央知识库
 - [棕地工作流](./BROWNFIELD-WORKFLOW.md) - 现有项目工作流 (如可用)
 
 ---
@@ -919,4 +919,4 @@ flowchart TD
 
 ---
 
-*文档自动从 `.aios-core/development/workflows/greenfield-ui.yaml` 生成*
+*文档自动从 `.aiox-core/development/workflows/greenfield-ui.yaml` 生成*

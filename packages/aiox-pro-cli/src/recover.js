@@ -14,7 +14,7 @@
 
 const readline = require('readline');
 
-const RECOVERY_URL = 'https://aios-license-server.vercel.app/reset-password';
+const RECOVERY_URL = 'https://aiox-license-server.vercel.app/reset-password';
 
 const RECOVERY_MESSAGE =
   'Se este email estiver associado a uma licenca, voce recebera instrucoes de recuperacao.';
@@ -71,7 +71,7 @@ async function openBrowser(url, openFn) {
  * @returns {Promise<void>}
  */
 async function recoverLicense() {
-  console.log('\naios-pro — License Recovery\n');
+  console.log('\naiox-pro — License Recovery\n');
 
   const email = await promptEmail();
 

@@ -30,7 +30,7 @@ class ContextManager {
     this.projectRoot = projectRoot;
 
     // State file path
-    this.stateDir = path.join(projectRoot, '.aios', 'workflow-state');
+    this.stateDir = path.join(projectRoot, '.aiox', 'workflow-state');
     this.statePath = path.join(this.stateDir, `${workflowId}.json`);
     this.handoffDir = path.join(this.stateDir, 'handoffs');
     this.confidenceDir = path.join(this.stateDir, 'confidence');
@@ -447,7 +447,7 @@ class ContextManager {
    * @private
    */
   _resolveConfidenceThreshold() {
-    const raw = process.env.AIOS_DELIVERY_CONFIDENCE_THRESHOLD;
+    const raw = process.env.AIOX_DELIVERY_CONFIDENCE_THRESHOLD;
     const parsed = Number(raw);
     return Number.isFinite(parsed) ? parsed : 70;
   }

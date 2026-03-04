@@ -41,7 +41,7 @@ Before proceeding, check the Entity Registry for existing artifacts:
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: createWorkflow()
@@ -165,7 +165,7 @@ acceptance-criteria:
 
 - **Tool:** component-generator
   - **Purpose:** Generate new components from templates
-  - **Source:** .aios-core/scripts/component-generator.js
+  - **Source:** .aiox-core/scripts/component-generator.js
 
 - **Tool:** file-system
   - **Purpose:** File creation and validation
@@ -180,7 +180,7 @@ acceptance-criteria:
 - **Script:** create-component.js
   - **Purpose:** Component creation workflow
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/create-component.js
+  - **Location:** .aiox-core/scripts/create-component.js
 
 ---
 
@@ -247,7 +247,7 @@ tools:
 # Create Workflow
 
 ## Purpose
-To create a new workflow definition that orchestrates multiple agents and tasks for complex multi-step processes in Synkra AIOS.
+To create a new workflow definition that orchestrates multiple agents and tasks for complex multi-step processes in Synkra AIOX.
 
 ## Prerequisites
 - User authorization verified
@@ -355,7 +355,7 @@ ELICIT: Resources and Dependencies
 
 4. **Create Workflow File**
    - Resolve output path based on target_context:
-     - `core` → `.aios-core/development/workflows/{workflow-name}.yaml`
+     - `core` → `.aiox-core/development/workflows/{workflow-name}.yaml`
      - `squad` → `squads/{squad_name}/workflows/{workflow-name}.yaml`
      - `hybrid` → `squads/{squad_name}/workflows/{workflow-name}.yaml`
    - Write structured YAML definition
@@ -410,7 +410,7 @@ ELICIT: Resources and Dependencies
 ```
 ✅ Workflow '{workflow-name}' created successfully!
 📁 Location: {resolved-path}
-   (core → .aios-core/development/workflows/{workflow-name}.yaml)
+   (core → .aiox-core/development/workflows/{workflow-name}.yaml)
    (squad → squads/{squad_name}/workflows/{workflow-name}.yaml)
    (hybrid → squads/{squad_name}/workflows/{workflow-name}.yaml)
 📊 Workflow Summary:

@@ -29,7 +29,7 @@ function transform(agentData) {
 
   const id = agent.id || agentData.id;
   const name = agent.name || id;
-  const title = agent.title || 'AIOS Agent';
+  const title = agent.title || 'AIOX Agent';
   const icon = agent.icon || '';
   const description = escapeYamlString(agent.whenToUse || `${title} agent for development tasks`);
 
@@ -132,7 +132,7 @@ function buildMarkdownBody(params) {
 
   // Sync footer
   parts.push('---');
-  parts.push(`*AIOS Agent - Synced from .aios-core/development/agents/${filename}*`);
+  parts.push(`*AIOX Agent - Synced from .aiox-core/development/agents/${filename}*`);
   parts.push('');
 
   return parts.join('\n');

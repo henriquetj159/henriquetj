@@ -1,4 +1,4 @@
-<!-- Powered by AIOS™ Core -->
+<!-- Powered by AIOX™ Core -->
 
 ---
 tools:
@@ -19,11 +19,11 @@ Quick NFR validation focused on the core four: security, performance, reliabilit
 ```yaml
 required:
   - story_id: '{epic}.{story}' # e.g., "1.3"
-  - story_path: `aios-core/core-config.yaml` for the `devStoryLocation`
+  - story_path: `aiox-core/core-config.yaml` for the `devStoryLocation`
 
 optional:
-  - architecture_refs: `aios-core/core-config.yaml` for the `architecture.architectureFile`
-  - technical_preferences: `aios-core/core-config.yaml` for the `technicalPreferences`
+  - architecture_refs: `aiox-core/core-config.yaml` for the `architecture.architectureFile`
+  - technical_preferences: `aiox-core/core-config.yaml` for the `technicalPreferences`
   - acceptance_criteria: From story file
 ```
 
@@ -335,7 +335,7 @@ maintainability:
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: qaNfrAssess()
@@ -441,7 +441,7 @@ acceptance-criteria:
 
 - **Tool:** validation-engine
   - **Purpose:** Rule-based validation and reporting
-  - **Source:** .aios-core/utils/validation-engine.js
+  - **Source:** .aiox-core/utils/validation-engine.js
 
 - **Tool:** schema-validator
   - **Purpose:** JSON/YAML schema validation
@@ -456,7 +456,7 @@ acceptance-criteria:
 - **Script:** run-validation.js
   - **Purpose:** Execute validation rules and generate report
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/run-validation.js
+  - **Location:** .aiox-core/scripts/run-validation.js
 
 ---
 

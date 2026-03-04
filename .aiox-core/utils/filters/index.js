@@ -5,8 +5,8 @@
 // and dispatches to the appropriate filter (content, schema, field).
 //
 // Usage:
-//   node .aios-core/utils/filters/index.js --tool exa --input response.json
-//   echo '{"data":"..."}' | node .aios-core/utils/filters/index.js --tool exa
+//   node .aiox-core/utils/filters/index.js --tool exa --input response.json
+//   echo '{"data":"..."}' | node .aiox-core/utils/filters/index.js --tool exa
 //
 // Programmatic:
 //   const { applyFilter, loadFilterConfig } = require('./index');

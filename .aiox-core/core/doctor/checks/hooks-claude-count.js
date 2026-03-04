@@ -6,7 +6,7 @@
  * PASS: >=2 + all registered, WARN: files present but not registered or <2,
  * FAIL: 0 or directory missing.
  *
- * @module aios-core/doctor/checks/hooks-claude-count
+ * @module aiox-core/doctor/checks/hooks-claude-count
  * @story INS-4.8
  */
 
@@ -23,7 +23,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Hooks directory not found (.claude/hooks/)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -35,7 +35,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Cannot read hooks directory',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -49,7 +49,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'No hook files found (.cjs)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -103,7 +103,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: `${hookCount} hook files found but not registered in settings.local.json`,
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -111,7 +111,7 @@ async function run(context) {
     check: name,
     status: 'WARN',
     message: `Only ${hookCount}/2 hook files found`,
-    fixCommand: 'npx aios-core install --force',
+    fixCommand: 'npx aiox-core install --force',
   };
 }
 

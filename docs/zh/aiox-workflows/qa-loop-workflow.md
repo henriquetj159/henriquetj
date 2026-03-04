@@ -47,7 +47,7 @@
 
 ### 支持的项目类型
 
-- `aios-development`
+- `aiox-development`
 - `autonomous-development`
 - `qa-automation`
 
@@ -483,7 +483,7 @@ QA循环中的责任:
 
 ### 1. qa-review-story.md
 
-**位置:** `.aios-core/development/tasks/qa-review-story.md`
+**位置:** `.aiox-core/development/tasks/qa-review-story.md`
 
 **目的:** 执行带质量网关决策的测试架构审查。
 
@@ -536,7 +536,7 @@ flowchart TD
 
 ### 2. qa-create-fix-request.md
 
-**位置:** `.aios-core/development/tasks/qa-create-fix-request.md`
+**位置:** `.aiox-core/development/tasks/qa-create-fix-request.md`
 
 **目的:** 根据 QA 发现结果生成结构化的 `QA_FIX_REQUEST.md` 文档给 @dev。
 
@@ -602,7 +602,7 @@ flowchart LR
 
 ### 3. dev-apply-qa-fixes.md
 
-**位置:** `.aios-core/development/tasks/dev-apply-qa-fixes.md`
+**位置:** `.aiox-core/development/tasks/dev-apply-qa-fixes.md`
 
 **目的:** 根据 QA 反馈和网关审查应用修复。
 
@@ -792,8 +792,8 @@ config:
   statusFile: qa/loop-status.json
 
   # 与仪表板集成 (AC7)
-  dashboardStatusPath: .aios/dashboard/status.json
-  legacyStatusPath: .aios/status.json
+  dashboardStatusPath: .aiox/dashboard/status.json
+  legacyStatusPath: .aiox/status.json
 
   # 每个阶段的超时 (毫秒)
   reviewTimeout: 1800000    # 30 分钟
@@ -806,7 +806,7 @@ config:
 
 ### 按项目定制
 
-在 `.aios-core/core-config.yaml` 文件中:
+在 `.aiox-core/core-config.yaml` 文件中:
 
 ```yaml
 autoClaude:
@@ -1075,12 +1075,12 @@ mv qa/loop-status.json qa/loop-status.json.bak
 
 | 文件 | 位置 |
 |------|------|
-| 工作流定义 | `.aios-core/development/workflows/qa-loop.yaml` |
-| QA 审查任务 | `.aios-core/development/tasks/qa-review-story.md` |
-| 创建修复请求任务 | `.aios-core/development/tasks/qa-create-fix-request.md` |
-| 应用 QA 修复任务 | `.aios-core/development/tasks/dev-apply-qa-fixes.md` |
-| QA 代理 | `.aios-core/development/agents/qa.md` |
-| 开发代理 | `.aios-core/development/agents/dev.md` |
+| 工作流定义 | `.aiox-core/development/workflows/qa-loop.yaml` |
+| QA 审查任务 | `.aiox-core/development/tasks/qa-review-story.md` |
+| 创建修复请求任务 | `.aiox-core/development/tasks/qa-create-fix-request.md` |
+| 应用 QA 修复任务 | `.aiox-core/development/tasks/dev-apply-qa-fixes.md` |
+| QA 代理 | `.aiox-core/development/agents/qa.md` |
+| 开发代理 | `.aiox-core/development/agents/dev.md` |
 
 ### 相关文档
 
@@ -1095,8 +1095,8 @@ mv qa/loop-status.json qa/loop-status.json.bak
 
 | 模板 | 位置 | 用途 |
 |------|------|------|
-| `qa-gate-tmpl.yaml` | `.aios-core/development/templates/` | 网关文件结构 |
-| `story-tmpl.yaml` | `.aios-core/development/templates/` | 故事文件结构 |
+| `qa-gate-tmpl.yaml` | `.aiox-core/development/templates/` | 网关文件结构 |
+| `story-tmpl.yaml` | `.aiox-core/development/templates/` | 故事文件结构 |
 
 ---
 

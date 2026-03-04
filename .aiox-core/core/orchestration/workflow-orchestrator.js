@@ -3,7 +3,7 @@
  *
  * Executes workflows using real subagents with proper persona transformation.
  * Each phase dispatches to a specialized agent that fully adopts its persona
- * and executes the defined task following AIOS methodology.
+ * and executes the defined task following AIOX methodology.
  *
  * @module core/orchestration/workflow-orchestrator
  * @version 1.0.0
@@ -118,7 +118,7 @@ class WorkflowOrchestrator {
       'docs/reports',
       'docs/stories',
       'supabase/docs',
-      '.aios/workflow-state',
+      '.aiox/workflow-state',
     ];
 
     const created = [];
@@ -797,7 +797,7 @@ class WorkflowOrchestrator {
     if (Number.isFinite(explicit)) {
       return explicit;
     }
-    const envThreshold = Number(process.env.AIOS_DELIVERY_CONFIDENCE_THRESHOLD);
+    const envThreshold = Number(process.env.AIOX_DELIVERY_CONFIDENCE_THRESHOLD);
     return Number.isFinite(envThreshold) ? envThreshold : 70;
   }
 

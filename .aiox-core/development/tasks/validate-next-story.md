@@ -23,7 +23,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: validateNextStory()
@@ -129,7 +129,7 @@ acceptance-criteria:
 
 - **Tool:** validation-engine
   - **Purpose:** Rule-based validation and reporting
-  - **Source:** .aios-core/utils/validation-engine.js
+  - **Source:** .aiox-core/utils/validation-engine.js
 
 - **Tool:** schema-validator
   - **Purpose:** JSON/YAML schema validation
@@ -144,7 +144,7 @@ acceptance-criteria:
 - **Script:** run-validation.js
   - **Purpose:** Execute validation rules and generate report
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/run-validation.js
+  - **Location:** .aiox-core/scripts/run-validation.js
 
 ---
 
@@ -218,18 +218,18 @@ To comprehensively validate a story draft before implementation begins, ensuring
 
 ### 0. Load Core Configuration and Inputs
 
-- Load `.aios-core/core-config.yaml`
+- Load `.aiox-core/core-config.yaml`
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story validation."
 - Extract key configurations: `devStoryLocation`, `prd.*`, `architecture.*`
 - Identify and load the following inputs:
   - **Story file**: The drafted story to validate (provided by user or discovered in `devStoryLocation`)
   - **Parent epic**: The epic containing this story's requirements
   - **Architecture documents**: Based on configuration (sharded or monolithic)
-  - **Story template**: `aios-core/templates/story-tmpl.yaml` for completeness validation
+  - **Story template**: `aiox-core/templates/story-tmpl.yaml` for completeness validation
 
 ### 1. Template Completeness Validation
 
-- Load `aios-core/templates/story-tmpl.yaml` and extract all section headings from the template
+- Load `aiox-core/templates/story-tmpl.yaml` and extract all section headings from the template
 - **Missing sections check**: Compare story sections against template sections to verify all required sections are present
 - **Placeholder validation**: Ensure no template placeholders remain unfilled (e.g., `{{EpicNum}}`, `{{role}}`, `_TBD_`)
 - **Agent section verification**: Confirm all sections from template exist for future agent use
@@ -237,7 +237,7 @@ To comprehensively validate a story draft before implementation begins, ensuring
 
 ### 1.1 Executor Assignment Validation (Story 11.1 - Projeto Bob)
 
-**PRD Reference:** AIOS v2.0 "Projeto Bob" - Section 5 (Dynamic Executor Assignment)
+**PRD Reference:** AIOX v2.0 "Projeto Bob" - Section 5 (Dynamic Executor Assignment)
 
 **Required Fields Check:**
 - [ ] **executor** field present and not empty
@@ -376,9 +376,9 @@ To comprehensively validate a story draft before implementation begins, ensuring
 
 ### 8.1 Code Intelligence: No Duplicate Functionality (Auto-skip if unavailable)
 
-- **Check code intelligence availability:** Call `isCodeIntelAvailable()` from `.aios-core/core/code-intel`
+- **Check code intelligence availability:** Call `isCodeIntelAvailable()` from `.aiox-core/core/code-intel`
 - **If available:**
-  - Call `validateNoDuplicates(storyDescription)` from `.aios-core/core/code-intel/helpers/story-helper`
+  - Call `validateNoDuplicates(storyDescription)` from `.aiox-core/core/code-intel/helpers/story-helper`
     - If `hasDuplicates: true`: Add to validation report as **Should-Fix** issue — "Potential duplicate functionality detected: {suggestion}". This is **advisory only** and does NOT block validation.
     - If `hasDuplicates: false`: Add to report as PASS — "No duplicate functionality detected"
   - Include result in the **Validation Result** section under "Code Intelligence Check"

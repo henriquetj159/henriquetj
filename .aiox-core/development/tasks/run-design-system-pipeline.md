@@ -30,7 +30,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: run-design-system-pipeline
@@ -182,11 +182,11 @@ acceptance-criteria:
 
 - **Tool:** build-component
   - **Purpose:** Build individual components
-  - **Source:** .aios-core/development/tasks/build-component.md
+  - **Source:** .aiox-core/development/tasks/build-component.md
 
 - **Tool:** generate-documentation
   - **Purpose:** Generate Pattern Library docs
-  - **Source:** .aios-core/development/tasks/generate-documentation.md
+  - **Source:** .aiox-core/development/tasks/generate-documentation.md
 
 - **Tool:** accessibility-audit
   - **Purpose:** Run WCAG compliance checks
@@ -194,7 +194,7 @@ acceptance-criteria:
 
 - **Tool:** calculate-roi
   - **Purpose:** Calculate ROI metrics
-  - **Source:** .aios-core/development/tasks/calculate-roi.md
+  - **Source:** .aiox-core/development/tasks/calculate-roi.md
 
 ---
 
@@ -614,7 +614,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Design System Pipeline
-        run: npx aios-core task run-design-system-pipeline --mode=yolo
+        run: npx aiox-core task run-design-system-pipeline --mode=yolo
 ```
 
 ### NPM Script
@@ -622,8 +622,8 @@ jobs:
 ```json
 {
   "scripts": {
-    "ds:pipeline": "npx aios-core task run-design-system-pipeline",
-    "ds:pipeline:ci": "npx aios-core task run-design-system-pipeline --mode=yolo"
+    "ds:pipeline": "npx aiox-core task run-design-system-pipeline",
+    "ds:pipeline:ci": "npx aiox-core task run-design-system-pipeline --mode=yolo"
   }
 }
 ```

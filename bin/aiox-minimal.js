@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * AIOS-FullStack Minimal Installation
+ * AIOX-FullStack Minimal Installation
  *
  * DEPRECATED (since v3.11.1, scheduled for removal in v5.0.0):
  * The --minimal mode was designed for squads which have been
@@ -13,12 +13,12 @@ const { spawn } = require('child_process');
 const path = require('path');
 
 // Show deprecation warning
-console.log('\n⚠️  DEPRECATION WARNING: aios-minimal is deprecated.');
+console.log('\n⚠️  DEPRECATION WARNING: aiox-minimal is deprecated.');
 console.log('   The --minimal mode (squads) was replaced by Squads.');
 console.log('   Running standard installation wizard instead.\n');
 
-// Get the path to the main router (aios.js)
-const routerPath = path.join(__dirname, 'aios.js');
+// Get the path to the main router (aiox.js)
+const routerPath = path.join(__dirname, 'aiox.js');
 
 // Forward all arguments to the main router
 const args = process.argv.slice(2);
@@ -34,6 +34,6 @@ child.on('close', (code) => {
 });
 
 child.on('error', (error) => {
-  console.error('❌ Failed to start AIOS:', error.message);
+  console.error('❌ Failed to start AIOX:', error.message);
   process.exit(1);
 });

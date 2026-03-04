@@ -8,7 +8,7 @@
 
 ## ⚠️ NAMING CONVENTION
 
-**CRITICAL:** This task follows Synkra AIOS naming convention.
+**CRITICAL:** This task follows Synkra AIOX naming convention.
 
 ### Agent-Specific Tasks
 If this task is specific to **{{AGENT_NAME}}**, the filename MUST be:
@@ -37,7 +37,7 @@ If this task is used by **multiple agents**, the filename should NOT have agent 
 ### How to Apply
 - Use the `*create-task` command which automatically applies naming convention
 - The elicitation process will ask for agent(s) and apply the correct format
-- See: `.aios-core/tasks/create-task.md` for details
+- See: `.aiox-core/tasks/create-task.md` for details
 
 ---
 

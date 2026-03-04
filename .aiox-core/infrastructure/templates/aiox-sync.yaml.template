@@ -1,8 +1,8 @@
-# AIOS IDE Sync Configuration
+# AIOX IDE Sync Configuration
 # Automatically sync agents, tasks, checklists, and workflows to IDE configurations
 #
 # Usage:
-#   1. Copy this file to your project root as .aios-sync.yaml
+#   1. Copy this file to your project root as .aiox-sync.yaml
 #   2. Configure active_ides for your setup
 #   3. Add squad_aliases for your squads
 #   4. Run *command to sync components
@@ -149,7 +149,7 @@ behavior:
   create_missing_dirs: true       # Create destination directories if missing
   backup_before_sync: false       # Create .bak files before overwriting
   validate_after_sync: true       # Validate synced files
-  log_sync_operations: true       # Log to .aios-sync.log
+  log_sync_operations: true       # Log to .aiox-sync.log
   fail_on_error: false           # Don't block on sync errors (warn only)
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -176,7 +176,7 @@ validation:
 # ═══════════════════════════════════════════════════════════════════════════════
 logging:
   enabled: true
-  log_file: ".aios-sync.log"
+  log_file: ".aiox-sync.log"
   log_level: "info"  # debug, info, warn, error
   max_log_size_mb: 10
   rotate_logs: true

@@ -1,10 +1,10 @@
 /**
  * Constitution Generator
  *
- * Reads .aios-core/constitution.md and generates .synapse/constitution
+ * Reads .aiox-core/constitution.md and generates .synapse/constitution
  * in KEY=VALUE format for the SYNAPSE Context Engine L0 layer.
  *
- * Usage: node .aios-core/core/synapse/scripts/generate-constitution.js
+ * Usage: node .aiox-core/core/synapse/scripts/generate-constitution.js
  *
  * @module core/synapse/scripts/generate-constitution
  * @version 1.0.0
@@ -120,7 +120,7 @@ function extractRules(articleContent) {
 function generateConstitution(articles) {
   const lines = [
     '# SYNAPSE Constitution Domain (L0)',
-    '# Auto-generated from .aios-core/constitution.md',
+    '# Auto-generated from .aiox-core/constitution.md',
     '# DO NOT EDIT MANUALLY — re-run generate-constitution.js',
     '',
   ];
@@ -153,7 +153,7 @@ function generateConstitution(articles) {
  */
 function main(options = {}) {
   const projectRoot = options.projectRoot || path.resolve(__dirname, '..', '..', '..', '..');
-  const constitutionPath = options.constitutionPath || path.join(projectRoot, '.aios-core', 'constitution.md');
+  const constitutionPath = options.constitutionPath || path.join(projectRoot, '.aiox-core', 'constitution.md');
   const outputPath = options.outputPath || path.join(projectRoot, '.synapse', 'constitution');
 
   // Read source

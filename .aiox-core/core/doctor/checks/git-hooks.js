@@ -3,7 +3,7 @@
  *
  * Validates .husky/pre-commit and .husky/pre-push exist.
  *
- * @module aios-core/doctor/checks/git-hooks
+ * @module aiox-core/doctor/checks/git-hooks
  * @story INS-4.1
  */
 

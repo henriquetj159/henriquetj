@@ -19,7 +19,7 @@ Saida: |
   - files_updated: Lista de arquivos atualizados
   - files_skipped: Lista de arquivos pulados
 Checklist:
-  - '[x] Carregar .aios-sync.yaml'
+  - '[x] Carregar .aiox-sync.yaml'
   - '[x] Localizar arquivo fonte em squads/'
   - '[x] Verificar arquivos existentes nos destinos'
   - '[x] Sincronizar para cada IDE ativa'
@@ -109,9 +109,9 @@ Summary:
 
 ## Configuração
 
-### .aios-sync.yaml
+### .aiox-sync.yaml
 
-O sistema usa `.aios-sync.yaml` na raiz do projeto para configuração:
+O sistema usa `.aiox-sync.yaml` na raiz do projeto para configuração:
 
 ```yaml
 # IDEs ativas para sincronização
@@ -160,7 +160,7 @@ O `squad_aliases` mapeia o nome do diretório do squad para o prefixo usado nos 
 │                                                   │
 │  1. Parse type + name                             │
 │     ↓                                             │
-│  2. Load .aios-sync.yaml                          │
+│  2. Load .aiox-sync.yaml                          │
 │     ↓ (not found → create default)                │
 │  3. Resolve squad alias                           │
 │     ↓                                             │
@@ -176,7 +176,7 @@ O `squad_aliases` mapeia o nome do diretório do squad para o prefixo usado nos 
 │     ↓                                             │
 │  7. Validate created files                        │
 │     ↓                                             │
-│  8. Log to .aios-sync.log                         │
+│  8. Log to .aiox-sync.log                         │
 │     ↓                                             │
 │  9. Display summary                               │
 │                                                   │
@@ -274,9 +274,9 @@ Sincroniza TODOS os componentes de um squad:
 | Error                  | Causa                           | Solução                     |
 | ---------------------- | ------------------------------- | --------------------------- |
 | `Source not found`     | Arquivo não existe em squads/   | Verifique o nome e tipo     |
-| `Squad alias not found` | Squad não está em squad_aliases | Adicione ao .aios-sync.yaml |
+| `Squad alias not found` | Squad não está em squad_aliases | Adicione ao .aiox-sync.yaml |
 | `File exists`          | Destino já existe               | Use --force ou escolha ação |
-| `IDE not active`       | IDE não está em active_ides     | Ative no .aios-sync.yaml    |
+| `IDE not active`       | IDE não está em active_ides     | Ative no .aiox-sync.yaml    |
 | `Invalid YAML`         | Arquivo fonte com YAML inválido | Corrija o arquivo fonte     |
 
 ## Implementation Guide
@@ -296,7 +296,7 @@ if (!validTypes.includes(type)) {
 }
 
 // 3. Carregar configuração
-const syncConfig = loadYaml('.aios-sync.yaml');
+const syncConfig = loadYaml('.aiox-sync.yaml');
 const activeIdes = syncConfig.active_ides || ['claude'];
 const squadAliases = syncConfig.squad_aliases || syncConfig.pack_aliases || {};
 
@@ -365,7 +365,7 @@ if (!flags.noValidate) {
 
 // 10. Log
 if (syncConfig.behavior?.log_sync_operations) {
-  appendLog('.aios-sync.log', {
+  appendLog('.aiox-sync.log', {
     timestamp: new Date().toISOString(),
     type,
     name,

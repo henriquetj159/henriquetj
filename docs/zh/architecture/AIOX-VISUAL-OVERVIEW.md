@@ -1,6 +1,6 @@
-# AIOS — 可视化概览与流程图
+# AIOX — 可视化概览与流程图
 
-> 高级可视化指南，解释什么是 Synkra AIOS，
+> 高级可视化指南，解释什么是 Synkra AIOX，
 > Task-First 方法论，4 种执行器类型，
 > 动态工作空间以及它们如何相互连接。
 
@@ -13,7 +13,7 @@
 
 ## 目录
 
-1. [什么是 AIOS？](#1-什么是-aios)
+1. [什么是 AIOX？](#1-什么是-aiox)
 2. [Task-First 理念](#2-task-first-理念)
 3. [4 种执行器](#3-4-种执行器)
 4. [决策树 — 使用哪种执行器？](#4-决策树--使用哪种执行器)
@@ -23,16 +23,16 @@
 
 ---
 
-## 1. 什么是 AIOS？
+## 1. 什么是 AIOX？
 
-**Synkra AIOS** (AI Operating System) 是一个框架，它改变了团队构建软件的方式 — 将 **专业化 AI 代理** 与 **真实人类** 结合在一种独特的敏捷方法论中。
+**Synkra AIOX** (AI Operating System) 是一个框架，它改变了团队构建软件的方式 — 将 **专业化 AI 代理** 与 **真实人类** 结合在一种独特的敏捷方法论中。
 
 核心创新: **任务是主要单位，而非代理。**
 代理只是执行任务的 4 种可能执行器类型之一。
 
 ```mermaid
 flowchart TB
-    subgraph AIOS["SYNKRA AIOS"]
+    subgraph AIOX["SYNKRA AIOX"]
         direction TB
 
         subgraph CORE["核心: Task-First 引擎"]
@@ -69,7 +69,7 @@ flowchart TB
     DECISION --> HUMAN
 
     WORKSPACE --> TASK
-    PRINCIPLES --> AIOS
+    PRINCIPLES --> AIOX
 
     style CORE fill:#1a1a2e,color:#fff
     style EXECUTORS fill:#16213e,color:#fff
@@ -81,7 +81,7 @@ flowchart TB
     style TASK fill:#00cec9,color:#000
 ```
 
-### 一句话概括 AIOS
+### 一句话概括 AIOX
 
 > **"一个用于软件开发的操作系统，其中已验证的任务由最理想的执行器执行 — 无论是 AI、脚本、认知克隆还是人类 — 在按企业定制的动态工作空间中运行。"**
 
@@ -98,7 +98,7 @@ CLI 优先  >  可观测性次之  >  UI 第三
 
 Pedro Valerio 的 **Task-First** 方法论颠覆了传统范式:
 
-| 传统范式 | Task-First (AIOS) |
+| 传统范式 | Task-First (AIOX) |
 |-----------------------|-------------------|
 | 代理是中心 | **任务** 是中心 |
 | "我使用哪个代理？" | "我需要执行什么任务？" |
@@ -117,7 +117,7 @@ flowchart LR
         NOTE1["代理决定<br/>执行什么"]
     end
 
-    subgraph TASKFIRST["Task-First (AIOS)"]
+    subgraph TASKFIRST["Task-First (AIOX)"]
         direction TB
         TK1["已验证任务"] --> DEC1{"执行器?"}
         DEC1 --> E1["代理"]
@@ -183,7 +183,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    subgraph EXECUTORS["AIOS 的 4 种执行器"]
+    subgraph EXECUTORS["AIOX 的 4 种执行器"]
         direction TB
 
         subgraph AGENT_BOX["代理 — 生成式 AI"]
@@ -228,7 +228,7 @@ flowchart TB
 
 ## 4. 决策树 — 使用哪种执行器？
 
-这是决定 AIOS 中每个任务应分配哪个执行器的主要流程图:
+这是决定 AIOX 中每个任务应分配哪个执行器的主要流程图:
 
 ```mermaid
 flowchart TD
@@ -328,7 +328,7 @@ flowchart LR
 ## 5. 动态工作空间
 
 每个公司/团队使用其所需的组件组装自己的 **定制工作空间**。
-AIOS 是模块化的 — 你像乐高积木一样组合小队、代理和配置。
+AIOX 是模块化的 — 你像乐高积木一样组合小队、代理和配置。
 
 ### 工作空间架构
 
@@ -337,8 +337,8 @@ flowchart TB
     subgraph WS["公司动态工作空间"]
         direction TB
 
-        subgraph FRAMEWORK[".aios-core/ — 框架 (不可变)"]
-            AGENTS_CORE["11 个核心代理<br/>dev, qa, architect, pm,<br/>po, sm, analyst, devops,<br/>data-engineer, ux, aios-master"]
+        subgraph FRAMEWORK[".aiox-core/ — 框架 (不可变)"]
+            AGENTS_CORE["11 个核心代理<br/>dev, qa, architect, pm,<br/>po, sm, analyst, devops,<br/>data-engineer, ux, aiox-master"]
             TASKS_CORE["45+ 可执行<br/>任务"]
             WORKFLOWS["可编排<br/>工作流"]
             CONSTITUTION["宪法<br/>不可协商原则"]
@@ -388,7 +388,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    INSTALL(["npx aios-core install"]) --> WIZARD["安装向导"]
+    INSTALL(["npx aiox-core install"]) --> WIZARD["安装向导"]
 
     WIZARD --> CHOOSE_SQUADS["选择小队<br/>(初始小队)"]
     WIZARD --> CHOOSE_IDE["选择 IDE<br/>(Claude Code, Cursor...)"]
@@ -418,7 +418,7 @@ flowchart LR
 
 ### 小队 + 人类: 真正的协作
 
-AIOS 的差异化在于小队 **不会取代** 人类 — 它们 **一起** 工作:
+AIOX 的差异化在于小队 **不会取代** 人类 — 它们 **一起** 工作:
 
 ```mermaid
 flowchart TB
@@ -522,7 +522,7 @@ flowchart TD
 
 ## 7. 对比总结
 
-### AIOS vs 传统方法
+### AIOX vs 传统方法
 
 ```mermaid
 flowchart LR
@@ -540,7 +540,7 @@ flowchart LR
         TM3 --> TM4["结果: 脆弱"]
     end
 
-    subgraph AIOS_WAY["Synkra AIOS (Task-First)"]
+    subgraph AIOX_WAY["Synkra AIOX (Task-First)"]
         direction TB
         A1["带验收标准的<br/>已验证任务"] --> A2["决策树选择<br/>理想执行器"]
         A2 --> A3["每次转换<br/>都有质量门禁"]
@@ -549,12 +549,12 @@ flowchart LR
 
     style TRAD fill:#c0392b,color:#fff
     style TASKMASTER fill:#d35400,color:#fff
-    style AIOS_WAY fill:#27ae60,color:#fff
+    style AIOX_WAY fill:#27ae60,color:#fff
 ```
 
 ### 宪法原则
 
-AIOS 在具有不可协商原则的 **正式宪法** 下运行:
+AIOX 在具有不可协商原则的 **正式宪法** 下运行:
 
 | 条款 | 原则 | 严重性 | 含义 |
 |--------|-----------|------------|-------------|
@@ -582,14 +582,14 @@ AIOS 在具有不可协商原则的 **正式宪法** 下运行:
 
 | 文档 | 内容 |
 |-----------|----------|
-| [EXECUTOR-DECISION-TREE.md](../../.aios-core/docs/standards/EXECUTOR-DECISION-TREE.md) | 带示例和成本效益分析的详细决策树 |
+| [EXECUTOR-DECISION-TREE.md](../../.aiox-core/docs/standards/EXECUTOR-DECISION-TREE.md) | 带示例和成本效益分析的详细决策树 |
 | [SYNAPSE-FLOWCHARTS.md](SYNAPSE/SYNAPSE-FLOWCHARTS.md) | SYNAPSE 上下文引擎的 12 个流程图 |
-| [Constitution](../../.aios-core/constitution.md) | 框架的不可协商原则 |
-| [User Guide](../../.aios-core/user-guide.md) | AIOS 使用完整指南 |
+| [Constitution](../../.aiox-core/constitution.md) | 框架的不可协商原则 |
+| [User Guide](../../.aiox-core/user-guide.md) | AIOX 使用完整指南 |
 | [Squads Guide](../guides/squads-guide.md) | 如何创建和管理小队 |
 
 ---
 
-*Synkra AIOS 可视化概览 v1.0.0*
+*Synkra AIOX 可视化概览 v1.0.0*
 *Task-First | 4 种执行器 | 动态工作空间*
 *— Aria，架构未来*

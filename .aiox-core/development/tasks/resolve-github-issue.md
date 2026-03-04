@@ -29,7 +29,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: resolveGithubIssue()
@@ -205,11 +205,11 @@ steps:
     action: Verify if changes affect other systems
     checks:
       - Does this change affect the installer? (packages/installer/)
-      - Does this change affect IDE sync? (.aios-core/infrastructure/scripts/ide-sync/)
+      - Does this change affect IDE sync? (.aiox-core/infrastructure/scripts/ide-sync/)
       - Does this change affect tests? (tests/)
       - Does this change affect documentation? (docs/)
       - Does this change affect CI/CD? (.github/workflows/)
-      - Does this change affect other agents? (.aios-core/development/agents/)
+      - Does this change affect other agents? (.aiox-core/development/agents/)
     output: dependency_impacts[]
 
   3_verify_ids_gate:
@@ -265,7 +265,7 @@ steps:
   3_handle_edge_cases:
     action: Watch for common pitfalls from past sessions
     known_pitfalls:
-      - Email addresses inside strings may match rename patterns (Issue #159: security@synkra/aios-core.dev)
+      - Email addresses inside strings may match rename patterns (Issue #159: security@synkra/aiox-core.dev)
       - YAML parser converts "KEY: value" to objects, not strings (Issue #138: core_principles)
       - Windows bash escapes `!` in inline scripts (use temp .js files instead of node -e)
       - Replace_all may match unintended occurrences (always verify with Grep after bulk changes)
@@ -280,15 +280,15 @@ steps:
     condition: Changes affect files tracked by install manifest
     action: |
       Run: node scripts/generate-install-manifest.js
-      This regenerates .aios-core/install-manifest.yaml
-    when: Any file in .aios-core/ or packages/ is created, modified, or deleted
+      This regenerates .aiox-core/install-manifest.yaml
+    when: Any file in .aiox-core/ or packages/ is created, modified, or deleted
 
   5_run_ide_sync:
     condition: Changes affect agent definitions or IDE sync system
     action: |
-      Run: node .aios-core/infrastructure/scripts/ide-sync/index.js sync --verbose
+      Run: node .aiox-core/infrastructure/scripts/ide-sync/index.js sync --verbose
       Verify all IDEs sync without errors
-    when: Changes to .aios-core/development/agents/ or ide-sync/
+    when: Changes to .aiox-core/development/agents/ or ide-sync/
 ```
 
 ### Phase 4: Validate (test and verify)
@@ -582,7 +582,7 @@ These patterns were identified from real issue resolution sessions and should gu
 
 ### Issue #159 (Bulk Rename) — Parallel + Edge Cases
 - **Pattern:** 5 parallel agents for 136 files, split by directory
-- **Pitfall:** `@synkra/aios-core` inside email `security@synkra/aios-core.dev` was corrupted
+- **Pitfall:** `@synkra/aiox-core` inside email `security@synkra/aiox-core.dev` was corrupted
 - **Lesson:** Always Grep for edge cases AFTER bulk replacements
 
 ### Issue #138 (Copilot Format) — Research-First

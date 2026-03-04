@@ -10,8 +10,8 @@
 
 ### Project Structure
 - `docs/stories/epics/` — Epic directories with INDEX.md + stories
-- `.aios-core/development/templates/` — Story templates
-- `.aios-core/development/checklists/` — Draft checklists
+- `.aiox-core/development/templates/` — Story templates
+- `.aiox-core/development/checklists/` — Draft checklists
 
 ### Git Rules
 - NEVER push — delegate to @devops

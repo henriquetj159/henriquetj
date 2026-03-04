@@ -1,17 +1,17 @@
-# AIOS Framework - Livro de Ouro v4.2 (Complete)
+# AIOX Framework - Livro de Ouro v4.2 (Complete)
 
 ## O Sistema Operacional Definitivo para Orquestração de Agentes IA
 
 **Versão:** 2.1.0
 **Status:** Living Document
 **Última Atualização:** 2025-12-09
-**Mantido Por:** AIOS Framework Team + Community
-**Repositório Principal:** `SynkraAI/aios-core`
+**Mantido Por:** AIOX Framework Team + Community
+**Repositório Principal:** `SynkraAI/aiox-core`
 
 ---
 
 > **"Structure is Sacred. Tone is Flexible."**
-> _— Fundamento filosófico do AIOS_
+> _— Fundamento filosófico do AIOX_
 
 ---
 
@@ -24,13 +24,13 @@ Este documento é a **versão consolidada v4.2** que incorpora todas as mudança
 - ✅ **Multi-Repo Strategy** (3 repositórios públicos + 2 privados)
 - ✅ **Quality Gates 3 Layers** (Pre-commit, PR Automation, Human Review)
 - ✅ **Story Template v2.0** (Cross-Story Decisions, CodeRabbit Integration)
-- ✅ **npm Package Scoping** (@aios/core, @aios/squad-\*, @aios/mcp-presets)
+- ✅ **npm Package Scoping** (@aiox/core, @aiox/squad-\*, @aiox/mcp-presets)
 
 **Referências Legadas:**
 
-- `AIOS-LIVRO-DE-OURO.md` - Base v2.0.0 (Jan 2025)
-- `AIOS-LIVRO-DE-OURO-V2.1.md` - Delta parcial
-- `AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md` - Resumo de mudanças
+- `AIOX-LIVRO-DE-OURO.md` - Base v2.0.0 (Jan 2025)
+- `AIOX-LIVRO-DE-OURO-V2.1.md` - Delta parcial
+- `AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` - Resumo de mudanças
 
 ---
 
@@ -59,7 +59,7 @@ Este documento é a **versão consolidada v4.2** que incorpora todas as mudança
 │   ═══════════════════════                                               │
 │                                                                         │
 │   ┌────────────────────────────────────────────────────────────────┐   │
-│   │  SynkraAI/aios-core (Commons Clause)                         │   │
+│   │  SynkraAI/aiox-core (Commons Clause)                         │   │
 │   │  ─────────────────────────────────────                         │   │
 │   │  • Core Framework & Orchestration Engine                       │   │
 │   │  • 11 Base Agents (Dex, Luna, Aria, Quinn, etc.)              │   │
@@ -67,7 +67,7 @@ Este documento é a **versão consolidada v4.2** que incorpora todas as mudança
 │   │  • Quality Gates System                                        │   │
 │   │  • Service Discovery                                           │   │
 │   │  • DISCUSSIONS HUB (Central community)                         │   │
-│   │  npm: @aios/core                                               │   │
+│   │  npm: @aiox/core                                               │   │
 │   └────────────────────────────────────────────────────────────────┘   │
 │                              ▲                                         │
 │                              │ peerDependency                          │
@@ -76,12 +76,12 @@ Este documento é a **versão consolidada v4.2** que incorpora todas as mudança
 │   ▼                          │                          ▼              │
 │   ┌─────────────────────┐    │    ┌─────────────────────────────┐     │
 │   │ SynkraAI/         │    │    │ SynkraAI/mcp-ecosystem    │     │
-│   │ aios-squads (MIT)   │    │    │ (Apache 2.0)                │     │
+│   │ aiox-squads (MIT)   │    │    │ (Apache 2.0)                │     │
 │   │ ─────────────────   │    │    │ ──────────────────────────  │     │
 │   │ • ETL Squad         │    │    │ • Docker MCP Toolkit        │     │
 │   │ • Creator Squad     │    │    │ • IDE Configurations        │     │
 │   │ • MMOS Squad        │    │    │ • MCP Presets               │     │
-│   │ npm: @aios/squad-*  │    │    │ npm: @aios/mcp-presets      │     │
+│   │ npm: @aiox/squad-*  │    │    │ npm: @aiox/mcp-presets      │     │
 │   └─────────────────────┘    │    └─────────────────────────────┘     │
 │                              │                                         │
 │   PRIVATE REPOSITORIES (2)   │                                         │
@@ -106,9 +106,9 @@ Este documento é a **versão consolidada v4.2** que incorpora todas as mudança
 | LangChain     | ✅ Complete              | ❌ None (commodity)            |
 | CrewAI        | ✅ Complete              | ❌ None (commodity)            |
 | AutoGen       | ✅ Complete              | ❌ None (commodity)            |
-| **AIOS v4.2** | ✅ **Complete**          | ✅ **Clones (DNA Mental™)** ⭐ |
+| **AIOX v4.2** | ✅ **Complete**          | ✅ **Clones (DNA Mental™)** ⭐ |
 
-**Analogia:** Linux é open source, mas Red Hat Enterprise Linux adiciona suporte e otimizações. Ambos são Linux, mas o valor agregado varia. AIOS funciona igual.
+**Analogia:** Linux é open source, mas Red Hat Enterprise Linux adiciona suporte e otimizações. Ambos são Linux, mas o valor agregado varia. AIOX funciona igual.
 
 ---
 
@@ -119,7 +119,7 @@ Este não é um documento para ser lido do início ao fim. É um **sistema de ap
 - 🚀 **Layer 0: DISCOVERY** - Descubra seu caminho (5 min)
 - 🎯 **Layer 1: UNDERSTANDING** - 5 essays que ensinam o modelo mental (75 min)
 - 🎨 **Layer 2: COMPONENT LIBRARY** - Catálogo completo de componentes
-- 📋 **Layer 3: USAGE GUIDE** - Como usar AIOS v4.2 no seu contexto
+- 📋 **Layer 3: USAGE GUIDE** - Como usar AIOX v4.2 no seu contexto
 - 📚 **Layer 4: COMPLETE REFERENCE** - Especificação técnica completa
 - 🔄 **META: EVOLUTION** - Como contribuir e evoluir o framework
 
@@ -129,7 +129,7 @@ Este não é um documento para ser lido do início ao fim. É um **sistema de ap
 
 # 🚀 LAYER 0: DISCOVERY ROUTER
 
-## Bem-vindo ao AIOS v4.2 - Vamos Encontrar Seu Caminho
+## Bem-vindo ao AIOX v4.2 - Vamos Encontrar Seu Caminho
 
 ### Learning Tracks Disponíveis
 
@@ -146,7 +146,7 @@ Este não é um documento para ser lido do início ao fim. É um **sistema de ap
 
 # 🎯 LAYER 1: UNDERSTANDING
 
-## Essay 1: Por Que AIOS Existe
+## Essay 1: Por Que AIOX Existe
 
 ### O Problema
 
@@ -160,7 +160,7 @@ Desenvolvimento com AI agents hoje é **caótico**:
 
 ### A Solução
 
-AIOS fornece **orquestração estruturada**:
+AIOX fornece **orquestração estruturada**:
 
 - 11 agents especializados com personalidades
 - Workflows multi-agent coordenados
@@ -226,7 +226,7 @@ AIOS fornece **orquestração estruturada**:
 | **Dara**  | `data-engineer` | Architect    | Data engineering        |
 | **Felix** | `devops`        | Optimizer    | CI/CD and operations    |
 | **Uma**   | `ux-expert`     | Creator      | User experience         |
-| **Pax**   | `aios-master`   | Orchestrator | Framework orchestration |
+| **Pax**   | `aiox-master`   | Orchestrator | Framework orchestration |
 
 ### Agent Activation
 
@@ -235,7 +235,7 @@ AIOS fornece **orquestração estruturada**:
 @dev             # Ativa Dex (Developer)
 @qa              # Ativa Quinn (QA)
 @architect       # Ativa Aria (Architect)
-@aios-master     # Ativa Pax (Orchestrator)
+@aiox-master     # Ativa Pax (Orchestrator)
 
 # Comandos de agent (prefix *)
 *help            # Mostra comandos disponíveis
@@ -293,7 +293,7 @@ responsavel_type: Clone    # Year 2
 ### Os 4 Módulos
 
 ```
-.aios-core/
+.aiox-core/
 ├── core/              # Framework foundations
 │   ├── config/        # Configuration management
 │   ├── registry/      # Service Discovery
@@ -351,7 +351,7 @@ Regras:
 | Squad | **Squad**          | Modular AI agent teams |
 | Squads/        | **squads/**        | Diretório de Squads    |
 | pack.yaml      | **squad.yaml**     | Manifesto do Squad     |
-| @expansion/\*  | **@aios/squad-\*** | npm scope              |
+| @expansion/\*  | **@aiox/squad-\*** | npm scope              |
 
 ### Estrutura de Squad
 
@@ -379,7 +379,7 @@ description: Data pipeline and ETL automation squad
 license: MIT
 
 peerDependencies:
-  '@aios/core': '^2.1.0'
+  '@aiox/core': '^2.1.0'
 
 agents:
   - id: etl-orchestrator
@@ -577,23 +577,23 @@ THEN [expected result]
 
 | Package | Registry | Depends On | License |
 |---------|----------|------------|---------|
-| `@aios/core` | npm public | - | Commons Clause |
-| `@aios/squad-etl` | npm public | @aios/core | MIT |
-| `@aios/squad-creator` | npm public | @aios/core | MIT |
-| `@aios/squad-mmos` | npm public | @aios/core | MIT |
-| `@aios/mcp-presets` | npm public | - | Apache 2.0 |
+| `@aiox/core` | npm public | - | Commons Clause |
+| `@aiox/squad-etl` | npm public | @aiox/core | MIT |
+| `@aiox/squad-creator` | npm public | @aiox/core | MIT |
+| `@aiox/squad-mmos` | npm public | @aiox/core | MIT |
+| `@aiox/mcp-presets` | npm public | - | Apache 2.0 |
 
 ### Installation
 
 ```bash
 # Core framework
-npm install @aios/core
+npm install @aiox/core
 
 # Squads (require core as peer)
-npm install @aios/squad-etl
+npm install @aiox/squad-etl
 
 # MCP presets (independent)
-npm install @aios/mcp-presets
+npm install @aiox/mcp-presets
 ````
 
 ---
@@ -606,43 +606,43 @@ npm install @aios/mcp-presets
 
 ```bash
 # New project (Greenfield)
-$ npx @SynkraAI/aios@latest init
+$ npx @SynkraAI/aiox@latest init
 
 # Existing project (Brownfield)
-$ npx @SynkraAI/aios migrate v2.0-to-v4.0.4
+$ npx @SynkraAI/aiox migrate v2.0-to-v4.0.4
 ```
 
 ### First Steps
 
 ```bash
 # List available agents
-$ aios agents list
+$ aiox agents list
 
 # List available Squads
-$ aios squads list
+$ aiox squads list
 
 # Create your first story
-$ aios stories create
+$ aiox stories create
 
 # Execute a task
-$ aios task develop-story --story=1.1
+$ aiox task develop-story --story=1.1
 ```
 
 ### Local Development (Multi-Repo)
 
 ```bash
 # Clone all repos
-mkdir -p ~/Workspaces/AIOS && cd ~/Workspaces/AIOS
-gh repo clone SynkraAI/aios-core
-gh repo clone SynkraAI/aios-squads
+mkdir -p ~/Workspaces/AIOX && cd ~/Workspaces/AIOX
+gh repo clone SynkraAI/aiox-core
+gh repo clone SynkraAI/aiox-squads
 gh repo clone SynkraAI/mcp-ecosystem
 
 # Link for local development
-cd aios-core && npm install && npm link
-cd ../aios-squads && npm install && npm link @aios/core
+cd aiox-core && npm install && npm link
+cd ../aiox-squads && npm install && npm link @aiox/core
 
 # VS Code workspace
-code aios-workspace.code-workspace
+code aiox-workspace.code-workspace
 ```
 
 ---
@@ -653,7 +653,7 @@ code aios-workspace.code-workspace
 
 ```bash
 # Search for workers
-$ aios workers search "json parse"
+$ aiox workers search "json parse"
 
 Results (3 Workers):
 📦 json-parser.js        ⭐⭐⭐⭐⭐ (47 projects)
@@ -661,10 +661,10 @@ Results (3 Workers):
 📦 json-transformer.js   ⭐⭐⭐ (15 projects)
 
 # Get worker details
-$ aios workers info json-parser
+$ aiox workers info json-parser
 
 # Use worker in task
-$ aios workers use json-parser --task my-task
+$ aiox workers use json-parser --task my-task
 ```
 
 ### Time Saved
@@ -681,7 +681,7 @@ $ aios workers use json-parser --task my-task
 | Workflow                 | Use Case                | Agents Involved   |
 | ------------------------ | ----------------------- | ----------------- |
 | `greenfield-fullstack`   | New full-stack project  | All agents        |
-| `brownfield-integration` | Add AIOS to existing    | dev, architect    |
+| `brownfield-integration` | Add AIOX to existing    | dev, architect    |
 | `fork-join`              | Parallel task execution | Multiple          |
 | `organizer-worker`       | Delegated execution     | po, dev           |
 | `data-pipeline`          | ETL workflows           | data-engineer, qa |
@@ -690,10 +690,10 @@ $ aios workers use json-parser --task my-task
 
 ```bash
 # Start workflow
-$ aios workflow greenfield-fullstack
+$ aiox workflow greenfield-fullstack
 
 # With parameters
-$ aios workflow brownfield-integration --target=./existing-project
+$ aiox workflow brownfield-integration --target=./existing-project
 ```
 
 ---
@@ -703,8 +703,8 @@ $ aios workflow brownfield-integration --target=./existing-project
 ## Source Tree v4.2 (Current)
 
 ```
-aios-core/                        # Root project
-├── .aios-core/                        # Framework layer
+aiox-core/                        # Root project
+├── .aiox-core/                        # Framework layer
 │   ├── core/                          # Core module
 │   │   ├── config/                    # Configuration
 │   │   ├── registry/                  # Service Discovery
@@ -830,8 +830,8 @@ aios-core/                        # Root project
 
 **Última Atualização:** 2025-12-09
 **Versão:** 2.1.0-complete
-**Mantido Por:** AIOS Framework Team
+**Mantido Por:** AIOX Framework Team
 
 ---
 
-_Este documento consolida AIOS-LIVRO-DE-OURO.md (v2.0) + deltas v4.0.4 em um único documento completo._
+_Este documento consolida AIOX-LIVRO-DE-OURO.md (v2.0) + deltas v4.0.4 em um único documento completo._

@@ -26,14 +26,14 @@ class SubagentPromptBuilder {
    */
   constructor(projectRoot) {
     this.projectRoot = projectRoot;
-    this.aiosCoreRoot = path.join(projectRoot, '.aios-core');
+    this.aioxCoreRoot = path.join(projectRoot, '.aiox-core');
 
-    // Paths to AIOS components
+    // Paths to AIOX components
     this.paths = {
-      agents: path.join(this.aiosCoreRoot, 'development', 'agents'),
-      tasks: path.join(this.aiosCoreRoot, 'development', 'tasks'),
-      checklists: path.join(this.aiosCoreRoot, 'product', 'checklists'),
-      templates: path.join(this.aiosCoreRoot, 'product', 'templates'),
+      agents: path.join(this.aioxCoreRoot, 'development', 'agents'),
+      tasks: path.join(this.aioxCoreRoot, 'development', 'tasks'),
+      checklists: path.join(this.aioxCoreRoot, 'product', 'checklists'),
+      templates: path.join(this.aioxCoreRoot, 'product', 'templates'),
     };
   }
 

@@ -3,7 +3,7 @@
 **文档:** GREENFIELD-SERVICE-WORKFLOW.md
 **版本:** 1.0
 **创建:** 2026-02-04
-**源:** `.aios-core/development/workflows/greenfield-service.yaml`
+**源:** `.aiox-core/development/workflows/greenfield-service.yaml`
 
 ---
 
@@ -421,7 +421,7 @@ QA 代理 (新会话): `@qa` -> `*review-story`
 **描述:**
 所有故事已实施和审阅! 服务开发阶段完成。
 
-**参考:** `.aios-core/data/aios-kb.md#IDE Development Workflow`
+**参考:** `.aiox-core/data/aiox-kb.md#IDE Development Workflow`
 
 ---
 
@@ -508,7 +508,7 @@ graph LR
 
 | 文件 | 描述 |
 |------|------|
-| `.aios-core/core-config.yaml` | 框架配置 |
+| `.aiox-core/core-config.yaml` | 框架配置 |
 | `.env` | 环境变量 |
 | `projects/{Name}/.project.yaml` | 项目特定配置 |
 
@@ -516,11 +516,11 @@ graph LR
 
 | 模板 | 位置 | 代理 |
 |------|------|------|
-| `project-brief-tmpl.yaml` | `.aios-core/development/templates/` | analyst |
-| `prd-tmpl.yaml` | `.aios-core/development/templates/` | pm |
-| `architecture-tmpl.yaml` | `.aios-core/development/templates/` | architect |
-| `story-tmpl.yaml` | `.aios-core/development/templates/` | sm |
-| `qa-gate-tmpl.yaml` | `.aios-core/development/templates/` | qa |
+| `project-brief-tmpl.yaml` | `.aiox-core/development/templates/` | analyst |
+| `prd-tmpl.yaml` | `.aiox-core/development/templates/` | pm |
+| `architecture-tmpl.yaml` | `.aiox-core/development/templates/` | architect |
+| `story-tmpl.yaml` | `.aiox-core/development/templates/` | sm |
+| `qa-gate-tmpl.yaml` | `.aiox-core/development/templates/` | qa |
 
 ### 检查列表
 
@@ -700,8 +700,8 @@ flowchart TD
 
 | 类型 | 位置 |
 |------|------|
-| 代理日志 | `.aios/logs/agent.log` |
-| 项目状态 | `.aios/project-registry.yaml` |
+| 代理日志 | `.aiox/logs/agent.log` |
+| 项目状态 | `.aiox/project-registry.yaml` |
 | 决策日志 | `.ai/decision-log-{story-id}.md` |
 | 质量保证报告 | `docs/qa/gates/` |
 
@@ -709,16 +709,16 @@ flowchart TD
 
 ```bash
 # 检查项目状态
-cat .aios/project-status.yaml
+cat .aiox/project-status.yaml
 
 # 列出进行中的故事
 ls docs/stories/epic-*/
 
 # 检查代理日志
-tail -f .aios/logs/agent.log
+tail -f .aiox/logs/agent.log
 
 # 启用调试模式
-export AIOS_DEBUG=true
+export AIOX_DEBUG=true
 ```
 
 ---
@@ -729,49 +729,49 @@ export AIOS_DEBUG=true
 
 | 文件 | 描述 |
 |------|------|
-| `.aios-core/development/workflows/greenfield-service.yaml` | 工作流定义 |
-| `.aios-core/data/aios-kb.md` | AIOS 知识库 |
+| `.aiox-core/development/workflows/greenfield-service.yaml` | 工作流定义 |
+| `.aiox-core/data/aiox-kb.md` | AIOX 知识库 |
 
 ### 代理
 
 | 文件 | 代理 |
 |------|------|
-| `.aios-core/development/agents/analyst.md` | Atlas (分析师) |
-| `.aios-core/development/agents/pm.md` | Morgan (PM) |
-| `.aios-core/development/agents/architect.md` | Aria (架构师) |
-| `.aios-core/development/agents/po.md` | Pax (PO) |
-| `.aios-core/development/agents/sm.md` | River (SM) |
-| `.aios-core/development/agents/dev.md` | Dex (Dev) |
-| `.aios-core/development/agents/qa.md` | Quinn (QA) |
+| `.aiox-core/development/agents/analyst.md` | Atlas (分析师) |
+| `.aiox-core/development/agents/pm.md` | Morgan (PM) |
+| `.aiox-core/development/agents/architect.md` | Aria (架构师) |
+| `.aiox-core/development/agents/po.md` | Pax (PO) |
+| `.aiox-core/development/agents/sm.md` | River (SM) |
+| `.aiox-core/development/agents/dev.md` | Dex (Dev) |
+| `.aiox-core/development/agents/qa.md` | Quinn (QA) |
 
 ### 主要任务
 
 | 文件 | 任务 |
 |------|------|
-| `.aios-core/development/tasks/create-doc.md` | 创建文档 |
-| `.aios-core/development/tasks/shard-doc.md` | 分片文档 |
-| `.aios-core/development/tasks/sm-create-next-story.md` | 创建故事 |
-| `.aios-core/development/tasks/dev-develop-story.md` | 实施故事 |
-| `.aios-core/development/tasks/qa-review-story.md` | 审阅实现 |
-| `.aios-core/development/tasks/execute-checklist.md` | 执行检查列表 |
+| `.aiox-core/development/tasks/create-doc.md` | 创建文档 |
+| `.aiox-core/development/tasks/shard-doc.md` | 分片文档 |
+| `.aiox-core/development/tasks/sm-create-next-story.md` | 创建故事 |
+| `.aiox-core/development/tasks/dev-develop-story.md` | 实施故事 |
+| `.aiox-core/development/tasks/qa-review-story.md` | 审阅实现 |
+| `.aiox-core/development/tasks/execute-checklist.md` | 执行检查列表 |
 
 ### 模板
 
 | 文件 | 模板 |
 |------|------|
-| `.aios-core/development/templates/project-brief-tmpl.yaml` | 项目简报 |
-| `.aios-core/development/templates/prd-tmpl.yaml` | PRD |
-| `.aios-core/development/templates/architecture-tmpl.yaml` | 架构 |
-| `.aios-core/development/templates/story-tmpl.yaml` | 用户故事 |
-| `.aios-core/development/templates/qa-gate-tmpl.yaml` | 质量保证关卡 |
+| `.aiox-core/development/templates/project-brief-tmpl.yaml` | 项目简报 |
+| `.aiox-core/development/templates/prd-tmpl.yaml` | PRD |
+| `.aiox-core/development/templates/architecture-tmpl.yaml` | 架构 |
+| `.aiox-core/development/templates/story-tmpl.yaml` | 用户故事 |
+| `.aiox-core/development/templates/qa-gate-tmpl.yaml` | 质量保证关卡 |
 
 ### 检查列表
 
 | 文件 | 检查列表 |
 |------|----------|
-| `.aios-core/development/checklists/po-master-checklist.md` | PO 验证 |
-| `.aios-core/development/checklists/story-draft-checklist.md` | 验证故事草稿 |
-| `.aios-core/development/checklists/story-dod-checklist.md` | 完成定义 |
+| `.aiox-core/development/checklists/po-master-checklist.md` | PO 验证 |
+| `.aiox-core/development/checklists/story-draft-checklist.md` | 验证故事草稿 |
+| `.aiox-core/development/checklists/story-dod-checklist.md` | 完成定义 |
 
 ---
 
@@ -783,4 +783,4 @@ export AIOS_DEBUG=true
 
 ---
 
-*文档自动从 `.aios-core/development/workflows/greenfield-service.yaml` 生成*
+*文档自动从 `.aiox-core/development/workflows/greenfield-service.yaml` 生成*

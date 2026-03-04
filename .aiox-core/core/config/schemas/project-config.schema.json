@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "project-config.schema.json",
-  "title": "AIOS Project Configuration (L2)",
-  "description": "Team-shared project settings stored in .aios-core/project-config.yaml",
+  "title": "AIOX Project Configuration (L2)",
+  "description": "Team-shared project settings stored in .aiox-core/project-config.yaml",
   "type": "object",
   "properties": {
     "project": {
@@ -11,7 +11,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["EXISTING_AIOS", "NEW_PROJECT", "BROWNFIELD"],
+          "enum": ["EXISTING_AIOX", "NEW_PROJECT", "BROWNFIELD"],
           "description": "Project installation type"
         },
         "installed_at": {

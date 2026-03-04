@@ -1,8 +1,8 @@
-# AIOS Knowledge Base
+# AIOX Knowledge Base
 
 ## Overview
 
-AIOS-Method is a framework that combines AI agents with Agile development methodologies. The v4 system introduces a modular architecture with improved dependency management, bundle optimization, and support for both web and IDE environments.
+AIOX-Method is a framework that combines AI agents with Agile development methodologies. The v4 system introduces a modular architecture with improved dependency management, bundle optimization, and support for both web and IDE environments.
 
 ### Key Features
 
@@ -12,7 +12,7 @@ AIOS-Method is a framework that combines AI agents with Agile development method
 - **Reusable Resources**: Portable templates, tasks, and checklists
 - **Slash Command Integration**: Quick agent switching and control
 
-### When to Use AIOS
+### When to Use AIOX
 
 - **New Projects (Greenfield)**: Complete end-to-end development
 - **Existing Projects (Brownfield)**: Feature additions and enhancements
@@ -20,11 +20,11 @@ AIOS-Method is a framework that combines AI agents with Agile development method
 - **Quality Assurance**: Structured testing and validation
 - **Documentation**: Professional PRDs, architecture docs, user stories
 
-## How AIOS Works
+## How AIOX Works
 
 ### The Core Method
 
-AIOS transforms you into a "Vibe CEO" - directing a team of specialized AI agents through structured workflows. Here's how:
+AIOX transforms you into a "Vibe CEO" - directing a team of specialized AI agents through structured workflows. Here's how:
 
 1. **You Direct, AI Executes**: You provide vision and decisions; agents handle implementation details
 2. **Specialized Agents**: Each agent masters one role (PM, Developer, Architect, etc.)
@@ -86,7 +86,7 @@ AIOS transforms you into a "Vibe CEO" - directing a team of specialized AI agent
 
 ```bash
 # Interactive installation (recommended)
-npx aios-core install
+npx aiox-core install
 ```
 
 **Installation Steps**:
@@ -97,15 +97,15 @@ npx aios-core install
   - **Claude Code**: Anthropic's official IDE
   - **GitHub Copilot**: VS Code extension with AI peer programming assistant
 
-**Note for VS Code Users**: AIOS-Method assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot. Standard VS Code without AI capabilities cannot run AIOS agents.
+**Note for VS Code Users**: AIOX-Method assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot. Standard VS Code without AI capabilities cannot run AIOX agents.
 
 **Verify Installation**:
 
-- `.aios-core/` folder created with all agents
+- `.aiox-core/` folder created with all agents
 - IDE-specific integration files created
 - All agent commands/rules/modes available
 
-**Remember**: At its core, AIOS-Method is about mastering and harnessing prompt engineering. Any IDE with AI agent support can use AIOS - the framework provides the structured prompts and workflows that make AI development effective
+**Remember**: At its core, AIOX-Method is about mastering and harnessing prompt engineering. Any IDE with AI agent support can use AIOX - the framework provides the structured prompts and workflows that make AI development effective
 
 ### Environment Selection Guide
 
@@ -149,23 +149,23 @@ npx aios-core install
 - **Why it matters**: Dev agents are kept lean to maximize coding context
 - **The principle**: "Dev agents code, planning agents plan" - mixing breaks this optimization
 
-**About aios-master and aios-orchestrator**:
+**About aiox-master and aiox-orchestrator**:
 
-- **aios-master**: CAN do any task without switching agents, BUT...
+- **aiox-master**: CAN do any task without switching agents, BUT...
 - **Still use specialized agents for planning**: PM, Architect, and UX Expert have tuned personas that produce better results
 - **Why specialization matters**: Each agent's personality and focus creates higher quality outputs
-- **If using aios-master/orchestrator**: Fine for planning phases, but...
+- **If using aiox-master/orchestrator**: Fine for planning phases, but...
 
 **CRITICAL RULE for Development**:
 
-- **ALWAYS use SM agent for story creation** - Never use aios-master or aios-orchestrator
-- **ALWAYS use Dev agent for implementation** - Never use aios-master or aios-orchestrator
+- **ALWAYS use SM agent for story creation** - Never use aiox-master or aiox-orchestrator
+- **ALWAYS use Dev agent for implementation** - Never use aiox-master or aiox-orchestrator
 - **Why this matters**: SM and Dev agents are specifically optimized for the development workflow
-- **No exceptions**: Even if using aios-master for everything else, switch to SM → Dev for implementation
+- **No exceptions**: Even if using aiox-master for everything else, switch to SM → Dev for implementation
 
 **Best Practice for IDE-Only**:
 
-1. Use PM/Architect/UX agents for planning (better than aios-master)
+1. Use PM/Architect/UX agents for planning (better than aiox-master)
 2. Create documents directly in project
 3. Shard immediately after creation
 4. **MUST switch to SM agent** for story creation
@@ -174,11 +174,11 @@ npx aios-core install
 
 ## Core Configuration (core-config.yaml)
 
-**New in V4**: The `aios-core/core-config.yaml` file is a critical innovation that enables AIOS to work seamlessly with any project structure, providing maximum flexibility and backwards compatibility.
+**New in V4**: The `aiox-core/core-config.yaml` file is a critical innovation that enables AIOX to work seamlessly with any project structure, providing maximum flexibility and backwards compatibility.
 
 ### What is core-config.yaml?
 
-This configuration file acts as a map for AIOS agents, telling them exactly where to find your project documents and how they're structured. It enables:
+This configuration file acts as a map for AIOX agents, telling them exactly where to find your project documents and how they're structured. It enables:
 
 - **Version Flexibility**: Work with V3, V4, or custom document structures
 - **Custom Locations**: Define where your documents and shards live
@@ -210,7 +210,7 @@ This configuration file acts as a map for AIOS agents, telling them exactly wher
 
 1. **No Forced Migrations**: Keep your existing document structure
 2. **Gradual Adoption**: Start with V3 and migrate to V4 at your pace
-3. **Custom Workflows**: Configure AIOS to match your team's process
+3. **Custom Workflows**: Configure AIOX to match your team's process
 4. **Intelligent Agents**: Agents automatically adapt to your configuration
 
 ### Common Configurations
@@ -283,8 +283,8 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 
 | Agent               | Role             | Primary Functions                     | When to Use                       |
 | ------------------- | ---------------- | ------------------------------------- | --------------------------------- |
-| `aios-orchestrator` | Team Coordinator | Multi-agent workflows, role switching | Complex multi-role tasks          |
-| `aios-master`       | Universal Expert | All capabilities without switching    | Single-session comprehensive work |
+| `aiox-orchestrator` | Team Coordinator | Multi-agent workflows, role switching | Complex multi-role tasks          |
+| `aiox-master`       | Universal Expert | All capabilities without switching    | Single-session comprehensive work |
 
 ### Agent Interaction Commands
 
@@ -292,8 +292,8 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 
 **Agent Loading by IDE**:
 
-- **Claude Code**: `/agent-name` (e.g., `/aios-master`)
-- **Cursor**: `@agent-name` (e.g., `@aios-master`)
+- **Claude Code**: `/agent-name` (e.g., `/aiox-master`)
+- **Cursor**: `@agent-name` (e.g., `@aiox-master`)
 - **GitHub Copilot**: Open the Chat view (`⌃⌘I` on Mac, `Ctrl+Alt+I` on Windows/Linux) and select **Agent** from the chat mode selector.
 
 **Chat Management Guidelines**:
@@ -345,24 +345,24 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 
 ### System Overview
 
-The AIOS-Method is built around a modular architecture centered on the `aios-core` directory, which serves as the brain of the entire system. This design enables the framework to operate effectively in both IDE environments (like Cursor, VS Code) and web-based AI interfaces (like ChatGPT, Gemini).
+The AIOX-Method is built around a modular architecture centered on the `aiox-core` directory, which serves as the brain of the entire system. This design enables the framework to operate effectively in both IDE environments (like Cursor, VS Code) and web-based AI interfaces (like ChatGPT, Gemini).
 
 ### Key Architectural Components
 
-#### 1. Agents (`aios-core/agents/`)
+#### 1. Agents (`aiox-core/agents/`)
 
 - **Purpose**: Each markdown file defines a specialized AI agent for a specific Agile role (PM, Dev, Architect, etc.)
 - **Structure**: Contains YAML headers specifying the agent's persona, capabilities, and dependencies
 - **Dependencies**: Lists of tasks, templates, checklists, and data files the agent can use
 - **Startup Instructions**: Can load project-specific documentation for immediate context
 
-#### 2. Agent Teams (`aios-core/agent-teams/`)
+#### 2. Agent Teams (`aiox-core/agent-teams/`)
 
 - **Purpose**: Define collections of agents bundled together for specific purposes
 - **Examples**: `team-all.yaml` (comprehensive bundle), `team-fullstack.yaml` (full-stack development)
 - **Usage**: Creates pre-packaged contexts for web UI environments
 
-#### 3. Workflows (`aios-core/workflows/`)
+#### 3. Workflows (`aiox-core/workflows/`)
 
 - **Purpose**: YAML files defining prescribed sequences of steps for specific project types
 - **Types**: Greenfield (new projects) and Brownfield (existing projects) for UI, service, and fullstack development
@@ -370,10 +370,10 @@ The AIOS-Method is built around a modular architecture centered on the `aios-cor
 
 #### 4. Reusable Resources
 
-- **Templates** (`aios-core/templates/`): Markdown templates for PRDs, architecture specs, user stories
-- **Tasks** (`aios-core/tasks/`): Instructions for specific repeatable actions like "shard-doc" or "create-next-story"
-- **Checklists** (`aios-core/checklists/`): Quality assurance checklists for validation and review
-- **Data** (`aios-core/data/`): Core knowledge base and technical preferences
+- **Templates** (`aiox-core/templates/`): Markdown templates for PRDs, architecture specs, user stories
+- **Tasks** (`aiox-core/tasks/`): Instructions for specific repeatable actions like "shard-doc" or "create-next-story"
+- **Checklists** (`aiox-core/checklists/`): Quality assurance checklists for validation and review
+- **Data** (`aiox-core/data/`): Core knowledge base and technical preferences
 
 ### Dual Environment Architecture
 
@@ -393,9 +393,9 @@ The AIOS-Method is built around a modular architecture centered on the `aios-cor
 
 ### Template Processing System
 
-AIOS employs a sophisticated template system with three key components:
+AIOX employs a sophisticated template system with three key components:
 
-1. **Template Format** (`utils/aios-doc-template.md`): Defines markup language for variable substitution and AI processing directives from yaml templates
+1. **Template Format** (`utils/aiox-doc-template.md`): Defines markup language for variable substitution and AI processing directives from yaml templates
 2. **Document Creation** (`tasks/create-doc.md`): Orchestrates template selection and user interaction to transform yaml spec to final markdown output
 3. **Advanced Elicitation** (`tasks/advanced-elicitation.md`): Provides interactive refinement through structured brainstorming
 
@@ -417,7 +417,7 @@ The `web-builder.js` tool creates web-ready bundles by:
 3. Concatenating content into single text files with clear separators
 4. Outputting ready-to-upload bundles for web AI interfaces
 
-This architecture enables seamless operation across environments while maintaining the rich, interconnected agent ecosystem that makes AIOS powerful.
+This architecture enables seamless operation across environments while maintaining the rich, interconnected agent ecosystem that makes AIOX powerful.
 
 ## Complete Development Workflow
 
@@ -472,7 +472,7 @@ that can handle [specific requirements]."
    - Documents created by PM/Architect (in Web or IDE) MUST be sharded for development
    - Two methods to shard:
      a) **Manual**: Drag `shard-doc` task + document file into chat
-     b) **Agent**: Ask `@aios-master` or `@po` to shard documents
+     b) **Agent**: Ask `@aiox-master` or `@po` to shard documents
    - Shards `docs/prd.md` → `docs/prd/` folder
    - Shards `docs/architecture.md` → `docs/architecture/` folder
    - **WARNING**: Do NOT shard in Web UI - copying many small files is painful!
@@ -661,7 +661,7 @@ Use the `shard-doc` task or `@kayvan/markdown-tree-parser` tool for automatic sh
 
 ### Overview
 
-AIOS integrates with ClickUp for project management and story tracking. When creating stories using the `create-next-story` task, agents must follow a specific workflow to correctly interact with the ClickUp MCP server.
+AIOX integrates with ClickUp for project management and story tracking. When creating stories using the `create-next-story` task, agents must follow a specific workflow to correctly interact with the ClickUp MCP server.
 
 ### Critical Workflow Pattern
 
@@ -675,7 +675,7 @@ const hierarchy = await clickup.get_workspace_hierarchy();
 // Extract the numeric list_id from response:
 {
   "spaces": [{
-    "name": "AIOS Project",
+    "name": "AIOX Project",
     "lists": [{
       "name": "Backlog",
       "id": "901317181013"  // ← This is what you need
@@ -755,9 +755,9 @@ custom_fields:
 4. Store returned `task_id` in story frontmatter
 
 **Where to find examples:**
-- Complete workflow: `aios-core/tools/mcp/clickup.yaml` (story_creation_workflow section)
-- Task instructions: `aios-core/tasks/create-next-story.md` (sections 5.1 and 5.3)
-- Validators: `aios-core/tools/mcp/clickup.yaml` (executable_knowledge section)
+- Complete workflow: `aiox-core/tools/mcp/clickup.yaml` (story_creation_workflow section)
+- Task instructions: `aiox-core/tasks/create-next-story.md` (sections 5.1 and 5.3)
+- Validators: `aiox-core/tools/mcp/clickup.yaml` (executable_knowledge section)
 
 **Response Handling:**
 ```yaml
@@ -804,7 +804,7 @@ clickup:
 
 ### Performance Optimization
 
-- Use specific agents vs. `aios-master` for focused tasks
+- Use specific agents vs. `aiox-master` for focused tasks
 - Choose appropriate team size for project needs
 - Leverage technical preferences for consistency
 - Regular context management and cache clearing
@@ -812,12 +812,12 @@ clickup:
 ## Success Tips
 
 - **Use Gemini for big picture planning** - The team-fullstack bundle provides collaborative expertise
-- **Use aios-master for document organization** - Sharding creates manageable chunks
+- **Use aiox-master for document organization** - Sharding creates manageable chunks
 - **Follow the SM → Dev cycle religiously** - This ensures systematic progress
 - **Keep conversations focused** - One agent, one task per conversation
 - **Review everything** - Always review and approve before marking complete
 
-## Contributing to AIOS-Method
+## Contributing to AIOX-Method
 
 ### Quick Contribution Guidelines
 
@@ -849,7 +849,7 @@ For full details, see `CONTRIBUTING.md`. Key points:
 
 ### What Are Squads?
 
-Squads extend AIOS-Method beyond traditional software development into ANY domain. They provide specialized agent teams, templates, and workflows while keeping the core framework lean and focused on development.
+Squads extend AIOX-Method beyond traditional software development into ANY domain. They provide specialized agent teams, templates, and workflows while keeping the core framework lean and focused on development.
 
 ### Why Use Squads?
 
@@ -889,7 +889,7 @@ Squads extend AIOS-Method beyond traditional software development into ANY domai
 3. **Install via CLI**:
 
    ```bash
-   npx aios-core install
+   npx aiox-core install
    # Select "Install squad" option
    ```
 

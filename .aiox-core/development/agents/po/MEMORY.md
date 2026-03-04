@@ -29,12 +29,12 @@
 ### Delegation
 - Story creation → @sm (`*draft`)
 - Epic creation → @pm (`*create-epic`)
-- Course correction → @aios-master
+- Course correction → @aiox-master
 
 ### Key Locations
 - Stories: `docs/stories/`
 - Backlog: `docs/stories/backlog/`
-- Templates: `.aios-core/development/templates/story-tmpl.yaml`
+- Templates: `.aiox-core/development/templates/story-tmpl.yaml`
 
 ## Promotion Candidates
 <!-- Patterns seen across 3+ agents — candidates for CLAUDE.md or .claude/rules/ -->

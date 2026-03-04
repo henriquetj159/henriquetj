@@ -1,7 +1,7 @@
-# @aios-master (Orion) - Execution Trace
+# @aiox-master (Orion) - Execution Trace
 
 > Traced from source code, not documentation.
-> Agent definition: `.aios-core/development/agents/aios-master.md`
+> Agent definition: `.aiox-core/development/agents/aiox-master.md`
 
 ## 1. Activation Trace
 
@@ -9,18 +9,18 @@
 
 | Order | File | Loader | Purpose |
 |-------|------|--------|---------|
-| 1 | `.aios-core/development/agents/aios-master.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aios-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aios-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, registry |
-| 4 | `.aios-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aios/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 6 | `.aios/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| 1 | `.aiox-core/development/agents/aiox-master.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
+| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
+| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, registry |
+| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
+| 5 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
+| 6 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
 
 **NOT loaded on activation:**
 
 | File | Condition | Size |
 |------|-----------|------|
-| `.aios-core/data/aios-kb.md` | ONLY when user types `*kb` | 35KB |
+| `.aiox-core/data/aiox-kb.md` | ONLY when user types `*kb` | 35KB |
 
 ### 1.2 Greeting Construction
 
@@ -29,7 +29,7 @@
 ```mermaid
 sequenceDiagram
     participant CC as Claude Code
-    participant AMd as aios-master.md
+    participant AMd as aiox-master.md
     participant ACL as AgentConfigLoader
     participant GB as GreetingBuilder
     participant GPM as GreetingPreferenceManager
@@ -40,7 +40,7 @@ sequenceDiagram
 
     CC->>AMd: Load agent file (STEP 1)
     CC->>AMd: Adopt persona (STEP 2)
-    CC->>ACL: loadAgentDefinition('aios-master')
+    CC->>ACL: loadAgentDefinition('aiox-master')
     ACL-->>CC: { agent: { name: 'Orion', icon: '👑' }, commands: [...33], ... }
 
     CC->>GB: new GreetingBuilder()
@@ -72,18 +72,18 @@ sequenceDiagram
 From `agent-config-requirements.yaml`:
 
 ```yaml
-aios-master:
+aiox-master:
   config_sections:
     - dataLocation
     - registry
   files_loaded:
-    - path: .aios-core/data/aios-kb.md
+    - path: .aiox-core/data/aiox-kb.md
       lazy: true
       condition: kb_command
       size: 35KB
   lazy_loading:
     registry: false      # Always load (15KB, frequently used)
-    aios-kb: true        # Load only on *kb command
+    aiox-kb: true        # Load only on *kb command
   performance_target: <30ms
 ```
 
@@ -93,7 +93,7 @@ aios-master:
 |------|--------|-------|
 | Greeting level | `persona_profile.greeting_levels.archetypal` | `👑 Orion the Orchestrator ready to lead!` |
 | Signature | `persona_profile.communication.signature_closing` | `— Orion, orquestrando o sistema 🎯` |
-| Role | `persona.role` | Master Orchestrator, Framework Developer & AIOS Method Expert |
+| Role | `persona.role` | Master Orchestrator, Framework Developer & AIOX Method Expert |
 | Commands shown | `filterCommandsByVisibility('full')` | 33 commands with `full` visibility |
 
 ---
@@ -118,7 +118,7 @@ aios-master:
 | `*validate-workflow` | validate-workflow.md | full | No |
 | `*run-workflow` | run-workflow.md / run-workflow-engine.md | full | Optional |
 | `*analyze-framework` | analyze-framework.md | full | No |
-| `*list-components` | (built-in, scans .aios-core/) | full | No |
+| `*list-components` | (built-in, scans .aiox-core/) | full | No |
 | `*test-memory` | (built-in) | full | No |
 | `*task` | (dynamic - loads any task from tasks/) | full | Varies |
 | `*execute-checklist` | execute-checklist.md | full | Optional |
@@ -142,32 +142,32 @@ aios-master:
 
 ### `*kb`
 
-**Task file:** `.aios-core/development/tasks/kb-mode-interaction.md`
+**Task file:** `.aiox-core/development/tasks/kb-mode-interaction.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `kb-mode-interaction.md` | Task | EXISTS |
-| `.aios-core/data/aios-kb.md` | Data | EXISTS (lazy, 35KB) |
+| `.aiox-core/data/aiox-kb.md` | Data | EXISTS (lazy, 35KB) |
 
 **Execution flow:**
 
 ```mermaid
 flowchart TD
     A["*kb"] --> B[Load kb-mode-interaction.md task]
-    B --> C[Load aios-kb.md into context]
+    B --> C[Load aiox-kb.md into context]
     C --> D[Toggle KB mode ON]
-    D --> E[Agent now answers with full AIOS Method knowledge]
+    D --> E[Agent now answers with full AIOX Method knowledge]
     E --> F[User types *kb again to toggle OFF]
 ```
 
-**CRITICAL:** aios-kb.md is NEVER loaded unless user explicitly types `*kb`.
+**CRITICAL:** aiox-kb.md is NEVER loaded unless user explicitly types `*kb`.
 
 ---
 
 ### `*create`
 
-**Task files:** `.aios-core/development/tasks/create-agent.md`, `create-task.md`, `create-workflow.md`
+**Task files:** `.aiox-core/development/tasks/create-agent.md`, `create-task.md`, `create-workflow.md`
 **Templates:** `agent-template.yaml`, `task-template.md`, `workflow-template.yaml`
 
 **Dependencies loaded:**
@@ -176,11 +176,11 @@ flowchart TD
 | `create-agent.md` | Task | EXISTS |
 | `create-task.md` | Task | EXISTS |
 | `create-workflow.md` | Task | EXISTS |
-| `agent-template.yaml` | Template | EXISTS (in .aios-core/product/templates/) |
-| `task-template.md` | Template | EXISTS (in .aios-core/product/templates/) |
-| `workflow-template.yaml` | Template | EXISTS (in .aios-core/product/templates/) |
-| `security-checker.js` | Util | EXISTS (in .aios-core/infrastructure/scripts/) |
-| `yaml-validator.js` | Util | EXISTS (in .aios-core/infrastructure/scripts/) |
+| `agent-template.yaml` | Template | EXISTS (in .aiox-core/product/templates/) |
+| `task-template.md` | Template | EXISTS (in .aiox-core/product/templates/) |
+| `workflow-template.yaml` | Template | EXISTS (in .aiox-core/product/templates/) |
+| `security-checker.js` | Util | EXISTS (in .aiox-core/infrastructure/scripts/) |
+| `yaml-validator.js` | Util | EXISTS (in .aiox-core/infrastructure/scripts/) |
 
 **Execution flow:**
 
@@ -203,18 +203,18 @@ flowchart TD
     K --> L[Validate with security-checker.js]
     L --> M[Validate YAML with yaml-validator.js]
     M --> N{Validation pass?}
-    N -->|yes| O[Write component to .aios-core/development/{type}/]
+    N -->|yes| O[Write component to .aiox-core/development/{type}/]
     N -->|no| P[Report validation errors]
     O --> Q[Update manifest if applicable]
 ```
 
-**Expected output:** New AIOS component file written to appropriate directory.
+**Expected output:** New AIOX component file written to appropriate directory.
 
 ---
 
 ### `*modify`
 
-**Task files:** `.aios-core/development/tasks/modify-agent.md`, `modify-task.md`, `modify-workflow.md`
+**Task files:** `.aiox-core/development/tasks/modify-agent.md`, `modify-task.md`, `modify-workflow.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -250,7 +250,7 @@ flowchart TD
 
 ### `*update-manifest`
 
-**Task file:** `.aios-core/development/tasks/update-manifest.md`
+**Task file:** `.aiox-core/development/tasks/update-manifest.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -278,8 +278,8 @@ flowchart TD
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
-| `security-checker.js` | Util | EXISTS (in .aios-core/infrastructure/scripts/) |
-| `yaml-validator.js` | Util | EXISTS (in .aios-core/infrastructure/scripts/) |
+| `security-checker.js` | Util | EXISTS (in .aiox-core/infrastructure/scripts/) |
+| `yaml-validator.js` | Util | EXISTS (in .aiox-core/infrastructure/scripts/) |
 
 **Execution flow:**
 
@@ -301,7 +301,7 @@ flowchart TD
 
 ### `*deprecate-component`
 
-**Task file:** `.aios-core/development/tasks/deprecate-component.md`
+**Task file:** `.aiox-core/development/tasks/deprecate-component.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -325,7 +325,7 @@ flowchart TD
 
 ### `*propose-modification`
 
-**Task file:** `.aios-core/development/tasks/propose-modification.md`
+**Task file:** `.aiox-core/development/tasks/propose-modification.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -350,7 +350,7 @@ flowchart TD
 
 ### `*undo-last`
 
-**Task file:** `.aios-core/development/tasks/undo-last.md`
+**Task file:** `.aiox-core/development/tasks/undo-last.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -374,14 +374,14 @@ flowchart TD
 
 ### `*validate-workflow`
 
-**Task file:** `.aios-core/development/tasks/validate-workflow.md`
+**Task file:** `.aiox-core/development/tasks/validate-workflow.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `validate-workflow.md` | Task | EXISTS |
 | `yaml-validator.js` | Util | EXISTS |
-| `.aios-core/development/workflows/{name}.yaml` | Workflow | Dynamically loaded |
+| `.aiox-core/development/workflows/{name}.yaml` | Workflow | Dynamically loaded |
 
 **Execution flow:**
 
@@ -407,17 +407,17 @@ flowchart TD
 
 ### `*run-workflow`
 
-**Task files:** `.aios-core/development/tasks/run-workflow.md`, `run-workflow-engine.md`
-**Template:** `.aios-core/development/templates/subagent-step-prompt.md`
+**Task files:** `.aiox-core/development/tasks/run-workflow.md`, `run-workflow-engine.md`
+**Template:** `.aiox-core/development/templates/subagent-step-prompt.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `run-workflow.md` | Task | EXISTS |
 | `run-workflow-engine.md` | Task | EXISTS |
-| `subagent-step-prompt.md` | Template | EXISTS (in .aios-core/development/templates/) |
-| `workflow-management.md` | Util | EXISTS (in .aios-core/scripts/) |
-| `.aios-core/development/workflows/{name}.yaml` | Workflow | Dynamically loaded |
+| `subagent-step-prompt.md` | Template | EXISTS (in .aiox-core/development/templates/) |
+| `workflow-management.md` | Util | EXISTS (in .aiox-core/scripts/) |
+| `.aiox-core/development/workflows/{name}.yaml` | Workflow | Dynamically loaded |
 
 **Execution flow:**
 
@@ -449,7 +449,7 @@ flowchart TD
 
 ### `*analyze-framework`
 
-**Task file:** `.aios-core/development/tasks/analyze-framework.md`
+**Task file:** `.aiox-core/development/tasks/analyze-framework.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -461,7 +461,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     A["*analyze-framework"] --> B[Load analyze-framework.md task]
-    B --> C[Scan .aios-core/ directory structure]
+    B --> C[Scan .aiox-core/ directory structure]
     C --> D[Catalog agents, tasks, workflows, templates]
     D --> E[Identify patterns and conventions]
     E --> F[Check for inconsistencies]
@@ -472,13 +472,13 @@ flowchart TD
 
 ### `*execute-checklist`
 
-**Task file:** `.aios-core/development/tasks/execute-checklist.md`
+**Task file:** `.aiox-core/development/tasks/execute-checklist.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `execute-checklist.md` | Task | EXISTS |
-| `.aios-core/product/checklists/{checklist}.md` | Checklist | Dynamically loaded |
+| `.aiox-core/product/checklists/{checklist}.md` | Checklist | Dynamically loaded |
 
 **Execution flow:**
 
@@ -486,7 +486,7 @@ flowchart TD
 flowchart TD
     A["*execute-checklist {name}"] --> B[Load execute-checklist.md task]
     B --> C{Name provided?}
-    C -->|yes| D[Resolve checklist from .aios-core/product/checklists/]
+    C -->|yes| D[Resolve checklist from .aiox-core/product/checklists/]
     C -->|no| E[List available checklists as numbered options]
     D --> F{Checklist exists?}
     F -->|yes| G[Parse checklist items]
@@ -513,8 +513,8 @@ flowchart TD
 
 ### `*create-doc`
 
-**Task file:** `.aios-core/development/tasks/create-doc.md`
-**Templates:** All 15 templates from `.aios-core/product/templates/`
+**Task file:** `.aiox-core/development/tasks/create-doc.md`
+**Templates:** All 15 templates from `.aiox-core/product/templates/`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -531,7 +531,7 @@ flowchart TD
 | `prd-tmpl.yaml` | Template | EXISTS |
 | `project-brief-tmpl.yaml` | Template | EXISTS |
 | `story-tmpl.yaml` | Template | EXISTS |
-| `.aios-core/product/data/elicitation-methods.md` | Data | EXISTS |
+| `.aiox-core/product/data/elicitation-methods.md` | Data | EXISTS |
 
 **Execution flow:**
 
@@ -539,7 +539,7 @@ flowchart TD
 flowchart TD
     A["*create-doc {template}"] --> B[Load create-doc.md task]
     B --> C{Template specified?}
-    C -->|yes| D[Load template from .aios-core/product/templates/]
+    C -->|yes| D[Load template from .aiox-core/product/templates/]
     C -->|no| E[List available templates as numbered options]
     E --> F[User selects number]
     F --> D
@@ -557,7 +557,7 @@ flowchart TD
 
 ### `*shard-doc`
 
-**Task file:** `.aios-core/development/tasks/shard-doc.md`
+**Task file:** `.aiox-core/development/tasks/shard-doc.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -581,7 +581,7 @@ flowchart TD
 
 ### `*document-project`
 
-**Task file:** `.aios-core/development/tasks/document-project.md`
+**Task file:** `.aiox-core/development/tasks/document-project.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -605,7 +605,7 @@ flowchart TD
 
 ### `*add-tech-doc`
 
-**Task file:** `.aios-core/development/tasks/add-tech-doc.md` (MISSING)
+**Task file:** `.aiox-core/development/tasks/add-tech-doc.md` (MISSING)
 
 **Note:** This task file is referenced in dependencies but does not exist on disk. The command `*add-tech-doc {file-path} [preset-name]` is non-functional.
 
@@ -613,14 +613,14 @@ flowchart TD
 
 ### `*create-next-story`
 
-**Task file:** `.aios-core/development/tasks/create-next-story.md`
+**Task file:** `.aiox-core/development/tasks/create-next-story.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `create-next-story.md` | Task | EXISTS |
 | `story-tmpl.yaml` | Template | EXISTS |
-| `.aios-core/product/data/elicitation-methods.md` | Data | EXISTS |
+| `.aiox-core/product/data/elicitation-methods.md` | Data | EXISTS |
 
 **Execution flow:**
 
@@ -640,13 +640,13 @@ flowchart TD
 
 ### `*advanced-elicitation`
 
-**Task file:** `.aios-core/development/tasks/advanced-elicitation.md`
+**Task file:** `.aiox-core/development/tasks/advanced-elicitation.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
 |------|------|--------|
 | `advanced-elicitation.md` | Task | EXISTS |
-| `.aios-core/product/data/elicitation-methods.md` | Data | EXISTS |
+| `.aiox-core/product/data/elicitation-methods.md` | Data | EXISTS |
 
 **Execution flow:**
 
@@ -665,7 +665,7 @@ flowchart TD
 
 ### `*correct-course`
 
-**Task file:** `.aios-core/development/tasks/correct-course.md`
+**Task file:** `.aiox-core/development/tasks/correct-course.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -687,7 +687,7 @@ flowchart TD
 
 ### `*index-docs`
 
-**Task file:** `.aios-core/development/tasks/index-docs.md`
+**Task file:** `.aiox-core/development/tasks/index-docs.md`
 
 **Dependencies loaded:**
 | File | Type | Status |
@@ -715,13 +715,13 @@ These are built-in commands handled by the agent framework, not external task fi
 |---------|----------|
 | `*help` | Renders full command list from `commands[]` in agent definition (33 commands) |
 | `*status` | Shows current context: active story, branch, modified files, session info |
-| `*guide` | Renders the `## AIOS Master Guide` section from agent .md |
+| `*guide` | Renders the `## AIOX Master Guide` section from agent .md |
 | `*chat-mode` | Starts conversational assistance mode (freeform interaction) |
 | `*doc-out` | Outputs complete document content |
 | `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits aios-master mode, returns to base Claude Code |
+| `*exit` | Exits aiox-master mode, returns to base Claude Code |
 | `*agent {name}` | Reads and displays info about a specialized agent (use `@` to transform into it) |
-| `*list-components` | Scans .aios-core/ and lists all framework components (agents, tasks, workflows, templates, checklists) |
+| `*list-components` | Scans .aiox-core/ and lists all framework components (agents, tasks, workflows, templates, checklists) |
 | `*test-memory` | Tests memory layer connection and reports status |
 
 ---
@@ -731,7 +731,7 @@ These are built-in commands handled by the agent framework, not external task fi
 ```mermaid
 graph TD
     subgraph "Agent Definition"
-        AD[aios-master.md]
+        AD[aiox-master.md]
     end
 
     subgraph "Activation Pipeline"
@@ -752,7 +752,7 @@ graph TD
     end
 
     subgraph "Data Files"
-        KB[aios-kb.md - LAZY]
+        KB[aiox-kb.md - LAZY]
         BT[brainstorming-techniques.md]
         EM[elicitation-methods.md]
         TP[technical-preferences.md]
@@ -922,14 +922,14 @@ graph TD
 
 | Interaction | Direction | Trigger |
 |-------------|-----------|---------|
-| @aios-master -> @pm | Delegate | Epic/story creation (brownfield-create-epic, brownfield-create-story) |
-| @aios-master -> @analyst | Delegate | Brainstorming sessions (*brainstorm) |
-| @aios-master -> @qa | Delegate | Test suite creation (*create-suite) |
-| @aios-master -> @architect | Delegate | AI prompt generation (*generate-ai-prompt) |
-| @aios-master -> @dev | Handoff | Story implementation after story creation |
-| @aios-master -> @devops | Delegate | Git push operations, PR creation |
-| @aios-master -> any agent | Execute | Can execute any task from any agent directly |
-| Any agent -> @aios-master | Escalate | Cross-agent coordination, framework operations |
+| @aiox-master -> @pm | Delegate | Epic/story creation (brownfield-create-epic, brownfield-create-story) |
+| @aiox-master -> @analyst | Delegate | Brainstorming sessions (*brainstorm) |
+| @aiox-master -> @qa | Delegate | Test suite creation (*create-suite) |
+| @aiox-master -> @architect | Delegate | AI prompt generation (*generate-ai-prompt) |
+| @aiox-master -> @dev | Handoff | Story implementation after story creation |
+| @aiox-master -> @devops | Delegate | Git push operations, PR creation |
+| @aiox-master -> any agent | Execute | Can execute any task from any agent directly |
+| Any agent -> @aiox-master | Escalate | Cross-agent coordination, framework operations |
 
 ### Delegation Rules (from agent definition)
 
@@ -1005,13 +1005,13 @@ Some dependencies resolve to non-standard paths:
 
 | Dependency | Expected Path | Actual Path |
 |------------|---------------|-------------|
-| `security-checker.js` | `.aios-core/development/utils/` | `.aios-core/infrastructure/scripts/security-checker.js` |
-| `yaml-validator.js` | `.aios-core/development/utils/` | `.aios-core/infrastructure/scripts/yaml-validator.js` |
-| `workflow-management.md` | `.aios-core/development/utils/` | `.aios-core/scripts/workflow-management.md` |
-| `subagent-step-prompt.md` | `.aios-core/product/templates/` | `.aios-core/development/templates/subagent-step-prompt.md` |
-| `elicitation-methods.md` | `.aios-core/data/` | `.aios-core/product/data/elicitation-methods.md` |
-| `brainstorming-techniques.md` | `.aios-core/data/` | `.aios-core/product/data/brainstorming-techniques.md` |
+| `security-checker.js` | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/security-checker.js` |
+| `yaml-validator.js` | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/yaml-validator.js` |
+| `workflow-management.md` | `.aiox-core/development/utils/` | `.aiox-core/scripts/workflow-management.md` |
+| `subagent-step-prompt.md` | `.aiox-core/product/templates/` | `.aiox-core/development/templates/subagent-step-prompt.md` |
+| `elicitation-methods.md` | `.aiox-core/data/` | `.aiox-core/product/data/elicitation-methods.md` |
+| `brainstorming-techniques.md` | `.aiox-core/data/` | `.aiox-core/product/data/brainstorming-techniques.md` |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOS-TRACE-001*
+*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*

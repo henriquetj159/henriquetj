@@ -13,7 +13,7 @@
 
 ## Visão Geral
 
-O **Bob Orchestrator** é o meta-workflow central do AIOS que orquestra todo o ciclo de desenvolvimento de forma autônoma. Bob é ativado através do `@pm` com perfil `bob` e atua como um orquestrador que:
+O **Bob Orchestrator** é o meta-workflow central do AIOX que orquestra todo o ciclo de desenvolvimento de forma autônoma. Bob é ativado através do `@pm` com perfil `bob` e atua como um orquestrador que:
 
 - Detecta o estado do projeto automaticamente
 - Decide qual workflow executar (Greenfield, Brownfield, Enhancement)
@@ -39,9 +39,9 @@ CLI First → Observability Second → UI Third
 | Cenário | Recomendado |
 |---------|-------------|
 | Projeto novo do zero | Sim (PATH D: Greenfield) |
-| Projeto existente sem docs AIOS | Sim (PATH B: Brownfield Discovery) |
-| Projeto AIOS com novas features | Sim (PATH C: Enhancement) |
-| Primeira vez no AIOS | Sim (PATH A: Onboarding) |
+| Projeto existente sem docs AIOX | Sim (PATH B: Brownfield Discovery) |
+| Projeto AIOX com novas features | Sim (PATH C: Enhancement) |
+| Primeira vez no AIOX | Sim (PATH A: Onboarding) |
 | Hotfixes urgentes | Não - use @dev diretamente |
 | Tasks pontuais | Não - use agentes individuais |
 
@@ -80,7 +80,7 @@ flowchart TB
     subgraph TREE["3. DECISION TREE"]
         S4 --> T1{"Tem config?"}
         T1 -->|Não| PA["PATH A:<br/>ONBOARDING"]
-        T1 -->|Sim| T2{"Tem docs AIOS?"}
+        T1 -->|Sim| T2{"Tem docs AIOX?"}
         T2 -->|Não| PB["PATH B:<br/>BROWNFIELD"]
         T2 -->|Sim| PC["PATH C:<br/>ENHANCEMENT"]
         T1 -->|Projeto vazio| PD["PATH D:<br/>GREENFIELD"]
@@ -264,12 +264,12 @@ sequenceDiagram
 ```mermaid
 flowchart LR
     A["@pm ativado"] --> B["resolveConfig()"]
-    B --> C["L1: Framework<br/>.aios-core/framework-config.yaml"]
-    C --> D["L2: Project<br/>.aios-core/project-config.yaml"]
+    B --> C["L1: Framework<br/>.aiox-core/framework-config.yaml"]
+    C --> D["L2: Project<br/>.aiox-core/project-config.yaml"]
     D --> E["Pro: Extension<br/>pro/pro-config.yaml"]
-    E --> F["L3: App<br/>apps/*/aios-app.config.yaml"]
-    F --> G["L4: Local<br/>.aios-core/local-config.yaml"]
-    G --> H["L5: User<br/>~/.aios/user-config.yaml"]
+    E --> F["L3: App<br/>apps/*/aiox-app.config.yaml"]
+    F --> G["L4: Local<br/>.aiox-core/local-config.yaml"]
+    G --> H["L5: User<br/>~/.aiox/user-config.yaml"]
     H --> I{"user_profile<br/>== 'bob'?"}
     I -->|Não| J["PM Tradicional"]
     I -->|Sim| K["BOB Mode"]
@@ -279,12 +279,12 @@ flowchart LR
 
 | Layer | Local | Escopo | Git |
 |-------|-------|--------|-----|
-| **L1 Framework** | `.aios-core/framework-config.yaml` | Read-only, ships com npm | ✗ |
-| **L2 Project** | `.aios-core/project-config.yaml` | Team-shared | ✓ |
+| **L1 Framework** | `.aiox-core/framework-config.yaml` | Read-only, ships com npm | ✗ |
+| **L2 Project** | `.aiox-core/project-config.yaml` | Team-shared | ✓ |
 | **Pro Extension** | `pro/pro-config.yaml` | Opcional | ✓ |
-| **L3 App** | `apps/*/aios-app.config.yaml` | Monorepo | ✓ |
-| **L4 Local** | `.aios-core/local-config.yaml` | Machine-specific | ✗ |
-| **L5 User** | `~/.aios/user-config.yaml` | Cross-project, per-user | ✗ |
+| **L3 App** | `apps/*/aiox-app.config.yaml` | Monorepo | ✓ |
+| **L4 Local** | `.aiox-core/local-config.yaml` | Machine-specific | ✗ |
+| **L5 User** | `~/.aiox/user-config.yaml` | Cross-project, per-user | ✗ |
 
 #### Config Resolvido
 
@@ -327,7 +327,7 @@ Cleanup: 2 locks, 1 session, 0 snapshots removed
 | Atributo | Valor |
 |----------|-------|
 | **Step ID** | `session_check` |
-| **Arquivo** | `.aios/.session-state.yaml` |
+| **Arquivo** | `.aiox/.session-state.yaml` |
 | **Módulo** | `session-state.js` |
 
 #### Detecção de Crash
@@ -366,7 +366,7 @@ flowchart TB
 flowchart TB
     START["Analisar projeto"] --> Q1{"Tem config<br/>resolvido?"}
     Q1 -->|Não| PA["PATH A:<br/>ONBOARDING"]
-    Q1 -->|Sim| Q2{"Tem docs AIOS?<br/>(architecture.md, stories/)"}
+    Q1 -->|Sim| Q2{"Tem docs AIOX?<br/>(architecture.md, stories/)"}
     Q2 -->|Não| PB["PATH B:<br/>BROWNFIELD DISCOVERY"]
     Q2 -->|Sim| PC["PATH C:<br/>ENHANCEMENT"]
     Q1 -->|Diretório vazio| PD["PATH D:<br/>GREENFIELD"]
@@ -402,7 +402,7 @@ flowchart TB
 #### Pergunta de Perfil (PRD §2.4)
 
 ```
-🤖 Bem-vindo ao AIOS!
+🤖 Bem-vindo ao AIOX!
 
 Quando uma IA gera código para você, qual opção te descreve melhor?
 
@@ -418,14 +418,14 @@ Escolha [1/2]:
 #### Instalação via NPX (Story 12.9)
 
 ```bash
-npx @synkra/aios-install
+npx @synkra/aiox-install
 ```
 
 O instalador:
 - Detecta OS (macOS, Windows/WSL, Linux)
 - Verifica dependências (Node ≥18, Git, Docker, gh)
 - Pergunta perfil
-- Cria `~/.aios/user-config.yaml` (L5)
+- Cria `~/.aiox/user-config.yaml` (L5)
 - Executa Environment Bootstrap
 - < 5 minutos em conexão média
 
@@ -435,7 +435,7 @@ O instalador:
 
 | Atributo | Valor |
 |----------|-------|
-| **Condição** | Projeto existente SEM docs AIOS |
+| **Condição** | Projeto existente SEM docs AIOX |
 | **Duração** | 2-4 horas |
 | **Story Epic 12** | 12.8 |
 | **Módulo** | `terminal-spawner.js` |
@@ -491,7 +491,7 @@ sequenceDiagram
 
 | Atributo | Valor |
 |----------|-------|
-| **Condição** | Projeto AIOS com docs existentes |
+| **Condição** | Projeto AIOX com docs existentes |
 | **Story Epic 12** | 12.3 |
 | **Módulo** | `executor-assignment.js` |
 
@@ -941,7 +941,7 @@ surfaceChecker.shouldSurface(context)
 flowchart LR
     BOB["Bob Orchestrator"] --> OBS["Observability Layer"]
     OBS --> CLI["CLI Panel<br/>(stdout)"]
-    OBS --> JSON["bob-status.json<br/>(.aios/dashboard/)"]
+    OBS --> JSON["bob-status.json<br/>(.aiox/dashboard/)"]
     OBS --> WS["WebSocket<br/>(:4001)"]
     JSON --> DASH["Dashboard"]
     WS --> DASH
@@ -996,19 +996,19 @@ Quer que eu execute?"
 
 | Dado | Formato | Local | Ciclo de Vida | Consumidores |
 |------|---------|-------|---------------|--------------|
-| User Config (L5) | YAML | `~/.aios/user-config.yaml` | Permanente (cross-project) | Bob, greeting-builder |
-| Project Config (L2) | YAML | `.aios-core/project-config.yaml` | Permanente (per-project, git) | Bob, agents |
+| User Config (L5) | YAML | `~/.aiox/user-config.yaml` | Permanente (cross-project) | Bob, greeting-builder |
+| Project Config (L2) | YAML | `.aiox-core/project-config.yaml` | Permanente (per-project, git) | Bob, agents |
 | Session State | YAML | `docs/stories/.session-state.yaml` | Ativo → Arquivar após 30 dias | Bob, Epic Context |
-| Lock Files | YAML | `.aios/locks/*.lock` | TTL 300s + auto-cleanup | Bob |
+| Lock Files | YAML | `.aiox/locks/*.lock` | TTL 300s + auto-cleanup | Bob |
 | Epic Context | In-memory | N/A (computed on-demand) | Efêmero | PO |
-| Bob Status | JSON | `.aios/dashboard/bob-status.json` | Atualizado a cada fase, stale após 5min | CLI Panel, Dashboard |
-| Snapshots | JSON | `.aios/snapshots/*.json` | Remover após 90 dias | Bob |
-| Timeline | JSON | `.aios/timeline/unified-timeline.json` | Permanente (append-only) | Dashboard |
+| Bob Status | JSON | `.aiox/dashboard/bob-status.json` | Atualizado a cada fase, stale após 5min | CLI Panel, Dashboard |
+| Snapshots | JSON | `.aiox/snapshots/*.json` | Remover após 90 dias | Bob |
+| Timeline | JSON | `.aiox/timeline/unified-timeline.json` | Permanente (append-only) | Dashboard |
 
 ### Lock File Schema (Story 12.3)
 
 ```yaml
-# .aios/locks/<resource>.lock
+# .aiox/locks/<resource>.lock
 pid: 12345                    # PID do processo que adquiriu o lock
 owner: "bob-orchestrator"     # Identificador do módulo
 created_at: "2026-02-05T..."  # ISO timestamp de aquisição
@@ -1166,8 +1166,8 @@ Se terminal spawn falha:
 
 | Workflow | Trigger | Propósito |
 |----------|---------|-----------|
-| `bob-integration.yml` | PR para `.aios-core/core/` | Valida bob-orchestrator.js |
-| `npm-publish.yml` | Tag `v*.*.*` | Publica @synkra/aios-install |
+| `bob-integration.yml` | PR para `.aiox-core/core/` | Valida bob-orchestrator.js |
+| `npm-publish.yml` | Tag `v*.*.*` | Publica @synkra/aiox-install |
 | `cross-platform.yml` | PR | Testa pm.sh em matrix |
 | `release.yml` | Release | Gera release notes |
 
@@ -1256,9 +1256,9 @@ mindmap
 
 ### Configuração do Projeto
 
-- [ ] `.aios/config.yaml` com `user_profile: bob`
+- [ ] `.aiox/config.yaml` com `user_profile: bob`
 - [ ] `resolveConfig()` retornando config válido
-- [ ] Agentes disponíveis (arquivos em `.aios-core/development/agents/`)
+- [ ] Agentes disponíveis (arquivos em `.aiox-core/development/agents/`)
 
 ### Módulos Necessários (Epic 11)
 
@@ -1300,8 +1300,8 @@ mindmap
 | Story files | .md | docs/stories/ | Stories implementadas |
 | Code | files | src/ | Código implementado |
 | PRs | GitHub | remote | Pull requests criadas |
-| Session state | .yaml | .aios/ | Estado para resume |
-| bob-status.json | .json | .aios/dashboard/ | Estado para dashboard |
+| Session state | .yaml | .aiox/ | Estado para resume |
+| bob-status.json | .json | .aiox/dashboard/ | Estado para dashboard |
 
 ---
 
@@ -1313,7 +1313,7 @@ mindmap
 flowchart TB
     Q1{"Config existe?"}
     Q1 -->|Não| PA["PATH A: Onboarding"]
-    Q1 -->|Sim| Q2{"Docs AIOS existem?"}
+    Q1 -->|Sim| Q2{"Docs AIOX existem?"}
     Q2 -->|Não| PB["PATH B: Brownfield"]
     Q2 -->|Sim| PC["PATH C: Enhancement"]
     Q1 -->|Vazio| PD["PATH D: Greenfield"]
@@ -1351,7 +1351,7 @@ flowchart TB
 
 **Solução:**
 ```yaml
-# .aios/config.yaml
+# .aiox/config.yaml
 user_profile: bob
 ```
 
@@ -1368,7 +1368,7 @@ user_profile: bob
 **Solução:**
 ```bash
 # Remover session state
-rm .aios/.session-state.yaml
+rm .aiox/.session-state.yaml
 
 # Reiniciar
 @pm
@@ -1414,7 +1414,7 @@ rm .aios/.session-state.yaml
 - WebSocket não conectado
 
 **Solução:**
-1. Verificar `.aios/dashboard/bob-status.json` existe
+1. Verificar `.aiox/dashboard/bob-status.json` existe
 2. Verificar WebSocket `:4001` ativo
 3. **Lembrar:** CLI SEMPRE funciona (CLI First)
 
@@ -1426,35 +1426,35 @@ rm .aios/.session-state.yaml
 
 | Arquivo | Localização |
 |---------|-------------|
-| Bob Orchestrator | `.aios-core/core/orchestration/bob-orchestrator.js` |
-| Config Resolver | `.aios-core/core/orchestration/config-resolver.js` |
-| Session State | `.aios-core/core/orchestration/session-state.js` |
-| Surface Checker | `.aios-core/core/orchestration/surface-checker.js` |
-| Workflow Executor | `.aios-core/core/orchestration/workflow-executor.js` |
-| Terminal Spawner | `.aios-core/core/orchestration/terminal-spawner.js` |
-| Observability Panel | `.aios-core/core/orchestration/observability-panel.js` |
-| Panel Renderer | `.aios-core/core/orchestration/panel-renderer.js` |
-| Executor Assignment | `.aios-core/core/orchestration/executor-assignment.js` |
+| Bob Orchestrator | `.aiox-core/core/orchestration/bob-orchestrator.js` |
+| Config Resolver | `.aiox-core/core/orchestration/config-resolver.js` |
+| Session State | `.aiox-core/core/orchestration/session-state.js` |
+| Surface Checker | `.aiox-core/core/orchestration/surface-checker.js` |
+| Workflow Executor | `.aiox-core/core/orchestration/workflow-executor.js` |
+| Terminal Spawner | `.aiox-core/core/orchestration/terminal-spawner.js` |
+| Observability Panel | `.aiox-core/core/orchestration/observability-panel.js` |
+| Panel Renderer | `.aiox-core/core/orchestration/panel-renderer.js` |
+| Executor Assignment | `.aiox-core/core/orchestration/executor-assignment.js` |
 
 ### Agentes
 
 | Agente | Localização |
 |--------|-------------|
-| @pm (Morgan) | `.aios-core/development/agents/pm.md` |
-| @architect (Aria) | `.aios-core/development/agents/architect.md` |
-| @sm (River) | `.aios-core/development/agents/sm.md` |
-| @po (Pax) | `.aios-core/development/agents/po.md` |
-| @dev (Dex) | `.aios-core/development/agents/dev.md` |
-| @data-engineer (Dara) | `.aios-core/development/agents/data-engineer.md` |
-| @qa (Quinn) | `.aios-core/development/agents/qa.md` |
-| @devops (Gage) | `.aios-core/development/agents/devops.md` |
+| @pm (Morgan) | `.aiox-core/development/agents/pm.md` |
+| @architect (Aria) | `.aiox-core/development/agents/architect.md` |
+| @sm (River) | `.aiox-core/development/agents/sm.md` |
+| @po (Pax) | `.aiox-core/development/agents/po.md` |
+| @dev (Dex) | `.aiox-core/development/agents/dev.md` |
+| @data-engineer (Dara) | `.aiox-core/development/agents/data-engineer.md` |
+| @qa (Quinn) | `.aiox-core/development/agents/qa.md` |
+| @devops (Gage) | `.aiox-core/development/agents/devops.md` |
 
 ### Documentação Relacionada
 
 - [Story Development Cycle](./story-development-cycle-workflow.md)
 - [Brownfield Discovery](./brownfield-discovery-workflow.md)
 - [Spec Pipeline](./spec-pipeline-workflow.md)
-- [PRD AIOS v2 Bob](../prd/aios-v2-bob/)
+- [PRD AIOX v2 Bob](../prd/aiox-v2-bob/)
 
 ### Stories Relacionadas (Epic 12)
 
@@ -1468,7 +1468,7 @@ rm .aios/.session-state.yaml
 | 12.6 | Observability Panel + Dashboard Bridge | P1-HIGH | panel-renderer.js, bob-status.json, WebSocket |
 | 12.7 | Modo Educativo | P2-MEDIUM | Flag educational_mode, toggle |
 | 12.8 | Brownfield Discovery | P2-MEDIUM | Detecção, análise paralela |
-| 12.9 | NPX Installer | P2-MEDIUM | npx @synkra/aios-install |
+| 12.9 | NPX Installer | P2-MEDIUM | npx @synkra/aiox-install |
 | 12.10 | Terminal Spawning E2E | P0-CRITICAL | Cross-platform, fallback inline |
 | 12.11 | CI/CD Pipeline | P1-HIGH | GitHub Actions, quality gates |
 | 12.12 | Dashboard Bob Panel | P1-HIGH | bob-store.ts, componentes UI |

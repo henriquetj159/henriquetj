@@ -45,7 +45,7 @@ const {
   detectBrownfield,
   tryLoadConfigResolver,
   createUserConfigDirect,
-} = require('../../../packages/aios-install/src/installer');
+} = require('../../../packages/aiox-install/src/installer');
 
 describe('installer', () => {
   beforeEach(() => {
@@ -154,7 +154,7 @@ describe('installer', () => {
   });
 
   describe('detectBrownfield', () => {
-    it('should detect greenfield (no existing AIOS)', () => {
+    it('should detect greenfield (no existing AIOX)', () => {
       // Given
       fs.existsSync.mockReturnValue(false);
 
@@ -173,7 +173,7 @@ describe('installer', () => {
         // Only legacy config exists, not framework-config
         if (p.includes('core-config.yaml')) return true;
         if (p.includes('framework-config.yaml')) return false;
-        if (p.includes('.aios-core') && !p.includes('.yaml')) return true;
+        if (p.includes('.aiox-core') && !p.includes('.yaml')) return true;
         return false;
       });
 
@@ -190,7 +190,7 @@ describe('installer', () => {
       // Given
       fs.existsSync.mockImplementation((p) => {
         if (p.includes('framework-config.yaml')) return true;
-        if (p.includes('.aios-core')) return true;
+        if (p.includes('.aiox-core')) return true;
         return false;
       });
 

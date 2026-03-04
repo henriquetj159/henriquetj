@@ -9,7 +9,7 @@
 
 ## 概览
 
-**@dev 代理 (Dex)** 是 AIOS 的全栈开发者，负责故事实现、调试、重构和应用开发最佳实践。该代理充当**构建者**，精确实现故事，仅更新故事文件的授权部分，并保持全面的测试。
+**@dev 代理 (Dex)** 是 AIOX 的全栈开发者，负责故事实现、调试、重构和应用开发最佳实践。该代理充当**构建者**，精确实现故事，仅更新故事文件的授权部分，并保持全面的测试。
 
 ### 主要特性
 
@@ -39,31 +39,31 @@
 
 | 文件 | 命令 | 目的 |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/dev-develop-story.md` | `*develop {story-id}` | 主要任务 - 使用 YOLO/Interactive/Pre-flight 模式完整开发故事 |
-| `.aios-core/development/tasks/dev-improve-code-quality.md` | `*improve-code-quality <path>` | 改进代码质量(格式、linting、现代语法) |
-| `.aios-core/development/tasks/dev-optimize-performance.md` | `*optimize-performance <path>` | 分析和优化代码性能 |
-| `.aios-core/development/tasks/dev-suggest-refactoring.md` | `*suggest-refactoring <path>` | 建议自动重构机会 |
-| `.aios-core/development/tasks/dev-backlog-debt.md` | `*backlog-debt` | 在待办事项中记录技术债务 |
-| `.aios-core/development/tasks/apply-qa-fixes.md` | `*apply-qa-fixes` | 应用基于 QA 反馈的修复 |
-| `.aios-core/development/tasks/execute-checklist.md` | `*execute-checklist` | 使用检查清单验证文档 |
-| `.aios-core/development/tasks/validate-next-story.md` | `*validate-story-draft` | 验证故事质量和完整性 |
-| `.aios-core/development/tasks/sync-documentation.md` | `*sync-documentation` | 将文档与代码变更同步 |
-| `.aios-core/development/tasks/po-manage-story-backlog.md` | (内部使用) | 管理故事待办事项 |
+| `.aiox-core/development/tasks/dev-develop-story.md` | `*develop {story-id}` | 主要任务 - 使用 YOLO/Interactive/Pre-flight 模式完整开发故事 |
+| `.aiox-core/development/tasks/dev-improve-code-quality.md` | `*improve-code-quality <path>` | 改进代码质量(格式、linting、现代语法) |
+| `.aiox-core/development/tasks/dev-optimize-performance.md` | `*optimize-performance <path>` | 分析和优化代码性能 |
+| `.aiox-core/development/tasks/dev-suggest-refactoring.md` | `*suggest-refactoring <path>` | 建议自动重构机会 |
+| `.aiox-core/development/tasks/dev-backlog-debt.md` | `*backlog-debt` | 在待办事项中记录技术债务 |
+| `.aiox-core/development/tasks/apply-qa-fixes.md` | `*apply-qa-fixes` | 应用基于 QA 反馈的修复 |
+| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist` | 使用检查清单验证文档 |
+| `.aiox-core/development/tasks/validate-next-story.md` | `*validate-story-draft` | 验证故事质量和完整性 |
+| `.aiox-core/development/tasks/sync-documentation.md` | `*sync-documentation` | 将文档与代码变更同步 |
+| `.aiox-core/development/tasks/po-manage-story-backlog.md` | (内部使用) | 管理故事待办事项 |
 
 ### 代理定义文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/agents/dev.md` | @dev 代理的核心定义(角色、命令、工作流) |
-| `.claude/commands/AIOS/agents/dev.md` | Claude Code 命令用于激活 @dev |
+| `.aiox-core/development/agents/dev.md` | @dev 代理的核心定义(角色、命令、工作流) |
+| `.claude/commands/AIOX/agents/dev.md` | Claude Code 命令用于激活 @dev |
 
 ### @dev 使用的检查清单文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/product/checklists/story-dod-checklist.md` | 故事的完成定义 |
-| `.aios-core/product/checklists/pre-push-checklist.md` | 推送前检查清单 |
-| `.aios-core/product/checklists/change-checklist.md` | 变更验证 |
+| `.aiox-core/product/checklists/story-dod-checklist.md` | 故事的完成定义 |
+| `.aiox-core/product/checklists/pre-push-checklist.md` | 推送前检查清单 |
+| `.aiox-core/product/checklists/change-checklist.md` | 变更验证 |
 
 ---
 

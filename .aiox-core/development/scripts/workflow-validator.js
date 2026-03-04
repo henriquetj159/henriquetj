@@ -1,7 +1,7 @@
 /**
  * Workflow Validator
  *
- * Validates workflow YAML files against AIOS workflow conventions:
+ * Validates workflow YAML files against AIOX workflow conventions:
  * 1. YAML syntax
  * 2. Required fields (workflow.id, workflow.name, sequence)
  * 3. Phase sequence integrity
@@ -54,7 +54,7 @@ class WorkflowValidator {
   constructor(options = {}) {
     this.verbose = options.verbose || false;
     this.strict = options.strict || false;
-    this.agentsPath = options.agentsPath || path.join(process.cwd(), '.aios-core', 'development', 'agents');
+    this.agentsPath = options.agentsPath || path.join(process.cwd(), '.aiox-core', 'development', 'agents');
     this.squadAgentsPath = options.squadAgentsPath || null;
   }
 

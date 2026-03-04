@@ -1,38 +1,38 @@
-# AIOS Gemini CLI Extension
+# AIOX Gemini CLI Extension
 
-Brings Synkra AIOS multi-agent orchestration to Gemini CLI.
+Brings Synkra AIOX multi-agent orchestration to Gemini CLI.
 
 ## Installation
 
 ```bash
-gemini extensions install github.com/synkra/aios-core/packages/gemini-aios-extension
+gemini extensions install github.com/synkra/aiox-core/packages/gemini-aiox-extension
 ```
 
-Or manually copy to `~/.gemini/extensions/aios/`
+Or manually copy to `~/.gemini/extensions/aiox/`
 
 ## Features
 
 ### Quick Agent Launcher
 Use slash commands for fast activation flow (Codex `$`-like UX):
-- `/aios-menu` - show all quick launch commands
-- `/aios-dev`
-- `/aios-architect`
-- `/aios-qa`
-- `/aios-devops`
-- `/aios-master`
-- and other `/aios-<agent-id>` commands
+- `/aiox-menu` - show all quick launch commands
+- `/aiox-dev`
+- `/aiox-architect`
+- `/aiox-qa`
+- `/aiox-devops`
+- `/aiox-master`
+- and other `/aiox-<agent-id>` commands
 
 Each launcher returns a ready-to-send activation prompt plus greeting preview.
 
 ### Commands
-- `/aios-status` - Show system status
-- `/aios-agents` - List available agents
-- `/aios-validate` - Validate installation
-- `/aios-menu` - Show quick launch menu
-- `/aios-agent <id>` - Generic launcher by agent id
+- `/aiox-status` - Show system status
+- `/aiox-agents` - List available agents
+- `/aiox-validate` - Validate installation
+- `/aiox-menu` - Show quick launch menu
+- `/aiox-agent <id>` - Generic launcher by agent id
 
 ### Hooks
-Automatic integration with AIOS memory and security:
+Automatic integration with AIOX memory and security:
 - Session context loading
 - Gotchas and patterns injection
 - Security validation (blocks secrets)
@@ -41,12 +41,12 @@ Automatic integration with AIOS memory and security:
 ## Requirements
 
 - Gemini CLI v0.26.0+
-- AIOS Core installed (`npx aios-core install`)
+- AIOX Core installed (`npx aiox-core install`)
 - Node.js 18+
 
 ## Cross-CLI Compatibility
 
-AIOS skills work identically in both Claude Code and Gemini CLI. Same agents, same commands, same format.
+AIOX skills work identically in both Claude Code and Gemini CLI. Same agents, same commands, same format.
 
 ## License
 

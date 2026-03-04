@@ -1,5 +1,5 @@
 #!/bin/bash
-# AIOS Framework Update - v5.2 (Optimized)
+# AIOX Framework Update - v5.2 (Optimized)
 #
 # LOGIC:
 #   - LOCAL only (not in upstream)     → KEEP
@@ -7,11 +7,11 @@
 #   - UPSTREAM only (not in local)     → CREATE
 #   - WAS in both, UPSTREAM removed    → DELETE
 #
-# Usage: bash .aios-core/scripts/update-aios.sh
+# Usage: bash .aiox-core/scripts/update-aiox.sh
 
 set -e
 
-echo "⚡ AIOS Update v5.2"
+echo "⚡ AIOX Update v5.2"
 echo ""
 
 # Preflight: check rsync
@@ -20,12 +20,12 @@ if ! command -v rsync >/dev/null 2>&1; then
   exit 1
 fi
 
-# Validate: clean working tree for .aios-core
-if [ -n "$(git status --porcelain .aios-core/)" ]; then
-  echo "❌ Commit .aios-core changes first:"
-  git status --short .aios-core/
+# Validate: clean working tree for .aiox-core
+if [ -n "$(git status --porcelain .aiox-core/)" ]; then
+  echo "❌ Commit .aiox-core changes first:"
+  git status --short .aiox-core/
   echo ""
-  echo "Run: git add .aios-core && git commit -m 'your message'"
+  echo "Run: git add .aiox-core && git commit -m 'your message'"
   exit 1
 fi
 
@@ -43,26 +43,26 @@ touch "$REPORT_CREATED" "$REPORT_UPDATED" "$REPORT_DELETED" "$REPORT_PRESERVED"
 # Clone upstream (shallow)
 echo "📥 Cloning upstream..."
 git clone --depth 1 --filter=blob:none --sparse \
-  https://github.com/SynkraAI/aios-core.git \
+  https://github.com/SynkraAI/aiox-core.git \
   "$TEMP_DIR/upstream" 2>/dev/null || {
   echo "❌ Failed to clone. Check network."
   exit 1
 }
 
 cd "$TEMP_DIR/upstream"
-git sparse-checkout set .aios-core
+git sparse-checkout set .aiox-core
 cd - > /dev/null
 
 echo "✅ Fetched upstream"
 echo ""
 
-# Build file lists (relative paths without .aios-core/ prefix)
+# Build file lists (relative paths without .aiox-core/ prefix)
 echo "📋 Scanning files..."
-find .aios-core -type f | sed 's|^\.aios-core/||' | sort > "$TEMP_DIR/local-files.txt"
-find "$TEMP_DIR/upstream/.aios-core" -type f | sed "s|^$TEMP_DIR/upstream/\.aios-core/||" | sort > "$TEMP_DIR/upstream-files.txt"
+find .aiox-core -type f | sed 's|^\.aiox-core/||' | sort > "$TEMP_DIR/local-files.txt"
+find "$TEMP_DIR/upstream/.aiox-core" -type f | sed "s|^$TEMP_DIR/upstream/\.aiox-core/||" | sort > "$TEMP_DIR/upstream-files.txt"
 
 # Get git-tracked files (for DELETE detection) - ONE call instead of N calls
-git ls-files .aios-core | sed 's|^\.aios-core/||' | sort > "$TEMP_DIR/tracked-files.txt"
+git ls-files .aiox-core | sed 's|^\.aiox-core/||' | sort > "$TEMP_DIR/tracked-files.txt"
 
 # Use comm to find differences - O(n) instead of O(n²)
 echo "🔍 Analyzing differences..."
@@ -83,7 +83,7 @@ comm -23 "$TEMP_DIR/tracked-files.txt" "$TEMP_DIR/upstream-files.txt" | \
 # UPDATED: in both but content differs
 echo "📝 Checking for updates..."
 while IFS= read -r rel_path; do
-  if ! cmp -s ".aios-core/$rel_path" "$TEMP_DIR/upstream/.aios-core/$rel_path"; then
+  if ! cmp -s ".aiox-core/$rel_path" "$TEMP_DIR/upstream/.aiox-core/$rel_path"; then
     echo "$rel_path" >> "$REPORT_UPDATED"
   fi
 done < "$TEMP_DIR/in-both.txt"
@@ -93,7 +93,7 @@ echo "🔐 Backing up local-only files..."
 mkdir -p "$TEMP_DIR/local-only"
 while IFS= read -r rel_path; do
   mkdir -p "$TEMP_DIR/local-only/$(dirname "$rel_path")"
-  cp -a ".aios-core/$rel_path" "$TEMP_DIR/local-only/$rel_path"
+  cp -a ".aiox-core/$rel_path" "$TEMP_DIR/local-only/$rel_path"
 done < "$REPORT_PRESERVED"
 
 # Execute sync
@@ -103,20 +103,20 @@ echo "🔀 Syncing..."
 # Delete files removed from upstream
 if [ -s "$REPORT_DELETED" ]; then
   while IFS= read -r rel_path; do
-    rm -f ".aios-core/$rel_path"
+    rm -f ".aiox-core/$rel_path"
   done < "$REPORT_DELETED"
 fi
 
 # Copy all upstream files (creates new + overwrites existing)
-rsync -a "$TEMP_DIR/upstream/.aios-core/" ".aios-core/"
+rsync -a "$TEMP_DIR/upstream/.aiox-core/" ".aiox-core/"
 
 # Restore local-only files
 if [ -d "$TEMP_DIR/local-only" ] && [ "$(ls -A "$TEMP_DIR/local-only" 2>/dev/null)" ]; then
-  rsync -a "$TEMP_DIR/local-only/" ".aios-core/"
+  rsync -a "$TEMP_DIR/local-only/" ".aiox-core/"
 fi
 
 # Clean empty directories
-find .aios-core -type d -empty -delete 2>/dev/null || true
+find .aiox-core -type d -empty -delete 2>/dev/null || true
 
 # Generate report
 echo ""
@@ -169,6 +169,6 @@ echo ""
 echo "════════════════════════════════════════════════════════════"
 echo ""
 echo "Choose:"
-echo "  ✅ Apply:  git add .aios-core && git commit -m 'chore: sync AIOS framework'"
-echo "  ❌ Cancel: git checkout -- .aios-core/"
+echo "  ✅ Apply:  git add .aiox-core && git commit -m 'chore: sync AIOX framework'"
+echo "  ❌ Cancel: git checkout -- .aiox-core/"
 echo ""

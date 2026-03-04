@@ -1,8 +1,8 @@
-# Guia do Usuário Synkra AIOS
+# Guia do Usuário Synkra AIOX
 
 ## Visão Geral
 
-O Synkra AIOS é um framework de desenvolvimento full stack orientado por agentes de IA que implementa uma metodologia ágil única. Este guia explica como usar o Synkra AIOS de forma eficaz através de suas duas fases principais: **Planejamento** e **Desenvolvimento**.
+O Synkra AIOX é um framework de desenvolvimento full stack orientado por agentes de IA que implementa uma metodologia ágil única. Este guia explica como usar o Synkra AIOX de forma eficaz através de suas duas fases principais: **Planejamento** e **Desenvolvimento**.
 
 ### As Duas Inovações Chave
 
@@ -23,9 +23,9 @@ Antes de começar, certifique-se de ter:
 
 ## Instalação e Configuração Inicial
 
-### Instalando AIOS-FullStack
+### Instalando AIOX-FullStack
 
-O AIOS-FullStack oferece instalação simplificada através de um instalador interativo completo.
+O AIOX-FullStack oferece instalação simplificada através de um instalador interativo completo.
 
 #### Instalação em Projeto Novo ou Existente
 
@@ -34,16 +34,16 @@ O AIOS-FullStack oferece instalação simplificada através de um instalador int
 cd /path/to/your/project
 
 # Execute o instalador (versão RC atual)
-npx aios-core@latest install
+npx aiox-core@latest install
 
 # OU usando NPM direto (produção - quando disponível)
-npx @aios/fullstack install
+npx @aiox/fullstack install
 ```
 
 **O que acontece durante a instalação**:
 
 ```
-🚀 AIOS-FullStack Installation Wizard
+🚀 AIOX-FullStack Installation Wizard
 
 ✓ Detecting installation state...
   Current state: Clean installation
@@ -51,7 +51,7 @@ npx @aios/fullstack install
 📦 Select Squads to Install:
   ◉ hybrid-ops (Pedro Valério methodology)
   ◯ expansion-creator (Create new squads)
-  ◯ aios-infrastructure-devops (DevOps utilities)
+  ◯ aiox-infrastructure-devops (DevOps utilities)
   ◯ meeting-notes (Meeting assistant)
 
 💻 Select IDEs to Configure:
@@ -63,7 +63,7 @@ npx @aios/fullstack install
   ◯ Single file (all in one document)
   ◉ Multi-file (separate files per section)
 
-✓ Installing .aios-core/ framework...
+✓ Installing .aiox-core/ framework...
 ✓ Installing squads...
 ✓ Configuring IDE integrations...
 ✓ Creating install manifest...
@@ -77,18 +77,18 @@ Next steps:
 
 #### Desenvolvimento do Framework Próprio
 
-Se você está contribuindo para o AIOS-FullStack em si:
+Se você está contribuindo para o AIOX-FullStack em si:
 
 ```bash
 # Clone o repositório
-git clone https://github.com/SynkraAI/aios-core
-cd aios-core
+git clone https://github.com/SynkraAI/aiox-core
+cd aiox-core
 
 # Instale dependências
 npm install
 
 # Execute o instalador no modo desenvolvimento
-npx aios-core@latest install
+npx aiox-core@latest install
 ```
 
 ### Estrutura Pós-Instalação
@@ -97,7 +97,7 @@ Após executar o instalador, seu projeto terá a seguinte estrutura:
 
 ```
 your-project/
-├── .aios-core/                    # ✅ Framework core instalado
+├── .aiox-core/                    # ✅ Framework core instalado
 │   ├── agents/                    # 11 agentes (dev, po, qa, architect, etc.)
 │   ├── tasks/                     # 45+ tasks executáveis
 │   ├── checklists/                # 10+ checklists de validação
@@ -110,7 +110,7 @@ your-project/
 │
 ├── .claude/                       # ✅ Se Claude Code selecionado
 │   └── commands/
-│       └── AIOS/
+│       └── AIOX/
 │           ├── agents/*.md        # 11 comandos de agentes
 │           └── tasks/*.md         # 45+ comandos de tasks
 │
@@ -127,17 +127,17 @@ your-project/
 
 ### Upgrade de Instalação Existente
 
-Se você já tem AIOS instalado e quer fazer upgrade:
+Se você já tem AIOX instalado e quer fazer upgrade:
 
 ```bash
 # Upgrade automático (RC.9+)
-npx aios-core@latest install --force-upgrade
+npx aiox-core@latest install --force-upgrade
 
 # OU interativo (todos os RCs)
-npx aios-core@latest install
+npx aiox-core@latest install
 # → Menu aparece:
 #   1. Keep current version (v1.0.0-rc.8)
-#   2. Upgrade AIOS core (v1.0.0-rc.8 → v1.0.0-rc.10)
+#   2. Upgrade AIOX core (v1.0.0-rc.8 → v1.0.0-rc.10)
 #   3. Configure IDE settings
 #   4. Exit without changes
 ```
@@ -146,44 +146,44 @@ npx aios-core@latest install
 
 ```bash
 # Ver versão disponível no NPM
-npm view aios-core@latest version
+npm view aiox-core@latest version
 # Output: 1.0.0-rc.10
 
 # Ver opções de instalação e comandos disponíveis
-npx aios-core@latest --help
+npx aiox-core@latest --help
 
 # Ver squads instalados
 # Use o wizard de instalação para selecionar/visualizar squads disponíveis
-npx aios-core@latest install
+npx aiox-core@latest install
 
 # Ajuda do instalador
-npx aios-core@latest install --help
+npx aiox-core@latest install --help
 ```
 
 ### 🚀 Futuro: Modo de Instalação Explícito (Story 3.14)
 
 **Em desenvolvimento**: Sistema de detecção de modo de instalação
 
-O futuro comando `aios init` permitirá escolher explicitamente entre dois modos:
+O futuro comando `aiox init` permitirá escolher explicitamente entre dois modos:
 
 #### Framework Development Mode
-- Para desenvolvedores contribuindo ao AIOS-FullStack
-- `.aios-core/` é código fonte (commitado)
+- Para desenvolvedores contribuindo ao AIOX-FullStack
+- `.aiox-core/` é código fonte (commitado)
 - Mudanças afetam o framework
 - Quality gates testam integridade do framework
 
 #### Project Development Mode
-- Para desenvolvedores usando AIOS em seus projetos
-- `.aios-core/` é dependência (gitignored)
+- Para desenvolvedores usando AIOX em seus projetos
+- `.aiox-core/` é dependência (gitignored)
 - Mudanças NÃO modificam o framework
 - Quality gates testam seu projeto
 
 **Quando disponível** (após Story 3.14):
 ```bash
 # Após instalação, configure o modo
-npx aios init
+npx aiox init
 
-# Cria .aios-installation-config.yaml
+# Cria .aiox-installation-config.yaml
 # Atualiza .gitignore baseado no modo escolhido
 ```
 
@@ -201,7 +201,7 @@ npx aios init
 npm cache clean --force
 
 # Usar versão específica
-npx aios-core@1.0.0-rc.10 install --force-upgrade
+npx aiox-core@1.0.0-rc.10 install --force-upgrade
 ```
 
 **Problema**: Agents/tasks não instalados
@@ -210,7 +210,7 @@ npx aios-core@1.0.0-rc.10 install --force-upgrade
 
 **Solução**: Usar RC.8 ou superior
 ```bash
-npx aios-core@latest install
+npx aiox-core@latest install
 ```
 
 **Problema**: Versão GitHub (4.31.1) detectada como mais nova que RC
@@ -219,13 +219,13 @@ npx aios-core@latest install
 
 **Solução**: Escolher "Upgrade" ou usar `--force-upgrade`
 ```bash
-npx aios-core@latest install --force-upgrade
+npx aiox-core@latest install --force-upgrade
 # Migra de v4.31.1 para v1.0.0-rc.10 (novo scheme)
 ```
 
 ## Fluxo de Trabalho de Planejamento e Execução
 
-O Synkra AIOS usa uma abordagem de duas fases que separa planejamento estratégico de implementação tática:
+O Synkra AIOX usa uma abordagem de duas fases que separa planejamento estratégico de implementação tática:
 
 ### Fase 1: Planejamento (Interface Web)
 
@@ -477,7 +477,7 @@ O **po** (Product Owner) gerencia o backlog:
 
 ## Capacidades do Test Architect (QA Agent)
 
-O agente **qa** do Synkra AIOS inclui capacidades avançadas de arquitetura de testes:
+O agente **qa** do Synkra AIOX inclui capacidades avançadas de arquitetura de testes:
 
 ### 1. Perfil de Risco e Priorização
 
@@ -581,13 +581,13 @@ O agente **qa** monitora:
    - Nenhuma configuração manual necessária
 
 2. **Recursos especiais**:
-   - Reconhecimento automático de comandos AIOS
+   - Reconhecimento automático de comandos AIOX
    - Integração com workflows e tasks
    - Rastreamento automático de checkboxes
 
 ## Sistema de Preferências Técnicas
 
-O Synkra AIOS permite configurar preferências técnicas que influenciam decisões dos agentes:
+O Synkra AIOX permite configurar preferências técnicas que influenciam decisões dos agentes:
 
 ### Definir Preferências
 
@@ -747,7 +747,7 @@ Quando todas as stories estão completas:
 
 ### O Agente @github-devops
 
-O AIOS-FullStack impõe integridade de repositório através de um agente centralizado de DevOps.
+O AIOX-FullStack impõe integridade de repositório através de um agente centralizado de DevOps.
 
 **Regra Crítica**: APENAS @github-devops pode fazer push para repositórios GitHub.
 
@@ -813,13 +813,13 @@ O agente @github-devops funciona com QUALQUER repositório git:
 
 **Modo Framework Development** (futuro):
 ```bash
-# No repositório aios-core
+# No repositório aiox-core
 @github-devops
 *detect-repo
 # Output:
-# Repository: github.com/SynkraAI/aios-core
+# Repository: github.com/SynkraAI/aiox-core
 # Mode: framework-development
-# Quality Gates: Testes do framework AIOS
+# Quality Gates: Testes do framework AIOX
 ```
 
 **Modo Project Development** (futuro):
@@ -882,7 +882,7 @@ Workflows se adaptam aos npm scripts do seu repositório.
 
 ## Modos de Desenvolvimento de Stories
 
-O AIOS-FullStack oferece três modos de desenvolvimento para acomodar diferentes níveis de habilidade e restrições de tempo.
+O AIOX-FullStack oferece três modos de desenvolvimento para acomodar diferentes níveis de habilidade e restrições de tempo.
 
 ### Modo 1: YOLO Mode 🚀
 
@@ -1132,7 +1132,7 @@ Todos os critérios atendidos
 
 ## Trabalhando em Projetos Brownfield
 
-Ao integrar Synkra AIOS em projetos existentes:
+Ao integrar Synkra AIOX em projetos existentes:
 
 ### 1. Análise Inicial
 
@@ -1230,11 +1230,11 @@ Ao integrar Synkra AIOS em projetos existentes:
 
 ## Meta-Agentes
 
-O Synkra AIOS inclui meta-agentes para orquestração:
+O Synkra AIOX inclui meta-agentes para orquestração:
 
-### aios-master
+### aiox-master
 
-O **aios-master** é o agente de orquestração principal:
+O **aiox-master** é o agente de orquestração principal:
 
 **Capacidades**:
 - Coordenar múltiplos agentes
@@ -1247,9 +1247,9 @@ O **aios-master** é o agente de orquestração principal:
 - Workflows automatizados
 - Situações que requerem decisões contextuais
 
-### aios-orchestrator
+### aiox-orchestrator
 
-O **aios-orchestrator** gerencia fluxos de trabalho:
+O **aiox-orchestrator** gerencia fluxos de trabalho:
 
 **Funções**:
 - Sequenciar tarefas entre agentes
@@ -1257,9 +1257,9 @@ O **aios-orchestrator** gerencia fluxos de trabalho:
 - Monitorar progresso
 - Coordenar handoffs
 
-### aios-developer
+### aiox-developer
 
-O **aios-developer** é o meta-agente para o próprio AIOS:
+O **aiox-developer** é o meta-agente para o próprio AIOX:
 
 **Uso**:
 - Criar novos agentes
@@ -1268,41 +1268,41 @@ O **aios-developer** é o meta-agente para o próprio AIOS:
 - Customizar comportamentos
 
 ```
-@aios-developer
+@aiox-developer
 *create-agent "custom-agent"
 
-[aios-developer guiará você na criação de um novo agente]
+[aiox-developer guiará você na criação de um novo agente]
 ```
 
 ## Expansão e Customização
 
 ### Squads
 
-O Synkra AIOS suporta squads para domínios específicos:
+O Synkra AIOX suporta squads para domínios específicos:
 
 **Disponíveis durante instalação**:
 - **hybrid-ops** - Metodologia Pedro Valério (operações híbridas humano-agente)
 - **expansion-creator** - Ferramentas para criar novos squads
-- **aios-infrastructure-devops** - Utilities de DevOps e infraestrutura
+- **aiox-infrastructure-devops** - Utilities de DevOps e infraestrutura
 - **meeting-notes** - Assistente de notas e atas de reuniões
 
 **Configurar squads na instalação**:
 ```bash
 # Durante a instalação, o wizard pergunta quais squads instalar
-npx aios-core@latest install
+npx aiox-core@latest install
 
 # O wizard mostra:
 # 📦 Select Squads to Install:
 #   ◉ hybrid-ops
 #   ◯ expansion-creator
-#   ◯ aios-infrastructure-devops
+#   ◯ aiox-infrastructure-devops
 #   ◯ meeting-notes
 ```
 
 **Adicionar squads depois**:
 ```bash
 # Re-execute o instalador
-npx aios-core@latest install
+npx aiox-core@latest install
 
 # Escolha "Configure IDE settings" ou "Upgrade"
 # Wizard permitirá adicionar squads não instalados
@@ -1310,10 +1310,10 @@ npx aios-core@latest install
 
 ### Criar Seus Próprios Agentes
 
-Use o **aios-developer** para criar agentes customizados:
+Use o **aiox-developer** para criar agentes customizados:
 
 ```
-@aios-developer
+@aiox-developer
 *create-agent
 
 [Siga a elicitação interativa:]
@@ -1325,7 +1325,7 @@ Workflows: data-analysis.yml, ml-model.yml
 
 ### Criar Templates Customizados
 
-Adicione templates próprios em `aios-core/templates/`:
+Adicione templates próprios em `aiox-core/templates/`:
 
 ```markdown
 ---
@@ -1359,7 +1359,7 @@ Use este checklist para garantir que está seguindo o workflow corretamente:
 - [ ] Stories priorizadas pelo po
 - [ ] Working directory configurado
 - [ ] Repositório Git inicializado
-- [ ] IDE configurado com regras AIOS
+- [ ] IDE configurado com regras AIOX
 
 ### Para Cada Story
 - [ ] Story lida completamente
@@ -1387,12 +1387,12 @@ Use este checklist para garantir que está seguindo o workflow corretamente:
 
 ### Documentação
 - [Guia de Instalação](../docs/getting-started.md)
-- [Arquitetura do AIOS](../docs/architecture.md)
+- [Arquitetura do AIOX](../docs/architecture.md)
 - [Guia de Squads](../docs/Squads.md)
 - [Trabalhando em Brownfield](./working-in-the-brownfield.md)
 
 ### Suporte
-- [GitHub Issues](https://github.com/SynkraAI/aios-core/issues)
+- [GitHub Issues](https://github.com/SynkraAI/aiox-core/issues)
 
 ### Exemplos
 Veja `Squads/` para exemplos de:
@@ -1405,5 +1405,5 @@ Veja `Squads/` para exemplos de:
 
 **Nota**: Este guia é uma visão geral. Para detalhes específicos de implementação, consulte a documentação técnica na pasta `docs/`.
 
-*Synkra AIOS User Guide v2.0*
+*Synkra AIOX User Guide v2.0*
 *Última atualização: Janeiro 2025*

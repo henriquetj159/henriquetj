@@ -21,20 +21,20 @@ const path = require('path');
 // Hardcoded fallbacks — used ONLY if core-config.yaml is missing or malformed.
 // The canonical source is core-config.yaml boundary.protected/exceptions.
 const FALLBACK_PROTECTED = [
-  '.aios-core/core/**',
-  '.aios-core/development/tasks/**',
-  '.aios-core/development/templates/**',
-  '.aios-core/development/checklists/**',
-  '.aios-core/development/workflows/**',
-  '.aios-core/infrastructure/**',
-  '.aios-core/constitution.md',
-  'bin/aios.js',
-  'bin/aios-init.js',
+  '.aiox-core/core/**',
+  '.aiox-core/development/tasks/**',
+  '.aiox-core/development/templates/**',
+  '.aiox-core/development/checklists/**',
+  '.aiox-core/development/workflows/**',
+  '.aiox-core/infrastructure/**',
+  '.aiox-core/constitution.md',
+  'bin/aiox.js',
+  'bin/aiox-init.js',
 ];
 
 const FALLBACK_EXCEPTIONS = [
-  '.aios-core/data/**',
-  '.aios-core/development/agents/*/MEMORY.md',
+  '.aiox-core/data/**',
+  '.aiox-core/development/agents/*/MEMORY.md',
 ];
 
 /**
@@ -63,7 +63,7 @@ function globToRegex(glob) {
  * @returns {string|null}
  */
 function readConfigContent() {
-  const configPath = path.resolve(__dirname, '../../.aios-core/core-config.yaml');
+  const configPath = path.resolve(__dirname, '../../.aiox-core/core-config.yaml');
   if (!fs.existsSync(configPath)) {
     return null;
   }

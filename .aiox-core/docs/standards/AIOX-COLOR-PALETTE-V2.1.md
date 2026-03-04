@@ -1,9 +1,9 @@
-# AIOS Color Palette v4.2
+# AIOX Color Palette v4.2
 
 **Version:** 2.1.0  
 **Created:** 2025-01-20  
 **Status:** Active  
-**Scope:** All AIOS CLI tools, installer, and visual outputs
+**Scope:** All AIOX CLI tools, installer, and visual outputs
 
 ---
 
@@ -11,7 +11,7 @@
 
 ### Logo Inspiration
 
-The AIOS color palette is derived from the brand logo's vibrant gradient:
+The AIOX color palette is derived from the brand logo's vibrant gradient:
 - **Top gradient:** Magenta → Pink → Orange → Yellow
 - **Bottom gradient:** Purple → Blue → Cyan
 
@@ -66,7 +66,7 @@ For special effects, animations, and branding moments:
 ```javascript
 const chalk = require('chalk');
 
-// AIOS Color Palette v4.2
+// AIOX Color Palette v4.2
 const colors = {
   // Core Brand Colors
   primary: chalk.hex('#8B5CF6'),      // ClickUp-inspired purple
@@ -104,22 +104,22 @@ module.exports = colors;
 ```css
 :root {
   /* Brand Colors */
-  --aios-primary: #8B5CF6;
-  --aios-secondary: #EC4899;
-  --aios-tertiary: #3B82F6;
+  --aiox-primary: #8B5CF6;
+  --aiox-secondary: #EC4899;
+  --aiox-tertiary: #3B82F6;
   
   /* Functional Colors */
-  --aios-success: #10B981;
-  --aios-warning: #F59E0B;
-  --aios-error: #EF4444;
-  --aios-info: #06B6D4;
+  --aiox-success: #10B981;
+  --aiox-warning: #F59E0B;
+  --aiox-error: #EF4444;
+  --aiox-info: #06B6D4;
   
   /* Neutral Colors */
-  --aios-muted: #94A3B8;
-  --aios-dim: #64748B;
+  --aiox-muted: #94A3B8;
+  --aiox-dim: #64748B;
   
   /* Gradient */
-  --aios-gradient: linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #3B82F6 100%);
+  --aiox-gradient: linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #3B82F6 100%);
 }
 ```
 
@@ -131,7 +131,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        aios: {
+        aiox: {
           primary: '#8B5CF6',
           secondary: '#EC4899',
           tertiary: '#3B82F6',
@@ -144,7 +144,7 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'aios-gradient': 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #3B82F6 100%)',
+        'aiox-gradient': 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 50%, #3B82F6 100%)',
       }
     }
   }
@@ -158,11 +158,11 @@ module.exports = {
 ### Visual Hierarchy
 
 **Level 1: Brand Emphasis**
-- Use `colors.brandPrimary` (purple bold) for AIOS branding
+- Use `colors.brandPrimary` (purple bold) for AIOX branding
 - Example: Welcome screens, major section headers
 
 ```javascript
-console.log(colors.brandPrimary('🎉 AIOS v4.2 Installer'));
+console.log(colors.brandPrimary('🎉 AIOX v4.2 Installer'));
 ```
 
 **Level 2: Primary Content**
@@ -193,7 +193,7 @@ console.log(colors.info('💡 Tip: You can change this later'));
 **Installer & Wizards:**
 ```javascript
 // Welcome
-console.log(colors.brandPrimary('\n🎉 Welcome to AIOS v4.2\n'));
+console.log(colors.brandPrimary('\n🎉 Welcome to AIOX v4.2\n'));
 console.log(colors.info('Let\'s get your project set up...\n'));
 
 // Questions
@@ -203,7 +203,7 @@ message: colors.primary('Select IDE:')
 console.log(colors.info('⏳ Installing dependencies...'));
 
 // Success
-console.log(colors.success('\n✓ All done! Your AIOS project is ready.\n'));
+console.log(colors.success('\n✓ All done! Your AIOX project is ready.\n'));
 ```
 
 **Error Messages:**
@@ -294,17 +294,17 @@ For future design system integration:
 
 ```json
 {
-  "aios": {
+  "aiox": {
     "color": {
       "primary": {
         "$type": "color",
         "$value": "#8B5CF6",
-        "$description": "AIOS primary brand color (ClickUp-inspired purple)"
+        "$description": "AIOX primary brand color (ClickUp-inspired purple)"
       },
       "secondary": {
         "$type": "color",
         "$value": "#EC4899",
-        "$description": "AIOS secondary brand color (magenta accent)"
+        "$description": "AIOX secondary brand color (magenta accent)"
       },
       "success": {
         "$type": "color",
@@ -320,7 +320,7 @@ For future design system integration:
           { "color": "#8B5CF6", "position": 0.5 },
           { "color": "#3B82F6", "position": 1 }
         ],
-        "$description": "AIOS brand gradient (logo-inspired)"
+        "$description": "AIOX brand gradient (logo-inspired)"
       }
     }
   }
@@ -333,13 +333,13 @@ For future design system integration:
 
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
-| 2.1.0 | 2025-01-20 | Initial AIOS Color Palette - Logo-inspired gradient + ClickUp purple | Uma (UX-Design Expert) |
+| 2.1.0 | 2025-01-20 | Initial AIOX Color Palette - Logo-inspired gradient + ClickUp purple | Uma (UX-Design Expert) |
 
 ---
 
 ## 🔗 Related Documents
 
-- [AIOS-LIVRO-DE-OURO-V2.1](./AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md) - Complete AIOS standards
+- [AIOX-LIVRO-DE-OURO-V2.1](./AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md) - Complete AIOX standards
 - [Story 1.2](../stories/v4.0.4/sprint-1/story-1.2-interactive-wizard-foundation.md) - Interactive Wizard (first implementation)
 - [ClickUp Brand Guidelines](https://clickup.com/brand) - Primary color reference
 

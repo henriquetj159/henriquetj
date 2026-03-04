@@ -36,7 +36,7 @@ gh pr view {pr_number} --json files,additions,deletions,author,body
 # Classify PR type
 # CI/Workflow = .github/
 # Test = tests/
-# Code = packages/, .aios-core/, bin/
+# Code = packages/, .aiox-core/, bin/
 # Config = .gitmodules, *.config.*
 # Docs = docs/, *.md
 ```
@@ -65,7 +65,7 @@ gh pr view {pr_number} --json files,additions,deletions,author,body
 - [ ] `require()` paths point to legitimate project modules only
 - [ ] No exfiltration patterns (base64 encoding + network call)
 
-#### For Code PRs (packages/, .aios-core/, bin/)
+#### For Code PRs (packages/, .aiox-core/, bin/)
 
 - [ ] No new dependencies added without justification
 - [ ] No changes to `package.json` scripts (`preinstall`, `postinstall`)
@@ -90,7 +90,7 @@ Run the appropriate grep command based on PR type:
 gh pr diff {pr_number} -- 'tests/' | grep -E "(require\('https|require\('http|require\('net|require\('dns|fetch\(|\.readFileSync|process\.env|child_process|execSync|spawn)"
 
 # For code PRs - check for shell execution patterns
-gh pr diff {pr_number} -- 'packages/' '.aios-core/' 'bin/' | grep -E "(shell:\s*true|execSync\(|\.exec\(|eval\(|Function\()"
+gh pr diff {pr_number} -- 'packages/' '.aiox-core/' 'bin/' | grep -E "(shell:\s*true|execSync\(|\.exec\(|eval\(|Function\()"
 
 # For CI PRs - check for permission/secret changes
 gh pr diff {pr_number} -- '.github/' | grep -E "(permissions:|secrets\.|pull_request_target|workflow_dispatch)"

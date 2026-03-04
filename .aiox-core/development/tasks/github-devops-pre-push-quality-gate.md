@@ -29,7 +29,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: githubDevopsPrePushQualityGate()
@@ -268,7 +268,7 @@ updated_at: 2025-11-17
 ## Prerequisites
 - Git repository with changes to push
 - package.json with npm scripts (gracefully handles missing scripts)
-- Repository context detected (run `aios init` if needed)
+- Repository context detected (run `aiox init` if needed)
 
 ## Quality Gate Checks
 
@@ -280,7 +280,7 @@ const { detectRepositoryContext } = require('./../scripts/repository-detector');
 const context = detectRepositoryContext();
 if (!context) {
   console.error('❌ Unable to detect repository context');
-  console.error('Run "aios init" to configure installation mode');
+  console.error('Run "aiox init" to configure installation mode');
   process.exit(1);
 }
 
@@ -636,11 +636,11 @@ function determineSecurityGate(results) {
 > **Behavior:** Advisory only — NEVER blocks push. Auto-skips if code intelligence unavailable.
 
 ```javascript
-const { assessPrePushImpact, classifyRiskLevel } = require('.aios-core/core/code-intel/helpers/devops-helper');
+const { assessPrePushImpact, classifyRiskLevel } = require('.aiox-core/core/code-intel/helpers/devops-helper');
 
 async function runImpactAnalysis(changedFiles) {
   // Auto-skip if code intelligence unavailable
-  const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
+  const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
   if (!isCodeIntelAvailable()) {
     console.log('ℹ️  Code intelligence not available — skipping impact analysis');
     return { skipped: true };

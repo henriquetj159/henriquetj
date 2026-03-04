@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // =============================================================================
-// AIOS Capability Detection Module
+// AIOX Capability Detection Module
 // =============================================================================
 // Detects Claude Code runtime capabilities for token optimization decisions.
 // Runs at session initialization (not per-turn).
@@ -9,10 +9,10 @@
 // ADR-7: Capability gate por runtime
 //
 // Usage:
-//   node .aios-core/data/capability-detection.js
+//   node .aiox-core/data/capability-detection.js
 //
 // Output:
-//   .aios/runtime-capabilities.json
+//   .aiox/runtime-capabilities.json
 // =============================================================================
 
 const fs = require('fs');
@@ -20,7 +20,7 @@ const path = require('path');
 const os = require('os');
 
 const PROJECT_ROOT = path.resolve(__dirname, '../..');
-const OUTPUT_PATH = path.join(PROJECT_ROOT, '.aios', 'runtime-capabilities.json');
+const OUTPUT_PATH = path.join(PROJECT_ROOT, '.aiox', 'runtime-capabilities.json');
 
 function detectToolSearch() {
   // Check Claude Code cached features for tool search availability
@@ -126,7 +126,7 @@ function detectDockerGateway() {
 }
 
 function loadToolRegistry() {
-  const registryPath = path.join(PROJECT_ROOT, '.aios-core', 'data', 'tool-registry.yaml');
+  const registryPath = path.join(PROJECT_ROOT, '.aiox-core', 'data', 'tool-registry.yaml');
   try {
     const content = fs.readFileSync(registryPath, 'utf8');
     // Count tools by tier (simple regex parsing)

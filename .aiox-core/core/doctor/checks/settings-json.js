@@ -4,7 +4,7 @@
  * Validates .claude/settings.json exists, deny rules count >= 40,
  * and compares against core-config.yaml boundary paths.
  *
- * @module aios-core/doctor/checks/settings-json
+ * @module aiox-core/doctor/checks/settings-json
  * @story INS-4.1
  */
 
@@ -18,7 +18,7 @@ const name = 'settings-json';
  * Returns array of unprotected boundary paths.
  */
 function checkBoundaryAlignment(context, denyRules) {
-  const configPath = path.join(context.projectRoot, '.aios-core', 'core-config.yaml');
+  const configPath = path.join(context.projectRoot, '.aiox-core', 'core-config.yaml');
   if (!fs.existsSync(configPath)) return []; // No config = skip boundary check
 
   let content;
@@ -69,7 +69,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'settings.json not found',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -81,7 +81,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'settings.json is invalid JSON',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -95,7 +95,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: `Deny rules below threshold (${denyCount} rules, expected >= 40)`,
-      fixCommand: 'aios doctor --fix',
+      fixCommand: 'aiox doctor --fix',
     };
   }
 
@@ -106,7 +106,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: `Deny rules present (${denyCount}) but missing boundary coverage: ${boundaryIssues.join(', ')}`,
-      fixCommand: 'aios doctor --fix',
+      fixCommand: 'aiox doctor --fix',
     };
   }
 

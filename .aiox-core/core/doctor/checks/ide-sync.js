@@ -1,10 +1,10 @@
 /**
  * Doctor Check: IDE Sync
  *
- * Validates agents in .claude/commands/AIOS/agents/ match
- * .aios-core/development/agents/ (count and names).
+ * Validates agents in .claude/commands/AIOX/agents/ match
+ * .aiox-core/development/agents/ (count and names).
  *
- * @module aios-core/doctor/checks/ide-sync
+ * @module aiox-core/doctor/checks/ide-sync
  * @story INS-4.1
  */
 
@@ -14,15 +14,15 @@ const fs = require('fs');
 const name = 'ide-sync';
 
 async function run(context) {
-  const agentsSourceDir = path.join(context.projectRoot, '.aios-core', 'development', 'agents');
-  const agentsIdeDir = path.join(context.projectRoot, '.claude', 'commands', 'AIOS', 'agents');
+  const agentsSourceDir = path.join(context.projectRoot, '.aiox-core', 'development', 'agents');
+  const agentsIdeDir = path.join(context.projectRoot, '.claude', 'commands', 'AIOX', 'agents');
 
   if (!fs.existsSync(agentsSourceDir)) {
     return {
       check: name,
       status: 'FAIL',
       message: 'Source agents directory not found',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -30,8 +30,8 @@ async function run(context) {
     return {
       check: name,
       status: 'WARN',
-      message: 'IDE agents directory not found (.claude/commands/AIOS/agents/)',
-      fixCommand: 'npx aios-core install --force',
+      message: 'IDE agents directory not found (.claude/commands/AIOX/agents/)',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -45,7 +45,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Cannot read source agents directory',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -57,7 +57,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: 'Cannot read IDE agents directory',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -78,7 +78,7 @@ async function run(context) {
     check: name,
     status: 'WARN',
     message: `IDE has ${ideCount} agents, source has ${sourceCount}`,
-    fixCommand: 'npx aios-core install --force',
+    fixCommand: 'npx aiox-core install --force',
   };
 }
 

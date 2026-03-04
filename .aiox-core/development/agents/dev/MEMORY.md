@@ -11,9 +11,9 @@
 - Jest 30.2.0 for testing, `npm test` to run
 
 ### Project Structure
-- `.aios-core/core/` — Core modules (synapse, session, code-intel, orchestration)
-- `.aios-core/development/` — Agents, tasks, templates, scripts
-- `.aios-core/infrastructure/` — CI/CD, git detection, project-status
+- `.aiox-core/core/` — Core modules (synapse, session, code-intel, orchestration)
+- `.aiox-core/development/` — Agents, tasks, templates, scripts
+- `.aiox-core/infrastructure/` — CI/CD, git detection, project-status
 - `tests/` — Test suites (mirrors source structure)
 - `docs/stories/` — Story files (active development)
 
@@ -25,7 +25,7 @@
 ### Common Gotchas
 - Windows paths: use forward slashes in code, bash shell not cmd
 - `fs.existsSync` for sync checks, `fs.promises` for async
-- atomicWriteSync from `.aios-core/core/synapse/utils/atomic-write` for safe file writes
+- atomicWriteSync from `.aiox-core/core/synapse/utils/atomic-write` for safe file writes
 - CodeRabbit runs in WSL, not Windows directly
 
 ### Story Workflow

@@ -527,8 +527,8 @@ graph TB
 | 要求 | 描述 | 验证 |
 |------|------|------|
 | **现有应用程序** | 用于分析的活跃前端 | 代码库可访问 |
-| **AIOS模板** | 已安装的模板 | 检查 `.aios-core/development/templates/` |
-| **已配置的代理** | 工作流的所有代理 | 检查 `.aios-core/development/agents/` |
+| **AIOX模板** | 已安装的模板 | 检查 `.aiox-core/development/templates/` |
+| **已配置的代理** | 工作流的所有代理 | 检查 `.aiox-core/development/agents/` |
 | **Git已配置** | 版本控制 | `git status` 正常运行 |
 | **Node.js** | 脚本运行时 | `node --version` >= 18 |
 
@@ -536,11 +536,11 @@ graph TB
 
 | 文档 | 位置 | 需要用于 |
 |------|------|---------|
-| PRD模板 | `.aios-core/development/templates/brownfield-prd-tmpl.yaml` | 步骤2 |
-| 前端模板 | `.aios-core/development/templates/front-end-spec-tmpl.yaml` | 步骤3 |
-| 架构模板 | `.aios-core/development/templates/brownfield-architecture-tmpl.yaml` | 步骤4 |
-| PO清单 | `.aios-core/development/checklists/po-master-checklist.md` | 步骤5 |
-| 故事模板 | `.aios-core/development/templates/story-tmpl.yaml` | 步骤8 |
+| PRD模板 | `.aiox-core/development/templates/brownfield-prd-tmpl.yaml` | 步骤2 |
+| 前端模板 | `.aiox-core/development/templates/front-end-spec-tmpl.yaml` | 步骤3 |
+| 架构模板 | `.aiox-core/development/templates/brownfield-architecture-tmpl.yaml` | 步骤4 |
+| PO清单 | `.aiox-core/development/checklists/po-master-checklist.md` | 步骤5 |
+| 故事模板 | `.aiox-core/development/templates/story-tmpl.yaml` | 步骤8 |
 
 ### 推荐的输入数据
 
@@ -720,11 +720,11 @@ flowchart TD
 **解决方案：**
 1. 验证模板是否存在：
 ```bash
-ls .aios-core/development/templates/
+ls .aiox-core/development/templates/
 ```
 
 2. 检查工作流中的正确模板名称
-3. 如有必要，重新安装AIOS核心模板
+3. 如有必要，重新安装AIOX核心模板
 
 ---
 
@@ -793,8 +793,8 @@ ls .aios-core/development/templates/
 #### 检查项目状态
 
 ```bash
-# 通过AIOS
-@aios-master
+# 通过AIOX
+@aiox-master
 *status
 
 # 通过Git
@@ -829,25 +829,25 @@ ls docs/architecture/
 
 | 文档 | 位置 | 描述 |
 |------|------|------|
-| AIOS知识库 | `.aios-core/data/aios-kb.md` | AIOS基础知识库 |
-| IDE开发工作流 | `.aios-core/data/aios-kb.md#IDE Development Workflow` | IDE开发工作流 |
-| 棕地PRD模板 | `.aios-core/development/templates/brownfield-prd-tmpl.yaml` | 棕地PRD模板 |
-| 前端规范模板 | `.aios-core/development/templates/front-end-spec-tmpl.yaml` | 前端规范模板 |
-| 棕地架构模板 | `.aios-core/development/templates/brownfield-architecture-tmpl.yaml` | 棕地架构模板 |
-| PO主清单 | `.aios-core/development/checklists/po-master-checklist.md` | PO验证清单 |
+| AIOX知识库 | `.aiox-core/data/aiox-kb.md` | AIOX基础知识库 |
+| IDE开发工作流 | `.aiox-core/data/aiox-kb.md#IDE Development Workflow` | IDE开发工作流 |
+| 棕地PRD模板 | `.aiox-core/development/templates/brownfield-prd-tmpl.yaml` | 棕地PRD模板 |
+| 前端规范模板 | `.aiox-core/development/templates/front-end-spec-tmpl.yaml` | 前端规范模板 |
+| 棕地架构模板 | `.aiox-core/development/templates/brownfield-architecture-tmpl.yaml` | 棕地架构模板 |
+| PO主清单 | `.aiox-core/development/checklists/po-master-checklist.md` | PO验证清单 |
 
 ### 代理
 
 | 代理 | 文件 | 文档 |
 |------|------|------|
-| @architect | `.aios-core/development/agents/architect.md` | Aria - 整体系统架构师 |
-| @pm | `.aios-core/development/agents/pm.md` | Morgan - 产品经理 |
-| @ux-expert | `.aios-core/development/agents/ux-design-expert.md` | Uma - UX/UI设计师 |
-| @po | `.aios-core/development/agents/po.md` | Pax - 产品所有者 |
-| @sm | `.aios-core/development/agents/sm.md` | River - 敏捷主管 |
-| @analyst | `.aios-core/development/agents/analyst.md` | Atlas - 业务分析师 |
-| @dev | `.aios-core/development/agents/dev.md` | Dex - 全栈开发人员 |
-| @qa | `.aios-core/development/agents/qa.md` | Quinn - 测试架构师 |
+| @architect | `.aiox-core/development/agents/architect.md` | Aria - 整体系统架构师 |
+| @pm | `.aiox-core/development/agents/pm.md` | Morgan - 产品经理 |
+| @ux-expert | `.aiox-core/development/agents/ux-design-expert.md` | Uma - UX/UI设计师 |
+| @po | `.aiox-core/development/agents/po.md` | Pax - 产品所有者 |
+| @sm | `.aiox-core/development/agents/sm.md` | River - 敏捷主管 |
+| @analyst | `.aiox-core/development/agents/analyst.md` | Atlas - 业务分析师 |
+| @dev | `.aiox-core/development/agents/dev.md` | Dex - 全栈开发人员 |
+| @qa | `.aiox-core/development/agents/qa.md` | Quinn - 测试架构师 |
 
 ### 切换提示
 
@@ -886,6 +886,6 @@ ls docs/architecture/
 
 ---
 
-*从`.aios-core/development/workflows/brownfield-ui.yaml`自动生成的文档*
+*从`.aiox-core/development/workflows/brownfield-ui.yaml`自动生成的文档*
 
 *最后更新：2026-02-04*

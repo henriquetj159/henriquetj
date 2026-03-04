@@ -27,7 +27,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: extendPattern()
@@ -137,7 +137,7 @@ acceptance-criteria:
 
 - **Tool:** ast-parser
   - **Purpose:** Parse and modify code safely
-  - **Source:** .aios-core/utils/ast-parser.js
+  - **Source:** .aiox-core/utils/ast-parser.js
 
 ---
 
@@ -148,7 +148,7 @@ acceptance-criteria:
 - **Script:** modify-file.js
   - **Purpose:** Safe file modification with backup
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/modify-file.js
+  - **Location:** .aiox-core/scripts/modify-file.js
 
 ---
 

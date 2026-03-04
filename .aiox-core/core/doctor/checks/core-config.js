@@ -4,7 +4,7 @@
  * Validates core-config.yaml exists and has required keys:
  * boundary, project, ide.
  *
- * @module aios-core/doctor/checks/core-config
+ * @module aiox-core/doctor/checks/core-config
  * @story INS-4.1
  */
 
@@ -16,14 +16,14 @@ const name = 'core-config';
 const REQUIRED_SECTIONS = ['boundary', 'project', 'ide'];
 
 async function run(context) {
-  const configPath = path.join(context.projectRoot, '.aios-core', 'core-config.yaml');
+  const configPath = path.join(context.projectRoot, '.aiox-core', 'core-config.yaml');
 
   if (!fs.existsSync(configPath)) {
     return {
       check: name,
       status: 'FAIL',
       message: 'core-config.yaml not found',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -46,7 +46,7 @@ async function run(context) {
     check: name,
     status: 'FAIL',
     message: `Missing sections: ${missingSections.join(', ')}`,
-    fixCommand: 'npx aios-core install --force',
+    fixCommand: 'npx aiox-core install --force',
   };
 }
 

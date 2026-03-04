@@ -6,7 +6,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 const AGENT_INFO = {
-  'aios-master': { icon: '🧠', role: 'Master Orchestrator' },
+  'aiox-master': { icon: '🧠', role: 'Master Orchestrator' },
   analyst: { icon: '📊', role: 'Business Analyst' },
   architect: { icon: '🏛️', role: 'System Architect' },
   'data-engineer': { icon: '🗄️', role: 'Data Engineer' },
@@ -21,7 +21,7 @@ const AGENT_INFO = {
 };
 
 function listAvailableAgents(projectRoot = process.cwd()) {
-  const sourceDir = path.join(projectRoot, '.aios-core', 'development', 'agents');
+  const sourceDir = path.join(projectRoot, '.aiox-core', 'development', 'agents');
   if (!fs.existsSync(sourceDir)) return [];
   return fs
     .readdirSync(sourceDir)
@@ -31,20 +31,20 @@ function listAvailableAgents(projectRoot = process.cwd()) {
 }
 
 function commandNameForAgent(agentId) {
-  if (agentId.startsWith('aios-')) {
-    return `/aios-${agentId.replace(/^aios-/, '')}`;
+  if (agentId.startsWith('aiox-')) {
+    return `/aiox-${agentId.replace(/^aiox-/, '')}`;
   }
-  return `/aios-${agentId}`;
+  return `/aiox-${agentId}`;
 }
 
 function hasAgent(projectRoot, agentId) {
-  const canonical = path.join(projectRoot, '.aios-core', 'development', 'agents', `${agentId}.md`);
-  const gemini = path.join(projectRoot, '.gemini', 'rules', 'AIOS', 'agents', `${agentId}.md`);
+  const canonical = path.join(projectRoot, '.aiox-core', 'development', 'agents', `${agentId}.md`);
+  const gemini = path.join(projectRoot, '.gemini', 'rules', 'AIOX', 'agents', `${agentId}.md`);
   return fs.existsSync(canonical) || fs.existsSync(gemini);
 }
 
 function renderGreeting(projectRoot, agentId) {
-  const scriptPath = path.join(projectRoot, '.aios-core', 'development', 'scripts', 'generate-greeting.js');
+  const scriptPath = path.join(projectRoot, '.aiox-core', 'development', 'scripts', 'generate-greeting.js');
   if (!fs.existsSync(scriptPath)) {
     return null;
   }
@@ -64,16 +64,16 @@ function renderGreeting(projectRoot, agentId) {
 
 function buildActivationPrompt(agentId) {
   return [
-    `Ative o agente ${agentId} usando .aios-core/development/agents/${agentId}.md`,
-    `(fallback: .gemini/rules/AIOS/agents/${agentId}.md),`,
-    `renderize o greeting via node .aios-core/development/scripts/generate-greeting.js ${agentId}`,
+    `Ative o agente ${agentId} usando .aiox-core/development/agents/${agentId}.md`,
+    `(fallback: .gemini/rules/AIOX/agents/${agentId}.md),`,
+    `renderize o greeting via node .aiox-core/development/scripts/generate-greeting.js ${agentId}`,
     'e mantenha a persona ate *exit.',
   ].join(' ');
 }
 
 function runAgentLauncher(agentId, projectRoot = process.cwd()) {
   if (!agentId) {
-    console.log('Uso: /aios-agent <agent-id>');
+    console.log('Uso: /aiox-agent <agent-id>');
     return 1;
   }
 
@@ -93,7 +93,7 @@ function runAgentLauncher(agentId, projectRoot = process.cwd()) {
   const activationPrompt = buildActivationPrompt(agentId);
   const greeting = renderGreeting(projectRoot, agentId);
 
-  console.log(`${info.icon} AIOS Agent Selected: ${agentId}`);
+  console.log(`${info.icon} AIOX Agent Selected: ${agentId}`);
   console.log(`Role: ${info.role}`);
   console.log('');
   console.log('Activation Prompt (copy and send as your next message):');
@@ -110,11 +110,11 @@ function runAgentLauncher(agentId, projectRoot = process.cwd()) {
 function runAgentMenu(projectRoot = process.cwd()) {
   const agents = listAvailableAgents(projectRoot);
 
-  console.log('🤖 AIOS Quick Agent Menu (Gemini)');
+  console.log('🤖 AIOX Quick Agent Menu (Gemini)');
   console.log('');
 
   if (agents.length === 0) {
-    console.log('No AIOS agents found. Run: npm run sync:ide:gemini');
+    console.log('No AIOX agents found. Run: npm run sync:ide:gemini');
     return 1;
   }
 
@@ -123,7 +123,7 @@ function runAgentMenu(projectRoot = process.cwd()) {
     console.log(`${info.icon} ${commandNameForAgent(id)}  (${info.role})`);
   }
 
-  console.log('\nTip: run /aios-<agent-id> to prepare activation prompt quickly.');
+  console.log('\nTip: run /aiox-<agent-id> to prepare activation prompt quickly.');
   return 0;
 }
 

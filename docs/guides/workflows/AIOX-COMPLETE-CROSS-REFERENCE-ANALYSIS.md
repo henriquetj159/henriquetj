@@ -1,6 +1,6 @@
-# AIOS Complete Cross-Reference Analysis
+# AIOX Complete Cross-Reference Analysis
 
-**Story:** AIOS-XREF-001
+**Story:** AIOX-XREF-001
 **Generated:** 2026-02-05
 **Owners:** @analyst (Atlas) + @architect (Aria)
 **Scope:** All ~881 framework artifacts across 25 entity types
@@ -24,7 +24,7 @@
 
 ## 1. Executive Summary
 
-This document is the result of a comprehensive cross-reference analysis of every artifact in the Synkra AIOS framework. The analysis was conducted in 7 phases, examining 25 entity types totaling approximately 745 tracked files.
+This document is the result of a comprehensive cross-reference analysis of every artifact in the Synkra AIOX framework. The analysis was conducted in 7 phases, examining 25 entity types totaling approximately 745 tracked files.
 
 ### Key Findings
 
@@ -61,30 +61,30 @@ This document is the result of a comprehensive cross-reference analysis of every
 
 | Entity Type | Count | Location |
 |-------------|-------|----------|
-| Agents | 12 | `.aios-core/development/agents/` |
-| Tasks | 191 | `.aios-core/development/tasks/` |
-| Workflows | 12 | `.aios-core/development/workflows/` |
-| Product Templates | 92 | `.aios-core/product/templates/` |
-| Development Templates | 29 | `.aios-core/development/templates/` |
-| Product Checklists | 16 | `.aios-core/product/checklists/` |
-| Product Data | 16 | `.aios-core/product/data/` |
-| Framework Data | 8 | `.aios-core/data/` |
-| Dev Scripts | 37 | `.aios-core/development/scripts/` |
-| Infra Scripts | 90 | `.aios-core/infrastructure/scripts/` |
-| Infra Integrations | 5 | `.aios-core/infrastructure/integrations/` |
-| Infra Tools | 15 | `.aios-core/infrastructure/tools/` |
-| Infra Templates | 15 | `.aios-core/infrastructure/templates/` |
-| Core Modules | 130 | `.aios-core/core/` |
-| CLI Commands | 37 | `.aios-core/cli/commands/` |
-| Schemas | 6 | `.aios-core/schemas/` |
-| Manifests | 4 | `.aios-core/manifests/` |
-| Monitor Hooks | 10 | `.aios-core/monitor/hooks/` |
-| Quality Gates | 10 | `.aios-core/core/quality-gates/` |
-| Quality Metrics | 4 | `.aios-core/quality/` |
-| Workflow Intelligence | 19 | `.aios-core/workflow-intelligence/` |
-| Docs/Standards | 16 | `.aios-core/docs/standards/` |
-| Root Config | 8 | `.aios-core/` root |
-| Elicitation | 8 | `.aios-core/core/elicitation/` + `.aios-core/elicitation/` |
+| Agents | 12 | `.aiox-core/development/agents/` |
+| Tasks | 191 | `.aiox-core/development/tasks/` |
+| Workflows | 12 | `.aiox-core/development/workflows/` |
+| Product Templates | 92 | `.aiox-core/product/templates/` |
+| Development Templates | 29 | `.aiox-core/development/templates/` |
+| Product Checklists | 16 | `.aiox-core/product/checklists/` |
+| Product Data | 16 | `.aiox-core/product/data/` |
+| Framework Data | 8 | `.aiox-core/data/` |
+| Dev Scripts | 37 | `.aiox-core/development/scripts/` |
+| Infra Scripts | 90 | `.aiox-core/infrastructure/scripts/` |
+| Infra Integrations | 5 | `.aiox-core/infrastructure/integrations/` |
+| Infra Tools | 15 | `.aiox-core/infrastructure/tools/` |
+| Infra Templates | 15 | `.aiox-core/infrastructure/templates/` |
+| Core Modules | 130 | `.aiox-core/core/` |
+| CLI Commands | 37 | `.aiox-core/cli/commands/` |
+| Schemas | 6 | `.aiox-core/schemas/` |
+| Manifests | 4 | `.aiox-core/manifests/` |
+| Monitor Hooks | 10 | `.aiox-core/monitor/hooks/` |
+| Quality Gates | 10 | `.aiox-core/core/quality-gates/` |
+| Quality Metrics | 4 | `.aiox-core/quality/` |
+| Workflow Intelligence | 19 | `.aiox-core/workflow-intelligence/` |
+| Docs/Standards | 16 | `.aiox-core/docs/standards/` |
+| Root Config | 8 | `.aiox-core/` root |
+| Elicitation | 8 | `.aiox-core/core/elicitation/` + `.aiox-core/elicitation/` |
 | **TOTAL** | **~745** | |
 
 ### Cross-Reference Metrics
@@ -365,7 +365,7 @@ WORKFLOWS (4):
   Brownfield UI (Step 3), Brownfield Discovery (Phases 3, 6)
 ```
 
-### 3.11 @aios-master (Orion) - Meta Orchestrator
+### 3.11 @aiox-master (Orion) - Meta Orchestrator
 
 ```
 TASKS (8):
@@ -385,7 +385,7 @@ TEMPLATES (14):
   task-template.md, workflow-template.yaml, personalized-agent-template.md
 
 DATA FILES (4):
-  aios-kb.md, agent-config-requirements.yaml,
+  aiox-kb.md, agent-config-requirements.yaml,
   elicitation-methods.md, technical-preferences.md
 
 WORKFLOWS: Meta-agent (creates/orchestrates workflows, not a participant)
@@ -529,10 +529,10 @@ Files with **no active consumers** anywhere in the runtime codebase.
 
 | File | Location |
 |------|----------|
-| `AIOS-LIVRO-DE-OURO.md` | `docs/standards/` |
-| `AIOS-LIVRO-DE-OURO-V2.1.md` | `docs/standards/` |
-| `AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md` | `docs/standards/` |
-| `AIOS-FRAMEWORK-MASTER.md` | `docs/standards/` |
+| `AIOX-LIVRO-DE-OURO.md` | `docs/standards/` |
+| `AIOX-LIVRO-DE-OURO-V2.1.md` | `docs/standards/` |
+| `AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` | `docs/standards/` |
+| `AIOX-FRAMEWORK-MASTER.md` | `docs/standards/` |
 | `V3-ARCHITECTURAL-DECISIONS.md` | `docs/standards/` |
 
 **Recommendation:** Move to `docs/standards/archive/`.
@@ -590,9 +590,9 @@ Files referenced only in passive registries (install-manifest, service-registry,
 
 | Directory | Status | Referenced By |
 |-----------|--------|---------------|
-| `.aios-core/agent-teams/` | Does not exist | install-manifest, source-tree docs, core-architecture |
-| `.aios-core/tools/` | Exists but empty | core-config.yaml, framework-config.yaml |
-| `.aios-core/processes/` | Does not exist | Not referenced |
+| `.aiox-core/agent-teams/` | Does not exist | install-manifest, source-tree docs, core-architecture |
+| `.aiox-core/tools/` | Exists but empty | core-config.yaml, framework-config.yaml |
+| `.aiox-core/processes/` | Does not exist | Not referenced |
 
 ---
 
@@ -665,7 +665,7 @@ infrastructure/   <--   core/   <--   development/   <--   product/
 (base layer)          (imports)       (imports)            (imports)
 ```
 
-- **infrastructure/** has ZERO dependencies on other AIOS modules
+- **infrastructure/** has ZERO dependencies on other AIOX modules
 - **core/** imports from infrastructure (recovery-handler, build-state-manager, executors)
 - **development/** imports from infrastructure (story-manager, greeting-builder)
 - **product/** imports from infrastructure (templates, activation-instructions)
@@ -735,7 +735,7 @@ The squad system is well-isolated:
 7. **Implement memory-query.js and session-memory.js** -- Or remove try/catch references in execution modules.
 8. **Wire permissions/ system** -- Connect to CLI guard middleware or agent activation.
 9. **Resolve ghost directories** -- Either create `agent-teams/` with content or remove all references.
-10. **Populate or remove `.aios-core/tools/`** -- Currently empty despite config references.
+10. **Populate or remove `.aiox-core/tools/`** -- Currently empty despite config references.
 
 ### Priority 4: Maintenance (INFO)
 
@@ -760,7 +760,7 @@ For complete per-file analysis, see the individual phase documents:
 
 ---
 
-*AIOS Complete Cross-Reference Analysis*
-*Story: AIOS-XREF-001*
+*AIOX Complete Cross-Reference Analysis*
+*Story: AIOX-XREF-001*
 *Generated: 2026-02-05*
 *Total artifacts analyzed: ~745 files across 25 entity types*

@@ -736,12 +736,12 @@ graph LR
 
 | 任务 | 阶段 | 代理 | 文件 |
 |------|------|------|------|
-| 收集需求 | 1 | @pm | `.aios-core/development/tasks/spec-gather-requirements.md` |
-| 评估复杂性 | 2 | @architect | `.aios-core/development/tasks/spec-assess-complexity.md` |
-| 研究依赖 | 3 | @analyst | `.aios-core/development/tasks/spec-research-dependencies.md` |
-| 编写规范 | 4 | @pm | `.aios-core/development/tasks/spec-write-spec.md` |
-| 批评规范 | 5, 5c | @qa | `.aios-core/development/tasks/spec-critique.md` |
-| 创建实现计划 | 6 | @architect | `.aios-core/development/tasks/plan-create-implementation.md` |
+| 收集需求 | 1 | @pm | `.aiox-core/development/tasks/spec-gather-requirements.md` |
+| 评估复杂性 | 2 | @architect | `.aiox-core/development/tasks/spec-assess-complexity.md` |
+| 研究依赖 | 3 | @analyst | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| 编写规范 | 4 | @pm | `.aiox-core/development/tasks/spec-write-spec.md` |
+| 批评规范 | 5, 5c | @qa | `.aiox-core/development/tasks/spec-critique.md` |
+| 创建实现计划 | 6 | @architect | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ---
 
@@ -946,27 +946,27 @@ flowchart TB
 
 | 文件 | 位置 |
 |------|------|
-| 工作流定义 | `.aios-core/development/workflows/spec-pipeline.yaml` |
-| 任务: 收集 | `.aios-core/development/tasks/spec-gather-requirements.md` |
-| 任务: 评估 | `.aios-core/development/tasks/spec-assess-complexity.md` |
-| 任务: 研究 | `.aios-core/development/tasks/spec-research-dependencies.md` |
-| 任务: 编写规范 | `.aios-core/development/tasks/spec-write-spec.md` |
-| 任务: 批评 | `.aios-core/development/tasks/spec-critique.md` |
-| 任务: 创建计划 | `.aios-core/development/tasks/plan-create-implementation.md` |
+| 工作流定义 | `.aiox-core/development/workflows/spec-pipeline.yaml` |
+| 任务: 收集 | `.aiox-core/development/tasks/spec-gather-requirements.md` |
+| 任务: 评估 | `.aiox-core/development/tasks/spec-assess-complexity.md` |
+| 任务: 研究 | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| 任务: 编写规范 | `.aiox-core/development/tasks/spec-write-spec.md` |
+| 任务: 批评 | `.aiox-core/development/tasks/spec-critique.md` |
+| 任务: 创建计划 | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ### 10.2 相关代理
 
 | 代理 | 位置 |
 |------|------|
-| @pm (Morgan) | `.aios-core/development/agents/pm.md` |
-| @architect (Aria) | `.aios-core/development/agents/architect.md` |
-| @analyst (Atlas) | `.aios-core/development/agents/analyst.md` |
-| @qa (Quinn) | `.aios-core/development/agents/qa.md` |
+| @pm (Morgan) | `.aiox-core/development/agents/pm.md` |
+| @architect (Aria) | `.aiox-core/development/agents/architect.md` |
+| @analyst (Atlas) | `.aiox-core/development/agents/analyst.md` |
+| @qa (Quinn) | `.aiox-core/development/agents/qa.md` |
 
 ### 10.3 相关文档
 
 - [工作流 YAML 指南](../workflows-yaml-guide.md)
-- [AIOS 文档索引](../AIOS-DOCUMENTATION-INDEX.md)
+- [AIOX 文档索引](../AIOX-DOCUMENTATION-INDEX.md)
 - [待办项管理系统](../BACKLOG-MANAGEMENT-SYSTEM.md)
 
 ### 10.4 快速命令
@@ -1019,13 +1019,13 @@ metadata:
   criado: 2026-02-04
   autor: 技术文档专家
   baseado_em:
-    - .aios-core/development/workflows/spec-pipeline.yaml
-    - .aios-core/development/tasks/spec-*.md
-    - .aios-core/development/agents/*.md
+    - .aiox-core/development/workflows/spec-pipeline.yaml
+    - .aiox-core/development/tasks/spec-*.md
+    - .aiox-core/development/agents/*.md
   tags:
     - spec-pipeline
     - workflow
     - documentation
-    - aios
+    - aiox
     - auto-claude
 ```

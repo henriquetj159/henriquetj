@@ -176,7 +176,7 @@ exa_fallback:
 ```yaml
 preferences_check:
   action: validate_against_tech_preferences
-  file: .aios-core/development/data/technical-preferences.md
+  file: .aiox-core/development/data/technical-preferences.md
 
   validation:
     - Is dependency in preferred list?

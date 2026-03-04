@@ -1,10 +1,10 @@
 /**
  * Doctor Check: Graph Dashboard
  *
- * Validates .aios-core/core/graph-dashboard/ directory exists
+ * Validates .aiox-core/core/graph-dashboard/ directory exists
  * with at least 1 .js file.
  *
- * @module aios-core/doctor/checks/graph-dashboard
+ * @module aiox-core/doctor/checks/graph-dashboard
  * @story INS-4.1
  */
 
@@ -14,14 +14,14 @@ const fs = require('fs');
 const name = 'graph-dashboard';
 
 async function run(context) {
-  const dashboardDir = path.join(context.projectRoot, '.aios-core', 'core', 'graph-dashboard');
+  const dashboardDir = path.join(context.projectRoot, '.aiox-core', 'core', 'graph-dashboard');
 
   if (!fs.existsSync(dashboardDir)) {
     return {
       check: name,
       status: 'WARN',
       message: 'graph-dashboard directory not found',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -33,7 +33,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: 'graph-dashboard directory empty (no .js files)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 

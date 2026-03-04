@@ -23,7 +23,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: devImproveCodeQuality()
@@ -129,11 +129,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -144,7 +144,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -206,7 +206,7 @@ tools:
   - github-cli
 ---
 
-# Improve Code Quality - AIOS Developer Task
+# Improve Code Quality - AIOX Developer Task
 
 ## Purpose
 Automatically improve code quality across multiple dimensions including formatting, linting, modern syntax, and best practices.
@@ -246,19 +246,19 @@ Automatically improve code quality across multiple dimensions including formatti
 ## Examples
 ```bash
 # Improve single file with preview
-*improve-code-quality aios-core/scripts/legacy-utility.js --preview
+*improve-code-quality aiox-core/scripts/legacy-utility.js --preview
 
 # Auto-fix all safe improvements in directory
-*improve-code-quality aios-core/agents --auto-fix --recursive
+*improve-code-quality aiox-core/agents --auto-fix --recursive
 
 # Apply specific patterns
-*improve-code-quality aios-core/utils --patterns formatting,modern-syntax,async-await
+*improve-code-quality aiox-core/utils --patterns formatting,modern-syntax,async-await
 
 # Generate improvement report
 *improve-code-quality . --recursive --report quality-report.json
 
 # Use custom configuration
-*improve-code-quality aios-core --config .aios/quality-config.json
+*improve-code-quality aiox-core --config .aiox/quality-config.json
 ```
 
 ## Implementation
@@ -282,7 +282,7 @@ class ImproveCodeQualityTask {
 
   async execute(params) {
     try {
-      console.log(chalk.blue('🎨 AIOS Code Quality Improvement'));
+      console.log(chalk.blue('🎨 AIOX Code Quality Improvement'));
       console.log(chalk.gray('Analyzing and improving code quality\n'));
 
       // Parse parameters
@@ -520,7 +520,7 @@ class ImproveCodeQualityTask {
   }
 
   async createBackup(filePath) {
-    const backupDir = path.join(this.rootPath, '.aios', 'backups', 'code-quality');
+    const backupDir = path.join(this.rootPath, '.aiox', 'backups', 'code-quality');
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const relativePath = path.relative(this.rootPath, filePath);
     const backupPath = path.join(backupDir, timestamp, relativePath);

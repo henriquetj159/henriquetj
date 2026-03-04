@@ -15,7 +15,7 @@ const DEFAULT_STALE_TTL_HOURS = 168; // 7 days
 function getStaleSessionTTL(cwd) {
   try {
     const yaml = require('js-yaml');
-    const configPath = path.join(cwd, '.aios-core', 'core-config.yaml');
+    const configPath = path.join(cwd, '.aiox-core', 'core-config.yaml');
     if (!fs.existsSync(configPath)) return DEFAULT_STALE_TTL_HOURS;
     const config = yaml.load(fs.readFileSync(configPath, 'utf8'));
     const ttl = config && config.synapse && config.synapse.session && config.synapse.session.staleTTLHours;
@@ -47,10 +47,10 @@ function resolveHookRuntime(input) {
 
   try {
     const { loadSession, cleanStaleSessions } = require(
-      path.join(cwd, '.aios-core', 'core', 'synapse', 'session', 'session-manager.js'),
+      path.join(cwd, '.aiox-core', 'core', 'synapse', 'session', 'session-manager.js'),
     );
     const { SynapseEngine } = require(
-      path.join(cwd, '.aios-core', 'core', 'synapse', 'engine.js'),
+      path.join(cwd, '.aiox-core', 'core', 'synapse', 'engine.js'),
     );
 
     const sessionsDir = path.join(synapsePath, 'sessions');
@@ -81,12 +81,17 @@ function resolveHookRuntime(input) {
 
 /**
  * Normalize hook output payload shape.
+ *
+ * Claude Code 2.1.68+ validates hook outputs by event-specific schema.
+ * For UserPromptSubmit, hookSpecificOutput.hookEventName is required.
+ *
  * @param {string} xml
- * @returns {{hookSpecificOutput: {additionalContext: string}}}
+ * @returns {{hookSpecificOutput: {hookEventName: string, additionalContext: string}}}
  */
 function buildHookOutput(xml) {
   return {
     hookSpecificOutput: {
+      hookEventName: 'UserPromptSubmit',
       additionalContext: xml || '',
     },
   };

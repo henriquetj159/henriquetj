@@ -26,7 +26,7 @@ function parseArgs(argv = process.argv.slice(2)) {
 }
 
 function runSyncValidate(ide, projectRoot) {
-  const script = path.join('.aios-core', 'infrastructure', 'scripts', 'ide-sync', 'index.js');
+  const script = path.join('.aiox-core', 'infrastructure', 'scripts', 'ide-sync', 'index.js');
   const result = spawnSync('node', [script, 'validate', '--ide', ide, '--strict'], {
     cwd: projectRoot,
     encoding: 'utf8',
@@ -42,11 +42,11 @@ function runSyncValidate(ide, projectRoot) {
 function getDefaultContractPath(projectRoot = process.cwd()) {
   return path.join(
     projectRoot,
-    '.aios-core',
+    '.aiox-core',
     'infrastructure',
     'contracts',
     'compatibility',
-    'aios-4.0.4.yaml',
+    'aiox-4.0.4.yaml',
   );
 }
 

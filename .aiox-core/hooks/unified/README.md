@@ -1,6 +1,6 @@
 # Unified Hooks System
 
-**Module:** `.aios-core/hooks/unified`
+**Module:** `.aiox-core/hooks/unified`
 **Purpose:** Cross-CLI hook abstraction layer
 **Supported CLIs:** Claude Code, Gemini Code
 
@@ -19,7 +19,7 @@ Hook Interface (hook-interface.js)
          ↓
 Hook Runners (runners/*.js)
          ↓
-Application Logic (aios-core, aios-pro)
+Application Logic (aiox-core, aiox-pro)
 ```
 
 ---
@@ -70,7 +70,7 @@ class MyHook extends UnifiedHook {
 
 - **`precompact-runner.js`** (Story MIS-3)
   - Captures session digest before context compact
-  - Open Core architecture (delegates to aios-pro)
+  - Open Core architecture (delegates to aiox-pro)
   - Fire-and-forget async execution
 
 **Runner Pattern:**
@@ -134,7 +134,7 @@ runners/precompact-runner.js
          ↓ (pro-detector check)
 pro/memory/session-digest/extractor.js
          ↓
-.aios/session-digests/{session-id}-{timestamp}.yaml
+.aiox/session-digests/{session-id}-{timestamp}.yaml
 ```
 
 ### Performance
@@ -145,7 +145,7 @@ pro/memory/session-digest/extractor.js
 
 ### Graceful Degradation
 
-- If aios-pro not available: no-op (log and return)
+- If aiox-pro not available: no-op (log and return)
 - If extraction fails: silent failure (log error)
 - If write fails: error propagated to logger
 
@@ -156,7 +156,7 @@ pro/memory/session-digest/extractor.js
 ### Step 1: Create Runner
 
 ```javascript
-// .aios-core/hooks/unified/runners/my-runner.js
+// .aiox-core/hooks/unified/runners/my-runner.js
 
 async function onMyEvent(context) {
   try {
@@ -209,7 +209,7 @@ function readStdin() {
 
 async function main() {
   const input = await readStdin();
-  const { onMyEvent } = require('../../.aios-core/hooks/unified/runners/my-runner');
+  const { onMyEvent } = require('../../.aiox-core/hooks/unified/runners/my-runner');
   await onMyEvent(input);
 }
 
@@ -314,7 +314,7 @@ catch (err) {
 const { isProAvailable } = require('../../../bin/utils/pro-detector');
 
 if (!isProAvailable()) {
-  console.log('[Hook] aios-pro not available, skipping');
+  console.log('[Hook] aiox-pro not available, skipping');
   return;
 }
 
@@ -330,9 +330,9 @@ const proModule = require('../../pro/...'); // Fails if pro absent
 - **Story MIS-2:** Dead Code Cleanup (restored hooks foundation)
 - **Story MIS-3:** Session Digest (PreCompact Hook)
 - **Story MIS-3.1:** Fix Session-Digest Hook Registration ← **CURRENT**
-- **Story PRO-5:** aios-pro Repository Bootstrap (pro-detector pattern)
+- **Story PRO-5:** aiox-pro Repository Bootstrap (pro-detector pattern)
 
 ---
 
-*Unified Hooks System - AIOS Core*
+*Unified Hooks System - AIOX Core*
 *Updated: 2026-02-26 - Story MIS-3.1*

@@ -11,7 +11,7 @@ const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
 
-const PKG_DIR = path.resolve(__dirname, '../../../packages/aios-install');
+const PKG_DIR = path.resolve(__dirname, '../../../packages/aiox-install');
 
 describe('Integration - Task 8.3: Local NPX Execution', () => {
   const runNpxIntegration = process.env.RUN_NPX_INTEGRATION === '1';
@@ -24,9 +24,9 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
 
       // Then
-      expect(pkgJson.name).toBe('@synkra/aios-install');
+      expect(pkgJson.name).toBe('@synkra/aiox-install');
       expect(pkgJson.bin).toBeDefined();
-      expect(pkgJson.bin['aios-install']).toBe('./bin/aios-install.js');
+      expect(pkgJson.bin['aiox-install']).toBe('./bin/aiox-install.js');
       expect(pkgJson.bin['edmcp']).toBe('./bin/edmcp.js');
     });
 
@@ -35,7 +35,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       const requiredFiles = [
         'package.json',
         'README.md',
-        'bin/aios-install.js',
+        'bin/aiox-install.js',
         'bin/edmcp.js',
         'src/installer.js',
         'src/os-detector.js',
@@ -52,7 +52,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
 
     it('should have executable shebang in bin files', () => {
       // Given
-      const binFiles = ['bin/aios-install.js', 'bin/edmcp.js'];
+      const binFiles = ['bin/aiox-install.js', 'bin/edmcp.js'];
       const expectedShebang = '#!/usr/bin/env node';
 
       // When/Then
@@ -111,9 +111,9 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
   });
 
   describe('CLI Execution Tests', () => {
-    it('should execute aios-install --version via node', () => {
+    it('should execute aiox-install --version via node', () => {
       // Given
-      const binPath = path.join(PKG_DIR, 'bin/aios-install.js');
+      const binPath = path.join(PKG_DIR, 'bin/aiox-install.js');
 
       // When
       const result = execSync(`node "${binPath}" --version`, {
@@ -139,9 +139,9 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       expect(result).toMatch(/^\d+\.\d+\.\d+$/);
     });
 
-    it('should show help for aios-install', () => {
+    it('should show help for aiox-install', () => {
       // Given
-      const binPath = path.join(PKG_DIR, 'bin/aios-install.js');
+      const binPath = path.join(PKG_DIR, 'bin/aiox-install.js');
 
       // When
       const result = execSync(`node "${binPath}" --help`, {
@@ -150,7 +150,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       });
 
       // Then
-      expect(result).toContain('aios-install');
+      expect(result).toContain('aiox-install');
       expect(result).toContain('--dry-run');
       expect(result).toContain('--verbose');
       expect(result).toContain('--profile');
@@ -175,7 +175,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
 
     it('should handle invalid arguments gracefully', () => {
       // Given
-      const binPath = path.join(PKG_DIR, 'bin/aios-install.js');
+      const binPath = path.join(PKG_DIR, 'bin/aiox-install.js');
 
       // When
       const result = execSync(`node "${binPath}" --invalid-flag 2>&1 || true`, {
@@ -232,7 +232,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       // Given - We simulate npx . by running npm exec in the package directory
 
       // When
-      const result = execSync('npm exec -- aios-install --version', {
+      const result = execSync('npm exec -- aiox-install --version', {
         cwd: PKG_DIR,
         encoding: 'utf8',
         timeout: 90000,
@@ -264,7 +264,7 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       // Given
       const pkgJsonPath = path.join(PKG_DIR, 'package.json');
       const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
-      const binPath = path.join(PKG_DIR, 'bin/aios-install.js');
+      const binPath = path.join(PKG_DIR, 'bin/aiox-install.js');
 
       // When
       const cliVersion = execSync(`node "${binPath}" --version`, {

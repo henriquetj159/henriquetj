@@ -399,7 +399,7 @@ shard docs/prd.md
 | **操作** | 项目完成 |
 | **注意** | 所有故事已实现和审查！项目的开发阶段完成。 |
 
-**参考：** `.aios-core/data/aios-kb.md#IDE Development Workflow`
+**参考：** `.aiox-core/data/aiox-kb.md#IDE Development Workflow`
 
 ---
 
@@ -491,7 +491,7 @@ graph LR
 
 2. **环境配置**
    - Git配置且正常运行
-   - 访问AIOS模板
+   - 访问AIOX模板
    - 已安装开发工具
 
 3. **项目背景**
@@ -500,14 +500,14 @@ graph LR
    - 已识别的利益相关者
 
 4. **可用的模板**
-   - `.aios-core/development/templates/brownfield-prd-tmpl.yaml`
-   - `.aios-core/development/templates/brownfield-architecture-tmpl.yaml`
-   - `.aios-core/development/templates/story-tmpl.yaml`
+   - `.aiox-core/development/templates/brownfield-prd-tmpl.yaml`
+   - `.aiox-core/development/templates/brownfield-architecture-tmpl.yaml`
+   - `.aiox-core/development/templates/story-tmpl.yaml`
 
 5. **可用的清单**
-   - `.aios-core/development/checklists/po-master-checklist.md`
-   - `.aios-core/development/checklists/story-draft-checklist.md`
-   - `.aios-core/development/checklists/story-dod-checklist.md`
+   - `.aiox-core/development/checklists/po-master-checklist.md`
+   - `.aiox-core/development/checklists/story-draft-checklist.md`
+   - `.aiox-core/development/checklists/story-dod-checklist.md`
 
 ---
 
@@ -773,31 +773,31 @@ graph TD
 
 | 文件 | 描述 | 路径 |
 |------|------|------|
-| 工作流定义 | 工作流的YAML定义 | `.aios-core/development/workflows/brownfield-service.yaml` |
-| PRD模板 | 棕地PRD的模板 | `.aios-core/development/templates/brownfield-prd-tmpl.yaml` |
-| 架构模板 | 架构的模板 | `.aios-core/development/templates/brownfield-architecture-tmpl.yaml` |
-| 故事模板 | 故事的模板 | `.aios-core/development/templates/story-tmpl.yaml` |
-| PO主清单 | 验证清单 | `.aios-core/development/checklists/po-master-checklist.md` |
-| 故事草稿清单 | 故事清单 | `.aios-core/development/checklists/story-draft-checklist.md` |
-| 故事DoD清单 | 完成定义 | `.aios-core/development/checklists/story-dod-checklist.md` |
+| 工作流定义 | 工作流的YAML定义 | `.aiox-core/development/workflows/brownfield-service.yaml` |
+| PRD模板 | 棕地PRD的模板 | `.aiox-core/development/templates/brownfield-prd-tmpl.yaml` |
+| 架构模板 | 架构的模板 | `.aiox-core/development/templates/brownfield-architecture-tmpl.yaml` |
+| 故事模板 | 故事的模板 | `.aiox-core/development/templates/story-tmpl.yaml` |
+| PO主清单 | 验证清单 | `.aiox-core/development/checklists/po-master-checklist.md` |
+| 故事草稿清单 | 故事清单 | `.aiox-core/development/checklists/story-draft-checklist.md` |
+| 故事DoD清单 | 完成定义 | `.aiox-core/development/checklists/story-dod-checklist.md` |
 
 ### 代理
 
 | 代理 | 文件 | 路径 |
 |------|------|------|
-| @architect | Aria | `.aios-core/development/agents/architect.md` |
-| @pm | Morgan | `.aios-core/development/agents/pm.md` |
-| @po | Pax | `.aios-core/development/agents/po.md` |
-| @sm | River | `.aios-core/development/agents/sm.md` |
-| @analyst | Atlas | `.aios-core/development/agents/analyst.md` |
-| @dev | Dex | `.aios-core/development/agents/dev.md` |
-| @qa | Quinn | `.aios-core/development/agents/qa.md` |
+| @architect | Aria | `.aiox-core/development/agents/architect.md` |
+| @pm | Morgan | `.aiox-core/development/agents/pm.md` |
+| @po | Pax | `.aiox-core/development/agents/po.md` |
+| @sm | River | `.aiox-core/development/agents/sm.md` |
+| @analyst | Atlas | `.aiox-core/development/agents/analyst.md` |
+| @dev | Dex | `.aiox-core/development/agents/dev.md` |
+| @qa | Quinn | `.aiox-core/development/agents/qa.md` |
 
 ### 相关文档
 
-- [AIOS知识库](../../../.aios-core/data/aios-kb.md) - 框架知识库
-- [技术偏好](../../../.aios-core/development/data/technical-preferences.md) - 项目技术偏好
-- [IDE开发工作流](../../../.aios-core/data/aios-kb.md#IDE-Development-Workflow) - IDE开发流程
+- [AIOX知识库](../../../.aiox-core/data/aiox-kb.md) - 框架知识库
+- [技术偏好](../../../.aiox-core/development/data/technical-preferences.md) - 项目技术偏好
+- [IDE开发工作流](../../../.aiox-core/data/aiox-kb.md#IDE-Development-Workflow) - IDE开发流程
 
 ---
 
@@ -809,4 +809,4 @@ graph TD
 
 ---
 
-*从workflow `brownfield-service.yaml` 生成 - AIOS框架 v2.2*
+*从workflow `brownfield-service.yaml` 生成 - AIOX框架 v2.2*

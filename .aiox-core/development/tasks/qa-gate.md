@@ -22,7 +22,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: qaGate()
@@ -128,7 +128,7 @@ acceptance-criteria:
 
 - **Tool:** validation-engine
   - **Purpose:** Rule-based validation and reporting
-  - **Source:** .aios-core/utils/validation-engine.js
+  - **Source:** .aiox-core/utils/validation-engine.js
 
 - **Tool:** schema-validator
   - **Purpose:** JSON/YAML schema validation
@@ -143,7 +143,7 @@ acceptance-criteria:
 - **Script:** run-validation.js
   - **Purpose:** Execute validation rules and generate report
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/run-validation.js
+  - **Location:** .aiox-core/scripts/run-validation.js
 
 ---
 
@@ -200,7 +200,7 @@ updated_at: 2025-11-17
 
 ---
 
- Powered by AIOS™ Core -->
+ Powered by AIOX™ Core -->
 
 ---
 tools:
@@ -227,7 +227,7 @@ Generate a standalone quality gate file that provides a clear pass/fail decision
 
 ## Gate File Location
 
-**ALWAYS** check the `aios-core/core-config.yaml` for the `qa.qaLocation/gates`
+**ALWAYS** check the `aiox-core/core-config.yaml` for the `qa.qaLocation/gates`
 
 Slug rules:
 
@@ -300,7 +300,7 @@ waiver:
 After completing manual review, if code intelligence is available:
 
 1. Collect the list of modified files from the story's File List
-2. Call `getBlastRadius(files)` from `.aios-core/core/code-intel/helpers/qa-helper.js`
+2. Call `getBlastRadius(files)` from `.aiox-core/core/code-intel/helpers/qa-helper.js`
 3. If result is not null, add a "Blast Radius" section to the gate report:
    ```
    ### Blast Radius
@@ -384,7 +384,7 @@ If blast radius returned HIGH risk:
 
 ## Output Requirements
 
-1. **ALWAYS** create gate file at: `qa.qaLocation/gates` from `aios-core/core-config.yaml`
+1. **ALWAYS** create gate file at: `qa.qaLocation/gates` from `aiox-core/core-config.yaml`
 2. **ALWAYS** append this exact format to story's QA Results section:
 
    ```text

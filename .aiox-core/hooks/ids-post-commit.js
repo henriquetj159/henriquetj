@@ -7,7 +7,7 @@
  * Runs asynchronously after each commit to update the entity registry
  * with changes from the committed files. Does NOT block the commit.
  *
- * Usage: node .aios-core/hooks/ids-post-commit.js
+ * Usage: node .aiox-core/hooks/ids-post-commit.js
  */
 
 const { execSync } = require('child_process');
@@ -90,13 +90,13 @@ async function main() {
 
   if (changes.length === 0) return;
 
-  if (process.env.AIOS_IDS_FORCE !== '1' && isDocsOnlyCommit(changes)) {
+  if (process.env.AIOX_IDS_FORCE !== '1' && isDocsOnlyCommit(changes)) {
     console.log('[IDS-Hook] Docs-only commit detected, skipping registry update.');
     return;
   }
 
   try {
-    const { RegistryUpdater } = require(path.resolve(REPO_ROOT, '.aios-core/core/ids/registry-updater.js'));
+    const { RegistryUpdater } = require(path.resolve(REPO_ROOT, '.aiox-core/core/ids/registry-updater.js'));
     const updater = new RegistryUpdater();
     const result = await updater.processChanges(changes);
 

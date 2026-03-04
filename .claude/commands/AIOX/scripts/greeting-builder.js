@@ -419,7 +419,7 @@ class GreetingBuilder {
 
     const keyFiles = [];
     const patterns = [
-      { regex: /greeting-builder\.js/, priority: 1, desc: 'do **`.aios-core/scripts/greeting-builder.js`**', category: 'script' },
+      { regex: /greeting-builder\.js/, priority: 1, desc: 'do **`.aiox-core/scripts/greeting-builder.js`**', category: 'script' },
       { regex: /agent-config-loader\.js/, priority: 1, desc: 'do **`agent-config-loader.js`**', category: 'script' },
       { regex: /generate-greeting\.js/, priority: 1, desc: 'do **`generate-greeting.js`**', category: 'script' },
       { regex: /session-context-loader\.js/, priority: 1, desc: 'do **`session-context-loader.js`**', category: 'script' },
@@ -854,7 +854,7 @@ class GreetingBuilder {
    */
   _loadConfig() {
     try {
-      const configPath = path.join(process.cwd(), '.aios-core', 'core-config.yaml');
+      const configPath = path.join(process.cwd(), '.aiox-core', 'core-config.yaml');
       const content = fs.readFileSync(configPath, 'utf8');
       return yaml.load(content);
     } catch (error) {

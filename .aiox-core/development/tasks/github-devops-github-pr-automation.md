@@ -29,7 +29,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: githubDevopsGithubPrAutomation()
@@ -135,11 +135,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -150,7 +150,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -223,7 +223,7 @@ const { detectRepositoryContext } = require('./../scripts/repository-detector');
 
 const context = detectRepositoryContext();
 if (!context) {
-  throw new Error('Unable to detect repository. Run "aios init" first.');
+  throw new Error('Unable to detect repository. Run "aiox init" first.');
 }
 ```
 
@@ -277,7 +277,7 @@ const path = require('path');
  * @returns {Object} PR configuration with defaults
  */
 function loadPRConfig() {
-  const configPath = path.join(process.cwd(), '.aios-core', 'core-config.yaml');
+  const configPath = path.join(process.cwd(), '.aiox-core', 'core-config.yaml');
 
   // Default configuration (for projects without core-config)
   const defaults = {
@@ -507,11 +507,11 @@ function generatePRDescription(storyInfo, context) {
 > **Behavior:** Auto-skips if code intelligence unavailable. Appends "Impact Analysis" section to PR body.
 
 ```javascript
-const { generateImpactSummary } = require('.aios-core/core/code-intel/helpers/devops-helper');
+const { generateImpactSummary } = require('.aiox-core/core/code-intel/helpers/devops-helper');
 
 async function enrichPRWithImpactAnalysis(description, changedFiles) {
   // Auto-skip if code intelligence unavailable
-  const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
+  const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
   if (!isCodeIntelAvailable()) {
     return description; // Return original description unchanged
   }
@@ -679,7 +679,7 @@ For breaking changes, manually edit the PR title to include `!`:
 
 ## Configuration for Different Project Types
 
-### NPM Package with Semantic-Release (aios-core)
+### NPM Package with Semantic-Release (aiox-core)
 ```yaml
 github:
   pr:

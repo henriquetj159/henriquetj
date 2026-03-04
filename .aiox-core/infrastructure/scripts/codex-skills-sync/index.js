@@ -17,11 +17,11 @@ function getCodexHome() {
 
 function getDefaultOptions() {
   const projectRoot = process.cwd();
-  const envLocalDir = process.env.AIOS_CODEX_LOCAL_SKILLS_DIR;
-  const envGlobalDir = process.env.AIOS_CODEX_GLOBAL_SKILLS_DIR;
+  const envLocalDir = process.env.AIOX_CODEX_LOCAL_SKILLS_DIR;
+  const envGlobalDir = process.env.AIOX_CODEX_GLOBAL_SKILLS_DIR;
   return {
     projectRoot,
-    sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceDir: path.join(projectRoot, '.aiox-core', 'development', 'agents'),
     localSkillsDir: envLocalDir || path.join(projectRoot, '.codex', 'skills'),
     globalSkillsDir: envGlobalDir || path.join(getCodexHome(), 'skills'),
     global: false,
@@ -39,14 +39,14 @@ function trimText(text, max = 220) {
 
 function getSkillId(agentId) {
   const id = String(agentId || '').trim();
-  if (id.startsWith('aios-')) return id;
-  return `aios-${id}`;
+  if (id.startsWith('aiox-')) return id;
+  return `aiox-${id}`;
 }
 
 function buildSkillContent(agentData) {
   const agent = agentData.agent || {};
   const name = agent.name || agentData.id;
-  const title = agent.title || 'AIOS Agent';
+  const title = agent.title || 'AIOX Agent';
   const whenToUse = trimText(agent.whenToUse || `Use @${agentData.id} for specialized tasks.`);
 
   const allCommands = normalizeCommands(agentData.commands || []);
@@ -65,22 +65,22 @@ name: ${skillName}
 description: ${description}
 ---
 
-# AIOS ${title} Activator
+# AIOX ${title} Activator
 
 ## When To Use
 ${whenToUse}
 
 ## Activation Protocol
-1. Load \`.aios-core/development/agents/${agentData.filename}\` as source of truth (fallback: \`.codex/agents/${agentData.filename}\`).
+1. Load \`.aiox-core/development/agents/${agentData.filename}\` as source of truth (fallback: \`.codex/agents/${agentData.filename}\`).
 2. Adopt this agent persona and command system.
-3. Generate greeting via \`node .aios-core/development/scripts/generate-greeting.js ${agentData.id}\` and show it first.
+3. Generate greeting via \`node .aiox-core/development/scripts/generate-greeting.js ${agentData.id}\` and show it first.
 4. Stay in this persona until the user asks to switch or exit.
 
 ## Starter Commands
 ${commands || '- `*help` - List available commands'}
 
 ## Non-Negotiables
-- Follow \`.aios-core/constitution.md\`.
+- Follow \`.aiox-core/constitution.md\`.
 - Execute workflows/tasks only from declared dependencies.
 - Do not invent requirements outside the project artifacts.
 `;

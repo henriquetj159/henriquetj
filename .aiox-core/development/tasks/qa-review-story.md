@@ -35,7 +35,7 @@ Perform a comprehensive test architecture review with quality gate decision. Thi
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: qaReviewStory()
@@ -141,7 +141,7 @@ acceptance-criteria:
 
 - **Tool:** validation-engine
   - **Purpose:** Rule-based validation and reporting
-  - **Source:** .aios-core/utils/validation-engine.js
+  - **Source:** .aiox-core/utils/validation-engine.js
 
 - **Tool:** schema-validator
   - **Purpose:** JSON/YAML schema validation
@@ -156,7 +156,7 @@ acceptance-criteria:
 - **Script:** run-validation.js
   - **Purpose:** Execute validation rules and generate report
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/run-validation.js
+  - **Location:** .aiox-core/scripts/run-validation.js
 
 ---
 
@@ -252,7 +252,7 @@ Execute CodeRabbit self-healing **FIRST** before manual review:
 │  WHILE iteration < max_iterations:                                │
 │    ┌─────────────────────────────────────────────────────────┐   │
 │    │ 1. Run CodeRabbit CLI                                   │   │
-│    │    wsl bash -c 'cd /mnt/c/.../aios-core &&         │   │
+│    │    wsl bash -c 'cd /mnt/c/.../aiox-core &&         │   │
 │    │    ~/.local/bin/coderabbit --prompt-only                │   │
 │    │    -t committed --base main'                            │   │
 │    │                                                          │   │
@@ -378,7 +378,7 @@ If self-healing fails:
 After CodeRabbit self-healing (Step 0), if code intelligence is available:
 
 1. Collect modified files from the story's File List
-2. Call `getReferenceImpact(files)` from `.aios-core/core/code-intel/helpers/qa-helper.js`
+2. Call `getReferenceImpact(files)` from `.aiox-core/core/code-intel/helpers/qa-helper.js`
 3. If result is not null, include reference impact in the review:
    ```
    ### Reference Impact (Code Intelligence)
@@ -557,7 +557,7 @@ NFR assessment: qa.qaLocation/assessments/{epic}.{story}-nfr-{YYYYMMDD}.md
 **Template and Directory:**
 
 - Render from `../templates/qa-gate-tmpl.yaml`
-- Create directory defined in `qa.qaLocation/gates` (see `.aios-core/core-config.yaml`) if missing
+- Create directory defined in `qa.qaLocation/gates` (see `.aiox-core/core-config.yaml`) if missing
 - Save to: `qa.qaLocation/gates/{epic}.{story}-{slug}.yml`
 
 Gate file structure:

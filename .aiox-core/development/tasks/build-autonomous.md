@@ -71,7 +71,7 @@ steps:
       FOR EACH subtask in implementation.yaml:
         1. Track attempt start (RecoveryTracker)
         2. **Code Intelligence IDS G4 Check** (before creating new files):
-           - If `isCodeIntelAvailable()` (from `.aios-core/core/code-intel`):
+           - If `isCodeIntelAvailable()` (from `.aiox-core/core/code-intel`):
              - Call `checkBeforeWriting(fileName, description)` from `dev-helper`
              - If duplicates detected: log in decision-log and display as advisory
              - Does NOT block execution (autonomous mode continues)

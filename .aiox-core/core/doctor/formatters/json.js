@@ -3,7 +3,7 @@
  *
  * Formats doctor results as structured JSON.
  *
- * @module aios-core/doctor/formatters/json
+ * @module aiox-core/doctor/formatters/json
  * @story INS-4.1
  */
 

@@ -274,7 +274,7 @@ class RegistrySyncer {
         const depPath = dep.path || dep.source || dep;
         if (typeof depPath !== 'string') continue;
         // Internal deps: relative paths or project paths (not node_modules)
-        if (depPath.startsWith('.') || depPath.startsWith('/') || depPath.includes('.aios-core')) {
+        if (depPath.startsWith('.') || depPath.startsWith('/') || depPath.includes('.aiox-core')) {
           deps.push(depPath);
         }
       }

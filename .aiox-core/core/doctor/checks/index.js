@@ -3,7 +3,7 @@
  *
  * Exports all 15 check modules in execution order.
  *
- * @module aios-core/doctor/checks
+ * @module aiox-core/doctor/checks
  * @story INS-4.1, INS-4.8
  */
 

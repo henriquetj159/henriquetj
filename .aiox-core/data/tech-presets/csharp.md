@@ -427,7 +427,7 @@ app.MapPost("/orders", async (PlaceOrderRequest request, PlaceOrderHandler handl
 
 ---
 
-## Integration with AIOS
+## Integration with AIOX
 
 ### Recommended Workflow
 
@@ -435,7 +435,7 @@ app.MapPost("/orders", async (PlaceOrderRequest request, PlaceOrderHandler handl
 2. `@dev` implementa handlers e adapters por feature
 3. `@qa` valida integridade async e cobertura de regras de negocio
 
-### AIOS Commands
+### AIOX Commands
 
 ```bash
 @dev "Follow the csharp preset patterns for this service"
@@ -465,4 +465,4 @@ app.MapPost("/orders", async (PlaceOrderRequest request, PlaceOrderHandler handl
 
 ---
 
-_AIOS Tech Preset - Synkra AIOS Framework_
+_AIOX Tech Preset - Synkra AIOX Framework_

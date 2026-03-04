@@ -1,11 +1,11 @@
 /**
- * AIOS Core Installer Module
+ * AIOX Core Installer Module
  *
  * Story 1.4/1.6: IDE Selection & Environment Configuration
- * Handles copying .aios-core content (agents, tasks, workflows, templates, etc.)
+ * Handles copying .aiox-core content (agents, tasks, workflows, templates, etc.)
  * to the target project directory.
  *
- * @module installer/aios-core-installer
+ * @module installer/aiox-core-installer
  */
 
 const fs = require('fs-extra');
@@ -14,16 +14,16 @@ const ora = require('ora');
 const { hashFile } = require('./file-hasher');
 
 /**
- * Get the path to the source .aios-core directory in the package
- * @returns {string} Absolute path to .aios-core source
+ * Get the path to the source .aiox-core directory in the package
+ * @returns {string} Absolute path to .aiox-core source
  */
-function getAiosCoreSourcePath() {
-  // Navigate from packages/installer/src/installer/ to project root/.aios-core
-  return path.join(__dirname, '..', '..', '..', '..', '.aios-core');
+function getAioxCoreSourcePath() {
+  // Navigate from packages/installer/src/installer/ to project root/.aiox-core
+  return path.join(__dirname, '..', '..', '..', '..', '.aiox-core');
 }
 
 /**
- * Folders to copy from .aios-core
+ * Folders to copy from .aiox-core
  * Includes both v4 modular structure and v2.0 legacy flat structure for compatibility
  * @constant {string[]}
  */
@@ -57,7 +57,7 @@ const FOLDERS_TO_COPY = [
 ];
 
 /**
- * Root files to copy from .aios-core
+ * Root files to copy from .aiox-core
  * @constant {string[]}
  */
 const ROOT_FILES_TO_COPY = [
@@ -65,7 +65,7 @@ const ROOT_FILES_TO_COPY = [
   'index.esm.js',
   'core-config.yaml',   // Core framework configuration
   'package.json',       // Module package definition
-  'constitution.md',    // AIOS fundamental principles
+  'constitution.md',    // AIOX fundamental principles
   'user-guide.md',
   'working-in-the-brownfield.md',
 ];
@@ -73,10 +73,10 @@ const ROOT_FILES_TO_COPY = [
 /**
  * Replace {root} placeholder in file content
  * @param {string} content - File content
- * @param {string} rootPath - Replacement path (e.g., '.aios-core')
+ * @param {string} rootPath - Replacement path (e.g., '.aiox-core')
  * @returns {string} Content with {root} replaced
  */
-function replaceRootPlaceholder(content, rootPath = '.aios-core') {
+function replaceRootPlaceholder(content, rootPath = '.aiox-core') {
   return content.replace(/\{root\}/g, rootPath);
 }
 
@@ -84,15 +84,15 @@ function replaceRootPlaceholder(content, rootPath = '.aios-core') {
  * Generate file hashes for installed files
  * Story 7.2: Version Tracking
  *
- * @param {string} targetAiosCore - Path to .aios-core directory
- * @param {string[]} installedFiles - List of installed files (relative to .aios-core)
+ * @param {string} targetAioxCore - Path to .aiox-core directory
+ * @param {string[]} installedFiles - List of installed files (relative to .aiox-core)
  * @returns {Promise<Object>} Object mapping file paths to their sha256 hashes
  */
-async function generateFileHashes(targetAiosCore, installedFiles) {
+async function generateFileHashes(targetAioxCore, installedFiles) {
   const fileHashes = {};
 
   for (const filePath of installedFiles) {
-    const absolutePath = path.join(targetAiosCore, filePath);
+    const absolutePath = path.join(targetAioxCore, filePath);
 
     try {
       if (await fs.pathExists(absolutePath)) {
@@ -116,7 +116,7 @@ async function generateFileHashes(targetAiosCore, installedFiles) {
  * Story 7.2: Version Tracking - Enables update command to detect changes
  *
  * @param {Object} options - Options
- * @param {string} options.targetAiosCore - Path to .aios-core directory
+ * @param {string} options.targetAioxCore - Path to .aiox-core directory
  * @param {string} options.version - Package version
  * @param {string[]} options.installedFiles - List of installed files
  * @param {string} [options.mode='project-development'] - Installation mode
@@ -124,13 +124,13 @@ async function generateFileHashes(targetAiosCore, installedFiles) {
  */
 async function generateVersionJson(options) {
   const {
-    targetAiosCore,
+    targetAioxCore,
     version,
     installedFiles,
     mode = 'project-development',
   } = options;
 
-  const fileHashes = await generateFileHashes(targetAiosCore, installedFiles);
+  const fileHashes = await generateFileHashes(targetAioxCore, installedFiles);
 
   const versionJson = {
     version,
@@ -140,7 +140,7 @@ async function generateVersionJson(options) {
     customized: [],
   };
 
-  const versionJsonPath = path.join(targetAiosCore, 'version.json');
+  const versionJsonPath = path.join(targetAioxCore, 'version.json');
   await fs.writeJson(versionJsonPath, versionJson, { spaces: 2 });
 
   return versionJson;
@@ -163,7 +163,7 @@ async function copyFileWithRootReplacement(sourcePath, destPath, replaceRoot = t
 
     if (needsReplacement) {
       const content = await fs.readFile(sourcePath, 'utf8');
-      const updatedContent = replaceRootPlaceholder(content, '.aios-core');
+      const updatedContent = replaceRootPlaceholder(content, '.aiox-core');
       await fs.writeFile(destPath, updatedContent, 'utf8');
     } else {
       await fs.copy(sourcePath, destPath);
@@ -222,7 +222,7 @@ async function copyDirectoryWithRootReplacement(sourceDir, destDir, onProgress =
 }
 
 /**
- * Install .aios-core content to target directory
+ * Install .aiox-core content to target directory
  *
  * @param {Object} options - Installation options
  * @param {string} [options.targetDir=process.cwd()] - Target directory
@@ -230,10 +230,10 @@ async function copyDirectoryWithRootReplacement(sourceDir, destDir, onProgress =
  * @returns {Promise<Object>} Installation result
  *
  * @example
- * const result = await installAiosCore({ targetDir: '/path/to/project' });
+ * const result = await installAioxCore({ targetDir: '/path/to/project' });
  * console.log(result.installedFiles); // List of installed files
  */
-async function installAiosCore(options = {}) {
+async function installAioxCore(options = {}) {
   const {
     targetDir = process.cwd(),
     onProgress = null,
@@ -246,24 +246,24 @@ async function installAiosCore(options = {}) {
     errors: [],
   };
 
-  const spinner = ora('Installing AIOS core framework...').start();
+  const spinner = ora('Installing AIOX core framework...').start();
 
   try {
-    const sourceDir = getAiosCoreSourcePath();
-    const targetAiosCore = path.join(targetDir, '.aios-core');
+    const sourceDir = getAioxCoreSourcePath();
+    const targetAioxCore = path.join(targetDir, '.aiox-core');
 
     // Check if source exists
     if (!await fs.pathExists(sourceDir)) {
-      throw new Error('.aios-core source directory not found in package');
+      throw new Error('.aiox-core source directory not found in package');
     }
 
-    // Create target .aios-core directory
-    await fs.ensureDir(targetAiosCore);
+    // Create target .aiox-core directory
+    await fs.ensureDir(targetAioxCore);
 
     // Copy each folder
     for (const folder of FOLDERS_TO_COPY) {
       const folderSource = path.join(sourceDir, folder);
-      const folderDest = path.join(targetAiosCore, folder);
+      const folderDest = path.join(targetAioxCore, folder);
 
       if (await fs.pathExists(folderSource)) {
         spinner.text = `Copying ${folder}...`;
@@ -284,7 +284,7 @@ async function installAiosCore(options = {}) {
     // Copy root files
     for (const file of ROOT_FILES_TO_COPY) {
       const fileSource = path.join(sourceDir, file);
-      const fileDest = path.join(targetAiosCore, file);
+      const fileDest = path.join(targetAioxCore, file);
 
       if (await fs.pathExists(fileSource)) {
         spinner.text = `Copying ${file}...`;
@@ -306,7 +306,7 @@ async function installAiosCore(options = {}) {
     };
 
     await fs.writeFile(
-      path.join(targetAiosCore, 'install-manifest.yaml'),
+      path.join(targetAioxCore, 'install-manifest.yaml'),
       require('js-yaml').dump(manifest),
       'utf8',
     );
@@ -314,44 +314,44 @@ async function installAiosCore(options = {}) {
     // Story 7.2: Create version.json with file hashes for update tracking
     spinner.text = 'Generating version tracking info...';
     const versionInfo = await generateVersionJson({
-      targetAiosCore,
+      targetAioxCore,
       version: packageVersion,
       installedFiles: result.installedFiles,
       mode: 'project-development',
     });
     result.versionInfo = versionInfo;
 
-    // BUG-2 fix (INS-1): Install .aios-core dependencies after copy
-    // The copied .aios-core/package.json has dependencies (js-yaml, execa, etc.)
+    // BUG-2 fix (INS-1): Install .aiox-core dependencies after copy
+    // The copied .aiox-core/package.json has dependencies (js-yaml, execa, etc.)
     // that must be installed for the activation pipeline to work
     // INS-4.12: Track dep install success for bootstrap guard
-    const aiosCorePackageJson = path.join(targetAiosCore, 'package.json');
-    result.aiosCoreDepsInstalled = false;
-    if (await fs.pathExists(aiosCorePackageJson)) {
-      spinner.text = 'Installing .aios-core dependencies (js-yaml, fast-glob, etc.)...';
+    const aioxCorePackageJson = path.join(targetAioxCore, 'package.json');
+    result.aioxCoreDepsInstalled = false;
+    if (await fs.pathExists(aioxCorePackageJson)) {
+      spinner.text = 'Installing .aiox-core dependencies (js-yaml, fast-glob, etc.)...';
       try {
         const { exec } = require('child_process');
         const { promisify } = require('util');
         const execAsync = promisify(exec);
         await execAsync('npm install --production --ignore-scripts', {
-          cwd: targetAiosCore,
+          cwd: targetAioxCore,
           timeout: 60000,
         });
-        result.aiosCoreDepsInstalled = true;
-        spinner.succeed('Installed .aios-core dependencies');
+        result.aioxCoreDepsInstalled = true;
+        spinner.succeed('Installed .aiox-core dependencies');
         spinner.start('Finishing installation...');
       } catch (depError) {
-        spinner.warn(`Could not install .aios-core dependencies: ${depError.message}`);
+        spinner.warn(`Could not install .aiox-core dependencies: ${depError.message}`);
         spinner.start('Continuing installation...');
         result.errors.push(`Dependencies warning: ${depError.message}`);
       }
     }
 
     result.success = true;
-    spinner.succeed(`AIOS core installed (${result.installedFiles.length} files)`);
+    spinner.succeed(`AIOX core installed (${result.installedFiles.length} files)`);
 
   } catch (error) {
-    spinner.fail('AIOS core installation failed');
+    spinner.fail('AIOX core installation failed');
     result.errors.push(error.message);
     throw error;
   }
@@ -370,7 +370,7 @@ async function hasPackageJson(targetDir = process.cwd()) {
 }
 
 /**
- * Create a basic package.json for AIOS projects
+ * Create a basic package.json for AIOX projects
  * @param {Object} options - Options
  * @param {string} [options.targetDir=process.cwd()] - Target directory
  * @param {string} [options.projectName] - Project name
@@ -387,14 +387,14 @@ async function createBasicPackageJson(options = {}) {
   const packageJson = {
     name: sanitizePackageName(projectName),
     version: '0.1.0',
-    description: `AIOS-powered ${projectType} project`,
+    description: `AIOX-powered ${projectType} project`,
     private: true,
     scripts: {
       start: 'echo "Configure your start script"',
       test: 'echo "Configure your test script"',
       lint: 'echo "Configure your lint script"',
     },
-    keywords: ['aios', projectType],
+    keywords: ['aiox', projectType],
     license: 'MIT',
   };
 
@@ -416,10 +416,10 @@ function sanitizePackageName(name) {
 }
 
 module.exports = {
-  installAiosCore,
+  installAioxCore,
   hasPackageJson,
   createBasicPackageJson,
-  getAiosCoreSourcePath,
+  getAioxCoreSourcePath,
   copyFileWithRootReplacement,
   copyDirectoryWithRootReplacement,
   generateVersionJson,

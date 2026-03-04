@@ -1,4 +1,4 @@
-# UX设计专家系统 AIOS
+# UX设计专家系统 AIOX
 
 > **版本:** 1.0.0
 > **创建于:** 2026-02-04
@@ -9,7 +9,7 @@
 
 ## 概览
 
-本文档描述了**UX设计专家(Uma)**代理的完整系统，包括所有涉及的文件、工作流、可用命令、与其他代理的集成和AIOS工作流。
+本文档描述了**UX设计专家(Uma)**代理的完整系统，包括所有涉及的文件、工作流、可用命令、与其他代理的集成和AIOX工作流。
 
 UX设计专家是一个混合型代理，结合了:
 - **Sally的UX原则** - 同理心、用户研究、以用户为中心的设计
@@ -87,8 +87,8 @@ flowchart TB
 
 | 文件 | 目的 |
 |------|------|
-| `.aios-core/development/agents/ux-design-expert.md` | 完整的代理定义(角色、命令、工作流) |
-| `.claude/commands/AIOS/agents/ux-design-expert.md` | Claude Code命令激活@ux-design-expert |
+| `.aiox-core/development/agents/ux-design-expert.md` | 完整的代理定义(角色、命令、工作流) |
+| `.claude/commands/AIOX/agents/ux-design-expert.md` | Claude Code命令激活@ux-design-expert |
 
 ### 按阶段的任务
 
@@ -96,53 +96,53 @@ flowchart TB
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/ux-user-research.md` | `*research` | 进行用户研究、创建角色和旅程 |
-| `.aios-core/development/tasks/ux-create-wireframe.md` | `*wireframe` | 创建低/中/高保真线框 |
-| `.aios-core/development/tasks/generate-ai-frontend-prompt.md` | `*generate-ui-prompt` | 为v0.dev、Lovable.ai生成提示 |
-| `.aios-core/development/tasks/create-doc.md` | `*create-front-end-spec` | 创建详细的前端规范 |
+| `.aiox-core/development/tasks/ux-user-research.md` | `*research` | 进行用户研究、创建角色和旅程 |
+| `.aiox-core/development/tasks/ux-create-wireframe.md` | `*wireframe` | 创建低/中/高保真线框 |
+| `.aiox-core/development/tasks/generate-ai-frontend-prompt.md` | `*generate-ui-prompt` | 为v0.dev、Lovable.ai生成提示 |
+| `.aiox-core/development/tasks/create-doc.md` | `*create-front-end-spec` | 创建详细的前端规范 |
 
 #### 第2阶段: 设计系统审计(3个任务)
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/audit-codebase.md` | `*audit {path}` | 扫描代码库的UI冗余 |
-| `.aios-core/development/tasks/consolidate-patterns.md` | `*consolidate` | 用HSL聚类减少冗余 |
-| `.aios-core/development/tasks/generate-shock-report.md` | `*shock-report` | 生成视觉HTML报告 |
+| `.aiox-core/development/tasks/audit-codebase.md` | `*audit {path}` | 扫描代码库的UI冗余 |
+| `.aiox-core/development/tasks/consolidate-patterns.md` | `*consolidate` | 用HSL聚类减少冗余 |
+| `.aiox-core/development/tasks/generate-shock-report.md` | `*shock-report` | 生成视觉HTML报告 |
 
 #### 第3阶段: 设计令牌与设置(7个任务)
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/extract-tokens.md` | `*tokenize` | 提取设计令牌(YAML、JSON、CSS、DTCG) |
-| `.aios-core/development/tasks/setup-design-system.md` | `*setup` | 初始化设计系统结构 |
-| `.aios-core/development/tasks/generate-migration-strategy.md` | `*migrate` | 生成4阶段迁移策略 |
-| `.aios-core/development/tasks/tailwind-upgrade.md` | `*upgrade-tailwind` | 升级到Tailwind CSS v4 |
-| `.aios-core/development/tasks/audit-tailwind-config.md` | `*audit-tailwind-config` | 验证Tailwind配置 |
-| `.aios-core/development/tasks/export-design-tokens-dtcg.md` | `*export-dtcg` | 导出W3C DTCG令牌 |
-| `.aios-core/development/tasks/bootstrap-shadcn-library.md` | `*bootstrap-shadcn` | 安装Shadcn/Radix UI |
+| `.aiox-core/development/tasks/extract-tokens.md` | `*tokenize` | 提取设计令牌(YAML、JSON、CSS、DTCG) |
+| `.aiox-core/development/tasks/setup-design-system.md` | `*setup` | 初始化设计系统结构 |
+| `.aiox-core/development/tasks/generate-migration-strategy.md` | `*migrate` | 生成4阶段迁移策略 |
+| `.aiox-core/development/tasks/tailwind-upgrade.md` | `*upgrade-tailwind` | 升级到Tailwind CSS v4 |
+| `.aiox-core/development/tasks/audit-tailwind-config.md` | `*audit-tailwind-config` | 验证Tailwind配置 |
+| `.aiox-core/development/tasks/export-design-tokens-dtcg.md` | `*export-dtcg` | 导出W3C DTCG令牌 |
+| `.aiox-core/development/tasks/bootstrap-shadcn-library.md` | `*bootstrap-shadcn` | 安装Shadcn/Radix UI |
 
 #### 第4阶段: 原子组件构建(3个任务)
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/build-component.md` | `*build {component}` | 构建原子组件(React + TypeScript) |
-| `.aios-core/development/tasks/compose-molecule.md` | `*compose {molecule}` | 从现有原子组成分子 |
-| `.aios-core/development/tasks/extend-pattern.md` | `*extend {component}` | 向现有组件添加变体 |
+| `.aiox-core/development/tasks/build-component.md` | `*build {component}` | 构建原子组件(React + TypeScript) |
+| `.aiox-core/development/tasks/compose-molecule.md` | `*compose {molecule}` | 从现有原子组成分子 |
+| `.aiox-core/development/tasks/extend-pattern.md` | `*extend {component}` | 向现有组件添加变体 |
 
 #### 第5阶段: 质量与文档(3个任务)
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/generate-documentation.md` | `*document` | 生成模式库文档 |
-| `.aios-core/development/tasks/calculate-roi.md` | `*calculate-roi` | 计算ROI和成本节省 |
-| `.aios-core/development/checklists/accessibility-wcag-checklist.md` | `*a11y-check` | WCAG无障碍审计 |
+| `.aiox-core/development/tasks/generate-documentation.md` | `*document` | 生成模式库文档 |
+| `.aiox-core/development/tasks/calculate-roi.md` | `*calculate-roi` | 计算ROI和成本节省 |
+| `.aiox-core/development/checklists/accessibility-wcag-checklist.md` | `*a11y-check` | WCAG无障碍审计 |
 
 #### 通用任务(2个任务)
 
 | 文件 | 命令 | 目的 |
 |------|------|------|
-| `.aios-core/development/tasks/ux-ds-scan-artifact.md` | `*scan {path\|url}` | 分析HTML/React以提取模式 |
-| `.aios-core/development/tasks/integrate-Squad.md` | `*integrate {squad}` | 与扩展小组连接 |
+| `.aiox-core/development/tasks/ux-ds-scan-artifact.md` | `*scan {path\|url}` | 分析HTML/React以提取模式 |
+| `.aiox-core/development/tasks/integrate-Squad.md` | `*integrate {squad}` | 与扩展小组连接 |
 
 ---
 

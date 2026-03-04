@@ -1,10 +1,10 @@
 <!--
   翻译：zh-CN（简体中文）
-  原文：/docs/aios-agent-flows/analyst-system.md
+  原文：/docs/aiox-agent-flows/analyst-system.md
   最后同步：2026-02-22
 -->
 
-# 分析师代理 (@analyst) 系统 - AIOS
+# 分析师代理 (@analyst) 系统 - AIOX
 
 > **版本：** 1.0.0
 > **创建日期：** 2026-02-04
@@ -61,53 +61,53 @@
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/agents/analyst.md` | 分析师代理核心定义 |
-| `.claude/commands/AIOS/agents/analyst.md` | 用于激活 @analyst 的 Claude Code 命令 |
+| `.aiox-core/development/agents/analyst.md` | 分析师代理核心定义 |
+| `.claude/commands/AIOX/agents/analyst.md` | 用于激活 @analyst 的 Claude Code 命令 |
 
 ### 分析师任务
 
 | 文件 | 命令 | 目的 |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}` | 主要任务 - 促进结构化头脑风暴会话 |
-| `.aios-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}` | 头脑风暴任务的交互变体 |
-| `.aios-core/development/tasks/create-deep-research-prompt.md` | `*research-prompt {topic}` | 生成深度研究调查提示 |
-| `.aios-core/development/tasks/advanced-elicitation.md` | `*elicit` | 高级需求获取会话 |
-| `.aios-core/development/tasks/create-doc.md` | `*doc-out` | 从 YAML 模板创建文档 |
-| `.aios-core/development/tasks/document-project.md` | `*create-project-brief` | 现有项目文档 |
-| `.aios-core/development/tasks/calculate-roi.md` | (相关) | ROI 和成本节约计算 |
+| `.aiox-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}` | 主要任务 - 促进结构化头脑风暴会话 |
+| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}` | 头脑风暴任务的交互变体 |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research-prompt {topic}` | 生成深度研究调查提示 |
+| `.aiox-core/development/tasks/advanced-elicitation.md` | `*elicit` | 高级需求获取会话 |
+| `.aiox-core/development/tasks/create-doc.md` | `*doc-out` | 从 YAML 模板创建文档 |
+| `.aiox-core/development/tasks/document-project.md` | `*create-project-brief` | 现有项目文档 |
+| `.aiox-core/development/tasks/calculate-roi.md` | (相关) | ROI 和成本节约计算 |
 
 ### 相关分析任务
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/tasks/analyze-brownfield.md` | 棕地项目分析 |
-| `.aios-core/development/tasks/analyze-framework.md` | 现有框架分析 |
-| `.aios-core/development/tasks/analyze-performance.md` | 性能分析 |
-| `.aios-core/development/tasks/analyze-project-structure.md` | 项目结构分析 |
-| `.aios-core/development/tasks/analyze-cross-artifact.md` | 跨工件分析 |
+| `.aiox-core/development/tasks/analyze-brownfield.md` | 棕地项目分析 |
+| `.aiox-core/development/tasks/analyze-framework.md` | 现有框架分析 |
+| `.aiox-core/development/tasks/analyze-performance.md` | 性能分析 |
+| `.aiox-core/development/tasks/analyze-project-structure.md` | 项目结构分析 |
+| `.aiox-core/development/tasks/analyze-cross-artifact.md` | 跨工件分析 |
 
 ### 分析师模板
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/product/templates/project-brief-tmpl.yaml` | 项目简介模板 |
-| `.aios-core/product/templates/market-research-tmpl.yaml` | 市场研究模板 |
-| `.aios-core/product/templates/competitor-analysis-tmpl.yaml` | 竞争分析模板 |
-| `.aios-core/product/templates/brainstorming-output-tmpl.yaml` | 头脑风暴会话输出模板 |
+| `.aiox-core/product/templates/project-brief-tmpl.yaml` | 项目简介模板 |
+| `.aiox-core/product/templates/market-research-tmpl.yaml` | 市场研究模板 |
+| `.aiox-core/product/templates/competitor-analysis-tmpl.yaml` | 竞争分析模板 |
+| `.aiox-core/product/templates/brainstorming-output-tmpl.yaml` | 头脑风暴会话输出模板 |
 
 ### 数据文件
 
 | 文件 | 目的 |
 |---------|-----------|
-| `.aios-core/development/data/aios-kb.md` | AIOS 知识库 |
-| `.aios-core/development/data/brainstorming-techniques.md` | 可用的头脑风暴技术 |
+| `.aiox-core/development/data/aiox-kb.md` | AIOX 知识库 |
+| `.aiox-core/development/data/brainstorming-techniques.md` | 可用的头脑风暴技术 |
 
 ### 使用分析师的工作流
 
 | 文件 | 阶段 | 目的 |
 |---------|------|-----------|
-| `.aios-core/development/workflows/greenfield-fullstack.yaml` | 阶段 1 | 发现与规划 - 创建 project-brief.md |
-| `.aios-core/development/workflows/brownfield-discovery.yaml` | 阶段 9 | 高管意识报告 |
+| `.aiox-core/development/workflows/greenfield-fullstack.yaml` | 阶段 1 | 发现与规划 - 创建 project-brief.md |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml` | 阶段 9 | 高管意识报告 |
 
 ---
 
@@ -629,27 +629,27 @@ template:
 
 ### 主要任务
 
-- [任务：facilitate-brainstorming-session.md](.aios-core/development/tasks/facilitate-brainstorming-session.md)
-- [任务：create-deep-research-prompt.md](.aios-core/development/tasks/create-deep-research-prompt.md)
-- [任务：advanced-elicitation.md](.aios-core/development/tasks/advanced-elicitation.md)
-- [任务：create-doc.md](.aios-core/development/tasks/create-doc.md)
-- [任务：document-project.md](.aios-core/development/tasks/document-project.md)
+- [任务：facilitate-brainstorming-session.md](.aiox-core/development/tasks/facilitate-brainstorming-session.md)
+- [任务：create-deep-research-prompt.md](.aiox-core/development/tasks/create-deep-research-prompt.md)
+- [任务：advanced-elicitation.md](.aiox-core/development/tasks/advanced-elicitation.md)
+- [任务：create-doc.md](.aiox-core/development/tasks/create-doc.md)
+- [任务：document-project.md](.aiox-core/development/tasks/document-project.md)
 
 ### 模板
 
-- [模板：project-brief-tmpl.yaml](.aios-core/product/templates/project-brief-tmpl.yaml)
-- [模板：market-research-tmpl.yaml](.aios-core/product/templates/market-research-tmpl.yaml)
-- [模板：competitor-analysis-tmpl.yaml](.aios-core/product/templates/competitor-analysis-tmpl.yaml)
-- [模板：brainstorming-output-tmpl.yaml](.aios-core/product/templates/brainstorming-output-tmpl.yaml)
+- [模板：project-brief-tmpl.yaml](.aiox-core/product/templates/project-brief-tmpl.yaml)
+- [模板：market-research-tmpl.yaml](.aiox-core/product/templates/market-research-tmpl.yaml)
+- [模板：competitor-analysis-tmpl.yaml](.aiox-core/product/templates/competitor-analysis-tmpl.yaml)
+- [模板：brainstorming-output-tmpl.yaml](.aiox-core/product/templates/brainstorming-output-tmpl.yaml)
 
 ### 工作流
 
-- [工作流：greenfield-fullstack.yaml](.aios-core/development/workflows/greenfield-fullstack.yaml)
-- [工作流：brownfield-discovery.yaml](.aios-core/development/workflows/brownfield-discovery.yaml)
+- [工作流：greenfield-fullstack.yaml](.aiox-core/development/workflows/greenfield-fullstack.yaml)
+- [工作流：brownfield-discovery.yaml](.aiox-core/development/workflows/brownfield-discovery.yaml)
 
 ### 代理
 
-- [代理：analyst.md](.aios-core/development/agents/analyst.md)
+- [代理：analyst.md](.aiox-core/development/agents/analyst.md)
 
 ---
 

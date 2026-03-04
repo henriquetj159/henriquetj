@@ -1,10 +1,10 @@
 # Auto Worktree Workflow
 
-> [PT](../../aios-workflows/auto-worktree-workflow.md) | [EN](../../en/aios-workflows/auto-worktree-workflow.md) | **ES**
+> [PT](../../aiox-workflows/auto-worktree-workflow.md) | [EN](../../en/aiox-workflows/auto-worktree-workflow.md) | **ES**
 
 ---
 
-> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aios-workflows/auto-worktree-workflow.md).
+> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aiox-workflows/auto-worktree-workflow.md).
 
 ---
 
@@ -32,7 +32,7 @@ Workflow para gestion automatica de git worktrees, incluyendo:
 
 ## Ver Mas
 
-- **[Documentacion completa (PT)](../../aios-workflows/auto-worktree-workflow.md)**
+- **[Documentacion completa (PT)](../../aiox-workflows/auto-worktree-workflow.md)**
 
 ---
 

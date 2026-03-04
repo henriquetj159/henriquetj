@@ -1,7 +1,7 @@
 /**
- * AIOS Installer - Main installation logic
+ * AIOX Installer - Main installation logic
  *
- * Orchestrates the complete AIOS installation flow:
+ * Orchestrates the complete AIOX installation flow:
  * 1. OS detection
  * 2. Dependency checking
  * 3. Profile selection (bob vs advanced)
@@ -90,14 +90,14 @@ class InstallLogger {
 }
 
 /**
- * Check if a config-resolver is available (aios-core installed)
+ * Check if a config-resolver is available (aiox-core installed)
  * @param {string} projectRoot - Project root
  * @returns {Object|null} Config resolver module or null
  */
 function tryLoadConfigResolver(projectRoot) {
   const possiblePaths = [
-    path.join(projectRoot, '.aios-core/core/config/config-resolver.js'),
-    path.join(projectRoot, 'node_modules/aios-core/.aios-core/core/config/config-resolver.js'),
+    path.join(projectRoot, '.aiox-core/core/config/config-resolver.js'),
+    path.join(projectRoot, 'node_modules/aiox-core/.aiox-core/core/config/config-resolver.js'),
   ];
 
   for (const configPath of possiblePaths) {
@@ -120,7 +120,7 @@ function tryLoadConfigResolver(projectRoot) {
  * @param {boolean} dryRun - Whether this is a dry run
  */
 async function createUserConfigDirect(profile, logger, dryRun) {
-  const userConfigDir = path.join(os.homedir(), '.aios');
+  const userConfigDir = path.join(os.homedir(), '.aiox');
   const userConfigPath = path.join(userConfigDir, 'user-config.yaml');
 
   if (dryRun) {
@@ -154,7 +154,7 @@ async function createUserConfigDirect(profile, logger, dryRun) {
 }
 
 /**
- * Check if this is a brownfield installation (existing AIOS)
+ * Check if this is a brownfield installation (existing AIOX)
  * @param {string} projectRoot - Project root
  * @returns {Object} Brownfield detection result
  */
@@ -167,22 +167,22 @@ function detectBrownfield(projectRoot) {
   };
 
   // Check for legacy monolithic config
-  const legacyConfigPath = path.join(projectRoot, '.aios-core/core-config.yaml');
+  const legacyConfigPath = path.join(projectRoot, '.aiox-core/core-config.yaml');
   if (fs.existsSync(legacyConfigPath)) {
     result.isBrownfield = true;
     result.hasLegacyConfig = true;
   }
 
   // Check for layered config
-  const frameworkConfigPath = path.join(projectRoot, '.aios-core/framework-config.yaml');
+  const frameworkConfigPath = path.join(projectRoot, '.aiox-core/framework-config.yaml');
   if (fs.existsSync(frameworkConfigPath)) {
     result.isBrownfield = true;
     result.hasLayeredConfig = true;
   }
 
-  // Check for .aios-core directory
-  const aiosCoreDir = path.join(projectRoot, '.aios-core');
-  if (fs.existsSync(aiosCoreDir)) {
+  // Check for .aiox-core directory
+  const aioxCoreDir = path.join(projectRoot, '.aiox-core');
+  if (fs.existsSync(aioxCoreDir)) {
     result.isBrownfield = true;
   }
 
@@ -193,32 +193,32 @@ function detectBrownfield(projectRoot) {
 }
 
 /**
- * Run the AIOS doctor command
+ * Run the AIOX doctor command
  * @param {string} projectRoot - Project root
  * @param {InstallLogger} logger - Logger instance
  * @param {boolean} dryRun - Whether this is a dry run
  */
 async function runDoctor(projectRoot, logger, dryRun) {
   if (dryRun) {
-    logger.action('Run: npx aios-core doctor');
+    logger.action('Run: npx aiox-core doctor');
     return;
   }
 
-  const spinner = ora('Running AIOS doctor...').start();
+  const spinner = ora('Running AIOX doctor...').start();
 
   try {
-    const { stdout } = await execa('npx', ['aios-core', 'doctor'], {
+    const { stdout } = await execa('npx', ['aiox-core', 'doctor'], {
       cwd: projectRoot,
       timeout: 60000,
     });
 
-    spinner.succeed('AIOS doctor completed');
+    spinner.succeed('AIOX doctor completed');
 
     if (logger.verbose) {
       console.log(chalk.dim(stdout));
     }
   } catch (error) {
-    spinner.warn('AIOS doctor had warnings');
+    spinner.warn('AIOX doctor had warnings');
     if (logger.verbose) {
       console.log(chalk.yellow(error.message));
     }
@@ -226,55 +226,55 @@ async function runDoctor(projectRoot, logger, dryRun) {
 }
 
 /**
- * Install aios-core package
+ * Install aiox-core package
  * @param {string} projectRoot - Project root
  * @param {InstallLogger} logger - Logger instance
  * @param {boolean} dryRun - Whether this is a dry run
  */
-async function installAiosCore(projectRoot, logger, dryRun) {
+async function installAioxCore(projectRoot, logger, dryRun) {
   if (dryRun) {
-    logger.action('Run: npm install aios-core --save-dev');
+    logger.action('Run: npm install aiox-core --save-dev');
     return;
   }
 
-  const spinner = ora('Installing aios-core...').start();
+  const spinner = ora('Installing aiox-core...').start();
 
   try {
-    await execa('npm', ['install', 'aios-core', '--save-dev'], {
+    await execa('npm', ['install', 'aiox-core', '--save-dev'], {
       cwd: projectRoot,
       timeout: 300000, // 5 minutes
     });
 
-    spinner.succeed('aios-core installed');
+    spinner.succeed('aiox-core installed');
   } catch (error) {
-    spinner.fail('Failed to install aios-core');
+    spinner.fail('Failed to install aiox-core');
     throw error;
   }
 }
 
 /**
- * Initialize AIOS in the project
+ * Initialize AIOX in the project
  * @param {string} projectRoot - Project root
  * @param {InstallLogger} logger - Logger instance
  * @param {boolean} dryRun - Whether this is a dry run
  */
-async function initializeAios(projectRoot, logger, dryRun) {
+async function initializeAiox(projectRoot, logger, dryRun) {
   if (dryRun) {
-    logger.action('Run: npx aios-core install');
+    logger.action('Run: npx aiox-core install');
     return;
   }
 
-  const spinner = ora('Initializing AIOS...').start();
+  const spinner = ora('Initializing AIOX...').start();
 
   try {
-    await execa('npx', ['aios-core', 'install'], {
+    await execa('npx', ['aiox-core', 'install'], {
       cwd: projectRoot,
       timeout: 120000, // 2 minutes
     });
 
-    spinner.succeed('AIOS initialized');
+    spinner.succeed('AIOX initialized');
   } catch (error) {
-    spinner.fail('Failed to initialize AIOS');
+    spinner.fail('Failed to initialize AIOX');
     throw error;
   }
 }
@@ -299,7 +299,7 @@ async function runInstaller(options = {}) {
   }
 
   // Introduction
-  intro(chalk.bgCyan(' AIOS Installer '));
+  intro(chalk.bgCyan(' AIOX Installer '));
 
   if (options.dryRun) {
     note(
@@ -356,7 +356,7 @@ async function runInstaller(options = {}) {
   if (!profile) {
     console.log('');
     const profileSelection = await select({
-      message: 'Select your AIOS profile:',
+      message: 'Select your AIOX profile:',
       options: [
         {
           value: 'bob',
@@ -391,7 +391,7 @@ async function runInstaller(options = {}) {
   const brownfield = detectBrownfield(projectRoot);
 
   if (brownfield.isBrownfield) {
-    logger.info('Existing AIOS installation detected');
+    logger.info('Existing AIOX installation detected');
 
     if (brownfield.hasLegacyConfig && !brownfield.hasLayeredConfig) {
       logger.warn('Legacy configuration format detected');
@@ -409,7 +409,7 @@ async function runInstaller(options = {}) {
       if (shouldMigrate && !options.dryRun) {
         const spinner = ora('Migrating configuration...').start();
         try {
-          await execa('npx', ['aios-core', 'config', 'migrate'], {
+          await execa('npx', ['aiox-core', 'config', 'migrate'], {
             cwd: projectRoot,
             timeout: 60000,
           });
@@ -419,7 +419,7 @@ async function runInstaller(options = {}) {
           logger.debug(error.message);
         }
       } else if (options.dryRun) {
-        logger.action('Run: npx aios-core config migrate');
+        logger.action('Run: npx aiox-core config migrate');
       }
     } else {
       logger.success('Configuration is up to date');
@@ -442,11 +442,11 @@ async function runInstaller(options = {}) {
       }
     }
 
-    // Install aios-core
-    await installAiosCore(projectRoot, logger, options.dryRun);
+    // Install aiox-core
+    await installAioxCore(projectRoot, logger, options.dryRun);
 
-    // Initialize AIOS
-    await initializeAios(projectRoot, logger, options.dryRun);
+    // Initialize AIOX
+    await initializeAiox(projectRoot, logger, options.dryRun);
   }
 
   // Step 6: Run doctor
@@ -464,10 +464,10 @@ async function runInstaller(options = {}) {
   if (options.dryRun) {
     outro(chalk.yellow(`Dry-run complete in ${elapsed}. No changes were made.`));
   } else {
-    outro(chalk.green(`AIOS installed successfully in ${elapsed}!`));
+    outro(chalk.green(`AIOX installed successfully in ${elapsed}!`));
     console.log('');
     console.log(chalk.dim('Next steps:'));
-    console.log(chalk.dim('  1. Run `npx aios-core info` to see your configuration'));
+    console.log(chalk.dim('  1. Run `npx aiox-core info` to see your configuration'));
     console.log(chalk.dim('  2. Activate an agent with @agent-name (e.g., @dev)'));
     if (profile === 'bob') {
       console.log(chalk.dim('  3. Just talk to Bob - he\'ll orchestrate everything!'));

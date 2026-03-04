@@ -57,7 +57,7 @@ Or manually copy and customize:
 
 ```bash
 # Copy template
-cp .aios-core/infrastructure/templates/github-workflows/ci.yml.template .github/workflows/ci.yml
+cp .aiox-core/infrastructure/templates/github-workflows/ci.yml.template .github/workflows/ci.yml
 
 # Replace variables
 sed -i 's/{{NODE_VERSION}}/20/g' .github/workflows/ci.yml

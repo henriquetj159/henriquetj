@@ -1,5 +1,5 @@
 # =============================================================================
-# AIOS MCP Tool Examples Registry
+# AIOX MCP Tool Examples Registry
 # =============================================================================
 # Input examples for MCP and agent tools to improve Claude's tool selection
 # accuracy. Research shows +18pp improvement (72% → 90%) with concrete examples.
@@ -77,12 +77,12 @@ tools:
     examples:
       - description: "Pre-commit review of uncommitted changes"
         input:
-          command: "wsl bash -c 'cd /mnt/c/.../aios-core && ~/.local/bin/coderabbit --prompt-only -t uncommitted'"
+          command: "wsl bash -c 'cd /mnt/c/.../aiox-core && ~/.local/bin/coderabbit --prompt-only -t uncommitted'"
           scope: uncommitted
         expected: "Returns code review findings categorized by severity (CRITICAL/HIGH/MEDIUM/LOW)"
       - description: "Full review against main branch for PR"
         input:
-          command: "wsl bash -c 'cd /mnt/c/.../aios-core && ~/.local/bin/coderabbit --prompt-only --base main'"
+          command: "wsl bash -c 'cd /mnt/c/.../aiox-core && ~/.local/bin/coderabbit --prompt-only --base main'"
           scope: committed
         expected: "Returns comprehensive review of all changes since main"
 

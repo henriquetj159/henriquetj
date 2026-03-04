@@ -443,7 +443,7 @@ final class OrdersController
 
 ---
 
-## Integration with AIOS
+## Integration with AIOX
 
 ### Recommended Workflow
 
@@ -451,7 +451,7 @@ final class OrdersController
 2. `@dev` implementa Actions, Contracts e adapters por contexto
 3. `@qa` valida consistencia de requests, transacoes e testes
 
-### AIOS Commands
+### AIOX Commands
 
 ```bash
 @dev "Follow the php preset patterns for this feature"
@@ -481,4 +481,4 @@ final class OrdersController
 
 ---
 
-_AIOS Tech Preset - Synkra AIOS Framework_
+_AIOX Tech Preset - Synkra AIOX Framework_

@@ -1,5 +1,5 @@
 /**
- * AIOS Core Installer Tests
+ * AIOX Core Installer Tests
  *
  * @story Story 7.2: Version Tracking
  */
@@ -11,14 +11,14 @@ const os = require('os');
 const {
   generateFileHashes,
   generateVersionJson,
-} = require('../../packages/installer/src/installer/aios-core-installer');
+} = require('../../packages/installer/src/installer/aiox-core-installer');
 
-describe('AIOS Core Installer - Version Tracking', () => {
+describe('AIOX Core Installer - Version Tracking', () => {
   let tempDir;
 
   beforeEach(async () => {
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'aios-installer-test-'));
-    await fs.ensureDir(path.join(tempDir, '.aios-core'));
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'aiox-installer-test-'));
+    await fs.ensureDir(path.join(tempDir, '.aiox-core'));
   });
 
   afterEach(async () => {
@@ -29,16 +29,16 @@ describe('AIOS Core Installer - Version Tracking', () => {
 
   describe('generateFileHashes', () => {
     it('should generate hashes for installed files', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
       // Create test files
-      await fs.writeFile(path.join(aiosCoreDir, 'test1.md'), '# Test File 1');
-      await fs.writeFile(path.join(aiosCoreDir, 'test2.md'), '# Test File 2');
-      await fs.ensureDir(path.join(aiosCoreDir, 'agents'));
-      await fs.writeFile(path.join(aiosCoreDir, 'agents', 'dev.md'), '# Dev Agent');
+      await fs.writeFile(path.join(aioxCoreDir, 'test1.md'), '# Test File 1');
+      await fs.writeFile(path.join(aioxCoreDir, 'test2.md'), '# Test File 2');
+      await fs.ensureDir(path.join(aioxCoreDir, 'agents'));
+      await fs.writeFile(path.join(aioxCoreDir, 'agents', 'dev.md'), '# Dev Agent');
 
       const installedFiles = ['test1.md', 'test2.md', 'agents/dev.md'];
-      const hashes = await generateFileHashes(aiosCoreDir, installedFiles);
+      const hashes = await generateFileHashes(aioxCoreDir, installedFiles);
 
       expect(Object.keys(hashes)).toHaveLength(3);
       expect(hashes['test1.md']).toMatch(/^sha256:[a-f0-9]{64}$/);
@@ -47,13 +47,13 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should skip non-existent files', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
       // Create only one file
-      await fs.writeFile(path.join(aiosCoreDir, 'exists.md'), '# Exists');
+      await fs.writeFile(path.join(aioxCoreDir, 'exists.md'), '# Exists');
 
       const installedFiles = ['exists.md', 'does-not-exist.md'];
-      const hashes = await generateFileHashes(aiosCoreDir, installedFiles);
+      const hashes = await generateFileHashes(aioxCoreDir, installedFiles);
 
       expect(Object.keys(hashes)).toHaveLength(1);
       expect(hashes['exists.md']).toBeDefined();
@@ -61,13 +61,13 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should skip directories', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
-      await fs.ensureDir(path.join(aiosCoreDir, 'agents'));
-      await fs.writeFile(path.join(aiosCoreDir, 'file.md'), '# File');
+      await fs.ensureDir(path.join(aioxCoreDir, 'agents'));
+      await fs.writeFile(path.join(aioxCoreDir, 'file.md'), '# File');
 
       const installedFiles = ['file.md', 'agents'];
-      const hashes = await generateFileHashes(aiosCoreDir, installedFiles);
+      const hashes = await generateFileHashes(aioxCoreDir, installedFiles);
 
       expect(Object.keys(hashes)).toHaveLength(1);
       expect(hashes['file.md']).toBeDefined();
@@ -75,25 +75,25 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should generate consistent hashes for same content', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
-      await fs.writeFile(path.join(aiosCoreDir, 'file1.md'), 'Same content');
-      await fs.writeFile(path.join(aiosCoreDir, 'file2.md'), 'Same content');
+      await fs.writeFile(path.join(aioxCoreDir, 'file1.md'), 'Same content');
+      await fs.writeFile(path.join(aioxCoreDir, 'file2.md'), 'Same content');
 
       const installedFiles = ['file1.md', 'file2.md'];
-      const hashes = await generateFileHashes(aiosCoreDir, installedFiles);
+      const hashes = await generateFileHashes(aioxCoreDir, installedFiles);
 
       expect(hashes['file1.md']).toBe(hashes['file2.md']);
     });
 
     it('should generate different hashes for different content', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
-      await fs.writeFile(path.join(aiosCoreDir, 'file1.md'), 'Content A');
-      await fs.writeFile(path.join(aiosCoreDir, 'file2.md'), 'Content B');
+      await fs.writeFile(path.join(aioxCoreDir, 'file1.md'), 'Content A');
+      await fs.writeFile(path.join(aioxCoreDir, 'file2.md'), 'Content B');
 
       const installedFiles = ['file1.md', 'file2.md'];
-      const hashes = await generateFileHashes(aiosCoreDir, installedFiles);
+      const hashes = await generateFileHashes(aioxCoreDir, installedFiles);
 
       expect(hashes['file1.md']).not.toBe(hashes['file2.md']);
     });
@@ -101,13 +101,13 @@ describe('AIOS Core Installer - Version Tracking', () => {
 
   describe('generateVersionJson', () => {
     it('should create version.json with correct structure', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
       // Create test files
-      await fs.writeFile(path.join(aiosCoreDir, 'test.md'), '# Test');
+      await fs.writeFile(path.join(aioxCoreDir, 'test.md'), '# Test');
 
       const result = await generateVersionJson({
-        targetAiosCore: aiosCoreDir,
+        targetAioxCore: aioxCoreDir,
         version: '1.2.0',
         installedFiles: ['test.md'],
         mode: 'project-development',
@@ -122,18 +122,18 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should write version.json to disk', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
-      await fs.writeFile(path.join(aiosCoreDir, 'agent.md'), '# Agent');
+      await fs.writeFile(path.join(aioxCoreDir, 'agent.md'), '# Agent');
 
       await generateVersionJson({
-        targetAiosCore: aiosCoreDir,
+        targetAioxCore: aioxCoreDir,
         version: '2.0.0',
         installedFiles: ['agent.md'],
         mode: 'framework-development',
       });
 
-      const versionJsonPath = path.join(aiosCoreDir, 'version.json');
+      const versionJsonPath = path.join(aioxCoreDir, 'version.json');
       expect(fs.existsSync(versionJsonPath)).toBe(true);
 
       const versionJson = await fs.readJson(versionJsonPath);
@@ -142,10 +142,10 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should use default mode when not specified', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
       const result = await generateVersionJson({
-        targetAiosCore: aiosCoreDir,
+        targetAioxCore: aioxCoreDir,
         version: '1.0.0',
         installedFiles: [],
       });
@@ -154,14 +154,14 @@ describe('AIOS Core Installer - Version Tracking', () => {
     });
 
     it('should include file hashes in version.json', async () => {
-      const aiosCoreDir = path.join(tempDir, '.aios-core');
+      const aioxCoreDir = path.join(tempDir, '.aiox-core');
 
-      await fs.ensureDir(path.join(aiosCoreDir, 'agents'));
-      await fs.writeFile(path.join(aiosCoreDir, 'agents', 'dev.md'), '# Dev');
-      await fs.writeFile(path.join(aiosCoreDir, 'config.yaml'), 'key: value');
+      await fs.ensureDir(path.join(aioxCoreDir, 'agents'));
+      await fs.writeFile(path.join(aioxCoreDir, 'agents', 'dev.md'), '# Dev');
+      await fs.writeFile(path.join(aioxCoreDir, 'config.yaml'), 'key: value');
 
       const result = await generateVersionJson({
-        targetAiosCore: aiosCoreDir,
+        targetAioxCore: aioxCoreDir,
         version: '1.0.0',
         installedFiles: ['agents/dev.md', 'config.yaml'],
       });

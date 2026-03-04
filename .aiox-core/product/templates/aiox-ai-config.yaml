@@ -1,6 +1,6 @@
-# AIOS AI Provider Configuration
+# AIOX AI Provider Configuration
 #
-# Configure AI providers (Claude Code, Gemini CLI) for AIOS operations.
+# Configure AI providers (Claude Code, Gemini CLI) for AIOX operations.
 # This file controls which provider is used for different task types.
 #
 # @see Epic GEMINI-INT - Story 2: AI Provider Factory Pattern

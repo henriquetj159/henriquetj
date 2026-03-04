@@ -9,7 +9,7 @@
 - kebab-case for files, PascalCase for components
 
 ### Project Structure
-- `.aios-core/core/` — Core modules
+- `.aiox-core/core/` — Core modules
 - `docs/` — Documentation and design specs
 - `packages/` — Shared packages
 

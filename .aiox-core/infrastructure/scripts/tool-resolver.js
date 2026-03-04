@@ -4,7 +4,7 @@ const yaml = require('js-yaml');
 const glob = require('glob');
 
 /**
- * ToolResolver - Resolves and loads AIOS tools from file system
+ * ToolResolver - Resolves and loads AIOX tools from file system
  *
  * Features:
  * - Map-based caching for performance (<5ms cached lookups)
@@ -23,7 +23,7 @@ class ToolResolver {
 
     // Base search paths (in priority order)
     this.basePaths = [
-      'aios-core/tools',
+      'aiox-core/tools',
       'common/tools',
       // Squad paths added dynamically during resolution
     ];
@@ -331,7 +331,7 @@ class ToolResolver {
    */
   resetSearchPaths() {
     this.basePaths = [
-      'aios-core/tools',
+      'aiox-core/tools',
       'common/tools',
     ];
   }

@@ -1,16 +1,16 @@
 /**
- * Jest configuration for @synkra/aios-install package
+ * Jest configuration for @synkra/aiox-install package
  */
 
 module.exports = {
   testEnvironment: 'node',
-  roots: ['../../tests/packages/aios-install'],
+  roots: ['../../tests/packages/aiox-install'],
   testMatch: ['**/*.test.js'],
   collectCoverageFrom: [
     'src/**/*.js',
     '!src/**/*.test.js',
   ],
-  coverageDirectory: '../../coverage/packages/aios-install',
+  coverageDirectory: '../../coverage/packages/aiox-install',
   coverageThreshold: {
     global: {
       branches: 70,

@@ -1,124 +1,123 @@
 /**
- * AIOS Color Palette v4.0.4
- * 
- * Brand-inspired color system for CLI tools and terminal output.
- * Colors derived from AIOS logo gradient (magenta → orange → purple → blue)
- * Primary purple references ClickUp brand color.
- * 
- * @see docs/standards/AIOS-COLOR-PALETTE-V2.1.md
- * @module aios-colors
+ * AIOX Color Palette v5.0.0
+ *
+ * Brand color system for CLI tools and terminal output.
+ * Colors derived from AIOX brand identity: Lime + Cream on Dark surfaces.
+ *
+ * @see docs/standards/AIOX-COLOR-PALETTE-V2.1.md
+ * @module aiox-colors
  */
 
 const chalk = require('chalk');
 
 /**
- * AIOS Brand Color Palette
+ * AIOX Brand Color Palette
  * All colors are WCAG AA compliant on dark terminals
  */
 const colors = {
   // ============================================
   // CORE BRAND COLORS
   // ============================================
-  
+
   /**
-   * Primary brand color - ClickUp-inspired purple
-   * Usage: Main questions, headers, CTAs, primary actions
+   * Primary brand color - AIOX Lime
+   * Usage: Main questions, headers, CTAs, banner, primary actions
    */
-  primary: chalk.hex('#8B5CF6'),
-  
+  primary: chalk.hex('#D1FF00'),
+
   /**
-   * Secondary brand color - Magenta accent from logo gradient
+   * Secondary brand color - AIOX Cream
    * Usage: Important highlights, special emphasis, key information
    */
-  secondary: chalk.hex('#EC4899'),
-  
+  secondary: chalk.hex('#F4F4E8'),
+
   /**
-   * Tertiary brand color - Blue accent from logo gradient
+   * Tertiary brand color - Lime dim for supporting elements
    * Usage: Secondary actions, links, complementary elements
    */
-  tertiary: chalk.hex('#3B82F6'),
-  
+  tertiary: chalk.hex('#8BA600'),
+
   // ============================================
   // FUNCTIONAL COLORS
   // ============================================
-  
+
   /**
    * Success state color
    * Usage: Checkmarks, completed steps, success messages
    */
   success: chalk.hex('#10B981'),
-  
+
   /**
-   * Warning state color - Orange from logo gradient
+   * Warning state color
    * Usage: Warnings, confirmations, caution states
    */
   warning: chalk.hex('#F59E0B'),
-  
+
   /**
    * Error state color
    * Usage: Errors, critical alerts, validation failures
    */
   error: chalk.hex('#EF4444'),
-  
+
   /**
-   * Info state color - Cyan-blue from logo gradient
+   * Info state color
    * Usage: Info messages, tips, helper text, additional context
    */
   info: chalk.hex('#06B6D4'),
-  
+
   // ============================================
   // NEUTRAL COLORS
   // ============================================
-  
+
   /**
    * Muted text color
    * Usage: Subtle text, disabled states, secondary content
    */
   muted: chalk.hex('#94A3B8'),
-  
+
   /**
    * Dim text color
    * Usage: Secondary text, muted content, less important info
    */
   dim: chalk.hex('#64748B'),
-  
+
   // ============================================
   // GRADIENT SYSTEM
   // ============================================
-  
+
   /**
    * Brand gradient colors for animations and special effects
-   * Matches AIOS logo gradient: magenta → purple → blue
+   * AIOX identity: Lime → Cream
    */
   gradient: {
-    /** Gradient start - Magenta (logo top) */
-    start: chalk.hex('#EC4899'),
-    
-    /** Gradient middle - Purple (brand) */
-    middle: chalk.hex('#8B5CF6'),
-    
-    /** Gradient end - Blue (logo bottom) */
-    end: chalk.hex('#3B82F6'),
+    /** Gradient start - Lime (brand primary) */
+    start: chalk.hex('#D1FF00'),
+
+    /** Gradient middle - Lime dim */
+    middle: chalk.hex('#8BA600'),
+
+    /** Gradient end - Cream (brand secondary) */
+    end: chalk.hex('#F4F4E8'),
   },
-  
+
   // ============================================
   // SEMANTIC SHORTCUTS
   // ============================================
-  
+
   /**
-   * Highlighted text - Bold magenta for key information
+   * Highlighted text - Bold lime for key information
    */
-  highlight: chalk.hex('#EC4899').bold,
-  
+  highlight: chalk.hex('#D1FF00').bold,
+
   /**
-   * Primary branding - Bold purple for AIOS brand moments
+   * Primary branding - Bold lime for AIOX brand moments
    */
-  brandPrimary: chalk.hex('#8B5CF6').bold,
-  
+  brandPrimary: chalk.hex('#D1FF00').bold,
+
   /**
-   * Secondary branding - Cyan for supporting brand elements
+   * Secondary branding - Cream for supporting brand elements
    */
-  brandSecondary: chalk.hex('#06B6D4'),
+  brandSecondary: chalk.hex('#F4F4E8'),
 };
 
 /**
@@ -189,7 +188,7 @@ const lists = {
  */
 const examples = {
   welcome: () => {
-    console.log(headings.h1('🎉 Welcome to AIOS v4 Installer!'));
+    console.log(headings.h1('🎉 Welcome to AIOX v4 Installer!'));
     console.log(colors.info('Let\'s configure your project in just a few steps...\n'));
   },
   
@@ -215,7 +214,7 @@ const examples = {
   complete: () => {
     console.log('\n' + headings.divider());
     console.log(status.celebrate('Installation Complete!'));
-    console.log(colors.info('Your AIOS project is ready to use.'));
+    console.log(colors.info('Your AIOX project is ready to use.'));
     console.log(headings.divider() + '\n');
   },
 };

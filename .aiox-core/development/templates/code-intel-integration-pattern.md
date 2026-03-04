@@ -123,7 +123,7 @@ async function multiCapabilityFunction(param) {
 
 ```javascript
 // Mock the code-intel module at the top of your test file
-jest.mock('../../.aios-core/core/code-intel/index', () => ({
+jest.mock('../../.aiox-core/core/code-intel/index', () => ({
   isCodeIntelAvailable: jest.fn(),
   getEnricher: jest.fn(),
   getClient: jest.fn(),
@@ -133,7 +133,7 @@ const {
   isCodeIntelAvailable,
   getEnricher,
   getClient,
-} = require('../../.aios-core/core/code-intel/index');
+} = require('../../.aiox-core/core/code-intel/index');
 ```
 
 ### Required Test Scenarios

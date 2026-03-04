@@ -1,7 +1,7 @@
 # ============================================
-# AIOS Framework Configuration (Level 1)
+# AIOX Framework Configuration (Level 1)
 # ============================================
-# DO NOT EDIT — This file is part of the AIOS framework.
+# DO NOT EDIT — This file is part of the AIOX framework.
 # Override values in project-config.yaml or local-config.yaml.
 #
 # Level: L1 (Framework)
@@ -12,25 +12,25 @@
 
 # --- Metadata (framework portion) ---
 metadata:
-  name: "Synkra AIOS"
+  name: "Synkra AIOX"
   framework_version: "4.0.0"
 
 markdownExploder: true
 
 # --- Resource Locations (Section 3) ---
 resource_locations:
-  agents_dir: ".aios-core/development/agents"
-  tasks_dir: ".aios-core/development/tasks"
-  templates_dir: ".aios-core/development/templates"
-  checklists_dir: ".aios-core/development/checklists"
-  tools_dir: ".aios-core/tools"
+  agents_dir: ".aiox-core/development/agents"
+  tasks_dir: ".aiox-core/development/tasks"
+  templates_dir: ".aiox-core/development/templates"
+  checklists_dir: ".aiox-core/development/checklists"
+  tools_dir: ".aiox-core/tools"
   scripts:
-    core: ".aios-core/core"
-    development: ".aios-core/development/scripts"
-    infrastructure: ".aios-core/infrastructure/scripts"
-    legacy: ".aios-core/scripts"
-  data_dir: ".aios-core/data"
-  elicitation_dir: ".aios-core/elicitation"
+    core: ".aiox-core/core"
+    development: ".aiox-core/development/scripts"
+    infrastructure: ".aiox-core/infrastructure/scripts"
+    legacy: ".aiox-core/scripts"
+  data_dir: ".aiox-core/data"
+  elicitation_dir: ".aiox-core/elicitation"
   squads_template_dir: "templates/squad"
   minds_dir: "outputs/minds"
 
@@ -117,11 +117,11 @@ utility_scripts_registry:
 # --- IDE Sync System (Section 12) ---
 ide_sync_system:
   enabled: true
-  source: ".aios-core/development/agents"
+  source: ".aiox-core/development/agents"
   targets:
     claude-code:
       enabled: true
-      path: ".claude/commands/AIOS/agents"
+      path: ".claude/commands/AIOX/agents"
       format: "full-markdown-yaml"
     codex:
       enabled: true
@@ -129,7 +129,7 @@ ide_sync_system:
       format: "full-markdown-yaml"
     gemini:
       enabled: true
-      path: ".gemini/rules/AIOS/agents"
+      path: ".gemini/rules/AIOX/agents"
       format: "full-markdown-yaml"
     github-copilot:
       enabled: true

@@ -1,6 +1,6 @@
 ---
 # Template selection determined dynamically during task execution
-# User selects from available templates in .aios-core/product/templates/
+# User selects from available templates in .aiox-core/product/templates/
 tools:
   - github-cli        # For file operations
 utils:
@@ -33,7 +33,7 @@ utils:
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: createDoc()
@@ -139,7 +139,7 @@ acceptance-criteria:
 
 - **Tool:** component-generator
   - **Purpose:** Generate new components from templates
-  - **Source:** .aios-core/scripts/component-generator.js
+  - **Source:** .aiox-core/scripts/component-generator.js
 
 - **Tool:** file-system
   - **Purpose:** File creation and validation
@@ -154,7 +154,7 @@ acceptance-criteria:
 - **Script:** create-component.js
   - **Purpose:** Component creation workflow
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/create-component.js
+  - **Location:** .aiox-core/scripts/create-component.js
 
 ---
 
@@ -230,7 +230,7 @@ When this task is invoked:
 
 ## Critical: Template Discovery
 
-If a YAML Template has not been provided, list all templates from .aios-core/product/templates or ask the user to provide another.
+If a YAML Template has not been provided, list all templates from .aiox-core/product/templates or ask the user to provide another.
 
 ## CRITICAL: Mandatory Elicitation Format
 
@@ -258,8 +258,8 @@ If a YAML Template has not been provided, list all templates from .aios-core/pro
 When creating PRDs or architecture documents with code intelligence available, add a "Codebase Intelligence" section:
 
 ```javascript
-const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
-const { getCodebaseOverview, getDependencyGraph } = require('.aios-core/core/code-intel/helpers/planning-helper');
+const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
+const { getCodebaseOverview, getDependencyGraph } = require('.aiox-core/core/code-intel/helpers/planning-helper');
 
 if (isCodeIntelAvailable()) {
   const overview = await getCodebaseOverview('.');

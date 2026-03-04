@@ -5,8 +5,8 @@
 - IDS-4: 10 tasks, scope-expanded with Roundtable #6B/#6C (Performance + Quality Integrity). Oversized.
 - IDS-5: 10 tasks covering G1-G6 gates + 6 agent definitions + override + audit. Oversized.
 - IDS-6: 8 tasks, documentation/constitution amendment. Appropriately sized but depends on ALL others.
-- aios-master has NO IDS commands currently (grep confirms zero matches for "ids" or "registry" in agent def).
-- Existing CLI: `bin/aios-ids.js` has `ids:query` and `ids:create-review` only. No `ids:health`.
+- aiox-master has NO IDS commands currently (grep confirms zero matches for "ids" or "registry" in agent def).
+- Existing CLI: `bin/aiox-ids.js` has `ids:query` and `ids:create-review` only. No `ids:health`.
 - Key file: `registry-updater.js` already has backup/locking infrastructure that IDS-4 healer can reuse.
 
 ## Story Sizing Heuristics
@@ -34,7 +34,7 @@
 - 7 tasks, 37 subtasks, 5-6h estimate -- within sweet spot
 - All 12 API method references verified against actual codebase
 - RegistryUpdater API: processChanges([{action, filePath}]) AND onAgentTaskComplete(task, artifacts) -- story should prefer onAgentTaskComplete for audit
-- bin/aios-ids.js currently: ids:query, ids:create-review. IDS-7 adds: ids:stats, ids:impact
+- bin/aiox-ids.js currently: ids:query, ids:create-review. IDS-7 adds: ids:stats, ids:impact
 
 ## Validation Anti-Patterns
 - Epic INDEX claiming file exists when it doesn't (index.js) -- always verify with Glob

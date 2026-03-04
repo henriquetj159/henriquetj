@@ -32,7 +32,7 @@ Validate third-party library usage against official documentation using Context7
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: qaLibraryValidation()
@@ -493,4 +493,4 @@ This task is complete when:
 ---
 
 _Absorbed from Auto-Claude PR Review System - Phase 6.0_
-_AIOS QA Enhancement v1.0_
+_AIOX QA Enhancement v1.0_

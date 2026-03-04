@@ -26,7 +26,7 @@
 - Implementation → @dev
 
 ### Project Structure
-- `.aios-core/core/` — Engine modules
+- `.aiox-core/core/` — Engine modules
 - `docs/architecture/` — Architecture docs
 - `docs/prd/` — Sharded PRDs
 

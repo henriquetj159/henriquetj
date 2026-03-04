@@ -28,7 +28,7 @@ async function loadAgentRequirements() {
     return agentRequirements;
   }
 
-  const requirementsPath = path.join(process.cwd(), '.aios-core', 'data', 'agent-config-requirements.yaml');
+  const requirementsPath = path.join(process.cwd(), '.aiox-core', 'data', 'agent-config-requirements.yaml');
 
   try {
     const content = await fs.readFile(requirementsPath, 'utf8');
@@ -318,7 +318,7 @@ class AgentConfigLoader {
     }
     
     // Load from file
-    const agentPath = path.join(process.cwd(), '.aios-core', 'development', 'agents', `${this.agentId}.md`);
+    const agentPath = path.join(process.cwd(), '.aiox-core', 'development', 'agents', `${this.agentId}.md`);
     
     try {
       const content = await fs.readFile(agentPath, 'utf8');
@@ -580,7 +580,7 @@ if (require.main === module) {
 
         case 'preload': {
           const agents = agentId ? [agentId] : [
-            'aios-master', 'dev', 'qa', 'architect', 'po', 'pm', 'sm',
+            'aiox-master', 'dev', 'qa', 'architect', 'po', 'pm', 'sm',
             'analyst', 'ux-expert', 'data-engineer', 'devops', 'db-sage', 'security',
           ];
 

@@ -2,15 +2,15 @@
 'use strict';
 
 /**
- * Dependency Graph Validator — .aios-core/package.json completeness
+ * Dependency Graph Validator — .aiox-core/package.json completeness
  * Story INS-4.12 (AC1, AC4, AC6)
  *
- * Scans all .js files in .aios-core/development/scripts/ for require() calls,
+ * Scans all .js files in .aiox-core/development/scripts/ for require() calls,
  * then verifies each non-builtin, non-relative package is declared in
- * .aios-core/package.json dependencies.
+ * .aiox-core/package.json dependencies.
  *
  * Exit codes: 0 = PASS, 1 = FAIL (missing deps found)
- * Usage: node scripts/validate-aios-core-deps.js
+ * Usage: node scripts/validate-aiox-core-deps.js
  */
 
 const fs = require('fs');
@@ -18,9 +18,9 @@ const path = require('path');
 const Module = require('module');
 
 const PROJECT_ROOT = path.join(__dirname, '..');
-const AIOS_CORE_DIR = path.join(PROJECT_ROOT, '.aios-core');
-const SCRIPTS_DIR = path.join(AIOS_CORE_DIR, 'development', 'scripts');
-const PACKAGE_JSON = path.join(AIOS_CORE_DIR, 'package.json');
+const AIOX_CORE_DIR = path.join(PROJECT_ROOT, '.aiox-core');
+const SCRIPTS_DIR = path.join(AIOX_CORE_DIR, 'development', 'scripts');
+const PACKAGE_JSON = path.join(AIOX_CORE_DIR, 'package.json');
 
 // Node.js builtin modules
 const BUILTINS = new Set(Module.builtinModules.concat(
@@ -90,11 +90,11 @@ function findJsFiles(dir) {
 }
 
 function main() {
-  console.log('--- .aios-core Dependency Validation (INS-4.12) ---\n');
+  console.log('--- .aiox-core Dependency Validation (INS-4.12) ---\n');
 
-  // Read .aios-core/package.json
+  // Read .aiox-core/package.json
   if (!fs.existsSync(PACKAGE_JSON)) {
-    console.error('FAIL: .aios-core/package.json not found');
+    console.error('FAIL: .aiox-core/package.json not found');
     process.exit(1);
   }
 
@@ -104,11 +104,11 @@ function main() {
   // Find all JS scripts
   const scripts = findJsFiles(SCRIPTS_DIR);
   if (scripts.length === 0) {
-    console.log('WARN: No .js files found in .aios-core/development/scripts/');
+    console.log('WARN: No .js files found in .aiox-core/development/scripts/');
     process.exit(0);
   }
 
-  console.log(`Scanning ${scripts.length} scripts in .aios-core/development/scripts/\n`);
+  console.log(`Scanning ${scripts.length} scripts in .aiox-core/development/scripts/\n`);
 
   const errors = [];
   const allRequires = new Map(); // pkg -> [files that use it]
@@ -129,7 +129,7 @@ function main() {
 
   // Report
   console.log(`Found ${allRequires.size} unique external packages across ${scripts.length} scripts`);
-  console.log(`Declared in .aios-core/package.json: ${declared.size}`);
+  console.log(`Declared in .aiox-core/package.json: ${declared.size}`);
   console.log(`Allowlisted (optional/dev-time): ${ALLOWLIST.size}\n`);
 
   if (errors.length > 0) {
@@ -149,12 +149,12 @@ function main() {
       }
     }
 
-    console.error('\nFix: Add missing packages to .aios-core/package.json dependencies');
+    console.error('\nFix: Add missing packages to .aiox-core/package.json dependencies');
     console.error('Or add to ALLOWLIST if they are optional dev-time tools (wrap in try-catch)\n');
     process.exit(1);
   }
 
-  console.log('PASS: All script dependencies are declared in .aios-core/package.json\n');
+  console.log('PASS: All script dependencies are declared in .aiox-core/package.json\n');
   process.exit(0);
 }
 

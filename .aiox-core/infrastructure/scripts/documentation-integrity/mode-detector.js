@@ -1,8 +1,8 @@
 /**
  * Mode Detector Module
  *
- * Detects installation mode for AIOS projects with three-mode support:
- * - FRAMEWORK_DEV: Contributing to aios-core itself
+ * Detects installation mode for AIOX projects with three-mode support:
+ * - FRAMEWORK_DEV: Contributing to aiox-core itself
  * - GREENFIELD: New empty project
  * - BROWNFIELD: Existing project being integrated
  *
@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Installation modes supported by AIOS
+ * Installation modes supported by AIOX
  * @enum {string}
  */
 const InstallationMode = {
@@ -30,7 +30,7 @@ const InstallationMode = {
  * @enum {string}
  */
 const LegacyProjectType = {
-  EXISTING_AIOS: 'EXISTING_AIOS',
+  EXISTING_AIOX: 'EXISTING_AIOX',
   GREENFIELD: 'GREENFIELD',
   BROWNFIELD: 'BROWNFIELD',
   UNKNOWN: 'UNKNOWN',
@@ -43,17 +43,17 @@ const LegacyProjectType = {
 const ModeDescriptions = {
   [InstallationMode.FRAMEWORK_DEV]: {
     label: '🔧 Framework Development',
-    hint: 'Developing aios-core itself - uses framework standards, skips project setup',
-    description: 'For AIOS contributors working on the framework',
+    hint: 'Developing aiox-core itself - uses framework standards, skips project setup',
+    description: 'For AIOX contributors working on the framework',
   },
   [InstallationMode.GREENFIELD]: {
     label: '🆕 New Project (Greenfield)',
-    hint: 'Start a fresh project with AIOS - generates project docs, config, and infrastructure',
+    hint: 'Start a fresh project with AIOX - generates project docs, config, and infrastructure',
     description: 'Empty directory setup with full scaffolding',
   },
   [InstallationMode.BROWNFIELD]: {
     label: '📂 Existing Project (Brownfield)',
-    hint: 'Add AIOS to existing project - analyzes current structure and adapts',
+    hint: 'Add AIOX to existing project - analyzes current structure and adapts',
     description: 'Integration with existing codebase',
   },
   [InstallationMode.UNKNOWN]: {
@@ -77,7 +77,7 @@ const ModeDescriptions = {
  * Detects the installation mode for a target directory
  *
  * Detection Priority Order:
- * 1. FRAMEWORK_DEV - .aios-core/ exists AND is aios-core repo
+ * 1. FRAMEWORK_DEV - .aiox-core/ exists AND is aiox-core repo
  * 2. GREENFIELD - directory is empty
  * 3. BROWNFIELD - has package.json, .git, or other project markers
  * 4. UNKNOWN - has files but no recognized markers
@@ -102,24 +102,24 @@ function detectInstallationMode(targetDir = process.cwd()) {
   // Collect markers
   const markers = collectMarkers(normalizedDir);
 
-  // Priority 1: Check for AIOS framework development
-  if (markers.hasAiosCore && markers.isAiosCoreRepo) {
+  // Priority 1: Check for AIOX framework development
+  if (markers.hasAioxCore && markers.isAioxCoreRepo) {
     return {
       mode: InstallationMode.FRAMEWORK_DEV,
-      legacyType: LegacyProjectType.EXISTING_AIOS,
+      legacyType: LegacyProjectType.EXISTING_AIOX,
       confidence: 100,
-      reason: 'Detected aios-core repository with .aios-core directory',
+      reason: 'Detected aiox-core repository with .aiox-core directory',
       markers,
     };
   }
 
-  // Priority 2: Check for existing AIOS installation (non-framework)
-  if (markers.hasAiosCore && !markers.isAiosCoreRepo) {
+  // Priority 2: Check for existing AIOX installation (non-framework)
+  if (markers.hasAioxCore && !markers.isAioxCoreRepo) {
     return {
       mode: InstallationMode.BROWNFIELD,
-      legacyType: LegacyProjectType.EXISTING_AIOS,
+      legacyType: LegacyProjectType.EXISTING_AIOX,
       confidence: 95,
-      reason: 'AIOS already installed in user project - treating as brownfield update',
+      reason: 'AIOX already installed in user project - treating as brownfield update',
       markers,
     };
   }
@@ -178,9 +178,9 @@ function collectMarkers(targetDir) {
   const dirContents = fs.readdirSync(targetDir);
 
   return {
-    // AIOS markers
-    hasAiosCore: fs.existsSync(path.join(targetDir, '.aios-core')),
-    isAiosCoreRepo: isAiosCoreRepository(targetDir),
+    // AIOX markers
+    hasAioxCore: fs.existsSync(path.join(targetDir, '.aiox-core')),
+    isAioxCoreRepo: isAioxCoreRepository(targetDir),
 
     // Directory state
     isEmpty: dirContents.length === 0,
@@ -220,12 +220,12 @@ function collectMarkers(targetDir) {
 }
 
 /**
- * Checks if the target directory is the aios-core repository itself
+ * Checks if the target directory is the aiox-core repository itself
  *
  * @param {string} targetDir - Directory to check
- * @returns {boolean} True if this is the aios-core repository
+ * @returns {boolean} True if this is the aiox-core repository
  */
-function isAiosCoreRepository(targetDir) {
+function isAioxCoreRepository(targetDir) {
   const packageJsonPath = path.join(targetDir, 'package.json');
 
   if (!fs.existsSync(packageJsonPath)) {
@@ -235,22 +235,22 @@ function isAiosCoreRepository(targetDir) {
   try {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-    // Primary check: explicit aios-core package names
-    if (packageJson.name === '@aios/core' || packageJson.name === 'aios-core') {
+    // Primary check: explicit aiox-core package names
+    if (packageJson.name === '@aiox/core' || packageJson.name === 'aiox-core') {
       return true;
     }
 
-    // Secondary check: workspaces pattern + aios-specific marker file
+    // Secondary check: workspaces pattern + aiox-specific marker file
     // This prevents false positives for generic monorepos
-    const hasAiosMarker = fs.existsSync(path.join(targetDir, '.aios-core', 'infrastructure'));
+    const hasAioxMarker = fs.existsSync(path.join(targetDir, '.aiox-core', 'infrastructure'));
     const hasWorkspaces =
       Array.isArray(packageJson.workspaces) && packageJson.workspaces.includes('packages/*');
 
-    return hasWorkspaces && hasAiosMarker;
+    return hasWorkspaces && hasAioxMarker;
   } catch (error) {
     // Log error for debugging but don't throw - return false for safety
-    if (process.env.AIOS_DEBUG) {
-      console.warn(`[mode-detector] Error checking aios-core repository: ${error.message}`);
+    if (process.env.AIOX_DEBUG) {
+      console.warn(`[mode-detector] Error checking aiox-core repository: ${error.message}`);
     }
     return false;
   }
@@ -261,23 +261,23 @@ function isAiosCoreRepository(targetDir) {
  *
  * @deprecated Use detectInstallationMode().mode directly instead.
  * This function cannot distinguish between FRAMEWORK_DEV and BROWNFIELD
- * for EXISTING_AIOS legacy type (both use EXISTING_AIOS but with different modes).
+ * for EXISTING_AIOX legacy type (both use EXISTING_AIOX but with different modes).
  * For accurate mode detection, use the mode property from detectInstallationMode().
  *
- * @param {string} legacyType - Legacy project type (EXISTING_AIOS, GREENFIELD, etc.)
+ * @param {string} legacyType - Legacy project type (EXISTING_AIOX, GREENFIELD, etc.)
  * @param {Object} [context] - Optional context for disambiguation
- * @param {boolean} [context.isAiosCoreRepo] - True if this is the aios-core repository
+ * @param {boolean} [context.isAioxCoreRepo] - True if this is the aiox-core repository
  * @returns {string} New installation mode
  */
 function mapLegacyTypeToMode(legacyType, context = {}) {
-  // EXISTING_AIOS is ambiguous: it can be FRAMEWORK_DEV (aios-core repo)
-  // or BROWNFIELD (user project with AIOS installed)
-  if (legacyType === LegacyProjectType.EXISTING_AIOS) {
+  // EXISTING_AIOX is ambiguous: it can be FRAMEWORK_DEV (aiox-core repo)
+  // or BROWNFIELD (user project with AIOX installed)
+  if (legacyType === LegacyProjectType.EXISTING_AIOX) {
     // Use context to disambiguate if provided
-    if (context.isAiosCoreRepo === true) {
+    if (context.isAioxCoreRepo === true) {
       return InstallationMode.FRAMEWORK_DEV;
     }
-    if (context.isAiosCoreRepo === false) {
+    if (context.isAioxCoreRepo === false) {
       return InstallationMode.BROWNFIELD;
     }
     // Default to BROWNFIELD as it's safer (won't skip project setup)
@@ -320,9 +320,9 @@ function validateModeSelection(selectedMode, detected) {
       );
     }
 
-    if (selectedMode === InstallationMode.FRAMEWORK_DEV && !detected.markers.isAiosCoreRepo) {
+    if (selectedMode === InstallationMode.FRAMEWORK_DEV && !detected.markers.isAioxCoreRepo) {
       result.warnings.push(
-        'Selected framework-dev but this does not appear to be the aios-core repository.',
+        'Selected framework-dev but this does not appear to be the aiox-core repository.',
       );
     }
 
@@ -379,7 +379,7 @@ function getModeOptions(detected = null) {
 module.exports = {
   detectInstallationMode,
   collectMarkers,
-  isAiosCoreRepository,
+  isAioxCoreRepository,
   mapLegacyTypeToMode,
   validateModeSelection,
   getModeOptions,

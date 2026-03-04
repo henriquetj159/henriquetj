@@ -436,7 +436,7 @@ pub async fn create_order(
 
 ---
 
-## Integration with AIOS
+## Integration with AIOX
 
 ### Recommended Workflow
 
@@ -444,7 +444,7 @@ pub async fn create_order(
 2. `@dev` implementa use cases com traits e erros tipados
 3. `@qa` valida cobertura de invariantes e resiliencia async
 
-### AIOS Commands
+### AIOX Commands
 
 ```bash
 @dev "Follow the rust preset patterns for this service"
@@ -474,4 +474,4 @@ pub async fn create_order(
 
 ---
 
-_AIOS Tech Preset - Synkra AIOS Framework_
+_AIOX Tech Preset - Synkra AIOX Framework_

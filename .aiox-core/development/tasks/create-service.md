@@ -4,7 +4,7 @@
 
 Create a new service using standardized Handlebars templates from WIS-10. Generates consistent TypeScript service structures with proper configuration, testing, and documentation.
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: createService()
@@ -46,7 +46,7 @@ inputs:
 outputs:
   - name: service_directory
     type: directory
-    location: ".aios-core/infrastructure/services/{service_name}/"
+    location: ".aiox-core/infrastructure/services/{service_name}/"
     persistido: true
 
   - name: files_created
@@ -61,7 +61,7 @@ outputs:
 
 ```yaml
 pre-conditions:
-  - [ ] WIS-10 templates exist at .aios-core/development/templates/service-template/
+  - [ ] WIS-10 templates exist at .aiox-core/development/templates/service-template/
     tipo: pre-condition
     blocker: true
     validação: Check template directory exists with required .hbs files
@@ -70,7 +70,7 @@ pre-conditions:
   - [ ] Service name is unique (no existing service with same name)
     tipo: pre-condition
     blocker: true
-    validação: Check .aios-core/infrastructure/services/{name}/ does not exist
+    validação: Check .aiox-core/infrastructure/services/{name}/ does not exist
     error_message: "Service '{name}' already exists. Choose a different name."
 
   - [ ] Service name follows kebab-case pattern
@@ -104,7 +104,7 @@ What type of service is this?
 
 1. api-integration - External API client with rate limiting and auth
 2. utility - Internal helper/utility service
-3. agent-tool - Tool for AIOS agents
+3. agent-tool - Tool for AIOX agents
 
 → Default: utility
 → If api-integration: Enable client.ts generation
@@ -157,8 +157,8 @@ Before scaffolding the service, check if a similar service already exists using 
 
 ```javascript
 // Code Intelligence pre-scaffold check (graceful — never blocks)
-const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
-const { checkBeforeWriting } = require('.aios-core/core/code-intel/helpers/dev-helper');
+const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
+const { checkBeforeWriting } = require('.aiox-core/core/code-intel/helpers/dev-helper');
 
 if (isCodeIntelAvailable()) {
   const result = await checkBeforeWriting(serviceName, description);
@@ -183,7 +183,7 @@ if (!namePattern.test(serviceName)) {
 }
 
 // Check uniqueness
-const targetDir = `.aios-core/infrastructure/services/${serviceName}/`;
+const targetDir = `.aiox-core/infrastructure/services/${serviceName}/`;
 if (fs.existsSync(targetDir)) {
   throw new Error(`Service '${serviceName}' already exists.`);
 }
@@ -191,7 +191,7 @@ if (fs.existsSync(targetDir)) {
 
 ### Step 2: Load Templates
 ```javascript
-const templateDir = '.aios-core/development/templates/service-template/';
+const templateDir = '.aiox-core/development/templates/service-template/';
 const templates = [
   'README.md.hbs',
   'index.ts.hbs',
@@ -260,7 +260,7 @@ for (const templateFile of templates) {
 ### Step 5: Post-Generation
 ```bash
 # Navigate to service directory
-cd .aios-core/infrastructure/services/{service_name}/
+cd .aiox-core/infrastructure/services/{service_name}/
 
 # Install dependencies
 npm install
@@ -370,7 +370,7 @@ token_usage: ~1,000-2,000 tokens
 
  Service: {service_name}
  Type: {service_type}
- Location: .aios-core/infrastructure/services/{service_name}/
+ Location: .aiox-core/infrastructure/services/{service_name}/
 
  Files Created:
    README.md
@@ -384,7 +384,7 @@ token_usage: ~1,000-2,000 tokens
    __tests__/index.test.ts
 
  Next Steps:
-   1. cd .aios-core/infrastructure/services/{service_name}
+   1. cd .aiox-core/infrastructure/services/{service_name}
    2. Review generated code
    3. Implement service methods in index.ts
    4. Add tests in __tests__/

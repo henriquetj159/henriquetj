@@ -4,7 +4,7 @@
  * Maps check names to fix functions. Supports --fix and --dry-run modes.
  * All fix operations are idempotent.
  *
- * @module aios-core/doctor/fix-handler
+ * @module aiox-core/doctor/fix-handler
  * @story INS-4.1
  */
 
@@ -104,7 +104,7 @@ const FIX_MAP = {
       return 'Create missing MEMORY.md stubs for agents';
     },
     async apply(result, { projectRoot }) {
-      const agentsDir = path.join(projectRoot, '.aios-core', 'development', 'agents');
+      const agentsDir = path.join(projectRoot, '.aiox-core', 'development', 'agents');
       let created = 0;
 
       for (const agent of EXPECTED_AGENTS) {
@@ -115,7 +115,7 @@ const FIX_MAP = {
           if (!fs.existsSync(agentDir)) {
             fs.mkdirSync(agentDir, { recursive: true });
           }
-          fs.writeFileSync(memoryPath, `# ${agent} Agent Memory\n\n_Created by aios doctor --fix_\n`);
+          fs.writeFileSync(memoryPath, `# ${agent} Agent Memory\n\n_Created by aiox doctor --fix_\n`);
           created++;
         }
       }
@@ -129,7 +129,7 @@ const FIX_MAP = {
       return 'Regenerate CLAUDE.md with missing sections';
     },
     async apply() {
-      return 'CLAUDE.md regeneration requires npx aios-core install --force';
+      return 'CLAUDE.md regeneration requires npx aiox-core install --force';
     },
   },
 
@@ -157,7 +157,7 @@ const FIX_MAP = {
         // Generator not available
       }
 
-      return 'settings.json regeneration requires npx aios-core install --force';
+      return 'settings.json regeneration requires npx aiox-core install --force';
     },
   },
 };

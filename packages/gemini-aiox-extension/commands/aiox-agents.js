@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * AIOS Agents Command - List available agents
+ * AIOX Agents Command - List available agents
  */
 
 const fs = require('fs');
@@ -21,13 +21,13 @@ const AGENT_INFO = {
 
 async function main() {
   const projectDir = process.cwd();
-  const agentsPath = path.join(projectDir, '.aios-core', 'development', 'agents');
+  const agentsPath = path.join(projectDir, '.aiox-core', 'development', 'agents');
 
-  console.log('🤖 AIOS Agents\n');
+  console.log('🤖 AIOX Agents\n');
   console.log('━'.repeat(50));
 
   if (!fs.existsSync(agentsPath)) {
-    console.log('No agents found. Run: npx aios-core install');
+    console.log('No agents found. Run: npx aiox-core install');
     return;
   }
 
@@ -42,8 +42,8 @@ async function main() {
   }
 
   console.log('\n' + '━'.repeat(50));
-  console.log('Quick launch with: /aios-menu or /aios-<agent-id>');
-  console.log('Alternative: /aios-agent <agent-id>');
+  console.log('Quick launch with: /aiox-menu or /aiox-<agent-id>');
+  console.log('Alternative: /aiox-agent <agent-id>');
 }
 
 main().catch(console.error);

@@ -3,7 +3,7 @@
  *
  * Verifies Claude Code CLI installation and configuration.
  *
- * @module aios-core/health-check/checks/services/claude-code
+ * @module aiox-core/health-check/checks/services/claude-code
  * @version 1.0.0
  * @story HCS-2 - Health Check System Implementation
  */

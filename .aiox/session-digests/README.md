@@ -36,7 +36,7 @@ compact_trigger: "context_limit_90%"  # Reason for compact
 ```markdown
 ## User Corrections
 
-- "Actually, the path should be `.aios/sessions/` not `.aios-sessions/`"
+- "Actually, the path should be `.aiox/sessions/` not `.aiox-sessions/`"
 - "Tests should expect `null`, not objects"
 
 ## Patterns Observed
@@ -98,7 +98,7 @@ function readDigest(filePath) {
 ## Security
 
 - **Content:** No sensitive data (only conversation patterns, not raw messages)
-- **Access:** Local filesystem only (`.aios/` is gitignored)
+- **Access:** Local filesystem only (`.aiox/` is gitignored)
 - **Privacy:** Session content never leaves local machine
 
 ---

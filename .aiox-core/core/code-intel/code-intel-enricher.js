@@ -4,7 +4,7 @@
  * CodeIntelEnricher — Composite capabilities built on top of primitive capabilities.
  *
  * Each method composes multiple primitive capabilities from CodeIntelClient
- * to provide higher-level analysis functions used by AIOS tasks.
+ * to provide higher-level analysis functions used by AIOX tasks.
  */
 class CodeIntelEnricher {
   /**

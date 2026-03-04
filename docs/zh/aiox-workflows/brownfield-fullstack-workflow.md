@@ -4,7 +4,7 @@
 > **创建时间：** 2026-02-04
 > **类型：** 棕地项目开发
 > **状态：** 官方文档
-> **源文件：** `.aios-core/development/workflows/brownfield-fullstack.yaml`
+> **源文件：** `.aiox-core/development/workflows/brownfield-fullstack.yaml`
 
 ---
 
@@ -236,7 +236,7 @@ flowchart LR
 
 捕获系统的当前状态、技术债务和限制。发现结果将传递给PRD创建。
 
-**任务文件：** `.aios-core/development/tasks/document-project.md`
+**任务文件：** `.aiox-core/development/tasks/document-project.md`
 
 ---
 
@@ -301,7 +301,7 @@ flowchart LR
 | **输入** | 所有创建的工件 |
 | **输出** | 验证或问题列表 |
 
-**清单文件：** `.aios-core/development/checklists/po-master-checklist.md`
+**清单文件：** `.aiox-core/development/checklists/po-master-checklist.md`
 
 **流程：**
 
@@ -344,7 +344,7 @@ flowchart LR
 - **选项A**：使用PO代理进行分片：`@po` 并要求分片 `docs/prd.md`
 - **选项B**：手动：将任务 `shard-doc` + `docs/prd.md` 拖到聊天中
 
-**任务文件：** `.aios-core/development/tasks/shard-doc.md`
+**任务文件：** `.aiox-core/development/tasks/shard-doc.md`
 
 ---
 
@@ -365,8 +365,8 @@ flowchart LR
 | 棕地文档 | `create-brownfield-story` |
 
 **任务文件：**
-- `.aios-core/development/tasks/create-next-story.md`
-- `.aios-core/development/tasks/create-brownfield-story.md`
+- `.aiox-core/development/tasks/create-next-story.md`
+- `.aiox-core/development/tasks/create-brownfield-story.md`
 
 ---
 
@@ -463,7 +463,7 @@ flowchart LR
 
 **状态：** 所有故事已实现和审查
 
-**参考：** `.aios-core/data/aios-kb.md#IDE Development Workflow`
+**参考：** `.aiox-core/data/aiox-kb.md#IDE Development Workflow`
 
 ---
 
@@ -518,7 +518,7 @@ flowchart LR
 
 - [ ] GitHub CLI已配置 (`gh auth status`)
 - [ ] 如适用，可访问PM工具 (ClickUp/GitHub/Jira)
-- [ ] AIOS核心配置已配置 (`.aios-core/core-config.yaml`)
+- [ ] AIOX核心配置已配置 (`.aiox-core/core-config.yaml`)
 
 ---
 
@@ -722,26 +722,26 @@ stateDiagram-v2
 
 | 文件 | 目的 |
 |------|------|
-| `.aios-core/development/workflows/brownfield-fullstack.yaml` | 工作流定义 |
-| `.aios-core/development/tasks/brownfield-create-story.md` | 创建简单故事的任务 |
-| `.aios-core/development/tasks/brownfield-create-epic.md` | 创建史诗的任务 |
-| `.aios-core/development/tasks/document-project.md` | 记录现有项目的任务 |
-| `.aios-core/development/tasks/shard-doc.md` | 分割文档的任务 |
-| `.aios-core/development/tasks/create-brownfield-story.md` | 创建棕地故事的任务 |
-| `.aios-core/development/tasks/create-next-story.md` | 从PRD创建故事的任务 |
-| `.aios-core/product/checklists/po-master-checklist.md` | PO验证清单 |
+| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | 工作流定义 |
+| `.aiox-core/development/tasks/brownfield-create-story.md` | 创建简单故事的任务 |
+| `.aiox-core/development/tasks/brownfield-create-epic.md` | 创建史诗的任务 |
+| `.aiox-core/development/tasks/document-project.md` | 记录现有项目的任务 |
+| `.aiox-core/development/tasks/shard-doc.md` | 分割文档的任务 |
+| `.aiox-core/development/tasks/create-brownfield-story.md` | 创建棕地故事的任务 |
+| `.aiox-core/development/tasks/create-next-story.md` | 从PRD创建故事的任务 |
+| `.aiox-core/product/checklists/po-master-checklist.md` | PO验证清单 |
 
 ### 代理文件
 
 | 文件 | 代理 |
 |------|------|
-| `.aios-core/development/agents/analyst.md` | @analyst (Atlas) |
-| `.aios-core/development/agents/architect.md` | @architect (Aria) |
-| `.aios-core/development/agents/pm.md` | @pm (Morgan) |
-| `.aios-core/development/agents/po.md` | @po (Pax) |
-| `.aios-core/development/agents/sm.md` | @sm (River) |
-| `.aios-core/development/agents/dev.md` | @dev (Dex) |
-| `.aios-core/development/agents/qa.md` | @qa (Quinn) |
+| `.aiox-core/development/agents/analyst.md` | @analyst (Atlas) |
+| `.aiox-core/development/agents/architect.md` | @architect (Aria) |
+| `.aiox-core/development/agents/pm.md` | @pm (Morgan) |
+| `.aiox-core/development/agents/po.md` | @po (Pax) |
+| `.aiox-core/development/agents/sm.md` | @sm (River) |
+| `.aiox-core/development/agents/dev.md` | @dev (Dex) |
+| `.aiox-core/development/agents/qa.md` | @qa (Quinn) |
 
 ### 相关文档
 
@@ -749,7 +749,7 @@ stateDiagram-v2
 |------|------|
 | `docs/guides/BACKLOG-MANAGEMENT-SYSTEM.md` | 待办事项管理系统 |
 | `docs/guides/workflows/GREENFIELD-SERVICE-WORKFLOW.md` | 绿地项目工作流 |
-| `.aios-core/working-in-the-brownfield.md` | 棕地工作指南 |
+| `.aiox-core/working-in-the-brownfield.md` | 棕地工作指南 |
 
 ---
 

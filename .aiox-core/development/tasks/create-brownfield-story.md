@@ -23,7 +23,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: createBrownfieldStory()
@@ -129,7 +129,7 @@ acceptance-criteria:
 
 - **Tool:** component-generator
   - **Purpose:** Generate new components from templates
-  - **Source:** .aios-core/scripts/component-generator.js
+  - **Source:** .aiox-core/scripts/component-generator.js
 
 - **Tool:** file-system
   - **Purpose:** File creation and validation
@@ -144,7 +144,7 @@ acceptance-criteria:
 - **Script:** create-component.js
   - **Purpose:** Component creation workflow
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/create-component.js
+  - **Location:** .aiox-core/scripts/create-component.js
 
 ---
 
@@ -220,7 +220,7 @@ Create detailed, implementation-ready stories for brownfield projects where trad
 - Working on brownfield projects with non-standard documentation
 - Stories need to be created from document-project output
 - Working from brownfield epics without full PRD/architecture
-- Existing project documentation doesn't follow AIOS v4+ structure
+- Existing project documentation doesn't follow AIOX v4+ structure
 - Need to gather additional context from user during story creation
 
 **Use create-next-story when:**
@@ -300,7 +300,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 
-const configPath = path.join(__dirname, '../../.aios-core/core-config.yaml');
+const configPath = path.join(__dirname, '../../.aiox-core/core-config.yaml');
 const config = yaml.load(fs.readFileSync(configPath, 'utf8'));
 
 const qaLocation = config.qa?.qaLocation || 'docs/qa';

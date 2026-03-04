@@ -1,21 +1,21 @@
-# Sistema do Agente @aios-master
+# Sistema do Agente @aiox-master
 
 > **Versao:** 1.0.0
 > **Criado:** 2026-02-04
-> **Owner:** @aios-master (Orion)
+> **Owner:** @aiox-master (Orion)
 > **Status:** Documentacao Oficial
 
 ---
 
 ## Visao Geral
 
-O **@aios-master** (Orion - The Orchestrator) e o meta-agente principal do framework AIOS-FULLSTACK. Ele atua como orquestrador universal, desenvolvedor de framework e especialista no metodo AIOS. Suas principais responsabilidades incluem:
+O **@aiox-master** (Orion - The Orchestrator) e o meta-agente principal do framework AIOX-FULLSTACK. Ele atua como orquestrador universal, desenvolvedor de framework e especialista no metodo AIOX. Suas principais responsabilidades incluem:
 
 - **Orquestracao Universal**: Executa qualquer task de qualquer agente diretamente
 - **Desenvolvimento de Framework**: Cria e modifica agentes, tasks, workflows e templates
 - **Gestao de Componentes**: Valida, deprecia e analisa componentes do sistema
 - **Coordenacao Multi-Agente**: Gerencia workflows complexos entre multiplos agentes
-- **Knowledge Base**: Acesso ao conhecimento completo do AIOS Method
+- **Knowledge Base**: Acesso ao conhecimento completo do AIOX Method
 
 ### Quando Usar
 
@@ -23,107 +23,107 @@ O **@aios-master** (Orion - The Orchestrator) e o meta-agente principal do frame
 - Orquestrar workflows multi-agente complexos
 - Executar qualquer task diretamente sem transformacao de persona
 - Operacoes de meta-framework e coordenacao cross-agente
-- Acessar o Knowledge Base do AIOS (*kb)
+- Acessar o Knowledge Base do AIOX (*kb)
 
 ---
 
 ## Lista Completa de Arquivos
 
-### Arquivos Core de Tasks do @aios-master
+### Arquivos Core de Tasks do @aiox-master
 
 | Arquivo | Comando | Proposito |
 |---------|---------|-----------|
-| `.aios-core/development/tasks/create-agent.md` | `*create agent` | Cria nova definicao de agente usando sistema de templates |
-| `.aios-core/development/tasks/create-task.md` | `*create task` | Cria novo arquivo de task com estrutura padronizada |
-| `.aios-core/development/tasks/create-workflow.md` | `*create workflow` | Cria nova definicao de workflow multi-agente |
-| `.aios-core/development/tasks/modify-agent.md` | `*modify agent` | Modifica agente existente com backup e rollback |
-| `.aios-core/development/tasks/modify-task.md` | `*modify task` | Modifica task existente preservando compatibilidade |
-| `.aios-core/development/tasks/modify-workflow.md` | `*modify workflow` | Modifica workflow existente mantendo integridade |
-| `.aios-core/development/tasks/analyze-framework.md` | `*analyze-framework` | Analisa estrutura do framework, redundancias e performance |
-| `.aios-core/development/tasks/deprecate-component.md` | `*deprecate-component` | Deprecia componente com timeline e migracao |
-| `.aios-core/development/tasks/propose-modification.md` | `*propose-modification` | Cria proposta de modificacao para revisao colaborativa |
-| `.aios-core/development/tasks/execute-checklist.md` | `*execute-checklist` | Executa checklist de validacao |
-| `.aios-core/development/tasks/create-doc.md` | `*create-doc` | Cria documento a partir de template YAML |
-| `.aios-core/development/tasks/advanced-elicitation.md` | `*advanced-elicitation` | Executa elicitacao avancada com multiplos metodos |
-| `.aios-core/development/tasks/kb-mode-interaction.md` | `*kb` | Habilita modo Knowledge Base interativo |
-| `.aios-core/development/tasks/correct-course.md` | `*correct-course` | Analisa e corrige desvios de processo/qualidade |
-| `.aios-core/development/tasks/update-manifest.md` | `*update-manifest` | Atualiza manifesto de equipe com novos agentes |
-| `.aios-core/development/tasks/create-next-story.md` | `*create-next-story` | Cria proxima user story |
-| `.aios-core/development/tasks/create-deep-research-prompt.md` | - | Gera prompts de pesquisa profunda |
-| `.aios-core/development/tasks/improve-self.md` | - | Auto-melhoria do agente |
-| `.aios-core/development/tasks/shard-doc.md` | `*shard-doc` | Quebra documento em partes menores |
-| `.aios-core/development/tasks/document-project.md` | `*document-project` | Gera documentacao do projeto |
-| `.aios-core/development/tasks/index-docs.md` | `*index-docs` | Indexa documentacao para busca |
+| `.aiox-core/development/tasks/create-agent.md` | `*create agent` | Cria nova definicao de agente usando sistema de templates |
+| `.aiox-core/development/tasks/create-task.md` | `*create task` | Cria novo arquivo de task com estrutura padronizada |
+| `.aiox-core/development/tasks/create-workflow.md` | `*create workflow` | Cria nova definicao de workflow multi-agente |
+| `.aiox-core/development/tasks/modify-agent.md` | `*modify agent` | Modifica agente existente com backup e rollback |
+| `.aiox-core/development/tasks/modify-task.md` | `*modify task` | Modifica task existente preservando compatibilidade |
+| `.aiox-core/development/tasks/modify-workflow.md` | `*modify workflow` | Modifica workflow existente mantendo integridade |
+| `.aiox-core/development/tasks/analyze-framework.md` | `*analyze-framework` | Analisa estrutura do framework, redundancias e performance |
+| `.aiox-core/development/tasks/deprecate-component.md` | `*deprecate-component` | Deprecia componente com timeline e migracao |
+| `.aiox-core/development/tasks/propose-modification.md` | `*propose-modification` | Cria proposta de modificacao para revisao colaborativa |
+| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist` | Executa checklist de validacao |
+| `.aiox-core/development/tasks/create-doc.md` | `*create-doc` | Cria documento a partir de template YAML |
+| `.aiox-core/development/tasks/advanced-elicitation.md` | `*advanced-elicitation` | Executa elicitacao avancada com multiplos metodos |
+| `.aiox-core/development/tasks/kb-mode-interaction.md` | `*kb` | Habilita modo Knowledge Base interativo |
+| `.aiox-core/development/tasks/correct-course.md` | `*correct-course` | Analisa e corrige desvios de processo/qualidade |
+| `.aiox-core/development/tasks/update-manifest.md` | `*update-manifest` | Atualiza manifesto de equipe com novos agentes |
+| `.aiox-core/development/tasks/create-next-story.md` | `*create-next-story` | Cria proxima user story |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | - | Gera prompts de pesquisa profunda |
+| `.aiox-core/development/tasks/improve-self.md` | - | Auto-melhoria do agente |
+| `.aiox-core/development/tasks/shard-doc.md` | `*shard-doc` | Quebra documento em partes menores |
+| `.aiox-core/development/tasks/document-project.md` | `*document-project` | Gera documentacao do projeto |
+| `.aiox-core/development/tasks/index-docs.md` | `*index-docs` | Indexa documentacao para busca |
 
 ### Arquivos de Definicao do Agente
 
 | Arquivo | Proposito |
 |---------|-----------|
-| `.aios-core/development/agents/aios-master.md` | Definicao completa do agente (persona, comandos, dependencias) |
-| `.claude/commands/AIOS/agents/aios-master.md` | Comando Claude Code para ativar @aios-master |
+| `.aiox-core/development/agents/aiox-master.md` | Definicao completa do agente (persona, comandos, dependencias) |
+| `.claude/commands/AIOX/agents/aiox-master.md` | Comando Claude Code para ativar @aiox-master |
 
-### Arquivos de Templates do @aios-master
+### Arquivos de Templates do @aiox-master
 
 | Arquivo | Proposito |
 |---------|-----------|
-| `.aios-core/development/templates/agent-template.yaml` | Template para criacao de novos agentes |
-| `.aios-core/development/templates/task-template.md` | Template para criacao de novas tasks |
-| `.aios-core/development/templates/workflow-template.yaml` | Template para criacao de novos workflows |
-| `.aios-core/development/templates/prd-tmpl.yaml` | Template para PRD |
-| `.aios-core/development/templates/story-tmpl.yaml` | Template para stories |
-| `.aios-core/development/templates/architecture-tmpl.yaml` | Template para arquitetura |
-| `.aios-core/development/templates/brownfield-prd-tmpl.yaml` | Template PRD brownfield |
-| `.aios-core/development/templates/brownfield-architecture-tmpl.yaml` | Template arquitetura brownfield |
-| `.aios-core/development/templates/competitor-analysis-tmpl.yaml` | Template analise de concorrentes |
-| `.aios-core/development/templates/market-research-tmpl.yaml` | Template pesquisa de mercado |
-| `.aios-core/development/templates/project-brief-tmpl.yaml` | Template brief de projeto |
-| `.aios-core/development/templates/front-end-architecture-tmpl.yaml` | Template arquitetura frontend |
-| `.aios-core/development/templates/front-end-spec-tmpl.yaml` | Template spec frontend |
-| `.aios-core/development/templates/fullstack-architecture-tmpl.yaml` | Template arquitetura fullstack |
+| `.aiox-core/development/templates/agent-template.yaml` | Template para criacao de novos agentes |
+| `.aiox-core/development/templates/task-template.md` | Template para criacao de novas tasks |
+| `.aiox-core/development/templates/workflow-template.yaml` | Template para criacao de novos workflows |
+| `.aiox-core/development/templates/prd-tmpl.yaml` | Template para PRD |
+| `.aiox-core/development/templates/story-tmpl.yaml` | Template para stories |
+| `.aiox-core/development/templates/architecture-tmpl.yaml` | Template para arquitetura |
+| `.aiox-core/development/templates/brownfield-prd-tmpl.yaml` | Template PRD brownfield |
+| `.aiox-core/development/templates/brownfield-architecture-tmpl.yaml` | Template arquitetura brownfield |
+| `.aiox-core/development/templates/competitor-analysis-tmpl.yaml` | Template analise de concorrentes |
+| `.aiox-core/development/templates/market-research-tmpl.yaml` | Template pesquisa de mercado |
+| `.aiox-core/development/templates/project-brief-tmpl.yaml` | Template brief de projeto |
+| `.aiox-core/development/templates/front-end-architecture-tmpl.yaml` | Template arquitetura frontend |
+| `.aiox-core/development/templates/front-end-spec-tmpl.yaml` | Template spec frontend |
+| `.aiox-core/development/templates/fullstack-architecture-tmpl.yaml` | Template arquitetura fullstack |
 
 ### Arquivos de Dados e Utilidades
 
 | Arquivo | Proposito |
 |---------|-----------|
-| `.aios-core/development/data/aios-kb.md` | Knowledge Base do AIOS Method |
-| `.aios-core/development/data/brainstorming-techniques.md` | Tecnicas de brainstorming |
-| `.aios-core/development/data/elicitation-methods.md` | Metodos de elicitacao |
-| `.aios-core/development/data/technical-preferences.md` | Preferencias tecnicas |
-| `.aios-core/development/utils/security-checker.js` | Validador de seguranca |
-| `.aios-core/development/utils/yaml-validator.js` | Validador de YAML |
-| `.aios-core/development/utils/workflow-management.md` | Gestao de workflows |
+| `.aiox-core/development/data/aiox-kb.md` | Knowledge Base do AIOX Method |
+| `.aiox-core/development/data/brainstorming-techniques.md` | Tecnicas de brainstorming |
+| `.aiox-core/development/data/elicitation-methods.md` | Metodos de elicitacao |
+| `.aiox-core/development/data/technical-preferences.md` | Preferencias tecnicas |
+| `.aiox-core/development/utils/security-checker.js` | Validador de seguranca |
+| `.aiox-core/development/utils/yaml-validator.js` | Validador de YAML |
+| `.aiox-core/development/utils/workflow-management.md` | Gestao de workflows |
 
-### Arquivos de Workflows do @aios-master
-
-| Arquivo | Proposito |
-|---------|-----------|
-| `.aios-core/development/workflows/brownfield-fullstack.md` | Workflow fullstack brownfield |
-| `.aios-core/development/workflows/brownfield-service.md` | Workflow servico brownfield |
-| `.aios-core/development/workflows/brownfield-ui.md` | Workflow UI brownfield |
-| `.aios-core/development/workflows/greenfield-fullstack.md` | Workflow fullstack greenfield |
-| `.aios-core/development/workflows/greenfield-service.md` | Workflow servico greenfield |
-| `.aios-core/development/workflows/greenfield-ui.md` | Workflow UI greenfield |
-
-### Arquivos de Checklists do @aios-master
+### Arquivos de Workflows do @aiox-master
 
 | Arquivo | Proposito |
 |---------|-----------|
-| `.aios-core/development/checklists/architect-checklist.md` | Checklist de arquitetura |
-| `.aios-core/development/checklists/change-checklist.md` | Checklist de mudancas |
-| `.aios-core/development/checklists/pm-checklist.md` | Checklist de PM |
-| `.aios-core/development/checklists/po-master-checklist.md` | Checklist de PO |
-| `.aios-core/development/checklists/story-dod-checklist.md` | Checklist DoD de stories |
-| `.aios-core/development/checklists/story-draft-checklist.md` | Checklist draft de stories |
+| `.aiox-core/development/workflows/brownfield-fullstack.md` | Workflow fullstack brownfield |
+| `.aiox-core/development/workflows/brownfield-service.md` | Workflow servico brownfield |
+| `.aiox-core/development/workflows/brownfield-ui.md` | Workflow UI brownfield |
+| `.aiox-core/development/workflows/greenfield-fullstack.md` | Workflow fullstack greenfield |
+| `.aiox-core/development/workflows/greenfield-service.md` | Workflow servico greenfield |
+| `.aiox-core/development/workflows/greenfield-ui.md` | Workflow UI greenfield |
+
+### Arquivos de Checklists do @aiox-master
+
+| Arquivo | Proposito |
+|---------|-----------|
+| `.aiox-core/development/checklists/architect-checklist.md` | Checklist de arquitetura |
+| `.aiox-core/development/checklists/change-checklist.md` | Checklist de mudancas |
+| `.aiox-core/development/checklists/pm-checklist.md` | Checklist de PM |
+| `.aiox-core/development/checklists/po-master-checklist.md` | Checklist de PO |
+| `.aiox-core/development/checklists/story-dod-checklist.md` | Checklist DoD de stories |
+| `.aiox-core/development/checklists/story-draft-checklist.md` | Checklist draft de stories |
 
 ### Arquivos Relacionados de Outros Agentes
 
 | Arquivo | Agente | Proposito |
 |---------|--------|-----------|
-| `.aios-core/development/tasks/brownfield-create-epic.md` | @pm | Criacao de epics (delegada) |
-| `.aios-core/development/tasks/brownfield-create-story.md` | @pm | Criacao de stories (delegada) |
-| `.aios-core/development/tasks/analyst-facilitate-brainstorming.md` | @analyst | Brainstorming (delegado) |
-| `.aios-core/development/tasks/generate-ai-frontend-prompt.md` | @architect | Geracao de prompts AI (delegada) |
-| `.aios-core/development/tasks/create-suite.md` | @qa | Criacao de suites de teste (delegada) |
+| `.aiox-core/development/tasks/brownfield-create-epic.md` | @pm | Criacao de epics (delegada) |
+| `.aiox-core/development/tasks/brownfield-create-story.md` | @pm | Criacao de stories (delegada) |
+| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | @analyst | Brainstorming (delegado) |
+| `.aiox-core/development/tasks/generate-ai-frontend-prompt.md` | @architect | Geracao de prompts AI (delegada) |
+| `.aiox-core/development/tasks/create-suite.md` | @qa | Criacao de suites de teste (delegada) |
 
 ---
 
@@ -133,11 +133,11 @@ O **@aios-master** (Orion - The Orchestrator) e o meta-agente principal do frame
 flowchart TB
     subgraph ACTIVATION["🚀 ATIVACAO"]
         USER["👤 Usuario"]
-        ACTIVATE["@aios-master"]
+        ACTIVATE["@aiox-master"]
         GREETING["greeting-builder.js<br/>Saudacao Inteligente"]
     end
 
-    USER -->|"@aios-master"| ACTIVATE
+    USER -->|"@aiox-master"| ACTIVATE
     ACTIVATE --> GREETING
 
     subgraph COMMANDS["👑 COMANDOS PRINCIPAIS"]
@@ -193,9 +193,9 @@ flowchart TB
     CREATE_DOC --> DOC_TMPLS
 
     subgraph OUTPUTS["📁 OUTPUTS"]
-        AGENTS_DIR[".aios-core/agents/"]
-        TASKS_DIR[".aios-core/tasks/"]
-        WORKFLOWS_DIR[".aios-core/workflows/"]
+        AGENTS_DIR[".aiox-core/agents/"]
+        TASKS_DIR[".aiox-core/tasks/"]
+        WORKFLOWS_DIR[".aiox-core/workflows/"]
         DOCS_DIR["docs/"]
     end
 
@@ -322,7 +322,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart LR
-    subgraph MASTER["👑 @aios-master (Orion)"]
+    subgraph MASTER["👑 @aiox-master (Orion)"]
         MASTER_DESC["Orquestra todos os agentes<br/>Cria/modifica componentes<br/>Executa qualquer task"]
     end
 
@@ -389,10 +389,10 @@ flowchart LR
 
 | Arquivo | Proposito |
 |---------|-----------|
-| `.aios-core/core-config.yaml` | Configuracao central do framework |
-| `.aios-core/install-manifest.yaml` | Manifesto de instalacao |
-| `.aios-core/config/agent-config-requirements.yaml` | Requisitos de configuracao de agentes |
-| `.aios/project-registry.yaml` | Registry central de projetos |
+| `.aiox-core/core-config.yaml` | Configuracao central do framework |
+| `.aiox-core/install-manifest.yaml` | Manifesto de instalacao |
+| `.aiox-core/config/agent-config-requirements.yaml` | Requisitos de configuracao de agentes |
+| `.aiox/project-registry.yaml` | Registry central de projetos |
 
 ### Configuracao de Seguranca
 
@@ -478,7 +478,7 @@ agent:
 **Sintoma:** Erro ao executar `*create-doc`
 
 **Solucao:**
-1. Liste templates disponiveis: verifique `.aios-core/development/templates/`
+1. Liste templates disponiveis: verifique `.aiox-core/development/templates/`
 2. Use nome correto do template sem extensao
 3. Verifique se template existe e e valido YAML
 
@@ -497,7 +497,7 @@ agent:
 **Sintoma:** Conhecimento nao disponivel apos `*kb`
 
 **Solucao:**
-1. Verifique existencia de `.aios-core/development/data/aios-kb.md`
+1. Verifique existencia de `.aiox-core/development/data/aiox-kb.md`
 2. Certifique-se de que arquivo nao esta corrompido
 3. Reinicie o agente se necessario
 
@@ -525,21 +525,21 @@ agent:
 
 ### Arquivos Core
 
-- [Agente aios-master](.aios-core/development/agents/aios-master.md)
-- [Knowledge Base](.aios-core/development/data/aios-kb.md)
-- [Guia do Usuario](.aios-core/user-guide.md)
+- [Agente aiox-master](.aiox-core/development/agents/aiox-master.md)
+- [Knowledge Base](.aiox-core/development/data/aiox-kb.md)
+- [Guia do Usuario](.aiox-core/user-guide.md)
 
 ### Standards e Documentacao
 
-- [AIOS Framework Master](.aios-core/docs/standards/AIOS-FRAMEWORK-MASTER.md)
-- [AIOS Livro de Ouro](.aios-core/docs/standards/AIOS-LIVRO-DE-OURO.md)
-- [Agent Personalization Standard](.aios-core/docs/standards/AGENT-PERSONALIZATION-STANDARD-V1.md)
+- [AIOX Framework Master](.aiox-core/docs/standards/AIOX-FRAMEWORK-MASTER.md)
+- [AIOX Livro de Ouro](.aiox-core/docs/standards/AIOX-LIVRO-DE-OURO.md)
+- [Agent Personalization Standard](.aiox-core/docs/standards/AGENT-PERSONALIZATION-STANDARD-V1.md)
 
 ### Diretorio de Tasks
 
-- [Tasks Directory](.aios-core/development/tasks/)
-- [Templates Directory](.aios-core/development/templates/)
-- [Workflows Directory](.aios-core/development/workflows/)
+- [Tasks Directory](.aiox-core/development/tasks/)
+- [Templates Directory](.aiox-core/development/templates/)
+- [Workflows Directory](.aiox-core/development/workflows/)
 
 ---
 
@@ -547,7 +547,7 @@ agent:
 
 | Aspecto | Detalhes |
 |---------|----------|
-| **Nome do Agente** | Orion (aios-master) |
+| **Nome do Agente** | Orion (aiox-master) |
 | **Arquetipo** | Orchestrator |
 | **Icone** | 👑 |
 | **Total de Tasks Diretas** | 21 tasks |
@@ -568,7 +568,7 @@ agent:
 
 | Data | Autor | Descricao |
 |------|-------|-----------|
-| 2026-02-04 | @aios-master | Documento inicial criado com mapeamento completo |
+| 2026-02-04 | @aiox-master | Documento inicial criado com mapeamento completo |
 
 ---
 

@@ -4,7 +4,7 @@
  * Counts .md files in .claude/commands/ recursively.
  * PASS: >=20, WARN: 12-19, FAIL: <12.
  *
- * @module aios-core/doctor/checks/commands-count
+ * @module aiox-core/doctor/checks/commands-count
  * @story INS-4.8
  */
 
@@ -46,7 +46,7 @@ async function run(context) {
       check: name,
       status: 'FAIL',
       message: 'Commands directory not found (.claude/commands/)',
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -66,7 +66,7 @@ async function run(context) {
       check: name,
       status: 'WARN',
       message: `${count}/20 command files found (agents only, no extras)`,
-      fixCommand: 'npx aios-core install --force',
+      fixCommand: 'npx aiox-core install --force',
     };
   }
 
@@ -74,7 +74,7 @@ async function run(context) {
     check: name,
     status: 'FAIL',
     message: `Only ${count} command files found (expected >=12)`,
-    fixCommand: 'npx aios-core install --force',
+    fixCommand: 'npx aiox-core install --force',
   };
 }
 

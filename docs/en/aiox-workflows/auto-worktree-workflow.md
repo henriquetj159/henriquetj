@@ -1,10 +1,10 @@
 # Auto Worktree Workflow
 
-> **EN** | [PT](../../aios-workflows/auto-worktree-workflow.md) | [ES](../../es/aios-workflows/auto-worktree-workflow.md)
+> **EN** | [PT](../../aiox-workflows/auto-worktree-workflow.md) | [ES](../../es/aiox-workflows/auto-worktree-workflow.md)
 
 ---
 
-**Full documentation available in:** [Portuguese Version](../../aios-workflows/auto-worktree-workflow.md)
+**Full documentation available in:** [Portuguese Version](../../aiox-workflows/auto-worktree-workflow.md)
 
 ---
 
@@ -59,4 +59,4 @@ git worktree remove ../feature-name
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aios-workflows/auto-worktree-workflow.md).*
+*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/auto-worktree-workflow.md).*

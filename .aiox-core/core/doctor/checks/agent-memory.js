@@ -3,7 +3,7 @@
  *
  * Validates MEMORY.md files exist for all 10 agents in development/agents/.
  *
- * @module aios-core/doctor/checks/agent-memory
+ * @module aiox-core/doctor/checks/agent-memory
  * @story INS-4.1
  */
 
@@ -26,14 +26,14 @@ const EXPECTED_AGENTS = [
 ];
 
 async function run(context) {
-  const agentsDir = path.join(context.projectRoot, '.aios-core', 'development', 'agents');
+  const agentsDir = path.join(context.projectRoot, '.aiox-core', 'development', 'agents');
 
   if (!fs.existsSync(agentsDir)) {
     return {
       check: name,
       status: 'FAIL',
       message: 'Agents directory not found',
-      fixCommand: 'aios doctor --fix',
+      fixCommand: 'aiox doctor --fix',
     };
   }
 
@@ -56,7 +56,7 @@ async function run(context) {
     check: name,
     status: 'WARN',
     message: `${present}/${EXPECTED_AGENTS.length} MEMORY.md files present (missing: ${missing.join(', ')})`,
-    fixCommand: 'aios doctor --fix',
+    fixCommand: 'aiox doctor --fix',
   };
 }
 

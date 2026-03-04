@@ -11,7 +11,7 @@ function getDefaultOptions() {
   const projectRoot = process.cwd();
   return {
     projectRoot,
-    sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceDir: path.join(projectRoot, '.aiox-core', 'development', 'agents'),
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
     strict: false,
     quiet: false,
@@ -37,7 +37,7 @@ function validateSkillContent(content, expected) {
   const requiredChecks = [
     { ok: content.includes(`name: ${expected.skillId}`), reason: `missing frontmatter name "${expected.skillId}"` },
     {
-      ok: content.includes(`.aios-core/development/agents/${expected.filename}`),
+      ok: content.includes(`.aiox-core/development/agents/${expected.filename}`),
       reason: `missing canonical agent path "${expected.filename}"`,
     },
     {
@@ -102,7 +102,7 @@ function validateCodexSkills(options = {}) {
   const orphaned = [];
   if (resolved.strict) {
     const dirs = fs.readdirSync(resolved.skillsDir, { withFileTypes: true })
-      .filter(entry => entry.isDirectory() && entry.name.startsWith('aios-'))
+      .filter(entry => entry.isDirectory() && entry.name.startsWith('aiox-'))
       .map(entry => entry.name);
     for (const dir of dirs) {
       if (!expectedIds.has(dir)) {

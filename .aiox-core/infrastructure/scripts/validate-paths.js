@@ -17,7 +17,7 @@ function getDefaultOptions() {
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
     requiredFiles: [
       path.join(projectRoot, 'AGENTS.md'),
-      path.join(projectRoot, '.aios-core', 'product', 'templates', 'ide-rules', 'codex-rules.md'),
+      path.join(projectRoot, '.aiox-core', 'product', 'templates', 'ide-rules', 'codex-rules.md'),
     ],
     quiet: false,
     json: false,
@@ -35,7 +35,7 @@ function parseArgs(argv = process.argv.slice(2)) {
 function listSkillFiles(skillsDir) {
   if (!fs.existsSync(skillsDir)) return [];
   return fs.readdirSync(skillsDir, { withFileTypes: true })
-    .filter(entry => entry.isDirectory() && entry.name.startsWith('aios-'))
+    .filter(entry => entry.isDirectory() && entry.name.startsWith('aiox-'))
     .map(entry => path.join(skillsDir, entry.name, 'SKILL.md'))
     .filter(file => fs.existsSync(file));
 }
@@ -56,10 +56,10 @@ function collectAbsolutePathViolations(content, filePath) {
 
 function validateSkillPathConventions(content, filePath) {
   const errors = [];
-  if (!content.includes('.aios-core/development/agents/')) {
-    errors.push(`${filePath} missing canonical source path ".aios-core/development/agents/"`);
+  if (!content.includes('.aiox-core/development/agents/')) {
+    errors.push(`${filePath} missing canonical source path ".aiox-core/development/agents/"`);
   }
-  if (!content.includes('.aios-core/development/scripts/generate-greeting.js')) {
+  if (!content.includes('.aiox-core/development/scripts/generate-greeting.js')) {
     errors.push(`${filePath} missing canonical greeting script path`);
   }
   return errors;

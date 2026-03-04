@@ -1,6 +1,6 @@
-# AIOS Workflows - Documentacion Detallada de los Workflows
+# AIOX Workflows - Documentacion Detallada de los Workflows
 
-> [PT](../../aios-workflows/README.md) | [EN](../../en/aios-workflows/README.md) | **ES** | [ZH](../../zh/aios-workflows/README.md)
+> [PT](../../aiox-workflows/README.md) | [EN](../../en/aiox-workflows/README.md) | **ES** | [ZH](../../zh/aiox-workflows/README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Vision General
 
-Esta carpeta contiene la documentacion detallada de todos los workflows de AIOS, incluyendo:
+Esta carpeta contiene la documentacion detallada de todos los workflows de AIOX, incluyendo:
 
 - **Diagramas Mermaid** completos (flowchart, sequence, state)
 - **Pasos detallados** con inputs/outputs
@@ -227,7 +227,7 @@ flowchart TD
 | Documentacion | Ubicacion | Proposito |
 |---------------|-----------|-----------|
 | Workflows Guide | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Guia general |
-| Agent Flows | [docs/aios-agent-flows/](../../aios-agent-flows/) | Detalles de agentes |
+| Agent Flows | [docs/aiox-agent-flows/](../../aiox-agent-flows/) | Detalles de agentes |
 | Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md) | Referencia rapida |
 
 ---
@@ -244,4 +244,4 @@ Para agregar o actualizar documentacion de workflows:
 
 ---
 
-*AIOS Workflows Documentation v1.0 - Documentacion detallada de los workflows de desarrollo*
+*AIOX Workflows Documentation v1.0 - Documentacion detallada de los workflows de desarrollo*

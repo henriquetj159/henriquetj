@@ -1,10 +1,10 @@
 # Greenfield Service Workflow
 
-> **EN** | [PT](../../aios-workflows/greenfield-service-workflow.md) | [ES](../../es/aios-workflows/greenfield-service-workflow.md)
+> **EN** | [PT](../../aiox-workflows/greenfield-service-workflow.md) | [ES](../../es/aiox-workflows/greenfield-service-workflow.md)
 
 ---
 
-**Full documentation available in:** [Portuguese Version](../../aios-workflows/greenfield-service-workflow.md)
+**Full documentation available in:** [Portuguese Version](../../aiox-workflows/greenfield-service-workflow.md)
 
 ---
 
@@ -42,4 +42,4 @@ The **Greenfield Service Workflow** is designed for creating new backend service
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aios-workflows/greenfield-service-workflow.md).*
+*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/greenfield-service-workflow.md).*

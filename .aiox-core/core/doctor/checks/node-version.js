@@ -3,7 +3,7 @@
  *
  * Validates Node.js >= 18 via process.version.
  *
- * @module aios-core/doctor/checks/node-version
+ * @module aiox-core/doctor/checks/node-version
  * @story INS-4.1
  */
 

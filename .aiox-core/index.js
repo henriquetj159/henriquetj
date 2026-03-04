@@ -1,4 +1,4 @@
-// aios-core/core - CommonJS Entry Point
+// aiox-core/core - CommonJS Entry Point
 const MetaAgent = require('./infrastructure/scripts/component-generator.js');
 const TaskManager = require('./infrastructure/scripts/batch-creator.js');
 const ElicitationEngine = require('./core/elicitation/elicitation-engine.js');

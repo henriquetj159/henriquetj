@@ -9,9 +9,9 @@ compact_trigger: "context_limit_90%"
 
 ## User Corrections
 
-- "Actually, the path should be `.aios/sessions/` not `.aios-sessions/`"
+- "Actually, the path should be `.aiox/sessions/` not `.aiox-sessions/`"
 - "Tests should expect `null`, not objects"
-- "No, the runner file goes in `.aios-core/hooks/unified/runners/` directory"
+- "No, the runner file goes in `.aiox-core/hooks/unified/runners/` directory"
 
 ## Patterns Observed
 
@@ -25,7 +25,7 @@ compact_trigger: "context_limit_90%"
 - Axiom: "Hooks unified require runners/ directory to function"
 - Axiom: "CodeRabbit integration catches regressions early"
 - Axiom: "Fire-and-forget pattern uses setImmediate() for async non-blocking execution"
-- Axiom: "Open Core pattern: aios-core provides extension points, aios-pro provides implementation"
+- Axiom: "Open Core pattern: aiox-core provides extension points, aiox-pro provides implementation"
 - Axiom: "Graceful degradation: system functions without pro, logs no-op messages"
 
 ## Context Snapshot
@@ -35,7 +35,7 @@ compact_trigger: "context_limit_90%"
 **Epic:** Memory Intelligence System
 
 **Files Modified:**
-- `.aios-core/hooks/unified/runners/precompact-runner.js` (created, 97 lines)
+- `.aiox-core/hooks/unified/runners/precompact-runner.js` (created, 97 lines)
 - `.claude/hooks/precompact-session-digest.js` (created, 38 lines)
 - `pro/memory/session-digest/extractor.js` (created, 378 lines)
 - `pro/package.json` (modified, added yaml dependency)

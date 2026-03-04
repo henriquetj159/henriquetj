@@ -290,7 +290,7 @@ reviews:
       instructions: "Focus on test coverage and edge cases"
     - path: "**/*.md"
       instructions: "Check for broken links, typos, and clarity"
-    - path: ".aios-core/**"
+    - path: ".aiox-core/**"
       instructions: "Ensure consistency with framework standards"
 
 chat:
@@ -330,7 +330,7 @@ Strategic review by humans focusing on architecture, business logic, and edge ca
 * @team-leads
 
 # Architecture-sensitive areas
-/.aios-core/core/ @architect @senior-devs
+/.aiox-core/core/ @architect @senior-devs
 /docs/architecture/ @architect
 /src/core/ @senior-devs
 
@@ -476,7 +476,7 @@ reviews:
         - Mock appropriateness
         - Assertion quality
 
-    - path: ".aios-core/docs/standards/**"
+    - path: ".aiox-core/docs/standards/**"
       instructions: |
         Verify:
         - Terminology uses 'Squad' not 'Squad'
@@ -487,7 +487,7 @@ reviews:
       instructions: |
         Check:
         - squad.yaml manifest is valid
-        - peerDependency on @aios/core declared
+        - peerDependency on @aiox/core declared
         - Follows Squad structure conventions
 
     - path: ".github/workflows/**"
@@ -545,7 +545,7 @@ reviews:
 
 ## Related Documents
 
-- [AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md)
+- [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md)
 - [CodeRabbit Integration Decisions](../../docs/architecture/coderabbit-integration-decisions.md)
 - [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md)
 

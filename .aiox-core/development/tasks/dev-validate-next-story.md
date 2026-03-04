@@ -23,7 +23,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: devValidateNextStory()
@@ -129,11 +129,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -144,7 +144,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -218,18 +218,18 @@ To comprehensively validate a story draft before implementation begins, ensuring
 
 ### 0. Load Core Configuration and Inputs
 
-- Load `.aios-core/core-config.yaml`
+- Load `.aiox-core/core-config.yaml`
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story validation."
 - Extract key configurations: `devStoryLocation`, `prd.*`, `architecture.*`
 - Identify and load the following inputs:
   - **Story file**: The drafted story to validate (provided by user or discovered in `devStoryLocation`)
   - **Parent epic**: The epic containing this story's requirements
   - **Architecture documents**: Based on configuration (sharded or monolithic)
-  - **Story template**: `aios-core/templates/story-tmpl.yaml` for completeness validation
+  - **Story template**: `aiox-core/templates/story-tmpl.yaml` for completeness validation
 
 ### 1. Template Completeness Validation
 
-- Load `aios-core/templates/story-tmpl.yaml` and extract all section headings from the template
+- Load `aiox-core/templates/story-tmpl.yaml` and extract all section headings from the template
 - **Missing sections check**: Compare story sections against template sections to verify all required sections are present
 - **Placeholder validation**: Ensure no template placeholders remain unfilled (e.g., `{{EpicNum}}`, `{{role}}`, `_TBD_`)
 - **Agent section verification**: Confirm all sections from template exist for future agent use

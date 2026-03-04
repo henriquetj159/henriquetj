@@ -1,10 +1,10 @@
 # Greenfield Fullstack Workflow
 
-> [PT](../../aios-workflows/greenfield-fullstack-workflow.md) | [EN](../../en/aios-workflows/greenfield-fullstack-workflow.md) | **ES**
+> [PT](../../aiox-workflows/greenfield-fullstack-workflow.md) | [EN](../../en/aiox-workflows/greenfield-fullstack-workflow.md) | **ES**
 
 ---
 
-> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aios-workflows/greenfield-fullstack-workflow.md).
+> **Nota:** Esta es una version resumida. Para la documentacion completa, consulte la [version en portugues](../../aiox-workflows/greenfield-fullstack-workflow.md).
 
 ---
 
@@ -37,7 +37,7 @@ Workflow para crear aplicaciones full-stack desde cero, incluyendo:
 
 ## Ver Mas
 
-- **[Documentacion completa (PT)](../../aios-workflows/greenfield-fullstack-workflow.md)**
+- **[Documentacion completa (PT)](../../aiox-workflows/greenfield-fullstack-workflow.md)**
 
 ---
 

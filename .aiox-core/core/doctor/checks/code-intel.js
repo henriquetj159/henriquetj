@@ -4,7 +4,7 @@
  * Validates code-intel provider status by actually testing provider detection.
  * Checks: module exists → registry-provider available → primitives work.
  *
- * @module aios-core/doctor/checks/code-intel
+ * @module aiox-core/doctor/checks/code-intel
  * @story INS-4.1, CODEINTEL-RP-001
  */
 
@@ -14,7 +14,7 @@ const fs = require('fs');
 const name = 'code-intel';
 
 async function run(context) {
-  const codeIntelDir = path.join(context.projectRoot, '.aios-core', 'core', 'code-intel');
+  const codeIntelDir = path.join(context.projectRoot, '.aiox-core', 'core', 'code-intel');
 
   // Check 1: Module exists
   if (!fs.existsSync(codeIntelDir)) {
@@ -57,7 +57,7 @@ async function run(context) {
 
     if (!available) {
       // Check if entity-registry.yaml exists but provider still failed
-      const registryPath = path.join(context.projectRoot, '.aios-core', 'data', 'entity-registry.yaml');
+      const registryPath = path.join(context.projectRoot, '.aiox-core', 'data', 'entity-registry.yaml');
       if (fs.existsSync(registryPath)) {
         const stat = fs.statSync(registryPath);
         const sizeKB = Math.round(stat.size / 1024);
@@ -65,7 +65,7 @@ async function run(context) {
           check: name,
           status: 'WARN',
           message: `Registry exists (${sizeKB}KB) but provider detection failed — may be empty or malformed`,
-          fixCommand: 'node .aios-core/development/scripts/populate-entity-registry.js',
+          fixCommand: 'node .aiox-core/development/scripts/populate-entity-registry.js',
         };
       }
 
@@ -73,7 +73,7 @@ async function run(context) {
         check: name,
         status: 'INFO',
         message: 'No provider available (no registry, no MCP) — graceful fallback active',
-        fixCommand: 'node .aios-core/development/scripts/populate-entity-registry.js',
+        fixCommand: 'node .aiox-core/development/scripts/populate-entity-registry.js',
       };
     }
 
@@ -83,7 +83,7 @@ async function run(context) {
 
     if (provider === 'registry') {
       // Read entity count from registry metadata
-      const registryPath = path.join(context.projectRoot, '.aios-core', 'data', 'entity-registry.yaml');
+      const registryPath = path.join(context.projectRoot, '.aiox-core', 'data', 'entity-registry.yaml');
       let entityInfo = '';
       if (fs.existsSync(registryPath)) {
         const content = fs.readFileSync(registryPath, 'utf8');

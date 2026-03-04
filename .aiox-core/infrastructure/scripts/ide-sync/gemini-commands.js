@@ -3,11 +3,11 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const FALLBACK_DESCRIPTION = 'Agente especializado AIOS';
+const FALLBACK_DESCRIPTION = 'Agente especializado AIOX';
 const MAX_DESCRIPTION_CONTEXT = 120;
 
 const MENU_ORDER = [
-  'aios-master',
+  'aiox-master',
   'analyst',
   'architect',
   'data-engineer',
@@ -22,14 +22,14 @@ const MENU_ORDER = [
 ];
 
 function commandSlugForAgent(agentId) {
-  if (agentId.startsWith('aios-')) {
-    return agentId.replace(/^aios-/, '');
+  if (agentId.startsWith('aiox-')) {
+    return agentId.replace(/^aiox-/, '');
   }
   return agentId;
 }
 
 function menuCommandName(agentId) {
-  return `/aios-${commandSlugForAgent(agentId)}`;
+  return `/aiox-${commandSlugForAgent(agentId)}`;
 }
 
 function normalizeText(text) {
@@ -73,15 +73,15 @@ function buildAgentDescription(agent) {
   if (whenToUseSummary) {
     return whenToUseSummary;
   }
-  return `Ativar agente AIOS ${agent.id}`;
+  return `Ativar agente AIOX ${agent.id}`;
 }
 
 function buildAgentCommandPrompt(agentId) {
   return [
     `Ative o agente ${agentId}:`,
-    `1. Leia a definição completa em .gemini/rules/AIOS/agents/${agentId}.md`,
+    `1. Leia a definição completa em .gemini/rules/AIOX/agents/${agentId}.md`,
     '2. Siga as activation-instructions do bloco YAML',
-    `3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js ${agentId}`,
+    `3. Renderize o greeting via: node .aiox-core/development/scripts/generate-greeting.js ${agentId}`,
     '   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named',
     '4. Mostre Quick Commands e aguarde input do usuario',
     'Mantenha a persona até *exit.',
@@ -101,7 +101,7 @@ function buildAgentCommandFile(agentId, description = FALLBACK_DESCRIPTION) {
   ].join('\n');
 
   return {
-    filename: `aios-${slug}.toml`,
+    filename: `aiox-${slug}.toml`,
     content,
     agentId,
     description,
@@ -110,7 +110,7 @@ function buildAgentCommandFile(agentId, description = FALLBACK_DESCRIPTION) {
 
 function buildMenuPrompt(commandFiles) {
   const lines = [
-    'Você está no launcher AIOS para Gemini.',
+    'Você está no launcher AIOX para Gemini.',
     '',
     'Mostre a lista de agentes abaixo em formato numerado, explicando em 1 linha quando usar cada um:',
   ];
@@ -128,7 +128,7 @@ function buildMenuPrompt(commandFiles) {
 
 function buildMenuCommandFile(commandFiles) {
   const content = [
-    'description = "Menu rápido AIOS (lista agentes e orienta qual ativar)"',
+    'description = "Menu rápido AIOX (lista agentes e orienta qual ativar)"',
     'prompt = """',
     buildMenuPrompt(commandFiles),
     '"""',
@@ -136,7 +136,7 @@ function buildMenuCommandFile(commandFiles) {
   ].join('\n');
 
   return {
-    filename: 'aios-menu.toml',
+    filename: 'aiox-menu.toml',
     content,
   };
 }

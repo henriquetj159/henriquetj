@@ -1,6 +1,6 @@
 # Analyze Project Structure
 
-**Purpose:** Analyze an existing AIOS project to understand its structure, services, patterns, and provide recommendations for implementing new features. This is Phase 1 of the Incremental Feature Workflow.
+**Purpose:** Analyze an existing AIOX project to understand its structure, services, patterns, and provide recommendations for implementing new features. This is Phase 1 of the Incremental Feature Workflow.
 
 ---
 
@@ -27,7 +27,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: analyzeProjectStructure()
@@ -47,7 +47,7 @@ inputs:
   type: string
   source: User Input or cwd
   required: false
-  validation: Valid directory path with .aios-core/
+  validation: Valid directory path with .aiox-core/
 
 - field: executionMode
   type: string
@@ -82,12 +82,12 @@ outputs:
 
 ```yaml
 pre-conditions:
-  - [ ] Project has .aios-core/ directory
+  - [ ] Project has .aiox-core/ directory
     type: pre-condition
     blocker: true
     validation: |
-      Check .aios-core/ directory exists in project root
-    error_message: "Pre-condition failed: Not an AIOS project (.aios-core/ not found)"
+      Check .aiox-core/ directory exists in project root
+    error_message: "Pre-condition failed: Not an AIOX project (.aiox-core/ not found)"
 
   - [ ] Project path is accessible
     type: pre-condition
@@ -143,7 +143,7 @@ acceptance-criteria:
     type: acceptance-criterion
     blocker: true
     validation: |
-      Assert .aios-core/ configuration analyzed
+      Assert .aiox-core/ configuration analyzed
     error_message: "Acceptance criterion not met: Project structure not scanned"
 
   - [ ] Service inventory complete
@@ -191,9 +191,9 @@ acceptance-criteria:
 
 **Common Errors:**
 
-1. **Error:** No .aios-core/ Directory
-   - **Cause:** Not an AIOS project
-   - **Resolution:** Initialize AIOS first or check directory
+1. **Error:** No .aiox-core/ Directory
+   - **Cause:** Not an AIOX project
+   - **Resolution:** Initialize AIOX first or check directory
    - **Recovery:** Exit with clear message
 
 2. **Error:** No Services Found
@@ -273,14 +273,14 @@ Present these prompts to the user:
 **Scan the following locations:**
 
 ```javascript
-// Core AIOS structure
+// Core AIOX structure
 const scanLocations = {
-  aiosCore: '.aios-core/',
-  services: '.aios-core/infrastructure/services/',
-  squads: '.aios-core/squads/',
-  agents: '.aios-core/development/agents/',
-  tasks: '.aios-core/development/tasks/',
-  data: '.aios-core/data/'
+  aioxCore: '.aiox-core/',
+  services: '.aiox-core/infrastructure/services/',
+  squads: '.aiox-core/squads/',
+  agents: '.aiox-core/development/agents/',
+  tasks: '.aiox-core/development/tasks/',
+  data: '.aiox-core/data/'
 };
 ```
 
@@ -347,7 +347,7 @@ const docPatterns = {
 // Check configuration approaches
 const configPatterns = {
   envVars: exists('.env.example') || exists('.env.local'),
-  configFile: exists('aios.config.js') || exists('.aios-core/core-config.yaml'),
+  configFile: exists('aiox.config.js') || exists('.aiox-core/core-config.yaml'),
   envPrefix: grep('process.env', '**/*.{ts,js}').length > 0
 };
 ```
@@ -372,7 +372,7 @@ Based on elicitation responses and pattern analysis:
 Based on existing service patterns, suggest structure:
 
 ```
-.aios-core/infrastructure/services/{service-name}/
+.aiox-core/infrastructure/services/{service-name}/
 ├── README.md           # Documentation
 ├── index.ts            # Entry point (factory + exports)
 ├── client.ts           # HTTP client (if API integration)
@@ -414,7 +414,7 @@ Generate `docs/architecture/project-analysis.md`:
 
 | Aspect | Value |
 |--------|-------|
-| Framework | AIOS-FullStack |
+| Framework | AIOX-FullStack |
 | Primary Language | {primaryLanguage} |
 | Existing Services | {serviceCount} |
 | Testing Framework | {testFramework} |
@@ -494,7 +494,7 @@ Generate `docs/architecture/recommended-approach.md`:
 ## Suggested Structure
 
 ```
-.aios-core/infrastructure/services/{service_name}/
+.aiox-core/infrastructure/services/{service_name}/
 ├── README.md
 ├── index.ts
 ├── client.ts          {if apiIntegration}
@@ -564,8 +564,8 @@ After this analysis:
 When code intelligence is available, enrich the analysis with real dependency and complexity data:
 
 ```javascript
-const { isCodeIntelAvailable } = require('.aios-core/core/code-intel');
-const { getDependencyGraph, getComplexityAnalysis } = require('.aios-core/core/code-intel/helpers/planning-helper');
+const { isCodeIntelAvailable } = require('.aiox-core/core/code-intel');
+const { getDependencyGraph, getComplexityAnalysis } = require('.aiox-core/core/code-intel/helpers/planning-helper');
 
 if (isCodeIntelAvailable()) {
   const depGraph = await getDependencyGraph(projectPath);

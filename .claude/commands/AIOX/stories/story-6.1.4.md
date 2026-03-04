@@ -36,7 +36,7 @@
 
 ## 🎯 Story
 
-**As a** AIOS framework user,  
+**As a** AIOX framework user,  
 **I want** agents to use a unified greeting system that integrates session context, project status, agent personalization, and user preferences,  
 **So that** I have a consistent, fast, and contextually relevant experience when activating any agent.
 
@@ -106,7 +106,7 @@
 ```yaml
 - STEP 3: |
     Generate greeting by executing unified greeting generator:
-    1. Execute: node .aios-core/scripts/generate-greeting.js {agent-id}
+    1. Execute: node .aiox-core/scripts/generate-greeting.js {agent-id}
     2. Capture the complete output
     3. Display the greeting exactly as returned
     
@@ -158,7 +158,7 @@
 
 **Implementation:**
 
-Add to `.aios-core/scripts/agent-config-loader.js`:
+Add to `.aiox-core/scripts/agent-config-loader.js`:
 
 ```javascript
 /**
@@ -186,7 +186,7 @@ async loadAgentDefinition(options = {}) {
   }
   
   // Load from file
-  const agentPath = path.join(process.cwd(), '.aios-core', 'agents', `${this.agentId}.md`);
+  const agentPath = path.join(process.cwd(), '.aiox-core', 'agents', `${this.agentId}.md`);
   
   try {
     const content = await fs.readFile(agentPath, 'utf8');
@@ -305,7 +305,7 @@ async loadComplete(coreConfig, options = {}) {
 
 **Actions:**
 
-1. Add deprecation warning to `.aios-core/scripts/config-loader.js`:
+1. Add deprecation warning to `.aiox-core/scripts/config-loader.js`:
 ```javascript
 /**
  * @deprecated Use agent-config-loader.js instead
@@ -321,8 +321,8 @@ async loadComplete(coreConfig, options = {}) {
 
 2. Check for usages:
 ```bash
-grep -r "require.*config-loader" .aios-core/
-grep -r "from.*config-loader" .aios-core/
+grep -r "require.*config-loader" .aiox-core/
+grep -r "from.*config-loader" .aiox-core/
 ```
 
 3. If no usages found: Document deprecation, keep file for now
@@ -337,27 +337,27 @@ grep -r "from.*config-loader" .aios-core/
 **Objective:** Remove completed migration scripts (verify existence first)
 
 **Scripts to Delete (verify existence before deletion):**
-1. `.aios-core/scripts/batch-integrate-greeting-builder.js` ✅ (exists - verified)
-2. `.aios-core/scripts/apply-inline-greeting-all-agents.js` ❌ (not found - may already be deleted)
-3. `.aios-core/scripts/update-activation-instructions.js` ✅ (exists - verified)
-4. `.aios-core/scripts/batch-update-agents-session-context.js` ❌ (not found - may already be deleted)
+1. `.aiox-core/scripts/batch-integrate-greeting-builder.js` ✅ (exists - verified)
+2. `.aiox-core/scripts/apply-inline-greeting-all-agents.js` ❌ (not found - may already be deleted)
+3. `.aiox-core/scripts/update-activation-instructions.js` ✅ (exists - verified)
+4. `.aiox-core/scripts/batch-update-agents-session-context.js` ❌ (not found - may already be deleted)
 
 **Implementation Steps:**
 
 1. **Verify script existence:**
    ```bash
    # Check each script
-   test -f .aios-core/scripts/batch-integrate-greeting-builder.js && echo "EXISTS" || echo "NOT FOUND"
-   test -f .aios-core/scripts/apply-inline-greeting-all-agents.js && echo "EXISTS" || echo "NOT FOUND"
-   test -f .aios-core/scripts/update-activation-instructions.js && echo "EXISTS" || echo "NOT FOUND"
-   test -f .aios-core/scripts/batch-update-agents-session-context.js && echo "EXISTS" || echo "NOT FOUND"
+   test -f .aiox-core/scripts/batch-integrate-greeting-builder.js && echo "EXISTS" || echo "NOT FOUND"
+   test -f .aiox-core/scripts/apply-inline-greeting-all-agents.js && echo "EXISTS" || echo "NOT FOUND"
+   test -f .aiox-core/scripts/update-activation-instructions.js && echo "EXISTS" || echo "NOT FOUND"
+   test -f .aiox-core/scripts/batch-update-agents-session-context.js && echo "EXISTS" || echo "NOT FOUND"
    ```
 
 2. **Delete existing scripts only:**
    ```bash
    # Delete only if file exists (graceful handling)
-   [ -f .aios-core/scripts/batch-integrate-greeting-builder.js ] && rm .aios-core/scripts/batch-integrate-greeting-builder.js
-   [ -f .aios-core/scripts/update-activation-instructions.js ] && rm .aios-core/scripts/update-activation-instructions.js
+   [ -f .aiox-core/scripts/batch-integrate-greeting-builder.js ] && rm .aiox-core/scripts/batch-integrate-greeting-builder.js
+   [ -f .aiox-core/scripts/update-activation-instructions.js ] && rm .aiox-core/scripts/update-activation-instructions.js
    ```
 
 3. **Document deletion status:**
@@ -386,7 +386,7 @@ grep -r "from.*config-loader" .aios-core/
 
 **Implementation:**
 
-Modify `.aios-core/scripts/greeting-builder.js`:
+Modify `.aiox-core/scripts/greeting-builder.js`:
 
 ```javascript
 /**
@@ -472,7 +472,7 @@ async _buildContextualGreeting(agent, context) {
 
 **Implementation:**
 
-Create `.aios-core/scripts/generate-greeting.js`:
+Create `.aiox-core/scripts/generate-greeting.js`:
 
 ```javascript
 #!/usr/bin/env node
@@ -520,7 +520,7 @@ async function generateGreeting(agentId) {
   
   try {
     // Load core config
-    const coreConfigPath = path.join(process.cwd(), '.aios-core', 'core-config.yaml');
+    const coreConfigPath = path.join(process.cwd(), '.aiox-core', 'core-config.yaml');
     const coreConfigContent = await fs.readFile(coreConfigPath, 'utf8');
     const coreConfig = yaml.load(coreConfigContent);
     
@@ -657,7 +657,7 @@ module.exports = { generateGreeting };
 - STEP 3: |
     Generate greeting by executing unified greeting generator:
     
-    1. Execute: node .aios-core/scripts/generate-greeting.js qa
+    1. Execute: node .aiox-core/scripts/generate-greeting.js qa
     2. Capture the complete output
     3. Display the greeting exactly as returned
     
@@ -671,11 +671,11 @@ module.exports = { generateGreeting };
 
 **Manual Update Steps:**
 
-1. Open `.aios-core/agents/qa.md`
+1. Open `.aiox-core/agents/qa.md`
 2. Find STEP 3 section (starts with `- STEP 3: |`)
 3. Replace entire STEP 3 block with new format above
 4. Save file
-5. Test activation: `/AIOS/agents/qa`
+5. Test activation: `/AIOX/agents/qa`
 
 **Validation Checklist for QA Pilot:**
 - [ ] QA agent file updated correctly
@@ -695,10 +695,10 @@ module.exports = { generateGreeting };
 1. **New Session Test:**
    ```bash
    # Clear session state
-   rm .aios/session-state.json
+   rm .aiox/session-state.json
    
    # Activate QA agent
-   /AIOS/agents/qa
+   /AIOX/agents/qa
    
    # Expected: "new" session type detected
    # Expected: Full greeting with role description
@@ -708,10 +708,10 @@ module.exports = { generateGreeting };
 2. **Existing Session Test:**
    ```bash
    # Create session state
-   node -e "const fs = require('fs'); const path = require('path'); const sessionPath = path.join(process.cwd(), '.aios', 'session-state.json'); fs.mkdirSync(path.dirname(sessionPath), { recursive: true }); fs.writeFileSync(sessionPath, JSON.stringify({ sessionId: 'test-123', startTime: new Date().toISOString(), lastActivity: new Date().toISOString(), agentSequence: [{ id: 'po', name: 'Pax' }], lastCommands: ['create-story'], workflowActive: null }), 'utf8');"
+   node -e "const fs = require('fs'); const path = require('path'); const sessionPath = path.join(process.cwd(), '.aiox', 'session-state.json'); fs.mkdirSync(path.dirname(sessionPath), { recursive: true }); fs.writeFileSync(sessionPath, JSON.stringify({ sessionId: 'test-123', startTime: new Date().toISOString(), lastActivity: new Date().toISOString(), agentSequence: [{ id: 'po', name: 'Pax' }], lastCommands: ['create-story'], workflowActive: null }), 'utf8');"
    
    # Activate QA agent
-   /AIOS/agents/qa
+   /AIOX/agents/qa
    
    # Expected: "existing" session type detected
    # Expected: Quick greeting (no role description)
@@ -721,7 +721,7 @@ module.exports = { generateGreeting };
 3. **Direct Script Test:**
    ```bash
    # Test script directly
-   node .aios-core/scripts/generate-greeting.js qa
+   node .aiox-core/scripts/generate-greeting.js qa
    
    # Expected: Greeting output without errors
    # Expected: Contains agent name "Quinn"
@@ -732,7 +732,7 @@ module.exports = { generateGreeting };
 4. **Error Handling Test:**
    ```bash
    # Test with invalid agent
-   node .aios-core/scripts/generate-greeting.js invalid-agent
+   node .aiox-core/scripts/generate-greeting.js invalid-agent
    
    # Expected: Fallback greeting shown
    # Expected: No errors thrown
@@ -741,7 +741,7 @@ module.exports = { generateGreeting };
 5. **Performance Test:**
    ```bash
    # Measure execution time
-   time node .aios-core/scripts/generate-greeting.js qa
+   time node .aiox-core/scripts/generate-greeting.js qa
    
    # Expected: <150ms (with timeout protection)
    # Expected: <50ms if cache hit
@@ -781,27 +781,27 @@ module.exports = { generateGreeting };
 6. `analyst.md`
 7. `data-engineer.md`
 8. `devops.md`
-9. `aios-master.md`
+9. `aiox-master.md`
 10. `ux-design-expert.md`
 
 **Implementation Script:**
 
-Create script `.aios/temp-update-remaining-agents.js`:
+Create script `.aiox/temp-update-remaining-agents.js`:
 
 ```javascript
 const fs = require('fs');
 const path = require('path');
 
-const AGENTS_DIR = path.join(process.cwd(), '.aios-core', 'agents');
+const AGENTS_DIR = path.join(process.cwd(), '.aiox-core', 'agents');
 const REMAINING_AGENTS = [
   'dev', 'po', 'sm', 'pm', 'architect', 'analyst',
-  'data-engineer', 'devops', 'aios-master', 'ux-design-expert'
+  'data-engineer', 'devops', 'aiox-master', 'ux-design-expert'
 ];
 
 const NEW_STEP_3_TEMPLATE = `  - STEP 3: |
       Generate greeting by executing unified greeting generator:
       
-      1. Execute: node .aios-core/scripts/generate-greeting.js {agent-id}
+      1. Execute: node .aiox-core/scripts/generate-greeting.js {agent-id}
       2. Capture the complete output
       3. Display the greeting exactly as returned
       
@@ -870,9 +870,9 @@ console.log(`📊 Total: ${updated + 1} agents (including QA pilot)`);
 **Quick Validation Test:**
 ```bash
 # Test each agent activation
-for agent in dev po sm pm architect analyst data-engineer devops aios-master ux-design-expert; do
+for agent in dev po sm pm architect analyst data-engineer devops aiox-master ux-design-expert; do
   echo "Testing $agent..."
-  node .aios-core/scripts/generate-greeting.js $agent
+  node .aiox-core/scripts/generate-greeting.js $agent
   echo "---"
 done
 ```
@@ -887,7 +887,7 @@ done
 
 **Implementation:**
 
-Create `.aios-core/scripts/command-execution-hook.js`:
+Create `.aiox-core/scripts/command-execution-hook.js`:
 
 ```javascript
 /**
@@ -942,7 +942,7 @@ module.exports = { updateSessionAfterCommand };
 
 **Documentation:**
 
-Create `.aios-core/docs/session-update-pattern.md`:
+Create `.aiox-core/docs/session-update-pattern.md`:
 
 ```markdown
 # Session Update Pattern
@@ -988,7 +988,7 @@ Create `tests/unit/generate-greeting.test.js`:
  * Unit Tests for Unified Greeting Generator
  */
 
-const { generateGreeting } = require('../../.aios-core/scripts/generate-greeting');
+const { generateGreeting } = require('../../.aiox-core/scripts/generate-greeting');
 
 describe('generateGreeting', () => {
   it('should generate greeting for valid agent', async () => {
@@ -1170,34 +1170,34 @@ describe('Greeting System Integration', () => {
 
 ### New Files Created
 
-- `.aios-core/scripts/generate-greeting.js` (Unified greeting generator)
-- `.aios-core/scripts/command-execution-hook.js` (Session update hook)
-- `.aios-core/docs/session-update-pattern.md` (Documentation)
+- `.aiox-core/scripts/generate-greeting.js` (Unified greeting generator)
+- `.aiox-core/scripts/command-execution-hook.js` (Session update hook)
+- `.aiox-core/docs/session-update-pattern.md` (Documentation)
 - `tests/unit/generate-greeting.test.js` (Unit tests)
 - `tests/integration/greeting-system-integration.test.js` (Integration tests)
 
 ### Files Modified
 
-- `.aios-core/scripts/agent-config-loader.js` (Expanded with `loadAgentDefinition()` and `loadComplete()`)
-- `.aios-core/scripts/greeting-builder.js` (Modified to accept pre-loaded context)
-- `.aios-core/scripts/config-loader.js` (Deprecated warning added)
-- `.aios-core/agents/qa.md` (Pilot - STEP 3 updated first)
-- `.aios-core/agents/*.md` (Remaining 10 agents - STEP 3 updated after QA validation)
+- `.aiox-core/scripts/agent-config-loader.js` (Expanded with `loadAgentDefinition()` and `loadComplete()`)
+- `.aiox-core/scripts/greeting-builder.js` (Modified to accept pre-loaded context)
+- `.aiox-core/scripts/config-loader.js` (Deprecated warning added)
+- `.aiox-core/agents/qa.md` (Pilot - STEP 3 updated first)
+- `.aiox-core/agents/*.md` (Remaining 10 agents - STEP 3 updated after QA validation)
 
 ### Files Deleted
 
-- `.aios-core/scripts/batch-integrate-greeting-builder.js` (Temporary migration script)
-- `.aios-core/scripts/apply-inline-greeting-all-agents.js` (Temporary migration script)
-- `.aios-core/scripts/update-activation-instructions.js` (Temporary migration script)
-- `.aios-core/scripts/batch-update-agents-session-context.js` (Temporary migration script)
+- `.aiox-core/scripts/batch-integrate-greeting-builder.js` (Temporary migration script)
+- `.aiox-core/scripts/apply-inline-greeting-all-agents.js` (Temporary migration script)
+- `.aiox-core/scripts/update-activation-instructions.js` (Temporary migration script)
+- `.aiox-core/scripts/batch-update-agents-session-context.js` (Temporary migration script)
 
 ### Files Referenced (No Changes)
 
-- `.aios-core/scripts/session-context-loader.js` (Used by generate-greeting.js)
-- `.aios-core/scripts/project-status-loader.js` (Used by generate-greeting.js)
-- `.aios-core/scripts/greeting-preference-manager.js` (Used by greeting-builder.js)
-- `.aios-core/scripts/context-detector.js` (Used by greeting-builder.js)
-- `.aios-core/scripts/workflow-navigator.js` (Used by greeting-builder.js)
+- `.aiox-core/scripts/session-context-loader.js` (Used by generate-greeting.js)
+- `.aiox-core/scripts/project-status-loader.js` (Used by generate-greeting.js)
+- `.aiox-core/scripts/greeting-preference-manager.js` (Used by greeting-builder.js)
+- `.aiox-core/scripts/context-detector.js` (Used by greeting-builder.js)
+- `.aiox-core/scripts/workflow-navigator.js` (Used by greeting-builder.js)
 
 ---
 
@@ -1327,12 +1327,12 @@ describe('Greeting System Integration', () => {
 
 **User activates agent:**
 ```bash
-/AIOS/agents/qa
+/AIOX/agents/qa
 ```
 
 **Agent STEP 3 executes:**
 ```bash
-node .aios-core/scripts/generate-greeting.js qa
+node .aiox-core/scripts/generate-greeting.js qa
 ```
 
 **Output:**

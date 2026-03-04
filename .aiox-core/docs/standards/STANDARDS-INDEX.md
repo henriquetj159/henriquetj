@@ -1,4 +1,4 @@
-# AIOS Standards Documentation Index
+# AIOX Standards Documentation Index
 
 **Version:** 2.1.0
 **Last Updated:** 2025-12-09
@@ -10,13 +10,13 @@
 
 ### For New Contributors
 
-1. **Start Here:** Read [AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md) - Complete framework guide
+1. **Start Here:** Read [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md) - Complete framework guide
 2. **Story Creation:** Follow [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md)
 3. **Quality Gates:** Understand [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md)
 
 ### For Existing Users
 
-- **v2.0 → v4.0.4 Migration:** See "What's New" section in [AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md)
+- **v2.0 → v4.0.4 Migration:** See "What's New" section in [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md)
 - **Architecture Changes:** Review [ARCHITECTURE-INDEX.md](../../docs/architecture/ARCHITECTURE-INDEX.md)
 
 ---
@@ -27,7 +27,7 @@
 
 | Document | Description | Status | Version |
 |----------|-------------|--------|---------|
-| [AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md) | **Complete v4.2 framework guide** | ✅ Current | 2.1.0 |
+| [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md) | **Complete v4.2 framework guide** | ✅ Current | 2.1.0 |
 | [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md) | 3-layer quality gates system | ✅ Current | 2.1.0 |
 | [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md) | Story template v2.0 specification | ✅ Current | 2.0.0 |
 | [TASK-FORMAT-SPECIFICATION-V1.md](./TASK-FORMAT-SPECIFICATION-V1.md) | Task-First architecture format | ✅ Current | 1.0.0 |
@@ -44,18 +44,18 @@
 
 | Document | Description | Status | Version |
 |----------|-------------|--------|---------|
-| [AIOS-COLOR-PALETTE-V2.1.md](./AIOS-COLOR-PALETTE-V2.1.md) | Complete color system | ✅ Current | 2.1.0 |
-| [AIOS-COLOR-PALETTE-QUICK-REFERENCE.md](./AIOS-COLOR-PALETTE-QUICK-REFERENCE.md) | Quick color reference | ✅ Current | 2.1.0 |
+| [AIOX-COLOR-PALETTE-V2.1.md](./AIOX-COLOR-PALETTE-V2.1.md) | Complete color system | ✅ Current | 2.1.0 |
+| [AIOX-COLOR-PALETTE-QUICK-REFERENCE.md](./AIOX-COLOR-PALETTE-QUICK-REFERENCE.md) | Quick color reference | ✅ Current | 2.1.0 |
 
 ### Legacy Documents (Reference Only)
 
 | Document | Description | Status | Superseded By |
 |----------|-------------|--------|---------------|
-| [AIOS-LIVRO-DE-OURO.md](./AIOS-LIVRO-DE-OURO.md) | v2.0.0 base document | ⚠️ Deprecated | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOS-LIVRO-DE-OURO-V2.1.md](./AIOS-LIVRO-DE-OURO-V2.1.md) | v4.0.4 delta (partial) | ⚠️ Deprecated | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md](./AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md) | v4.0.4 summary | ⚠️ Deprecated | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOS-LIVRO-DE-OURO-V2.2-SUMMARY.md](./AIOS-LIVRO-DE-OURO-V2.2-SUMMARY.md) | Future v2.2 planning | 📋 Draft | N/A |
-| [AIOS-FRAMEWORK-MASTER.md](./AIOS-FRAMEWORK-MASTER.md) | v2.0.0 framework doc | ⚠️ Deprecated | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO.md](./AIOX-LIVRO-DE-OURO.md) | v2.0.0 base document | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.1.md](./AIOX-LIVRO-DE-OURO-V2.1.md) | v4.0.4 delta (partial) | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md) | v4.0.4 summary | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md) | Future v2.2 planning | 📋 Draft | N/A |
+| [AIOX-FRAMEWORK-MASTER.md](./AIOX-FRAMEWORK-MASTER.md) | v2.0.0 framework doc | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
 | [V3-ARCHITECTURAL-DECISIONS.md](./V3-ARCHITECTURAL-DECISIONS.md) | Old architectural decisions | 📦 Archive Candidate | Current architecture docs |
 
 ---
@@ -66,7 +66,7 @@
 
 | Document | Purpose |
 |----------|---------|
-| AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md | Consolidated v4.2 documentation |
+| AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md | Consolidated v4.2 documentation |
 | QUALITY-GATES-SPECIFICATION.md | 3-layer quality gates |
 | STORY-TEMPLATE-V2-SPECIFICATION.md | Story template v2.0 |
 | STANDARDS-INDEX.md | This navigation document |
@@ -78,18 +78,18 @@
 | Squad | **Squad** | All standards |
 | Squads/ | **squads/** | Directory references |
 | pack.yaml | **squad.yaml** | Manifest references |
-| @expansion/* | **@aios/squad-*** | npm scope |
+| @expansion/* | **@aiox/squad-*** | npm scope |
 | 16 Agents | **11 Agents** | Agent counts |
 
 ### Concepts Added
 
 | Concept | Description | Documented In |
 |---------|-------------|---------------|
-| Modular Architecture | 4 modules (core, development, product, infrastructure) | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE |
-| Multi-Repo Strategy | 3 public + 2 private repos | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE |
+| Modular Architecture | 4 modules (core, development, product, infrastructure) | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
+| Multi-Repo Strategy | 3 public + 2 private repos | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
 | Quality Gates 3 Layers | Pre-commit, PR Automation, Human Review | QUALITY-GATES-SPECIFICATION |
 | Story Template v2.0 | Cross-Story Decisions, CodeRabbit Integration | STORY-TEMPLATE-V2-SPECIFICATION |
-| npm Scoping | @aios/core, @aios/squad-* | AIOS-LIVRO-DE-OURO-V2.1-COMPLETE |
+| npm Scoping | @aiox/core, @aiox/squad-* | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
 
 ---
 
@@ -98,31 +98,31 @@
 ### Standards Directory Structure
 
 ```
-.aios-core/docs/standards/
+.aiox-core/docs/standards/
 ├── STANDARDS-INDEX.md                     # This file - navigation
 │
 ├── Current v4.2 Standards
-│   ├── AIOS-LIVRO-DE-OURO-V2.1-COMPLETE.md  # Complete v4.2 guide
+│   ├── AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md  # Complete v4.2 guide
 │   ├── QUALITY-GATES-SPECIFICATION.md       # Quality gates
 │   ├── STORY-TEMPLATE-V2-SPECIFICATION.md   # Story template
 │   ├── TASK-FORMAT-SPECIFICATION-V1.md      # Task format
 │   ├── EXECUTOR-DECISION-TREE.md            # Executor routing
 │   ├── AGENT-PERSONALIZATION-STANDARD-V1.md # Agent personalities
-│   ├── AIOS-COLOR-PALETTE-V2.1.md           # Color system
-│   └── AIOS-COLOR-PALETTE-QUICK-REFERENCE.md
+│   ├── AIOX-COLOR-PALETTE-V2.1.md           # Color system
+│   └── AIOX-COLOR-PALETTE-QUICK-REFERENCE.md
 │
 ├── Legacy (Reference Only)
-│   ├── AIOS-LIVRO-DE-OURO.md              # v2.0.0 base (deprecated)
-│   ├── AIOS-LIVRO-DE-OURO-V2.1.md         # v4.0.4 delta (deprecated)
-│   ├── AIOS-LIVRO-DE-OURO-V2.1-SUMMARY.md # v4.0.4 summary (deprecated)
-│   ├── AIOS-FRAMEWORK-MASTER.md           # v2.0.0 (deprecated)
+│   ├── AIOX-LIVRO-DE-OURO.md              # v2.0.0 base (deprecated)
+│   ├── AIOX-LIVRO-DE-OURO-V2.1.md         # v4.0.4 delta (deprecated)
+│   ├── AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md # v4.0.4 summary (deprecated)
+│   ├── AIOX-FRAMEWORK-MASTER.md           # v2.0.0 (deprecated)
 │   └── V3-ARCHITECTURAL-DECISIONS.md      # Archive candidate
 │
 ├── Needs Update
 │   └── OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md # Update with multi-repo
 │
 └── Future Planning
-    └── AIOS-LIVRO-DE-OURO-V2.2-SUMMARY.md    # v2.2 draft
+    └── AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md    # v2.2 draft
 ```
 
 ---
@@ -185,14 +185,14 @@ Located in `docs/`:
 
 ```bash
 # Check for broken links
-find .aios-core/docs/standards -name "*.md" -exec markdown-link-check {} \;
+find .aiox-core/docs/standards -name "*.md" -exec markdown-link-check {} \;
 
 # Search for deprecated terminology
-grep -r "squad" .aios-core/docs/standards --include="*.md"
-grep -r "Squad" .aios-core/docs/standards --include="*.md"
+grep -r "squad" .aiox-core/docs/standards --include="*.md"
+grep -r "Squad" .aiox-core/docs/standards --include="*.md"
 
 # Verify version numbers
-grep -r "v2.0" .aios-core/docs/standards --include="*.md"
+grep -r "v2.0" .aiox-core/docs/standards --include="*.md"
 ```
 
 ---

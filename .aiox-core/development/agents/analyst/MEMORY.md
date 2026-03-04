@@ -10,8 +10,8 @@
 - kebab-case for files, PascalCase for components
 
 ### Project Structure
-- `.aios-core/core/` — Core modules (synapse, session, code-intel, orchestration)
-- `.aios-core/development/` — Agents, tasks, templates, scripts
+- `.aiox-core/core/` — Core modules (synapse, session, code-intel, orchestration)
+- `.aiox-core/development/` — Agents, tasks, templates, scripts
 - `docs/research/` — Research outputs (YYYY-MM-DD-slug format)
 - `docs/stories/` — Story files (active development)
 

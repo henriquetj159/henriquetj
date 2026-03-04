@@ -25,7 +25,7 @@
 
 ---
 
-## Task Definition (AIOS Task Format V1.0)
+## Task Definition (AIOX Task Format V1.0)
 
 ```yaml
 task: collaborativeEdit()
@@ -131,11 +131,11 @@ acceptance-criteria:
 
 - **Tool:** task-runner
   - **Purpose:** Task execution and orchestration
-  - **Source:** .aios-core/core/task-runner.js
+  - **Source:** .aiox-core/core/task-runner.js
 
 - **Tool:** logger
   - **Purpose:** Execution logging and error tracking
-  - **Source:** .aios-core/utils/logger.js
+  - **Source:** .aiox-core/utils/logger.js
 
 ---
 
@@ -146,7 +146,7 @@ acceptance-criteria:
 - **Script:** execute-task.js
   - **Purpose:** Generic task execution wrapper
   - **Language:** JavaScript
-  - **Location:** .aios-core/scripts/execute-task.js
+  - **Location:** .aiox-core/scripts/execute-task.js
 
 ---
 
@@ -208,7 +208,7 @@ tools:
   - github-cli
 ---
 
-# Collaborative Edit - AIOS Developer Task
+# Collaborative Edit - AIOX Developer Task
 
 ## Purpose
 Create and manage collaborative editing sessions for real-time component modification with multiple participants.
@@ -239,7 +239,7 @@ Create and manage collaborative editing sessions for real-time component modific
 ## Examples
 ```bash
 # Start collaborative editing session
-*collaborative-edit start --component aios-core/agents/data-agent.md --participants alice,bob --mode live
+*collaborative-edit start --component aiox-core/agents/data-agent.md --participants alice,bob --mode live
 
 # Join existing session
 *collaborative-edit join --session-id session-1234567890 --role editor
@@ -266,7 +266,7 @@ class CollaborativeEditTask extends EventEmitter {
     this.taskName = 'collaborative-edit';
     this.description = 'Manage collaborative editing sessions';
     this.rootPath = process.cwd();
-    this.sessionDir = path.join(this.rootPath, '.aios', 'sessions');
+    this.sessionDir = path.join(this.rootPath, '.aiox', 'sessions');
     this.synchronizer = null;
     this.conflictManager = null;
     this.currentSession = null;
@@ -275,7 +275,7 @@ class CollaborativeEditTask extends EventEmitter {
 
   async execute(params) {
     try {
-      console.log(chalk.blue('👥 AIOS Collaborative Editing'));
+      console.log(chalk.blue('👥 AIOX Collaborative Editing'));
       console.log(chalk.gray('Real-time collaborative modification system\n'));
 
       // Parse action and parameters

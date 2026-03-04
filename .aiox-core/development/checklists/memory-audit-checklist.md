@@ -10,7 +10,7 @@ Periodic checklist for maintaining agent MEMORY.md hygiene across all 10 agents.
 ## Steps
 
 ### Step 1: Read All MEMORY.md Files
-- [ ] Read all 10 agent MEMORY.md files under `.aios-core/development/agents/*/MEMORY.md`
+- [ ] Read all 10 agent MEMORY.md files under `.aiox-core/development/agents/*/MEMORY.md`
 - [ ] Confirm each file has the 3-section structure: `## Active Patterns`, `## Promotion Candidates`, `## Archived`
 
 ### Step 2: Identify Cross-Agent Patterns

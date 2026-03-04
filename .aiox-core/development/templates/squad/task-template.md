@@ -59,7 +59,7 @@ pre-conditions:
 Before proceeding, verify no similar task already exists:
 
 ```javascript
-const { checkDuplicateArtefact } = require('.aios-core/core/code-intel/helpers/creation-helper');
+const { checkDuplicateArtefact } = require('.aiox-core/core/code-intel/helpers/creation-helper');
 const result = await checkDuplicateArtefact('{{COMPONENTNAME}}', '{{DESCRIPTION}}');
 if (result) {
   console.warn(result.warning);
