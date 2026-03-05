@@ -166,6 +166,41 @@ class InlineLicenseClient {
       Authorization: `Bearer ${token}`,
     });
   }
+
+  /**
+   * Activate Pro using a license key (legacy flow).
+   * @param {string} licenseKey - License key
+   * @param {string} machineId - Machine fingerprint
+   * @param {string} version - aiox-core version
+   * @returns {Promise<Object>} Activation result
+   */
+  async activate(licenseKey, machineId, version) {
+    return this._request('POST', '/api/v1/licenses/activate', {
+      key: licenseKey,
+      machineId,
+      version,
+    });
+  }
+
+  /**
+   * Check if user's email has been verified.
+   * @param {string} sessionToken - Session token
+   * @returns {Promise<{verified: boolean}>}
+   */
+  async checkEmailVerified(sessionToken) {
+    return this._request('GET', '/api/v1/auth/email-verified', null, {
+      Authorization: `Bearer ${sessionToken}`,
+    });
+  }
+
+  /**
+   * Resend verification email.
+   * @param {string} email - User email
+   * @returns {Promise<Object>}
+   */
+  async resendVerification(email) {
+    return this._request('POST', '/api/v1/auth/resend-verification', { email });
+  }
 }
 
 /**
