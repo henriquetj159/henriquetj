@@ -471,9 +471,8 @@ Status transitions defined in `story-lifecycle.md` are advisory (contextual rule
 ## Handoff
 next_agent: @devops
 next_command: *push
-condition: QA gate verdict is PASS (status updated to Done)
+condition: QA gate verdict is PASS or CONCERNS (status updated to Done)
 alternatives:
-  - agent: @po, command: *review-concerns {story-id}, condition: QA gate verdict is CONCERNS (status updated to Done)
+  - agent: @po, command: *review-concerns {story-id}, condition: QA gate verdict is CONCERNS (status updated to Done, has non-blocking issues)
   - agent: @dev, command: *apply-qa-fixes, condition: QA gate verdict is FAIL (status updated to InProgress)
   - agent: @po, command: *close-story {story-id}, condition: QA gate verdict is WAIVED (status updated to Done)
- 

@@ -514,7 +514,7 @@ const {
 - Missing configuration
 - Failing regression tests
 
-### Ready for Review Criteria (All Modes)
+### InReview Criteria (All Modes)
 
 - Code matches all requirements
 - All validations pass
@@ -530,7 +530,7 @@ const {
 5. File List is complete
 6. **Execute CodeRabbit Self-Healing Loop** (see below)
 7. Execute `.aiox-core/product/checklists/story-dod-checklist.md`
-8. Set story status: "Ready for Review"
+8. Set story status: "InReview" (see Status Transitions section)
 9. HALT (do not proceed further)
 
 ---
@@ -924,9 +924,10 @@ Found 5 technical decisions needed.
 ### On Development Start (before first task):
 
 0. **Pre-check (blocking):**
-   - If current Status is not `**Ready**`, HALT and log: "Cannot start development: expected Ready, found {current status}."
+   - If current Status is `**InProgress**`, skip to first uncompleted task (resume scenario — no status change needed).
+   - If current Status is not `**Ready**` and not `**InProgress**`, HALT and log: "Cannot start development: expected Ready or InProgress, found {current status}."
    - If Change Log section is missing, HALT and request user to restore template structure.
-1. **Update story Status field:** change `**Ready**` to `**InProgress**`
+1. **Update story Status field:** change `**Ready**` to `**InProgress**` (skip if already InProgress)
 2. **Add Change Log entry:**
    ```text
    | {today's date} | {next version} | Development started ({mode} mode) — Status: Ready → InProgress | @dev |

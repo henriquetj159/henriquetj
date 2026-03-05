@@ -505,4 +505,3 @@ next_command: *develop {story-id}
 condition: Story status is Ready (GO decision, status updated in Step 12)
 alternatives:
   - agent: @sm, command: *draft, condition: Story rejected (NO-GO), needs rework
- 
