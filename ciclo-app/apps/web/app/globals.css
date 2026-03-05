@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta Sazonal - Default: Primavera */
+    --seasonal-primary: #90EE90;
+    --seasonal-secondary: #98D8C8;
+    --seasonal-accent: #F7FFE0;
+
+    /* shadcn/ui base tokens - mapped to seasonal */
+    --background: #fef9f0;
+    --foreground: #2d1810;
+    --card: #ffffff;
+    --card-foreground: #2d1810;
+    --popover: #ffffff;
+    --popover-foreground: #2d1810;
+    --primary: var(--seasonal-primary);
+    --primary-foreground: #2d1810;
+    --secondary: var(--seasonal-secondary);
+    --secondary-foreground: #2d1810;
+    --muted: #f5f0e8;
+    --muted-foreground: #6b5744;
+    --accent: var(--seasonal-accent);
+    --accent-foreground: #2d1810;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: #d4a574;
+    --input: #d4a574;
+    --ring: var(--seasonal-primary);
+    --radius: 0.5rem;
+
+    /* Transicao sazonal suave */
+    transition: --seasonal-primary 500ms ease,
+      --seasonal-secondary 500ms ease,
+      --seasonal-accent 500ms ease;
+  }
+
+  /* ===== PALETAS SAZONAIS ===== */
+
+  /* Primavera: Madeira / Figado - Verde-menta, jade, creme */
+  [data-season='primavera'] {
+    --seasonal-primary: #90EE90;
+    --seasonal-secondary: #98D8C8;
+    --seasonal-accent: #F7FFE0;
+    --primary-foreground: #1a3a1a;
+    --ring: #90EE90;
+  }
+
+  /* Verao: Fogo / Coracao - Dourado, laranja-sol, creme-quente */
+  [data-season='verao'] {
+    --seasonal-primary: #FFD700;
+    --seasonal-secondary: #FFA500;
+    --seasonal-accent: #FFFACD;
+    --primary-foreground: #3d2e00;
+    --ring: #FFD700;
+  }
+
+  /* Outono: Metal / Pulmao - Terracota, peru, trigo */
+  [data-season='outono'] {
+    --seasonal-primary: #D2691E;
+    --seasonal-secondary: #CD853F;
+    --seasonal-accent: #F5DEB3;
+    --primary-foreground: #ffffff;
+    --ring: #D2691E;
+  }
+
+  /* Inverno: Agua / Rim - Azul-aco, cadet-blue, gelo */
+  [data-season='inverno'] {
+    --seasonal-primary: #4682B4;
+    --seasonal-secondary: #5F9EA0;
+    --seasonal-accent: #E0F6FF;
+    --primary-foreground: #ffffff;
+    --ring: #4682B4;
+  }
+
+  /* ===== TIPOGRAFIA BASE ===== */
+
+  body {
+    @apply bg-background font-body text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* ===== FOCUS VISIBLE (WCAG) ===== */
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer utilities {
+  /* Transicao sazonal para componentes */
+  .transition-seasonal {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+  }
+}

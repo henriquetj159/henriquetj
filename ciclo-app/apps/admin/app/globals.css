@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --seasonal-primary: #90EE90;
+    --seasonal-secondary: #98D8C8;
+    --seasonal-accent: #F7FFE0;
+  }
+
+  body {
+    @apply font-body text-base-dark antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}

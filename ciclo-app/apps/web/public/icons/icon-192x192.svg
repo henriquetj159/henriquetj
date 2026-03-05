@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="24" fill="#FDF8F0"/>
+  <circle cx="96" cy="80" r="40" fill="none" stroke="#8B7355" stroke-width="4"/>
+  <path d="M96 40 L96 50 M96 110 L96 120 M56 80 L66 80 M126 80 L136 80" stroke="#8B7355" stroke-width="3" stroke-linecap="round"/>
+  <path d="M72 56 L78 62 M120 104 L114 98 M120 56 L114 62 M72 104 L78 98" stroke="#8B7355" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="96" cy="80" r="6" fill="#8B7355"/>
+  <text x="96" y="150" text-anchor="middle" font-family="serif" font-size="18" fill="#8B7355">Ciclo</text>
+</svg>

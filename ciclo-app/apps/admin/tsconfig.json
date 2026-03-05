@@ -1,0 +1,13 @@
+{
+  "extends": "@ciclo/config/typescript/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./app/*"],
+      "@/layout/*": ["./components/layout/*"],
+      "@/navigation": ["./lib/navigation"],
+      "@/auth-actions": ["./lib/auth-actions"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#FDF8F0"/>
+  <circle cx="256" cy="210" r="110" fill="none" stroke="#8B7355" stroke-width="8"/>
+  <path d="M256 100 L256 130 M256 290 L256 320 M146 210 L176 210 M336 210 L366 210" stroke="#8B7355" stroke-width="6" stroke-linecap="round"/>
+  <path d="M183 137 L200 154 M329 283 L312 266 M329 137 L312 154 M183 283 L200 266" stroke="#8B7355" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="256" cy="210" r="16" fill="#8B7355"/>
+  <text x="256" y="400" text-anchor="middle" font-family="serif" font-size="48" fill="#8B7355">Ciclo</text>
+  <text x="256" y="445" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#8B7355">das Estacoes</text>
+</svg>

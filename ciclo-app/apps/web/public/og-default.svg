@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d1810;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4a2c1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3a2a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <text x="600" y="260" font-family="Georgia, serif" font-size="64" fill="#e8d5b7" text-anchor="middle" font-weight="bold">Ciclo das Estacoes</text>
+  <text x="600" y="340" font-family="Arial, sans-serif" font-size="28" fill="#c4a882" text-anchor="middle">Jornadas de autoconhecimento e reconexao</text>
+  <text x="600" y="390" font-family="Arial, sans-serif" font-size="28" fill="#c4a882" text-anchor="middle">com os ciclos da natureza</text>
+  <text x="600" y="480" font-family="Arial, sans-serif" font-size="22" fill="#a08060" text-anchor="middle">Base Triade · Barra Velha, SC</text>
+  <!-- Decorative seasonal circles -->
+  <circle cx="200" cy="100" r="40" fill="#4a7c5c" opacity="0.3" />
+  <circle cx="1000" cy="530" r="50" fill="#8b6914" opacity="0.3" />
+  <circle cx="150" cy="500" r="30" fill="#c4653a" opacity="0.3" />
+  <circle cx="1050" cy="120" r="35" fill="#5b8ba0" opacity="0.3" />
+</svg>
