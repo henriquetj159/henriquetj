@@ -1,33 +1,49 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Libre_Franklin, Zilla_Slab, Caveat, JetBrains_Mono } from 'next/font/google'
 import { BaseTriadeFooter, BaseTriadeWatermark } from '@ciclo/ui'
 import { SessionProvider } from './providers/session-provider'
 import { SwRegister } from '../components/pwa/sw-register'
 import { InstallBanner } from '../components/pwa/install-banner'
 import './globals.css'
 
-const inter = Inter({
+const libreFranklin = Libre_Franklin({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-body',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 })
 
-const playfair = Playfair_Display({
+const zillaSlab = Zilla_Slab({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-heading',
   display: 'swap',
+  weight: ['500', '700'],
 })
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://ciclodasestações.com.br'
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-accent',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['400'],
+})
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://ciclodaseestacoes.com.br'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Ciclo das Estações | Base Tríade',
-    template: '%s | Ciclo das Estações',
+    default: 'Ciclo das Estacoes | Base Triade',
+    template: '%s | Ciclo das Estacoes',
   },
   description:
-    'Programa de autocuidado cíclico voltado para terapeutas holísticos. Eventos sazonais, comunidade e jornada de transformação.',
+    'Programa de autocuidado ciclico voltado para terapeutas holisticos. Eventos sazonais, comunidade e jornada de transformacao.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -40,7 +56,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#8B7355',
+  themeColor: '#932E88',
   width: 'device-width',
   initialScale: 1,
 }
@@ -51,7 +67,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`} data-season="primavera">
+    <html
+      lang="pt-BR"
+      className={`${libreFranklin.variable} ${zillaSlab.variable} ${caveat.variable} ${jetbrainsMono.variable}`}
+      data-season="primavera"
+    >
       <body className="flex min-h-screen flex-col">
         <SessionProvider>
           <SwRegister />

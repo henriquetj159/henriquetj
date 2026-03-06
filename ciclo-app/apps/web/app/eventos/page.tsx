@@ -58,13 +58,13 @@ function formatDate(date: Date): string {
 function getEventStatus(event: {
   isSoldOut: boolean
   startDate: Date
-}): 'disponível' | 'esgotado' | 'em-breve' {
+}): 'disponivel' | 'esgotado' | 'em-breve' {
   if (event.isSoldOut) return 'esgotado'
   const now = new Date()
   const diffDays =
     (event.startDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
   if (diffDays > 30) return 'em-breve'
-  return 'disponível'
+  return 'disponivel'
 }
 
 export default async function EventosPage() {

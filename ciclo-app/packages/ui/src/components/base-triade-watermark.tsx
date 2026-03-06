@@ -1,63 +1,45 @@
 import type { HTMLAttributes } from 'react'
 import { cn } from '../lib/utils'
+import { MandalaPattern } from '../patterns/mandala-pattern'
 
 interface BaseTriadeWatermarkProps extends HTMLAttributes<HTMLDivElement> {
-  /** Opacidade da marca d'água (5-8%) */
   opacity?: number
 }
 
 export function BaseTriadeWatermark({
-  opacity = 0.06,
+  opacity = 0.04,
   className,
   ...props
 }: BaseTriadeWatermarkProps) {
-  const clampedOpacity = Math.min(0.08, Math.max(0.05, opacity))
-
   return (
     <div
       className={cn(
-        'pointer-events-none fixed inset-0 z-0 flex items-center justify-center print:hidden',
+        'pointer-events-none fixed inset-0 z-0 flex items-center justify-center overflow-hidden print:hidden',
         className,
       )}
-      style={{ opacity: clampedOpacity }}
       aria-hidden="true"
       {...props}
     >
-      <svg
-        viewBox="0 0 200 200"
-        className="h-[min(60vw,600px)] w-[min(60vw,600px)] min-h-[200px] min-w-[200px]"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
+      {/* Mandala central giratoria */}
+      <div
+        className="animate-mandala-slow"
+        style={{ opacity }}
       >
-        {/* Triangulo Base Tríade estilizado */}
-        <polygon
-          points="100,20 180,170 20,170"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-          className="text-base-dark"
+        <MandalaPattern
+          size={800}
+          rings={7}
+          petals={12}
+          color="#932E88"
+          opacity={0.15}
         />
-        {/* Circulo interno */}
-        <circle
-          cx="100"
-          cy="120"
-          r="40"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-base-dark"
-        />
-        {/* Texto Base Tríade */}
-        <text
-          x="100"
-          y="195"
-          textAnchor="middle"
-          className="text-base-dark"
-          style={{ fontSize: '12px', fontFamily: 'serif', letterSpacing: '3px' }}
-        >
-          BASE TRIADE
-        </text>
-      </svg>
+      </div>
+      {/* Glow radial de fundo */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(147,46,136,0.03) 0%, transparent 70%)',
+        }}
+      />
     </div>
   )
 }

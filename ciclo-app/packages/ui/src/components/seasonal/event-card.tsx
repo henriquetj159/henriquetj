@@ -2,29 +2,29 @@ import * as React from 'react'
 import { cn } from '../../lib/utils'
 import type { Season } from '../../contexts/season-context'
 
-type EventStatus = 'disponível' | 'esgotado' | 'em-breve'
+type EventStatus = 'disponivel' | 'esgotado' | 'em-breve'
 
 const STATUS_CONFIG: Record<EventStatus, { label: string; className: string }> = {
-  disponível: {
-    label: 'Disponível',
-    className: 'bg-green-100 text-green-800 border-green-200',
+  disponivel: {
+    label: 'Disponivel',
+    className: 'bg-base-emerald/15 text-base-emerald border-base-emerald/20',
   },
   esgotado: {
     label: 'Esgotado',
-    className: 'bg-red-100 text-red-800 border-red-200',
+    className: 'bg-base-coral/15 text-base-coral border-base-coral/20',
   },
   'em-breve': {
     label: 'Em breve',
-    className: 'bg-amber-100 text-amber-800 border-amber-200',
+    className: 'bg-violet-500/15 text-violet-700 border-violet-500/20',
   },
 } as const
 
 const ELEMENT_ICONS: Record<string, string> = {
-  Madeira: '\u6728', // 木
-  Fogo: '\u706B',   // 火
-  Metal: '\u91D1',   // 金
-  Água: '\u6C34',    // 水
-  Terra: '\u571F',   // 土
+  Madeira: '\u6728',
+  Fogo: '\u706B',
+  Metal: '\u91D1',
+  Agua: '\u6C34',
+  Terra: '\u571F',
 } as const
 
 interface EventCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -44,7 +44,7 @@ const EventCard = React.forwardRef<HTMLDivElement, EventCardProps>(
       title,
       date,
       element,
-      status = 'disponível',
+      status = 'disponivel',
       priceFrom,
       imageUrl,
       ...props
@@ -58,31 +58,36 @@ const EventCard = React.forwardRef<HTMLDivElement, EventCardProps>(
       <div
         ref={ref}
         className={cn(
-          'group relative overflow-hidden rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-seasonal hover:shadow-md',
+          'group relative overflow-hidden rounded-lg transition-seasonal',
+          'glass-season hover:glow-violet-sm',
           className,
         )}
         {...props}
       >
         {/* Gradiente sazonal de fundo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-seasonal-primary/10 via-seasonal-secondary/5 to-seasonal-accent/10 transition-seasonal" />
+        <div className="absolute inset-0 bg-gradient-to-br from-seasonal-primary/8 via-transparent to-seasonal-secondary/8 transition-seasonal" />
 
-        {/* Imagem opcional */}
+        {/* Borda sacred sutil */}
+        <div className="absolute inset-0 rounded-lg border border-violet-600/8" />
+
+        {/* Imagem opcional com overlay */}
         {imageUrl && (
           <div className="relative h-48 w-full overflow-hidden">
             <img
               src={imageUrl}
               alt={title}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
         )}
 
-        <div className="relative p-4 sm:p-6">
+        <div className="relative p-5 sm:p-6">
           {/* Header: Elemento MTC + Status Badge */}
           <div className="mb-3 flex items-center justify-between">
             {elementIcon && (
               <span
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-seasonal-primary/20 text-base font-bold text-seasonal-primary transition-seasonal"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-seasonal-primary/15 text-base font-bold text-seasonal-primary transition-seasonal"
                 aria-label={`Elemento ${element}`}
               >
                 {elementIcon}
@@ -90,7 +95,7 @@ const EventCard = React.forwardRef<HTMLDivElement, EventCardProps>(
             )}
             <span
               className={cn(
-                'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold',
+                'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium tracking-wide',
                 statusConfig.className,
               )}
               role="status"
@@ -99,27 +104,27 @@ const EventCard = React.forwardRef<HTMLDivElement, EventCardProps>(
             </span>
           </div>
 
-          {/* Título */}
-          <h3 className="font-heading text-lg font-semibold text-card-foreground sm:text-xl">
+          {/* Titulo */}
+          <h3 className="font-heading text-lg font-semibold text-foreground sm:text-xl">
             {title}
           </h3>
 
           {/* Data */}
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="mt-1.5 text-sm text-muted-foreground">
             {date}
           </p>
 
           {/* Preco */}
           {priceFrom !== undefined && (
-            <p className="mt-3 text-sm text-muted-foreground">
-              A partir de{' '}
-              <span className="font-semibold text-card-foreground">
+            <div className="mt-4 flex items-baseline gap-1">
+              <span className="text-xs text-muted-foreground">A partir de</span>
+              <span className="font-heading text-lg font-bold text-gradient-violet">
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
                 }).format(priceFrom)}
               </span>
-            </p>
+            </div>
           )}
         </div>
       </div>

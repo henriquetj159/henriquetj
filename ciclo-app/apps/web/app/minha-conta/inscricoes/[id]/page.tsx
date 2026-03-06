@@ -205,9 +205,9 @@ export default async function RegistrationDetailPage({ params }: PageProps) {
                     daysUntilEvent >= rule.daysBeforeEvent &&
                     (i === 0 ||
                       daysUntilEvent <
-                        [...policyRules].sort(
+                        (([...policyRules].sort(
                           (a, b) => b.daysBeforeEvent - a.daysBeforeEvent
-                        )[i - 1]?.daysBeforeEvent ?? 0)
+                        )[i - 1]?.daysBeforeEvent) ?? 0))
                       ? 'font-semibold text-green-700 bg-green-50 rounded px-2 py-1'
                       : 'text-gray-600'
                   }`}

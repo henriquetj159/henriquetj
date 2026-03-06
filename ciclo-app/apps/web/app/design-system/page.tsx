@@ -225,7 +225,7 @@ export default function DesignSystemPage() {
                 title="Renascença"
                 date="18 de Outubro 2026"
                 element="Madeira"
-                status="disponível"
+                status="disponivel"
                 priceFrom={287}
               />
               <EventCard

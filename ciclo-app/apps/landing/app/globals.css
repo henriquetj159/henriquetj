@@ -2,42 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Landing page shares the Frequencia Violeta tokens from web */
+
 @layer base {
   :root {
-    --seasonal-primary: #90EE90;
-    --seasonal-secondary: #98D8C8;
-    --seasonal-accent: #F7FFE0;
+    --season-primary: #5EA142;
+    --season-secondary: #E089FC;
+    --season-accent: #F5C6D0;
+    --season-glow: #A8E6A1;
+    --season-bg: #F0FFF0;
+    --season-glow-alpha-30: rgba(168, 230, 161, 0.3);
+    --season-glow-alpha-15: rgba(168, 230, 161, 0.15);
+
+    --background: #F5EED4;
+    --foreground: #213B2C;
+    --card: rgba(255, 255, 255, 0.85);
+    --card-foreground: #213B2C;
+    --popover: #ffffff;
+    --popover-foreground: #213B2C;
+    --primary: var(--season-primary);
+    --primary-foreground: #ffffff;
+    --secondary: var(--season-secondary);
+    --secondary-foreground: #1E0338;
+    --muted: #F5EED4;
+    --muted-foreground: #5F4822;
+    --accent: var(--season-accent);
+    --accent-foreground: #213B2C;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: rgba(147, 46, 136, 0.15);
+    --input: rgba(147, 46, 136, 0.12);
+    --ring: #932E88;
+    --radius: 0.75rem;
   }
 
   [data-season='primavera'] {
-    --seasonal-primary: #90EE90;
-    --seasonal-secondary: #98D8C8;
-    --seasonal-accent: #F7FFE0;
+    --season-primary: #5EA142;
+    --season-secondary: #E089FC;
+    --season-accent: #F5C6D0;
+    --season-glow: #A8E6A1;
+    --season-bg: #F0FFF0;
   }
 
   [data-season='verao'] {
-    --seasonal-primary: #FFD700;
-    --seasonal-secondary: #FFA500;
-    --seasonal-accent: #FFFACD;
+    --season-primary: #D48113;
+    --season-secondary: #C945E8;
+    --season-accent: #CD684D;
+    --season-glow: #FFD700;
+    --season-bg: #FFFBF0;
   }
 
   [data-season='outono'] {
-    --seasonal-primary: #D2691E;
-    --seasonal-secondary: #CD853F;
-    --seasonal-accent: #F5DEB3;
+    --season-primary: #C97A46;
+    --season-secondary: #7B1FA2;
+    --season-accent: #8B4513;
+    --season-glow: #DEB887;
+    --season-bg: #FFF8F0;
   }
 
   [data-season='inverno'] {
-    --seasonal-primary: #4682B4;
-    --seasonal-secondary: #5F9EA0;
-    --seasonal-accent: #E0F6FF;
+    --season-primary: #185474;
+    --season-secondary: #5C1680;
+    --season-accent: #8DC2DB;
+    --season-glow: #B0C4DE;
+    --season-bg: #F0F8FF;
   }
 
   body {
-    @apply font-body text-base-dark antialiased;
+    @apply bg-background font-body text-foreground antialiased;
+    background-color: var(--season-bg);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
     @apply font-heading;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .glass-season {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(147, 46, 136, 0.1);
+  }
+
+  .glow-violet-sm {
+    box-shadow: 0 0 8px rgba(147, 46, 136, 0.25), 0 0 20px rgba(147, 46, 136, 0.1);
+  }
+
+  .mandala-bg {
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 20%, rgba(147,46,136,0.03) 20.5%, transparent 21%),
+      radial-gradient(circle at 50% 50%, transparent 35%, rgba(147,46,136,0.03) 35.5%, transparent 36%),
+      radial-gradient(circle at 50% 50%, transparent 50%, rgba(147,46,136,0.03) 50.5%, transparent 51%);
+  }
+
+  .text-gradient-violet {
+    background: linear-gradient(135deg, #932E88, #C945E8, #E089FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes mandala-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes ethereal-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

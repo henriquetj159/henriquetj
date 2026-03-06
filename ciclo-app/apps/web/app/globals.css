@@ -2,101 +2,329 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   FREQUENCIA VIOLETA — Design System Tokens
+   Ciclo das Estacoes | Base Triade
+   ============================================================ */
+
 @layer base {
   :root {
-    /* Paleta Sazonal - Default: Primavera */
-    --seasonal-primary: #90EE90;
-    --seasonal-secondary: #98D8C8;
-    --seasonal-accent: #F7FFE0;
+    /* === PALETA SAZONAL — Default: Primavera === */
+    --season-primary: #5EA142;
+    --season-secondary: #E089FC;
+    --season-accent: #F5C6D0;
+    --season-glow: #A8E6A1;
+    --season-bg: #F0FFF0;
+    --season-glow-alpha-30: rgba(168, 230, 161, 0.3);
+    --season-glow-alpha-15: rgba(168, 230, 161, 0.15);
 
-    /* shadcn/ui base tokens - mapped to seasonal */
-    --background: #fef9f0;
-    --foreground: #2d1810;
-    --card: #ffffff;
-    --card-foreground: #2d1810;
+    /* === SHADCN/UI BASE TOKENS === */
+    --background: #F5EED4;
+    --foreground: #213B2C;
+    --card: rgba(255, 255, 255, 0.85);
+    --card-foreground: #213B2C;
     --popover: #ffffff;
-    --popover-foreground: #2d1810;
-    --primary: var(--seasonal-primary);
-    --primary-foreground: #2d1810;
-    --secondary: var(--seasonal-secondary);
-    --secondary-foreground: #2d1810;
-    --muted: #f5f0e8;
-    --muted-foreground: #6b5744;
-    --accent: var(--seasonal-accent);
-    --accent-foreground: #2d1810;
+    --popover-foreground: #213B2C;
+    --primary: var(--season-primary);
+    --primary-foreground: #ffffff;
+    --secondary: var(--season-secondary);
+    --secondary-foreground: #1E0338;
+    --muted: #F5EED4;
+    --muted-foreground: #5F4822;
+    --accent: var(--season-accent);
+    --accent-foreground: #213B2C;
     --destructive: #dc2626;
     --destructive-foreground: #ffffff;
-    --border: #d4a574;
-    --input: #d4a574;
-    --ring: var(--seasonal-primary);
-    --radius: 0.5rem;
+    --border: rgba(147, 46, 136, 0.15);
+    --input: rgba(147, 46, 136, 0.12);
+    --ring: #932E88;
+    --radius: 0.75rem;
 
-    /* Transicao sazonal suave */
-    transition: --seasonal-primary 500ms ease,
-      --seasonal-secondary 500ms ease,
-      --seasonal-accent 500ms ease;
+    /* === GRADIENTES SAGRADOS === */
+    --gradient-triskle: conic-gradient(from 0deg, #24451F 0deg, #932E88 120deg, #D48113 240deg, #24451F 360deg);
+    --gradient-violet-freq: linear-gradient(135deg, #1E0338 0%, #5C1680 25%, #932E88 50%, #C945E8 75%, #FAE8FF 100%);
+    --gradient-aurora: linear-gradient(180deg, #213B2C 0%, #185474 30%, #7B1FA2 60%, #C945E8 85%, #E089FC 100%);
+    --gradient-mandala: radial-gradient(ellipse at center, #932E88 0%, #5C1680 30%, #213B2C 70%, #24451F 100%);
+    --gradient-crown: radial-gradient(circle at 50% 0%, #FAE8FF 0%, #C945E8 30%, #7B1FA2 60%, transparent 100%);
   }
 
-  /* ===== PALETAS SAZONAIS ===== */
-
-  /* Primavera: Madeira / Figado - Verde-menta, jade, creme */
+  /* ===== PRIMAVERA — Renascimento (Madeira/Figado) ===== */
   [data-season='primavera'] {
-    --seasonal-primary: #90EE90;
-    --seasonal-secondary: #98D8C8;
-    --seasonal-accent: #F7FFE0;
-    --primary-foreground: #1a3a1a;
-    --ring: #90EE90;
+    --season-primary: #5EA142;
+    --season-secondary: #E089FC;
+    --season-accent: #F5C6D0;
+    --season-glow: #A8E6A1;
+    --season-bg: #F0FFF0;
+    --season-glow-alpha-30: rgba(168, 230, 161, 0.3);
+    --season-glow-alpha-15: rgba(168, 230, 161, 0.15);
+    --background: #F5EED4;
+    --primary-foreground: #ffffff;
+    --ring: #5EA142;
   }
 
-  /* Verao: Fogo / Coracao - Dourado, laranja-sol, creme-quente */
+  /* ===== VERAO — Plenitude (Fogo/Coracao) ===== */
   [data-season='verao'] {
-    --seasonal-primary: #FFD700;
-    --seasonal-secondary: #FFA500;
-    --seasonal-accent: #FFFACD;
-    --primary-foreground: #3d2e00;
-    --ring: #FFD700;
+    --season-primary: #D48113;
+    --season-secondary: #C945E8;
+    --season-accent: #CD684D;
+    --season-glow: #FFD700;
+    --season-bg: #FFFBF0;
+    --season-glow-alpha-30: rgba(255, 215, 0, 0.3);
+    --season-glow-alpha-15: rgba(255, 215, 0, 0.15);
+    --background: #FFFBF0;
+    --primary-foreground: #ffffff;
+    --ring: #D48113;
   }
 
-  /* Outono: Metal / Pulmao - Terracota, peru, trigo */
+  /* ===== OUTONO — Recolhimento (Metal/Pulmao) ===== */
   [data-season='outono'] {
-    --seasonal-primary: #D2691E;
-    --seasonal-secondary: #CD853F;
-    --seasonal-accent: #F5DEB3;
+    --season-primary: #C97A46;
+    --season-secondary: #7B1FA2;
+    --season-accent: #8B4513;
+    --season-glow: #DEB887;
+    --season-bg: #FFF8F0;
+    --season-glow-alpha-30: rgba(222, 184, 135, 0.3);
+    --season-glow-alpha-15: rgba(222, 184, 135, 0.15);
+    --background: #FFF8F0;
     --primary-foreground: #ffffff;
-    --ring: #D2691E;
+    --ring: #C97A46;
   }
 
-  /* Inverno: Agua / Rim - Azul-aco, cadet-blue, gelo */
+  /* ===== INVERNO — Introspeccao (Agua/Rins) ===== */
   [data-season='inverno'] {
-    --seasonal-primary: #4682B4;
-    --seasonal-secondary: #5F9EA0;
-    --seasonal-accent: #E0F6FF;
+    --season-primary: #185474;
+    --season-secondary: #5C1680;
+    --season-accent: #8DC2DB;
+    --season-glow: #B0C4DE;
+    --season-bg: #F0F8FF;
+    --season-glow-alpha-30: rgba(176, 196, 222, 0.3);
+    --season-glow-alpha-15: rgba(176, 196, 222, 0.15);
+    --background: #F0F8FF;
     --primary-foreground: #ffffff;
-    --ring: #4682B4;
+    --ring: #185474;
   }
 
   /* ===== TIPOGRAFIA BASE ===== */
-
   body {
     @apply bg-background font-body text-foreground antialiased;
+    background-color: var(--season-bg);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
     @apply font-heading;
   }
 
-  /* ===== FOCUS VISIBLE (WCAG) ===== */
+  h4, h5, h6 {
+    @apply font-body font-semibold;
+  }
 
+  /* ===== FOCUS VISIBLE (WCAG AA) ===== */
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-ring;
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius);
   }
 }
 
+/* ============================================================
+   COMPONENT LAYER — Glassmorphism, Mandalas, Effects
+   ============================================================ */
+
+@layer components {
+  /* --- Glassmorphism Mistico --- */
+  .glass-sacred {
+    background: rgba(30, 3, 56, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(147, 46, 136, 0.2);
+    box-shadow:
+      0 0 30px rgba(147, 46, 136, 0.1),
+      inset 0 0 30px rgba(147, 46, 136, 0.05);
+  }
+
+  .glass-nature {
+    background: rgba(33, 59, 44, 0.7);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(94, 161, 66, 0.15);
+    box-shadow: 0 0 20px rgba(94, 161, 66, 0.08);
+  }
+
+  .glass-light {
+    background: rgba(245, 238, 212, 0.7);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(147, 46, 136, 0.08);
+  }
+
+  .glass-season {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(147, 46, 136, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Glow Effects --- */
+  .glow-violet {
+    box-shadow:
+      0 0 10px rgba(147, 46, 136, 0.3),
+      0 0 30px rgba(147, 46, 136, 0.15),
+      0 0 60px rgba(147, 46, 136, 0.05);
+  }
+
+  .glow-violet-sm {
+    box-shadow:
+      0 0 8px rgba(147, 46, 136, 0.25),
+      0 0 20px rgba(147, 46, 136, 0.1);
+  }
+
+  .text-glow-violet {
+    text-shadow:
+      0 0 10px rgba(147, 46, 136, 0.5),
+      0 0 30px rgba(147, 46, 136, 0.3);
+  }
+
+  /* --- Mandala Background Decorativo --- */
+  .mandala-bg {
+    background-image:
+      radial-gradient(circle at 50% 50%, transparent 20%, rgba(147,46,136,0.03) 20.5%, transparent 21%),
+      radial-gradient(circle at 50% 50%, transparent 35%, rgba(147,46,136,0.03) 35.5%, transparent 36%),
+      radial-gradient(circle at 50% 50%, transparent 50%, rgba(147,46,136,0.03) 50.5%, transparent 51%),
+      conic-gradient(from 0deg at 50% 50%,
+        transparent 0deg, rgba(147,46,136,0.02) 15deg,
+        transparent 30deg, rgba(147,46,136,0.02) 45deg,
+        transparent 60deg);
+  }
+
+  .mandala-spin {
+    animation: mandala-slow 30s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(147,46,136,0.1),
+      transparent,
+      rgba(93,22,128,0.1),
+      transparent
+    );
+    border-radius: 50%;
+  }
+
+  /* --- Mandala Layout Grid --- */
+  .mandala-layout {
+    display: grid;
+    grid-template-columns: 1fr min(90vw, 1200px) 1fr;
+    grid-template-rows: auto;
+  }
+
+  .mandala-layout > * {
+    grid-column: 2;
+  }
+
+  .mandala-layout > .full-bleed {
+    grid-column: 1 / -1;
+  }
+
+  /* --- Organic Shapes --- */
+  .shape-organic {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+
+  .shape-petal {
+    border-radius: 50% 0% 50% 0%;
+  }
+
+  /* --- Gradient Text --- */
+  .text-gradient-violet {
+    background: linear-gradient(135deg, #932E88, #C945E8, #E089FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-triskle {
+    background: conic-gradient(from 0deg, #24451F, #932E88, #D48113, #24451F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-sacred {
+    background: linear-gradient(135deg, var(--season-primary), var(--season-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- Sacred Borders --- */
+  .border-sacred {
+    border: 1px solid rgba(147, 46, 136, 0.2);
+    box-shadow: 0 0 0 1px rgba(147, 46, 136, 0.05);
+  }
+
+  .border-season {
+    border: 1px solid var(--season-primary);
+    box-shadow: 0 0 8px var(--season-glow-alpha-15);
+  }
+}
+
+/* ============================================================
+   UTILITY LAYER
+   ============================================================ */
+
 @layer utilities {
-  /* Transicao sazonal para componentes */
   .transition-seasonal {
     transition-property: background-color, border-color, color, fill, stroke, box-shadow;
     transition-duration: 500ms;
     transition-timing-function: ease;
+  }
+
+  .animate-in-ethereal {
+    animation: ethereal-in 0.6s ease-out forwards;
+  }
+}
+
+/* ============================================================
+   KEYFRAMES (outside layers for browser compat)
+   ============================================================ */
+
+@keyframes mandala-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes ethereal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sacred-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* === REDUCED MOTION (WCAG) === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
