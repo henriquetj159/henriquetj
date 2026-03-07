@@ -12,10 +12,16 @@ export interface Proposito {
   descricao: string
 }
 
-export interface Facilitadora {
+export interface Pratica {
+  emoji: string
+  titulo: string
+  descricao: string
+}
+
+export interface Gestora {
   nome: string
-  iniciais: string
-  papel: string
+  instagram: string
+  site?: string
   bio: string
 }
 
@@ -55,7 +61,7 @@ export const SOBRE_CONTENT = {
   missao: 'Resgatar a Harmonia entre Humanidade e Natureza',
   titulo: 'Sobre o Programa',
   paragrafos: [
-    'O equinócio da primavera simboliza o renascimento da natureza, o equilíbrio entre luz e sombra, e o florescer de novos ciclos. O Ciclo das Estações é um programa de imersão em práticas integrativas que conectam corpo, mente e natureza através de Yoga, Ayurveda, Ginecologia Natural, Nutrição e Sound Healing.',
+    'O equinócio da primavera simboliza o renascimento da natureza, o equilíbrio entre luz e sombra, e o florescer de novos ciclos. O Ciclo das Estações é um programa de imersão em práticas integrativas que conectam corpo, mente e natureza através de Yoga, Ayurveda, Nutrição Consciente, Breathwork e Sound Healing.',
     'Voltado para terapeutas holísticos, facilitadores de bem-estar, praticantes de yoga, profissionais de saúde integrativa — e qualquer pessoa interessada em autocuidado cíclico e reconexão com a natureza.',
   ],
 } as const
@@ -99,54 +105,70 @@ export const PROPOSITOS: Proposito[] = [
 
 export const PROGRAMACAO: TimelineItem[] = [
   { horario: '07:15', titulo: 'Credenciamento', descricao: 'Abertura e acolhimento dos participantes' },
-  { horario: '08:00', titulo: 'Acolhimento', descricao: 'Infusão de ervas frescas e círculo de intenção' },
-  { horario: '08:30', titulo: 'Yoga Solar', descricao: 'Hatha Vinyasa Yoga para honrar o astro-rei' },
-  { horario: '10:00', titulo: 'Brunch Ayurvédico', descricao: 'Experiência sensorial com nutrição ayurvédica' },
-  { horario: '11:00', titulo: 'Ayurveda', descricao: 'Rotinas diárias reconhecendo ciclos e ervas medicinais' },
-  { horario: '12:30', titulo: 'Almoço Meditativo', descricao: 'Refeição em silêncio — experiência meditativa única' },
-  { horario: '15:00', titulo: 'Ginecologia Natural', descricao: 'Roda de conversa sobre saúde e fertilidade' },
-  { horario: '17:00', titulo: 'Sound Healing', descricao: 'Imersão sonora com cristais, tambores e cantos xamânicos' },
-  { horario: '18:30', titulo: 'Rito de Equinócio', descricao: 'Fogueira, cânticos e liberação de intenções' },
+  { horario: '08:00', titulo: 'Círculo de Intenção', descricao: 'Infusão de ervas frescas e abertura do campo energético' },
+  { horario: '08:30', titulo: 'Yoga & Movimento', descricao: 'Prática corporal guiada para despertar energia e presença' },
+  { horario: '10:00', titulo: 'Brunch Consciente', descricao: 'Nutrição integrativa com ingredientes sazonais e orgânicos' },
+  { horario: '11:00', titulo: 'Vivência Ayurvédica', descricao: 'Rotinas de autocuidado, ervas medicinais e equilíbrio dos doshas' },
+  { horario: '12:30', titulo: 'Almoço Meditativo', descricao: 'Refeição em silêncio — experiência de presença e gratidão' },
+  { horario: '14:30', titulo: 'Breathwork', descricao: 'Respiração consciente para liberação emocional e expansão' },
+  { horario: '16:00', titulo: 'Trilha Energética', descricao: 'Caminhada contemplativa na natureza com práticas de aterramento' },
+  { horario: '17:30', titulo: 'Sound Healing', descricao: 'Imersão sonora com taças, tambores e instrumentos ancestrais' },
+  { horario: '19:00', titulo: 'Rito Sazonal', descricao: 'Cerimônia de encerramento honrando o ciclo da estação' },
 ]
 
-// === FACILITADORAS ===
+// === PRÁTICAS E MODALIDADES ===
 
-export const FACILITADORAS: Facilitadora[] = [
+export const PRATICAS: Pratica[] = [
   {
-    nome: 'Lionara Artn',
-    iniciais: 'LA',
-    papel: 'Yoga',
-    bio: 'Formada em Hatha Vinyasa (2020) e Hatha Chakra (2024). Conduz práticas que conectam movimento, respiração e consciência.',
+    emoji: '\uD83E\uDDD8',
+    titulo: 'Yoga',
+    descricao: 'Prática milenar que une corpo, mente e respiração através de posturas (asanas), técnicas respiratórias (pranayamas) e meditação. Promove flexibilidade, equilíbrio e paz interior.',
   },
   {
-    nome: 'Lia Cristina Corrêa Dias',
-    iniciais: 'LC',
-    papel: 'Nutrição',
-    bio: '19 anos de experiência em nutrição integrativa. Reikiana e especialista em alimentação ayurvédica.',
+    emoji: '\uD83C\uDF3F',
+    titulo: 'Ayurveda',
+    descricao: 'Ciência da vida originária da Índia, que busca o equilíbrio dos doshas (Vata, Pitta, Kapha) através de alimentação, ervas medicinais, rotinas diárias e autocuidado personalizado.',
   },
   {
-    nome: 'Juliana Coimbra Zanatta',
-    iniciais: 'JZ',
-    papel: 'Ayurveda',
-    bio: 'Mais de uma década de estudos, incluindo formação na Índia. Especialista em rotinas e ervas medicinais.',
+    emoji: '\uD83C\uDF4E',
+    titulo: 'Nutrição Consciente',
+    descricao: 'Alimentação como medicina — refeições preparadas com ingredientes orgânicos e sazonais, respeitando os princípios ayurvédicos e a conexão entre nutrição e energia vital.',
   },
   {
-    nome: 'Gabriela Vilela',
-    iniciais: 'GV',
-    papel: 'Ginecologia Natural',
-    bio: 'Enfermeira pós-graduada em saúde da mulher. Facilitadora de rodas de conversa sobre autonomia feminina.',
+    emoji: '\uD83C\uDF2C\uFE0F',
+    titulo: 'Breathwork',
+    descricao: 'Técnicas de respiração consciente que promovem liberação emocional, expansão da consciência e ativação energética. Uma ferramenta poderosa de transformação e autoconhecimento.',
   },
   {
-    nome: 'Cassiano Darela',
-    iniciais: 'CD',
-    papel: 'Sound Healing',
-    bio: 'Terapeuta sonoro com flautas, gongo e instrumentos ancestrais. Cria imersões que restauram o equilíbrio.',
+    emoji: '\uD83D\uDD14',
+    titulo: 'Sound Healing',
+    descricao: 'Terapia sonora com taças tibetanas, tambores xamânicos e instrumentos ancestrais. As vibrações restauram o equilíbrio celular, acalmam o sistema nervoso e induzem estados meditativos profundos.',
   },
   {
-    nome: 'Giorgia Sell',
-    iniciais: 'GS',
-    papel: 'Surf & Movimento',
-    bio: 'Educadora física e coach esportivo. Conduz práticas de movimento conectadas à natureza e ao mar.',
+    emoji: '\uD83C\uDF3B',
+    titulo: 'Trilha Energética',
+    descricao: 'Caminhada contemplativa na natureza com práticas de aterramento (grounding), meditação ativa e conexão com os elementos. Uma jornada de reconexão com a terra e consigo mesmo.',
+  },
+]
+
+// === GESTORAS DO PROGRAMA ===
+
+export const GESTORAS: Gestora[] = [
+  {
+    nome: 'Milena Koch',
+    instagram: '@koch.milenar',
+    site: 'www.ocamilenar.com.br',
+    bio: 'Terapeuta holística, facilitadora de vivências integrativas e cofundadora do Ciclo das Estações. Milena é especialista em práticas ancestrais de cura e autocuidado, com formação em Ayurveda, Aromaterapia e Terapias Vibracionais. Conduz jornadas que resgatam a sabedoria milenar e a conexão com os ciclos da natureza.',
+  },
+  {
+    nome: 'Lionara Prana',
+    instagram: '@podprana',
+    bio: 'Yogini, terapeuta integrativa e cofundadora do Ciclo das Estações. Formada em Hatha Vinyasa e Hatha Chakra Yoga, Lionara conduz práticas que unem movimento, respiração e consciência. Seu trabalho é guiado pela filosofia do Prana — a energia vital que permeia todas as coisas.',
+  },
+  {
+    nome: 'Daniela',
+    instagram: '@daniela',
+    bio: 'Terapeuta e facilitadora dedicada ao bem-estar integral. Integra a equipe de gestão do Ciclo das Estações, contribuindo com sua experiência em práticas holísticas e organização de eventos transformadores.',
   },
 ]
 
@@ -198,10 +220,10 @@ export const INFO_PRATICAS: PracticalInfo[] = [
   },
   {
     titulo: 'Contato',
-    linhas: ['contato@basetriade.com', 'WhatsApp: (47) 99241-4009'],
+    linhas: ['contato@basetriade.com', 'WhatsApp: (47) 999 660 210 — Milena Koch'],
   },
   {
-    titulo: 'Facilitadoras Principais',
-    linhas: ['@podprana', '@koch.milenar'],
+    titulo: 'Gestoras do Programa',
+    linhas: ['@koch.milenar', '@podprana'],
   },
 ]
