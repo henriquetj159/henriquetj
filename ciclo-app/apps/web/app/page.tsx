@@ -38,10 +38,10 @@ export const metadata: Metadata = {
 }
 
 const SEASONS_MANDALA = [
-  { slug: 'primavera', name: 'Primavera', element: 'Madeira', organ: 'Fígado', image: '/images/seasons/primavera.jpg', cssClass: 'primavera' },
-  { slug: 'verao', name: 'Verão', element: 'Fogo', organ: 'Coração', image: '/images/seasons/verao.jpg', cssClass: 'verao' },
-  { slug: 'outono', name: 'Outono', element: 'Metal', organ: 'Pulmão', image: '/images/seasons/outono.jpg', cssClass: 'outono' },
-  { slug: 'inverno', name: 'Inverno', element: 'Água', organ: 'Rins', image: '/images/seasons/inverno.jpg', cssClass: 'inverno' },
+  { slug: 'primavera', name: 'Primavera', element: 'Madeira', organ: 'Fígado', emoji: '\uD83C\uDF31', cssClass: 'primavera' },
+  { slug: 'verao', name: 'Verão', element: 'Fogo', organ: 'Coração', emoji: '\u2600\uFE0F', cssClass: 'verao' },
+  { slug: 'outono', name: 'Outono', element: 'Metal', organ: 'Pulmão', emoji: '\uD83C\uDF42', cssClass: 'outono' },
+  { slug: 'inverno', name: 'Inverno', element: 'Água', organ: 'Rins', emoji: '\u2744\uFE0F', cssClass: 'inverno' },
 ] as const
 
 const ELEMENT_MAP: Record<string, string> = {
@@ -136,14 +136,7 @@ export default async function HomePage() {
                 className={`season-card ${season.cssClass}`}
                 aria-label={`Estação ${season.name} — Elemento ${season.element}, Órgão ${season.organ}`}
               >
-                <Image
-                  src={season.image}
-                  alt={season.name}
-                  width={80}
-                  height={80}
-                  className="season-badge rounded-full"
-                  style={{ objectFit: 'contain' }}
-                />
+                <span className="season-emoji" aria-hidden="true">{season.emoji}</span>
                 <span className="season-name mt-2 font-heading font-semibold text-foreground">{season.name}</span>
                 <span className="season-info mt-1 text-muted-foreground">{season.element} / {season.organ}</span>
               </Link>

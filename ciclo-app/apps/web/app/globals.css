@@ -209,9 +209,8 @@
     border: 1px solid transparent;
   }
 
-  .season-card .season-badge {
-    width: 56px;
-    height: 56px;
+  .season-card .season-emoji {
+    font-size: 1.5rem;
   }
 
   .season-card .season-name {
@@ -226,9 +225,8 @@
     .season-card {
       padding: 1rem 0.75rem;
     }
-    .season-card .season-badge {
-      width: 64px;
-      height: 64px;
+    .season-card .season-emoji {
+      font-size: 1.75rem;
     }
     .season-card .season-name {
       font-size: 0.875rem;
@@ -240,9 +238,8 @@
       padding: 1.5rem 1rem;
       border-radius: 0.75rem;
     }
-    .season-card .season-badge {
-      width: 80px;
-      height: 80px;
+    .season-card .season-emoji {
+      font-size: 2rem;
     }
     .season-card .season-name {
       font-size: 1rem;
@@ -254,9 +251,8 @@
       padding: 2rem 1.5rem;
       border-radius: 1rem;
     }
-    .season-card .season-badge {
-      width: 96px;
-      height: 96px;
+    .season-card .season-emoji {
+      font-size: 2.5rem;
     }
   }
 
