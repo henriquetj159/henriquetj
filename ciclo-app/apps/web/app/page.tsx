@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { prisma } from '@ciclo/database'
@@ -37,10 +38,10 @@ export const metadata: Metadata = {
 }
 
 const SEASONS_MANDALA = [
-  { slug: 'primavera', name: 'Primavera', element: 'Madeira', organ: 'Fígado', emoji: '\uD83C\uDF31', cssClass: 'primavera' },
-  { slug: 'verao', name: 'Verão', element: 'Fogo', organ: 'Coração', emoji: '\u2600\uFE0F', cssClass: 'verao' },
-  { slug: 'outono', name: 'Outono', element: 'Metal', organ: 'Pulmão', emoji: '\uD83C\uDF42', cssClass: 'outono' },
-  { slug: 'inverno', name: 'Inverno', element: 'Água', organ: 'Rins', emoji: '\u2744\uFE0F', cssClass: 'inverno' },
+  { slug: 'primavera', name: 'Primavera', element: 'Madeira', organ: 'Fígado', image: '/images/seasons/primavera.jpg', cssClass: 'primavera' },
+  { slug: 'verao', name: 'Verão', element: 'Fogo', organ: 'Coração', image: '/images/seasons/verao.jpg', cssClass: 'verao' },
+  { slug: 'outono', name: 'Outono', element: 'Metal', organ: 'Pulmão', image: '/images/seasons/outono.jpg', cssClass: 'outono' },
+  { slug: 'inverno', name: 'Inverno', element: 'Água', organ: 'Rins', image: '/images/seasons/inverno.jpg', cssClass: 'inverno' },
 ] as const
 
 const ELEMENT_MAP: Record<string, string> = {
@@ -104,7 +105,16 @@ export default async function HomePage() {
           <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#8B4513' }}>
             {HERO_CONTENT.locationBadge}
           </p>
-          <h1 className="mt-3 font-heading text-[28px] font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl" style={{ color: '#2d1810' }}>
+          <Image
+            src="/images/seasons/logo-estacoes.jpg"
+            alt="Ciclo das Estações — Logo"
+            width={160}
+            height={160}
+            className="mx-auto mt-3 rounded-full shadow-md"
+            style={{ objectFit: 'contain' }}
+            priority
+          />
+          <h1 className="mt-4 font-heading text-[28px] font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl" style={{ color: '#2d1810' }}>
             {HERO_CONTENT.titulo}
           </h1>
           <p className="mt-3 text-base leading-relaxed sm:text-lg" style={{ color: '#6b5744' }}>
@@ -126,7 +136,14 @@ export default async function HomePage() {
                 className={`season-card ${season.cssClass}`}
                 aria-label={`Estação ${season.name} — Elemento ${season.element}, Órgão ${season.organ}`}
               >
-                <span className="season-emoji" aria-hidden="true">{season.emoji}</span>
+                <Image
+                  src={season.image}
+                  alt={season.name}
+                  width={80}
+                  height={80}
+                  className="season-badge rounded-full"
+                  style={{ objectFit: 'contain' }}
+                />
                 <span className="season-name mt-2 font-heading font-semibold text-foreground">{season.name}</span>
                 <span className="season-info mt-1 text-muted-foreground">{season.element} / {season.organ}</span>
               </Link>
