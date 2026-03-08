@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 5.0.3
-generated_at: "2026-03-11T02:22:49.781Z"
+generated_at: "2026-03-11T02:23:14.237Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1090
+file_count: 1091
 files:
   - path: cli/commands/config/index.js
     hash: sha256:25c4b9bf4e0241abf7754b55153f49f1a214f1fb5fe904a576675634cb7b3da9
@@ -936,6 +936,10 @@ files:
     hash: sha256:92e9d5bea78c3db4940c39f79e537821b36451cd524d69e6b738272aa63c08b6
     type: core
     size: 12849
+  - path: core/orchestration/swarm-intelligence.js
+    hash: sha256:960b90fbcafb68d5728a645e892891d9bdec053b4e9f36086f8e6d35259a08c1
+    type: core
+    size: 35774
   - path: core/orchestration/task-complexity-classifier.js
     hash: sha256:33b3b7c349352d607c156e0018c508f0869a1c7d233d107bed194a51bc608c93
     type: core
@@ -1225,9 +1229,9 @@ files:
     type: data
     size: 9575
   - path: data/entity-registry.yaml
-    hash: sha256:151aca46769c614f0238e7a8e2968884c3888b438ff1c634f0eeb2505e325b83
+    hash: sha256:85c566837111c7cdf46f672a41959ee38accde60c8820cbc5bbb04b8f98203f0
     type: data
-    size: 521804
+    size: 522285
   - path: data/learned-patterns.yaml
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
