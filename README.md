@@ -190,6 +190,17 @@ Estas regras fornecem:
 4. **Use comandos AIOS**: Digite `*help` para ver comandos disponíveis
 5. **Siga o fluxo**: Veja o [Guia do usuário](docs/guides/user-guide.md) para mais detalhes
 
+### Interface Web de Planejamento
+
+O diretório `web-app/` contém uma interface opcional de planejamento em formato chat para apoiar a fase de descoberta e classificação inicial do projeto. Ela segue o princípio do repositório de `UI Third`: a CLI continua sendo a fonte da verdade, e a interface serve como apoio para coleta orientada de contexto, preview e geração de artefatos.
+
+Comandos úteis:
+
+```bash
+npm run web:install
+npm run web:dev
+npm run web:build
+```
 ### Referência de Comandos CLI
 
 O Synkra AIOS oferece uma CLI moderna e cross-platform com comandos intuitivos:
@@ -668,3 +679,4 @@ Veja também:
 ---
 
 **[⬆ Voltar ao topo](#synkra-aios-framework-universal-de-agentes-ia-)**
+
