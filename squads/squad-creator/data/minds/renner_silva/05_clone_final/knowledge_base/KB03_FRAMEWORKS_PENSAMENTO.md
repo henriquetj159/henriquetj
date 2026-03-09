@@ -1,7 +1,7 @@
 # KB03 | FRAMEWORKS DE PENSAMENTO
 
-**Version:** v1.2
-**Date:** 2026-02-22
+**Version:** v1.3
+**Date:** 2026-03-09
 **Purpose:** Complete catalog of Renner Silva's mental models, decision frameworks, and teaching methodologies
 
 ---
@@ -160,6 +160,8 @@ Using dialect strategically:
 ---
 
 ### FW-05: 3 PILARES DO PALESTRANTE PODEROSO
+
+**NOTA:** Não confundir com 'Tripé do Palestrante Poderoso' (KB18) que usa Verdade + Segurança + Vendas para diagnóstico de gaps. FW-05 foca em autoavaliação de competências.
 
 **Self-Assessment Framework (0-10 scale):**
 
@@ -402,6 +404,8 @@ Callback throughout teaching to embed it
 - **KB07 (Fingerprints):** Framework delivery uses FP-L09 ("Deixa eu te contar")
 - **KB14 (Action Triggers):** Frameworks ARE action triggers for specific situations
 - **KB16 (Heuristics):** Frameworks inform decision heuristics
+- **KB18 (Frameworks de Negócio):** Complementary — KB03 covers teaching/mindset frameworks, KB18 covers monetization/sales frameworks (Cache vs Pitch, 7 Passos da Venda, Break Even, Pitch 5 Dedos)
+- **KB19 (Método de Palestra):** Complementary — KB03 covers "Aplauda de Pé" (5 steps general), KB19 covers "Roteiro dos 8 Estágios" (detailed speech craft) + 7 Erros Mortais + Método das Caixinhas
 
 ---
 
@@ -409,7 +413,8 @@ Callback throughout teaching to embed it
 
 **v1.0:** Core 3 frameworks (Aplauda de Pé, Emoção Cola, Processo Seletivo)
 **v1.2:** Added 5 new frameworks from mentoria-dia-23 and YT transcriptions
+**v1.3:** Added KB18/KB19 cross-references, disambiguation note for FW-05 vs Tripé
 
 ---
 
-*KB03 | Renner Silva Clone v1.2 | 2026-02-22*
+*KB03 | Renner Silva Clone v1.3 | 2026-03-09*

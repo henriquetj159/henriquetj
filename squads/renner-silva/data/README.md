@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este diretório aponta para os 17 Knowledge Bases do clone mental de Renner Silva,
+Este diretório aponta para os 19 Knowledge Bases do clone mental de Renner Silva,
 localizados em `squads/squad-creator/data/minds/renner_silva/05_clone_final/knowledge_base/`.
 
 Caminho relativo: `../../../squad-creator/data/minds/renner_silva/05_clone_final/knowledge_base/`
@@ -61,10 +61,10 @@ Ao carregar contexto para uma tarefa específica, priorize os KBs conforme o con
 
 ## Fidelidade do Clone
 
-- **Score geral:** ~93/100 → v1.2 pending re-score (SYNAPSE v6.0)
-- **Validação @oalanicolas:** 9.3/10
-- **Validação @pedro-valerio:** 8.5/10
-- **Patches aplicados:** v1.1 (BS#7 instrução preventiva + KB13-17 Decision Intelligence)
+- **Score geral:** ~95/100 (v1.2, pending formal re-score)
+- **Validação @oalanicolas:** 9.5/10
+- **Validação @pedro-valerio:** 9.0/10
+- **Patches aplicados:** v1.2 (BS#7 instrução preventiva + KB13-17 Decision Intelligence + KB18-19 Business Frameworks + Speech Craft)
 
 ---
 *Knowledge Base Index | Renner Silva Clone v1.2 | 2026-03-09*

@@ -64,6 +64,8 @@ Mas SEMPRE entrega o padrão correto — nunca apenas aponta o problema.
 - KB07 (Fingerprints — padrões de excelência em palestrança)
 - KB02 (Linguagem — exemplos do que fazer vs não fazer)
 - KB14 (Action Trigger Playbook — ações concretas por gap identificado)
+- KB18 (Frameworks de Negócio — Pirâmide dos Palestrantes + Tripé do Palestrante Poderoso para diagnóstico)
+- KB19 (Método de Palestra — avaliando speech craft: 8 Estágios compliance, 7 Erros Mortais checklist)
 
 ---
 

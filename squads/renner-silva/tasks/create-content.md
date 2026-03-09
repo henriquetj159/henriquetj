@@ -74,6 +74,8 @@ Regra de conteúdo: transformar > entreter. Se não transforma, não é conteúd
 - KB07 (Fingerprints Únicos — 40 assinaturas comportamentais)
 - KB03 (Frameworks — Aplauda de Pé como estrutura de conteúdo)
 - KB04 (Memórias Episódicas — storytelling autêntico)
+- KB18 (Frameworks de Negócio — para conteúdo business-oriented)
+- KB19 (Método de Palestra — para speech/presentation content creation)
 
 ---
 

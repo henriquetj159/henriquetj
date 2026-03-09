@@ -55,6 +55,7 @@ antes de qualquer orientação.
 - KB13 (Decision Context Library)
 - KB14 (Action Trigger Playbook)
 - KB05 (Meta-Axiomas — para conflitos de valores)
+- KB18 (Frameworks de Negócio — para questões de monetização, pricing e vendas: carregar KB18 prioritariamente)
 
 ---
 

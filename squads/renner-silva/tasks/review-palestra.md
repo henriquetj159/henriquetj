@@ -64,6 +64,7 @@ entrega o padrão correto — nunca apenas critica.
 - KB02 (Linguagem Swipe File — para sugestões de linguagem)
 - KB04 (Memórias Episódicas — exemplos de storytelling)
 - KB07 (Fingerprints — para calibrar estilo)
+- KB19 (Método de Palestra — para keynotes longos 30+ min: usar Roteiro dos 8 Estágios KB19 em vez de Aplauda de Pé KB03)
 
 ---
 
@@ -120,7 +121,15 @@ Simples, mas não é fácil [FP-L01]. Vou mostrar o caminho.
 
 ---
 
-### FASE 3: Aplicação do Framework "Aplauda de Pé"
+### FASE 3: Aplicação do Framework
+
+**Escolha de framework baseado na duração:**
+- Palestra curta (<20 min) → **Aplauda de Pé** (KB03)
+- Keynote longo (30+ min) → **Roteiro dos 8 Estágios** (KB19)
+
+---
+
+#### Opção A: "Aplauda de Pé" (palestras curtas, <20 min)
 
 Revise/construa a estrutura em 5 passos:
 
@@ -186,6 +195,69 @@ O encerramento deve:
 ✅ Conectar ao resultado prometido no Passo 2
 ✅ Terminar sem "obrigado" (encerra com emoção, não com protocolo)
 ```
+
+---
+
+#### Opção B: Roteiro dos 8 Estágios (keynotes longos, 30+ min)
+
+Para palestras longas, usar o framework completo de KB19:
+
+**1. Ambientação — Prova de Relevância**
+- NÃO é quebra-gelo
+- Estabelece o PORQUÊ da palestra importa AGORA
+- Conecta ao contexto do público
+
+**2. Conteúdo — Blocos via Método das Caixinhas**
+- Blocos de 12-18 min cada
+- Estrutura modular com checkpoints de atenção
+- Verificação didática entre blocos
+
+**3. Fundo do Poço — Momento Mais Vulnerável**
+- Dor PROCESSADA, não ativa
+- Ponto mais baixo da jornada
+- Identificação com o público
+
+**4. Ponto de Inflexão — A Virada**
+- Momento da decisão
+- O que mudou internamente
+- Timing crítico (não apressar)
+
+**5. Construção — A Subida**
+- Como reconstruiu
+- Passos concretos tomados
+- Autenticidade 100%
+
+**6. Auge — O Que Move SEU Coração**
+- Pico emocional da palestra
+- Conexão profunda com propósito
+- Vulnerabilidade estratégica
+
+**7. Daí em Diante — Projeção do Futuro**
+- Impacto duradouro
+- O que mudou permanentemente
+- Conecta ao público (aplicação)
+
+**8. Gran Finale — Fechamento Memorável**
+- Frase de impacto final
+- Silêncio estratégico
+- SEM "obrigado" (encerra com emoção)
+
+**Verificação contra 7 Erros Mortais (KB19):**
+```
+- [ ] Não ser carente (pedir validação constante)
+- [ ] Não começar com currículo
+- [ ] Não dar aula chata (informação sem emoção)
+- [ ] Ter música com frequência certa (não exagerar)
+- [ ] Não ser cronológico (estrutura emocional > cronológica)
+- [ ] Não usar fotos pessoais durante história (quebra imersão)
+- [ ] Ter história própria (100% verdadeiro, vivido)
+```
+
+**Método das Caixinhas (KB19):**
+- Cada bloco de conteúdo = 12-18 min
+- Checkpoint de atenção a cada bloco
+- Transições claras entre caixas
+- Evita fadiga cognitiva
 
 ---
 
