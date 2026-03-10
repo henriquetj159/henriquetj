@@ -49,7 +49,7 @@ describe('IdeationEngine — GotchasMemory import regression (#517)', () => {
 
   test('sets gotchasMemory to null when module fails to load', () => {
     // Mock the gotchas-memory module to throw on require
-    jest.doMock('../../../.aios-core/core/memory/gotchas-memory', () => {
+    jest.doMock('../../../.aiox-core/core/memory/gotchas-memory', () => {
       throw new Error('Module not found');
     });
 
