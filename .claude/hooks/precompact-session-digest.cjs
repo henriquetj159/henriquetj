@@ -49,20 +49,29 @@ function readStdin() {
   });
 }
 
+/**
+ * Resolve runner path — works in both framework-dev and installed projects.
+ * Framework-dev: PROJECT_ROOT/.aiox-core/hooks/unified/runners/precompact-runner.js
+ * Installed:     PROJECT_ROOT/node_modules/aiox-core/.aiox-core/hooks/unified/runners/precompact-runner.js
+ */
+function resolveRunnerPath() {
+  const fs = require('fs');
+  const candidates = [
+    path.join(PROJECT_ROOT, '.aiox-core', 'hooks', 'unified', 'runners', 'precompact-runner.js'),
+    path.join(PROJECT_ROOT, 'node_modules', 'aiox-core', '.aiox-core', 'hooks', 'unified', 'runners', 'precompact-runner.js'),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  return null;
+}
+
 /** Main hook execution pipeline. */
 async function main() {
   const input = await readStdin();
 
-  // Resolve path to the unified hook runner via __dirname (not input.cwd)
-  // Same pattern as synapse-engine.cjs — robust against incorrect cwd
-  const runnerPath = path.join(
-    PROJECT_ROOT,
-    '.aiox-core',
-    'hooks',
-    'unified',
-    'runners',
-    'precompact-runner.js',
-  );
+  const runnerPath = resolveRunnerPath();
+  if (!runnerPath) return; // Runner not available — silent exit
 
   // Build context object expected by onPreCompact
   const context = {
