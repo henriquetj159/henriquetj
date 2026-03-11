@@ -253,7 +253,7 @@ jobs:
         with:
           name: test-summary
           path: test-summary.md
-          retention-days: 90
+          retention-days: 30
 
       - name: Comment PR with results
         if: github.event_name == 'pull_request'
@@ -305,4 +305,4 @@ jobs:
         with:
           name: performance-comparison
           path: perf-comparison.md
-          retention-days: 90
+          retention-days: 30

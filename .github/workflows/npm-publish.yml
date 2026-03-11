@@ -153,7 +153,7 @@ jobs:
             security/lib/
             performance/lib/
             telemetry/lib/
-          retention-days: 7
+          retention-days: 30
 
   publish:
     needs: [test, build]

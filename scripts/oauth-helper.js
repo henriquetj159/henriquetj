@@ -5,9 +5,16 @@ const http = require('http');
 const https = require('https');
 const { URL } = require('url');
 
-const CLIENT_ID = '759107992819-1h3gg2mm70h11lv4qej4g6f2ll6mu782.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = 'http://localhost:3000/oauth/callback';
+
+// Validate environment variables
+if (!CLIENT_ID || !CLIENT_SECRET) {
+  console.error('Error: GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET environment variables are required');
+  console.error('Set them in .env or export before running this script');
+  process.exit(1);
+}
 const SCOPES = [
   'https://www.googleapis.com/auth/spreadsheets',
   'https://www.googleapis.com/auth/drive'
