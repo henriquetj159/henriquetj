@@ -8,7 +8,7 @@
 # - File types for categorization
 #
 version: 5.0.3
-generated_at: "2026-03-11T02:03:45.995Z"
+generated_at: "2026-03-11T12:47:44.159Z"
 generator: scripts/generate-install-manifest.js
 file_count: 1089
 files:
@@ -689,9 +689,9 @@ files:
     type: core
     size: 7755
   - path: core/ideation/ideation-engine.js
-    hash: sha256:d9108fa47ed7a9131703739befb214b97d5b8e546faf1b49d8ae9d083756c589
+    hash: sha256:8e496a9344ad86cb60e0f620ffe5bb30ec3f43ac582901da100674ba8149edad
     type: core
-    size: 22865
+    size: 22955
   - path: core/ids/circuit-breaker.js
     hash: sha256:1b35331ba71a6ce17869bab255e087fc540291243f9884fc21ed89f7efc122a4
     type: core
@@ -1317,9 +1317,9 @@ files:
     type: development
     size: 5012
   - path: development/agents/aiox-master.md
-    hash: sha256:a2f8c55ac39c3489b656494f24ee7793307b724a2fa35383f430b0be86694ce5
+    hash: sha256:9db9070fe5a019e100d6773108b23989c241089b1aea55f88580018e296d542c
     type: agent
-    size: 19704
+    size: 19922
   - path: development/agents/analyst.md
     hash: sha256:35150d764c6dc74bc02b61a4d613c9278e87ffb209403db23991339fdda4f8e2
     type: agent

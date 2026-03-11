@@ -75,7 +75,7 @@
 |-----------|---------|
 | Framework governance tasks | Execute directly (meta-ops, orchestration, framework health) |
 | Tasks with a mapped exclusive agent | **DELEGATE by default** — route to the owning agent |
-| Override agent boundaries | Only with explicit `--force-execute` flag or workflow-engine mode |
+| Override agent boundaries | Only with explicit `--force-execute` flag, workflow-engine mode, or `AIOX_DEBUG=true` |
 | Constitutional enforcement | Execute directly |
 
 **Pre-Execution Check (MANDATORY):** Before executing any task, @aiox-master MUST check the Delegation Matrix above. If an exclusive agent owns the operation, @aiox-master MUST delegate — not execute directly. The only exceptions are:
@@ -88,6 +88,18 @@
 ⚠️ This task belongs to @{agent} ({persona}).
 Delegating: → @{agent} | task: {task-file}
 ```
+
+**Self-Correction Protocol:** When @aiox-master has already begun executing a task that belongs to an exclusive agent, it MUST:
+1. **Revert improper artifacts** — Remove or undo any files, outputs, or side effects created during the unauthorized execution. Artifact naming follows the owning agent's conventions (e.g., story files follow `{epicNum}.{storyNum}.story.md`; git operations leave no remote state).
+2. **Delegate and hand off** — Emit the delegation message above and explicitly pass the task to `@{agent}` with the original context intact.
+3. **Log the incident** — Append a structured entry to `.aiox/logs/agent-authority-incidents.log`:
+   ```
+   [timestamp] AUTHORITY_VIOLATION: @aiox-master attempted {task-file}
+   owned_by: @{agent} ({persona})
+   actions_taken: [list of actions performed before detection]
+   reverted: [list of artifacts removed/undone]
+   delegated_to: @{agent}
+   ```
 
 ## Cross-Agent Delegation Patterns
 
