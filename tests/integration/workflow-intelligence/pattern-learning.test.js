@@ -451,10 +451,7 @@ describe('Pattern Learning Integration', () => {
       expect(fs.existsSync(deepPath)).toBe(true);
 
       // Cleanup
-      fs.unlinkSync(deepPath);
-      fs.rmdirSync(path.dirname(deepPath));
-      fs.rmdirSync(path.dirname(path.dirname(deepPath)));
-      fs.rmdirSync(path.dirname(path.dirname(path.dirname(deepPath))));
+      fs.rmSync(path.dirname(path.dirname(path.dirname(deepPath))), { recursive: true, force: true });
     });
   });
 });

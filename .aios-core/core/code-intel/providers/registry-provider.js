@@ -319,45 +319,49 @@ class RegistryProvider extends CodeIntelProvider {
     if (!this._byName) return null;
 
     const references = [];
+    const seenFiles = new Set();
     const symbolLower = symbol.toLowerCase();
 
-    // Search usedBy and dependencies fields across all entities
+    // 1. Search dependencies across all entities
+    // If EntityX.dependencies contains symbol, then EntityX uses symbol (Reference)
     for (const [_category, categoryEntities] of Object.entries(this._registry.entities)) {
       if (!categoryEntities || typeof categoryEntities !== 'object') continue;
 
       for (const [_entityName, entityData] of Object.entries(categoryEntities)) {
-        if (!entityData || typeof entityData !== 'object') continue;
+        if (!entityData || typeof entityData !== 'object' || !entityData.path) continue;
 
-        const usedBy = Array.isArray(entityData.usedBy) ? entityData.usedBy : [];
         const deps = Array.isArray(entityData.dependencies) ? entityData.dependencies : [];
 
-        // Check if this entity references the symbol
-        const referencesSymbol =
-          usedBy.some((u) => String(u).toLowerCase() === symbolLower) ||
-          deps.some((d) => String(d).toLowerCase() === symbolLower);
-
-        if (referencesSymbol) {
-          references.push({
-            file: entityData.path || null,
-            line: 1,
-            context: entityData.purpose || `References ${symbol}`,
-          });
+        // Check if this entity references the symbol in its dependencies
+        if (deps.some((d) => String(d).toLowerCase() === symbolLower)) {
+          if (!seenFiles.has(entityData.path)) {
+            references.push({
+              file: entityData.path,
+              line: 1,
+              context: entityData.purpose || `References ${symbol}`,
+            });
+            seenFiles.add(entityData.path);
+          }
         }
       }
     }
 
-    // Also find entities that the symbol's usedBy/deps point to
+    // 2. Also find entities that the symbol's own usedBy field points to
+    // If symbol.usedBy contains EntityY, then EntityY uses symbol (Reference)
     const symbolEntities = this._byName.get(symbol) || [];
     for (const entity of symbolEntities) {
       if (Array.isArray(entity.usedBy)) {
         for (const refName of entity.usedBy) {
           const refEntities = this._byName.get(refName) || [];
           for (const ref of refEntities) {
-            references.push({
-              file: ref.path || null,
-              line: 1,
-              context: `${ref.name} uses ${symbol}`,
-            });
+            if (ref.path && !seenFiles.has(ref.path)) {
+              references.push({
+                file: ref.path,
+                line: 1,
+                context: `${ref.name} uses ${symbol}`,
+              });
+              seenFiles.add(ref.path);
+            }
           }
         }
       }

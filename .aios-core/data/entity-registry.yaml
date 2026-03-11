@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-03-09T14:41:33.440Z'
-  entityCount: 740
+  lastUpdated: '2026-03-10T22:46:01.088Z'
+  entityCount: 783
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -40,7 +40,6 @@ entities:
         - advanced-elicitation
       usedBy:
         - aios-master
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -864,7 +863,6 @@ entities:
         - creates
       usedBy:
         - aios-master
-        - analyst
         - architect
         - data-engineer
         - pm
@@ -898,7 +896,6 @@ entities:
         - during
       usedBy:
         - aios-master
-        - analyst
         - architect
         - data-engineer
         - pm
@@ -1880,7 +1877,6 @@ entities:
         - (follow-up
       usedBy:
         - aios-master
-        - analyst
         - architect
       dependencies: []
       externalDeps: []
@@ -2107,8 +2103,7 @@ entities:
         - facilitate
         - brainstorming
         - session
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -4527,7 +4522,6 @@ entities:
         - dependencies
         - 'pipeline:'
       usedBy:
-        - analyst
         - spec-pipeline
       dependencies:
         - analyst
@@ -5488,6 +5482,26 @@ entities:
         extensionPoints: []
       checksum: sha256:f128542695ae1bd358ab553fd777e41ead19c7af31bb97b31d89771f88960332
       lastVerified: '2026-03-09T14:41:33.265Z'
+    add-tech-doc:
+      path: .aios-core/development/tasks/add-tech-doc.md
+      layer: L2
+      type: task
+      purpose: Generate or update technical documentation for a specific component or feature.
+      keywords:
+        - add
+        - tech
+        - doc
+        - 'task:'
+        - technical
+        - documentation
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:e8e83a91963ddd02aa7c48480899fa878b00694d85e5ad1308766460a51c76d3
+      lastVerified: '2026-03-10T22:46:01.084Z'
   templates:
     activation-instructions-inline-greeting:
       path: .aios-core/product/templates/activation-instructions-inline-greeting.yaml
@@ -5607,8 +5621,7 @@ entities:
         - brainstorming
         - output
         - tmpl
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -5739,7 +5752,6 @@ entities:
         - tmpl
       usedBy:
         - aios-master
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6010,7 +6022,6 @@ entities:
         - tmpl
       usedBy:
         - aios-master
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6233,7 +6244,6 @@ entities:
         - tmpl
       usedBy:
         - aios-master
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6659,6 +6669,23 @@ entities:
         extensionPoints: []
       checksum: sha256:c0621a46f2a37ec8c8cfe6b6b240eaf207738693c80199ead7c338d4223d15c2
       lastVerified: '2026-03-09T14:41:33.279Z'
+    subagent-step-prompt:
+      path: .aios-core/product/templates/subagent-step-prompt.md
+      layer: L2
+      type: template
+      purpose: Subagent Step Prompt
+      keywords:
+        - subagent
+        - step
+        - prompt
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:9806cd4e64d3983ac0e7ec803aa66176ccf70df1cfcf6c86d2efc054432fd46c
+      lastVerified: '2026-03-10T22:46:01.086Z'
   scripts:
     activation-runtime:
       path: .aios-core/development/scripts/activation-runtime.js
@@ -7468,7 +7495,7 @@ entities:
       path: .aios-core/development/scripts/security-checker.js
       layer: L2
       type: script
-      purpose: '{'
+      purpose: Entity at .aios-core\development\scripts\security-checker.js
       keywords:
         - security
         - checker
@@ -7481,8 +7508,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:8eb3952f865a045b2c7dfd9c3be42b42a97a7cf6d7cef8ac31002ab093c8bac0
-      lastVerified: '2026-03-09T14:41:33.291Z'
+      checksum: sha256:bf4b688e3df47c9f4678a87b9fae9fe58d28a0218cacd8809bc51f8b11d73466
+      lastVerified: '2026-03-10T22:46:01.082Z'
     skill-validator:
       path: .aios-core/development/scripts/skill-validator.js
       layer: L2
@@ -7912,8 +7939,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:b4a492a1dedbb11b6ddda9889ef6adb6cf792c2315c029ebc8c6b7ce7f57188f
-      lastVerified: '2026-03-09T14:41:33.297Z'
+      checksum: sha256:a8b690bac407dff0c442485cf84e2e3281ebbd2978209f4ceb62b09ff6fb5048
+      lastVerified: '2026-03-10T22:46:01.084Z'
     index:
       path: .aios-core/development/scripts/squad/index.js
       layer: L2
@@ -8148,6 +8175,235 @@ entities:
         extensionPoints: []
       checksum: sha256:36b02cbc8f83d6a309ca07dd79e503fd9ed9f7406db6922876db0bc7afebe894
       lastVerified: '2026-03-09T14:41:33.300Z'
+    approach-manager:
+      path: .aios-core/development/scripts/approach-manager.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\approach-manager.js
+      keywords:
+        - approach
+        - manager
+      usedBy:
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:a0051b94bb78f0607ebe204b0d13f2b6dcfb1e03ae5c49d59fa22479a2740ec5
+      lastVerified: '2026-03-10T22:46:01.078Z'
+    asset-inventory:
+      path: .aios-core/development/scripts/asset-inventory.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\asset-inventory.js
+      keywords:
+        - asset
+        - inventory
+      usedBy:
+        - devops
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:1cf3e1eeed2d717d4dba8a101c28b71f65e908beb02f90371b11f927125b8390
+      lastVerified: '2026-03-10T22:46:01.078Z'
+    autonomous-build-loop:
+      path: .aios-core/development/scripts/autonomous-build-loop.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\autonomous-build-loop.js
+      keywords:
+        - autonomous
+        - build
+        - loop
+      usedBy:
+        - build-autonomous
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:14fb0a1bc8fd608dced36b1c80a1da3c63d2211d6c9619bcde33fc55e1f5424e
+      lastVerified: '2026-03-10T22:46:01.078Z'
+    build-orchestrator:
+      path: .aios-core/development/scripts/build-orchestrator.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\build-orchestrator.js
+      keywords:
+        - build
+        - orchestrator
+      usedBy:
+        - build
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:14fb0a1bc8fd608dced36b1c80a1da3c63d2211d6c9619bcde33fc55e1f5424e
+      lastVerified: '2026-03-10T22:46:01.079Z'
+    build-state-manager:
+      path: .aios-core/development/scripts/build-state-manager.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\build-state-manager.js
+      keywords:
+        - build
+        - state
+        - manager
+      usedBy:
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:14fb0a1bc8fd608dced36b1c80a1da3c63d2211d6c9619bcde33fc55e1f5424e
+      lastVerified: '2026-03-10T22:46:01.079Z'
+    gotchas-memory:
+      path: .aios-core/development/scripts/gotchas-memory.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\gotchas-memory.js
+      keywords:
+        - gotchas
+        - memory
+      usedBy:
+        - gotcha
+        - gotchas
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:796f0d4190a217ed23240e032549d96f57968bfd0f6efcadd1faacd85384cd5d
+      lastVerified: '2026-03-10T22:46:01.080Z'
+    migrate-agent:
+      path: .aios-core/development/scripts/migrate-agent.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\migrate-agent.js
+      keywords:
+        - migrate
+        - agent
+      usedBy:
+        - devops
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:1cf3e1eeed2d717d4dba8a101c28b71f65e908beb02f90371b11f927125b8390
+      lastVerified: '2026-03-10T22:46:01.080Z'
+    path-analyzer:
+      path: .aios-core/development/scripts/path-analyzer.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\path-analyzer.js
+      keywords:
+        - path
+        - analyzer
+      usedBy:
+        - devops
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:1cf3e1eeed2d717d4dba8a101c28b71f65e908beb02f90371b11f927125b8390
+      lastVerified: '2026-03-10T22:46:01.081Z'
+    recovery-tracker:
+      path: .aios-core/development/scripts/recovery-tracker.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\recovery-tracker.js
+      keywords:
+        - recovery
+        - tracker
+      usedBy:
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:ad23644dd3f7dbe4600ffdc6ea28a86729788279956e1232684b8e3b61311540
+      lastVerified: '2026-03-10T22:46:01.081Z'
+    rollback-manager:
+      path: .aios-core/development/scripts/rollback-manager.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\rollback-manager.js
+      keywords:
+        - rollback
+        - manager
+      usedBy:
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:d1209fc2777590ae35e85be85ba36d774ff54c99e2b65f2e05b4d0197192f612
+      lastVerified: '2026-03-10T22:46:01.082Z'
+    stuck-detector:
+      path: .aios-core/development/scripts/stuck-detector.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\stuck-detector.js
+      keywords:
+        - stuck
+        - detector
+      usedBy:
+        - dev
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:5aa143b82dfa08686d30d3e681da643ca31c21a1e99c97fdce4e79d7e4ff95bb
+      lastVerified: '2026-03-10T22:46:01.082Z'
+    workflow-management:
+      path: .aios-core/development/scripts/workflow-management.md
+      layer: L2
+      type: script
+      purpose: Workflow Management Guidelines
+      keywords:
+        - workflow
+        - management
+        - guidelines
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:c357935f281c3f2deb644e8e62fe5ab99306e9847ca3f378dd3c89fd2449b421
+      lastVerified: '2026-03-10T22:46:01.083Z'
+    worktree-manager:
+      path: .aios-core/development/scripts/worktree-manager.js
+      layer: L2
+      type: script
+      purpose: Entity at .aios-core\development\scripts\worktree-manager.js
+      keywords:
+        - worktree
+        - manager
+      usedBy:
+        - create-worktree
+        - dev
+        - auto-worktree
+      dependencies: []
+      adaptability:
+        score: 0.7
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:c8169d12dc460557a81d91a26c827035155882835579d0438f65839accb7c782
+      lastVerified: '2026-03-10T22:46:01.083Z'
   modules:
     index.esm:
       path: .aios-core/core/index.esm.js
@@ -8623,9 +8879,7 @@ entities:
         - build
         - loop
       usedBy:
-        - build-autonomous
         - build-orchestrator
-        - dev
       dependencies:
         - build-state-manager
         - recovery-tracker
@@ -8647,9 +8901,7 @@ entities:
       keywords:
         - build
         - orchestrator
-      usedBy:
-        - build
-        - dev
+      usedBy: []
       dependencies:
         - autonomous-build-loop
         - build-state-manager
@@ -8676,7 +8928,6 @@ entities:
       usedBy:
         - autonomous-build-loop
         - build-orchestrator
-        - dev
       dependencies:
         - stuck-detector
         - recovery-tracker
@@ -9301,14 +9552,11 @@ entities:
         - gotchas
         - memory
       usedBy:
-        - gotcha
-        - gotchas
         - build-orchestrator
         - context-injector
         - subagent-dispatcher
         - ideation-engine
         - active-modules.verify
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10675,7 +10923,7 @@ entities:
       path: .aios-core/core/doctor/checks/core-config.js
       layer: L1
       type: module
-      purpose: Entity at .aios-core\core\doctor\checks\core-config.js
+      purpose: Entity at .aios-core\core-config.yaml
       keywords:
         - core
         - config
@@ -10688,8 +10936,8 @@ entities:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:fbf07087b997250f1c00a2f698910f0689f82f4a3ddfcc007c084a81a784ef87
-      lastVerified: '2026-03-09T14:41:33.335Z'
+      checksum: sha256:13c353d2459d7ff2cf809489fe36babf981dc950f2d766325cfde8e1902a3887
+      lastVerified: '2026-03-10T22:46:01.052Z'
     entity-registry:
       path: .aios-core/core/doctor/checks/entity-registry.js
       layer: L1
@@ -12826,7 +13074,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:6859b025d7eb581560140e89d762e3a86bf1b590a2ff9971ff82765181352f29
-      lastVerified: '2026-03-09T14:41:33.361Z'
+      lastVerified: '2026-03-10T22:46:01.067Z'
     analyst:
       path: .aios-core/development/agents/analyst.md
       layer: L2
@@ -12855,21 +13103,7 @@ entities:
         - greenfield-service
         - greenfield-ui
         - spec-pipeline
-      dependencies:
-        - facilitate-brainstorming-session
-        - create-deep-research-prompt
-        - create-doc
-        - advanced-elicitation
-        - document-project
-        - spec-research-dependencies
-        - project-brief-tmpl.yaml
-        - market-research-tmpl.yaml
-        - competitor-analysis-tmpl.yaml
-        - brainstorming-output-tmpl.yaml
-        - google-workspace
-        - exa
-        - context7
-        - pattern-extractor.js
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: production
@@ -12877,8 +13111,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:88d2eea2309b314b3063fc8738e86dbaf2139503dbbbc0318a8ab32eb066f514
-      lastVerified: '2026-03-09T14:41:33.362Z'
+      checksum: sha256:463e7f887f660af0b1c8d6b3669fb68f0d4c5c724937ffc4b7cd8ae5c44e2d16
+      lastVerified: '2026-03-10T22:46:01.068Z'
     architect:
       path: .aios-core/development/agents/architect.md
       layer: L2
@@ -13019,7 +13253,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:be5575958eb4aa76ed542841faf6be470d8f80f0b94ff21247df1c0b84f608aa
-      lastVerified: '2026-03-09T14:41:33.365Z'
+      lastVerified: '2026-03-10T22:46:01.068Z'
     dev:
       path: .aios-core/development/agents/dev.md
       layer: L2
@@ -13207,7 +13441,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:057d90da170f97c883d6f9a7cc84ccc01e842d01b216c443b547323ae7506eea
-      lastVerified: '2026-03-09T14:41:33.367Z'
+      lastVerified: '2026-03-10T22:46:01.069Z'
     pm:
       path: .aios-core/development/agents/pm.md
       layer: L2
@@ -13267,7 +13501,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:5ddb890638d46f4b415cc81c9242b448eddae7a13819ce34d0258c621fe18d4d
-      lastVerified: '2026-03-09T14:41:33.367Z'
+      lastVerified: '2026-03-10T22:46:01.069Z'
     po:
       path: .aios-core/development/agents/po.md
       layer: L2
@@ -13328,7 +13562,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:9220d5eb716a7068714c4e0a5687dbc5d92a010551781c43047c9604aac1b2a3
-      lastVerified: '2026-03-09T14:41:33.368Z'
+      lastVerified: '2026-03-10T22:46:01.070Z'
     qa:
       path: .aios-core/development/agents/qa.md
       layer: L2
@@ -13453,7 +13687,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:527766d3aa981ce6c43aa24a4570a45cf58909f33e9edf82e47c5ef891a52219
-      lastVerified: '2026-03-09T14:41:33.369Z'
+      lastVerified: '2026-03-10T22:46:01.070Z'
     squad-creator:
       path: .aios-core/development/agents/squad-creator.md
       layer: L2
@@ -13492,7 +13726,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:f06a4b6c9042027e678257606498450285a5fb8063620c77984d8f12eabe940f
-      lastVerified: '2026-03-09T14:41:33.369Z'
+      lastVerified: '2026-03-10T22:46:01.071Z'
     ux-design-expert:
       path: .aios-core/development/agents/ux-design-expert.md
       layer: L2
@@ -13524,8 +13758,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:1b12c11ead2840cce3b485adb2e87ec4c95b480f2de289a43c3f9fcfa7fe71c1
-      lastVerified: '2026-03-09T14:41:33.370Z'
+      checksum: sha256:a355002dc0e31681be2a5f8c2c9fc7000c0c33672d0e31a695699316bf68e52b
+      lastVerified: '2026-03-10T22:46:01.071Z'
     MEMORY:
       path: .aios-core/development/agents/analyst/MEMORY.md
       layer: L3
@@ -13656,6 +13890,263 @@ entities:
         extensionPoints: []
       checksum: sha256:869fbc8fbc333ac8eea4eca3ea4ab9ca79917fa5e53735b70d634c85ac6420c8
       lastVerified: '2026-03-09T14:41:33.372Z'
+    accessibility-wcag-checklist:
+      path: .aios-core/development/checklists/accessibility-wcag-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Accessibility (WCAG) Checklist
+      keywords:
+        - accessibility
+        - wcag
+        - checklist
+        - (wcag)
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:37855eabf79eea90608550aa90e9ae5ecc227796000cb7b4b996c4ac0a376fe1
+      lastVerified: '2026-03-10T22:46:01.072Z'
+    architect-checklist:
+      path: .aios-core/development/checklists/architect-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Architect Checklist
+      keywords:
+        - architect
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:8b57b584435d0b3bbea0bfe8a74838f9ed9b34d38ac16593df0162c8c077c302
+      lastVerified: '2026-03-10T22:46:01.072Z'
+    change-checklist:
+      path: .aios-core/development/checklists/change-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Change Checklist
+      keywords:
+        - change
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:a0c3b8d9d6d85f9224bdcaea4c75b3f5ad7d173ce69c4ea86a3a141200ae101d
+      lastVerified: '2026-03-10T22:46:01.072Z'
+    component-quality-checklist:
+      path: .aios-core/development/checklists/component-quality-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Component Quality Checklist
+      keywords:
+        - component
+        - quality
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:e9900c74430b2d4fd386ac8a6d36c84fa459b3a18ce66f6a5409ad35e88b042b
+      lastVerified: '2026-03-10T22:46:01.073Z'
+    database-design-checklist:
+      path: .aios-core/development/checklists/database-design-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Database Design Checklist
+      keywords:
+        - database
+        - design
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:aba33114f954fcc5f1f35f9e1ff45acc2058330d1cc37daafc80d58bc49780f1
+      lastVerified: '2026-03-10T22:46:01.073Z'
+    dba-predeploy-checklist:
+      path: .aios-core/development/checklists/dba-predeploy-checklist.md
+      layer: L2
+      type: checklist
+      purpose: DBA Pre-deploy Checklist
+      keywords:
+        - dba
+        - predeploy
+        - checklist
+        - pre-deploy
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:5a7762d1d251d394081796cb7abc8b5c96c22baeb9554d4fb11cf2cfe1a670cc
+      lastVerified: '2026-03-10T22:46:01.074Z'
+    dba-rollback-checklist:
+      path: .aios-core/development/checklists/dba-rollback-checklist.md
+      layer: L2
+      type: checklist
+      purpose: DBA Rollback Checklist
+      keywords:
+        - dba
+        - rollback
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:279b53ae66393f20f8b365bc18ea31f0a080faa3c1603dd2394cb351c9d455b7
+      lastVerified: '2026-03-10T22:46:01.074Z'
+    migration-readiness-checklist:
+      path: .aios-core/development/checklists/migration-readiness-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Migration Readiness Checklist
+      keywords:
+        - migration
+        - readiness
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:348ee18d071e7d4dad55b2a06e0753a063b815a2742b9a4997d80f01a0079125
+      lastVerified: '2026-03-10T22:46:01.074Z'
+    pattern-audit-checklist:
+      path: .aios-core/development/checklists/pattern-audit-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Pattern Audit Checklist
+      keywords:
+        - pattern
+        - audit
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:675ffd0200341c9dca66d1559fab6b2c7b09ae0e210e4a0aef9338960c01098a
+      lastVerified: '2026-03-10T22:46:01.075Z'
+    pm-checklist:
+      path: .aios-core/development/checklists/pm-checklist.md
+      layer: L2
+      type: checklist
+      purpose: PM Checklist
+      keywords:
+        - pm
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:b04cddfc55f8718872fdf2f3e76ccc8431d1e2a257aceec18660dd8cf321d263
+      lastVerified: '2026-03-10T22:46:01.075Z'
+    po-master-checklist:
+      path: .aios-core/development/checklists/po-master-checklist.md
+      layer: L2
+      type: checklist
+      purpose: PO Master Checklist
+      keywords:
+        - po
+        - master
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:6128ac4d952a33e319f56452cfda52efa4db5355719a4bfd7ee17599127de98c
+      lastVerified: '2026-03-10T22:46:01.076Z'
+    pre-push-checklist:
+      path: .aios-core/development/checklists/pre-push-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Pre-push Checklist
+      keywords:
+        - pre
+        - push
+        - checklist
+        - pre-push
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:1981f3a2d59b1ae97210534365506dd42c8cf56d71abbc6e11b799023fc52085
+      lastVerified: '2026-03-10T22:46:01.076Z'
+    release-checklist:
+      path: .aios-core/development/checklists/release-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Release Checklist
+      keywords:
+        - release
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:3571fb1a7778031586b8a4fb6b424b6ee46d40550788e1adf7528a3ed8c57861
+      lastVerified: '2026-03-10T22:46:01.076Z'
+    story-dod-checklist:
+      path: .aios-core/development/checklists/story-dod-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Story Definition of Done (DoD)
+      keywords:
+        - story
+        - dod
+        - checklist
+        - definition
+        - done
+        - (dod)
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:5f2b089938405b4c6fc1e5f4aab3adb3197127d7b4d7d01c457a7ee65a7ccac3
+      lastVerified: '2026-03-10T22:46:01.077Z'
+    story-draft-checklist:
+      path: .aios-core/development/checklists/story-draft-checklist.md
+      layer: L2
+      type: checklist
+      purpose: Story Draft Checklist
+      keywords:
+        - story
+        - draft
+        - checklist
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.6
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:2ba40ea78273dfcd4da9e1864072e49b80630fa14996e9c44d0290456e3f7526
+      lastVerified: '2026-03-10T22:46:01.077Z'
   data:
     agent-config-requirements:
       path: .aios-core/data/agent-config-requirements.yaml
@@ -13681,7 +14172,7 @@ entities:
       path: .aios-core/data/aios-kb.md
       layer: L3
       type: data
-      purpose: '"Complete story content..."'
+      purpose: AIOS Knowledge Base
       keywords:
         - aios
         - kb
@@ -13696,8 +14187,8 @@ entities:
         score: 0.5
         constraints: []
         extensionPoints: []
-      checksum: sha256:fe9bffd71c2070116a7802ecc91718ad64e7ca4e4ba4f7e2fd2f5e188120ffb7
-      lastVerified: '2026-03-09T14:41:33.373Z'
+      checksum: sha256:3c25bcc5f426182efabd406792d5f4eda87f15bd8ebded385d5a5bc33a9cd057
+      lastVerified: '2026-03-10T22:46:01.060Z'
     entity-registry:
       path: .aios-core/data/entity-registry.yaml
       layer: L3
@@ -13762,13 +14253,10 @@ entities:
       path: .aios-core/data/technical-preferences.md
       layer: L3
       type: data
-      purpose: User-Defined Preferred Patterns and Preferences
+      purpose: Technical Preferences
       keywords:
         - technical
         - preferences
-        - user-defined
-        - preferred
-        - patterns
       usedBy: []
       dependencies: []
       externalDeps: []
@@ -13778,8 +14266,8 @@ entities:
         score: 0.5
         constraints: []
         extensionPoints: []
-      checksum: sha256:7acc7123b9678ce4a48ee5c0e5f4d84665b7f3c34798178640c2c1e982c2e2c3
-      lastVerified: '2026-03-09T14:41:33.376Z'
+      checksum: sha256:19a620f23b63275a01acae69cb093f448caad0be292be82d8c9375cf642e992e
+      lastVerified: '2026-03-10T22:46:01.066Z'
     tool-registry:
       path: .aios-core/data/tool-registry.yaml
       layer: L3
@@ -13909,6 +14397,223 @@ entities:
         extensionPoints: []
       checksum: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
       lastVerified: '2026-03-09T14:41:33.377Z'
+    atomic-design-principles:
+      path: .aios-core/data/atomic-design-principles.md
+      layer: L3
+      type: data
+      purpose: Atomic Design Principles
+      keywords:
+        - atomic
+        - design
+        - principles
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:239107b62f726175005dc720d8a90dbb9c65a403a8fa5c9e8cdd0e922f115806
+      lastVerified: '2026-03-10T22:46:01.061Z'
+    brainstorming-techniques:
+      path: .aios-core/data/brainstorming-techniques.md
+      layer: L3
+      type: data
+      purpose: Brainstorming Techniques
+      keywords:
+        - brainstorming
+        - techniques
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:d33fde27c60e8cf71adf1115d25a9371a090c3f702a8b395501fcd1f3976a37e
+      lastVerified: '2026-03-10T22:46:01.061Z'
+    consolidation-algorithms:
+      path: .aios-core/data/consolidation-algorithms.md
+      layer: L3
+      type: data
+      purpose: Consolidation Algorithms
+      keywords:
+        - consolidation
+        - algorithms
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:dbd201f7cf0cd85aa53520a15af75ee0ad31b841d7e9a7d8fbf23239207a9fd1
+      lastVerified: '2026-03-10T22:46:01.062Z'
+    database-best-practices:
+      path: .aios-core/data/database-best-practices.md
+      layer: L3
+      type: data
+      purpose: Database Best Practices
+      keywords:
+        - database
+        - best
+        - practices
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:7cf893132044ef27f74b56f994632ce6c035045f0650aa0f9492f7dc4d4f4785
+      lastVerified: '2026-03-10T22:46:01.062Z'
+    design-token-best-practices:
+      path: .aios-core/data/design-token-best-practices.md
+      layer: L3
+      type: data
+      purpose: Design Token Best Practices
+      keywords:
+        - design
+        - token
+        - best
+        - practices
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:b9087305bf745d51d4074bea5ce04630f16e72be17995a69ab5827f777ae6bc7
+      lastVerified: '2026-03-10T22:46:01.063Z'
+    elicitation-methods:
+      path: .aios-core/data/elicitation-methods.md
+      layer: L3
+      type: data
+      purpose: Elicitation Methods
+      keywords:
+        - elicitation
+        - methods
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:beee6f14faaf5fcb0b32557b7e7a53a218847616e2a80944f5ac9e3260621150
+      lastVerified: '2026-03-10T22:46:01.063Z'
+    integration-patterns:
+      path: .aios-core/data/integration-patterns.md
+      layer: L3
+      type: data
+      purpose: Integration Patterns
+      keywords:
+        - integration
+        - patterns
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:e1a006a144199daab3d8a9ed12548772c6e80c2282c9256e213c3d081064a8e4
+      lastVerified: '2026-03-10T22:46:01.064Z'
+    migration-safety-guide:
+      path: .aios-core/data/migration-safety-guide.md
+      layer: L3
+      type: data
+      purpose: Migration Safety Guide
+      keywords:
+        - migration
+        - safety
+        - guide
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:10bb28a6e0c4d179f3eafdf773796748714c777ae4a316948509f2ea2ff70179
+      lastVerified: '2026-03-10T22:46:01.064Z'
+    postgres-tuning-guide:
+      path: .aios-core/data/postgres-tuning-guide.md
+      layer: L3
+      type: data
+      purpose: Postgres Tuning Guide
+      keywords:
+        - postgres
+        - tuning
+        - guide
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:ef03b48eceebd64403f64887614e637db20ba75e8750c0b6c134a0d933a25849
+      lastVerified: '2026-03-10T22:46:01.065Z'
+    rls-security-patterns:
+      path: .aios-core/data/rls-security-patterns.md
+      layer: L3
+      type: data
+      purpose: RLS Security Patterns
+      keywords:
+        - rls
+        - security
+        - patterns
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:ace42895bb4b6f951e2a6f094baa1759a0482eddd2739f533b0767aa5cc06578
+      lastVerified: '2026-03-10T22:46:01.065Z'
+    roi-calculation-guide:
+      path: .aios-core/data/roi-calculation-guide.md
+      layer: L3
+      type: data
+      purpose: ROI Calculation Guide
+      keywords:
+        - roi
+        - calculation
+        - guide
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:470efc079b2d3185951dd876a35f723fa9a83336de9bf43ca2971745d0014735
+      lastVerified: '2026-03-10T22:46:01.066Z'
+    supabase-patterns:
+      path: .aios-core/data/supabase-patterns.md
+      layer: L3
+      type: data
+      purpose: Supabase Patterns
+      keywords:
+        - supabase
+        - patterns
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:7c6f88dd18cfcecdd6ff2b4c6a29a4522012ff76f82b7290ec6a9481399503e0
+      lastVerified: '2026-03-10T22:46:01.066Z'
+    wcag-compliance-guide:
+      path: .aios-core/data/wcag-compliance-guide.md
+      layer: L3
+      type: data
+      purpose: WCAG Compliance Guide
+      keywords:
+        - wcag
+        - compliance
+        - guide
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:6b3510b2c34736536e33877a20405a3546ff5a8dfad11cdec5351f9cdce40404
+      lastVerified: '2026-03-10T22:46:01.067Z'
   workflows:
     auto-worktree:
       path: .aios-core/development/workflows/auto-worktree.yaml
@@ -14197,7 +14902,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:351d6d8da1de31371c58f48ff102da5847f18d40fa34cf66b2be8a3e4f25a6e7
-      lastVerified: '2026-03-09T14:41:33.384Z'
+      lastVerified: '2026-03-10T22:46:01.084Z'
     spec-pipeline:
       path: .aios-core/development/workflows/spec-pipeline.yaml
       layer: L2
@@ -14250,7 +14955,7 @@ entities:
         constraints: []
         extensionPoints: []
       checksum: sha256:4beacbbd287a811bcd13fb2017a31ea21f5a89f1d8c364ee970bcd7b8f095a53
-      lastVerified: '2026-03-09T14:41:33.385Z'
+      lastVerified: '2026-03-10T22:46:01.085Z'
   utils:
     output-formatter:
       path: .aios-core/core/utils/output-formatter.js
@@ -14338,8 +15043,7 @@ entities:
       keywords:
         - approach
         - manager
-      usedBy:
-        - dev
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14378,8 +15082,7 @@ entities:
       keywords:
         - asset
         - inventory
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15089,8 +15792,7 @@ entities:
       keywords:
         - migrate
         - agent
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15176,8 +15878,7 @@ entities:
       keywords:
         - path
         - analyzer
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15198,7 +15899,6 @@ entities:
         - extractor
       usedBy:
         - extract-patterns
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15455,7 +16155,6 @@ entities:
         - autonomous-build-loop
         - build-state-manager
         - recovery-handler
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15519,7 +16218,6 @@ entities:
       usedBy:
         - recovery-handler
         - epic-5-executor
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15647,7 +16345,6 @@ entities:
         - build-state-manager
         - recovery-handler
         - epic-5-executor
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15902,8 +16599,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:3a800a109edfeced0391550119b2b90f58405c65d6e0d4f1119e611c33ccbac2
-      lastVerified: '2026-03-09T14:41:33.408Z'
+      checksum: sha256:b40e363f88bec34d35d55ef13d75379ec55ce2e75513225482b007e63219f299
+      lastVerified: '2026-03-10T22:46:01.085Z'
     validate-claude-integration:
       path: .aios-core/infrastructure/scripts/validate-claude-integration.js
       layer: L2
@@ -16087,7 +16784,6 @@ entities:
         - remove-worktree
         - autonomous-build-loop
         - build-orchestrator
-        - dev
         - auto-worktree
         - project-status-loader
         - story-worktree-hooks
@@ -16709,7 +17405,6 @@ entities:
         - context7
       usedBy:
         - qa-library-validation
-        - analyst
         - architect
         - dev
         - po
@@ -16758,7 +17453,6 @@ entities:
       keywords:
         - exa
       usedBy:
-        - analyst
         - architect
       dependencies: []
       externalDeps: []
@@ -16783,8 +17477,7 @@ entities:
       keywords:
         - google
         - workspace
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
