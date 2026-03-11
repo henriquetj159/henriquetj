@@ -33,7 +33,10 @@ jobs:
               pull_number: context.payload.pull_request.number,
               per_page: 100
             });
-            const hasSquadChanges = files.some(f => f.filename.startsWith('squads/'));
+            const hasSquadChanges = files.some(f =>
+              f.filename.startsWith('squads/') ||
+              f.previous_filename?.startsWith('squads/')
+            );
             if (hasSquadChanges) {
               await github.rest.issues.addLabels({
                 issue_number: context.payload.pull_request.number,
