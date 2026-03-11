@@ -52,5 +52,8 @@ App de prospecção via WhatsApp Web com outreach integrado e tracking de envios
 ## Histórico
 | Data | Ação |
 |------|------|
-| 2026-03-11 | PRD v0.1 criado — stack, features, arquitetura, milestones |
+| 2026-03-11 | M2 Done — scoring engine, message preview, WhatsApp connect, Evolution API |
+| 2026-03-11 | M1 Done — Next.js + Supabase + chat parser + upload ZIP + multi-grupo |
+| 2026-03-11 | VK Talks processado — 80 membros, 50 telefones, 28 mensagens outreach |
+| 2026-03-11 | PRD v0.2 — fluxo corrigido (ZIP → parse → score → WhatsApp → GHL) |
 | 2026-03-11 | Projeto criado — evolução de squad para app completo |
