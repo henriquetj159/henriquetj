@@ -85,8 +85,23 @@ async function main() {
     provider: 'claude',
   };
 
-  const { onPreCompact } = require(runnerPath);
-  await onPreCompact(context);
+  // Spawn a detached child process so the digest is fire-and-forget.
+  // Using require() in-process keeps the event loop alive (setImmediate inside
+  // the runner), causing the hook to block until the 9 s safety timeout.
+  // The child receives context via AIOX_HOOK_CONTEXT env var and calls
+  // onPreCompact() exported by the runner module.
+  const { spawn } = require('child_process');
+  const inlineScript = [
+    `const ctx = JSON.parse(process.env.AIOX_HOOK_CONTEXT || '{}');`,
+    `const { onPreCompact } = require(${JSON.stringify(runnerPath)});`,
+    `onPreCompact(ctx).catch(() => {});`,
+  ].join('\n');
+  const child = spawn(process.execPath, ['-e', inlineScript], {
+    detached: true,
+    stdio: 'ignore',
+    env: { ...process.env, AIOX_HOOK_CONTEXT: JSON.stringify(context) },
+  });
+  child.unref();
 }
 
 /** Entry point runner — sets safety timeout and executes main(). */

@@ -90,7 +90,10 @@ async function main() {
 /** Entry point runner — lets Node exit naturally after stdout flush. */
 function run() {
   const timer = setTimeout(() => {
-    process.exitCode = 0;
+    // process.exitCode alone won't terminate the process if active handles
+    // remain (e.g. stdout backpressure). Use process.exit() to enforce the
+    // 5 s hard limit and guarantee the hook never blocks Claude Code.
+    process.exit(0);
   }, HOOK_TIMEOUT_MS);
   timer.unref();
   main()
