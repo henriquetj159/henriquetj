@@ -20,6 +20,4 @@ export {
 
 export { parseWhatsAppExport, detectChatFormat, extractName } from './parser';
 export { normalizePhoneNumber, validatePhoneFormat, normalizePhoneNumbers } from './phone-normalizer';
-
-// Export functions (to be implemented)
-// export { validateParsedData } from './validator';
+export { validateParsedData } from './validator';
