@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "pid": 11189,
+  "pid": 12035,
   "sessionId": "session-1771550831494-rwn54yvi2",
   "project": {
     "type": "project",
@@ -11,12 +11,12 @@
   },
   "status": {
     "phase": "testing",
-    "progress": "2/83",
+    "progress": "1/48",
     "currentTask": "",
     "emoji": "🧪"
   },
   "context": {
-    "story": "M0.4-create-ghl-sdk",
+    "story": "M0.1-AC5-squad-integration",
     "epic": ""
   },
   "activeAgent": {
@@ -24,6 +24,6 @@
   },
   "metadata": {
     "startedAt": "2026-02-20T01:27:11.494Z",
-    "lastUpdatedAt": "2026-03-12T16:15:55.528Z"
+    "lastUpdatedAt": "2026-03-12T18:25:44.786Z"
   }
 }

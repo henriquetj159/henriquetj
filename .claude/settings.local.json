@@ -27,7 +27,9 @@
       "mcp__exa__web_search_exa",
       "mcp__figma__get_design_context",
       "mcp__figma__whoami",
-      "mcp__google-workspace__sheets_getText"
+      "mcp__google-workspace__sheets_getText",
+      "mcp__google-workspace__gmail_search",
+      "mcp__google-workspace__gmail_get"
     ],
     "deny": []
   }
