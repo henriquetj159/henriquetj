@@ -1,0 +1,14 @@
+{
+  "name": "@aios/quality-dashboard",
+  "version": "1.0.0",
+  "description": "Unified quality dashboard for the AIOS ecosystem",
+  "main": "index.js",
+  "bin": {
+    "quality-dashboard": "./cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js"
+  },
+  "keywords": ["aios", "quality", "dashboard"],
+  "license": "UNLICENSED"
+}
