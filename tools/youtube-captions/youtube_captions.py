@@ -35,6 +35,12 @@ try:
 except ImportError:
     HAS_TRANSCRIPT_API = False
 
+try:
+    import browser_cookie3
+    HAS_BROWSER_COOKIES = True
+except ImportError:
+    HAS_BROWSER_COOKIES = False
+
 
 # Language priority: try these in order
 DEFAULT_LANG_PRIORITY = ["pt-BR", "pt", "en", "en-US", "es"]
@@ -226,8 +232,68 @@ def fetch_captions_transcript_api(video_id, lang_priority=None, cookies_path=Non
         return text, {"language": lang, "subtitle_type": sub_type}
 
     except Exception as e:
-        print(f"  Transcript API fallback failed: {e}")
+        err_msg = str(e).split("\n")[0]  # First line only
+        print(f"  Transcript API fallback failed: {err_msg}")
         return None, None
+
+
+def fetch_captions_with_browser_cookies(video_id, lang_priority=None):
+    """Last resort: use browser cookies to bypass IP rate limiting."""
+    if not HAS_BROWSER_COOKIES or not HAS_TRANSCRIPT_API:
+        return None, None
+
+    browsers = [
+        ("Chrome", browser_cookie3.chrome),
+        ("Firefox", browser_cookie3.firefox),
+    ]
+
+    for browser_name, cookie_fn in browsers:
+        try:
+            cj = cookie_fn(domain_name=".youtube.com")
+            if not any(True for _ in cj):
+                continue
+
+            import requests
+            session = requests.Session()
+            session.cookies = cj
+            ytt_api = YouTubeTranscriptApi(http_client=session)
+
+            transcript_list = ytt_api.list(video_id)
+            best_lang = None
+            for t in transcript_list:
+                if t.language_code in (lang_priority or DEFAULT_LANG_PRIORITY):
+                    best_lang = t.language_code
+                    break
+                if best_lang is None:
+                    best_lang = t.language_code
+
+            if not best_lang:
+                continue
+
+            result = ytt_api.fetch(video_id, languages=[best_lang])
+            lines = []
+            for snippet in result:
+                start = snippet.start if hasattr(snippet, "start") else snippet.get("start", 0)
+                text_val = snippet.text if hasattr(snippet, "text") else snippet.get("text", "")
+                minutes = int(start) // 60
+                seconds = int(start) % 60
+                text_clean = re.sub(r"\n", " ", text_val).strip()
+                if text_clean:
+                    lines.append(f"[{minutes:02d}:{seconds:02d}] {text_clean}")
+
+            text = "\n".join(lines)
+            if text.strip():
+                is_auto = any(t.is_generated for t in transcript_list if t.language_code == best_lang)
+                sub_type = "auto-generated" if is_auto else "manual"
+                print(f"  Browser cookies ({browser_name}) worked: {best_lang} ({sub_type})")
+                return text, {"language": best_lang, "subtitle_type": sub_type}
+
+        except Exception as e:
+            err_msg = str(e).split("\n")[0]
+            print(f"  Browser cookies ({browser_name}) failed: {err_msg}")
+            continue
+
+    return None, None
 
 
 def extract_captions(video_url, output_dir=None, lang_priority=None, output_format="md",
@@ -272,15 +338,28 @@ def extract_captions(video_url, output_dir=None, lang_priority=None, output_form
             sub_data = download_subtitle_content(sub_url)
             text = parse_subtitle_content(sub_data)
         except Exception as e:
-            if "429" in str(e) and HAS_TRANSCRIPT_API:
-                print(f"  Rate limited, trying transcript API fallback...")
-                text, meta = fetch_captions_transcript_api(video_id, lang_priority, cookies_path)
-                if text and text.strip():
-                    lang = meta["language"]
-                    sub_type = meta["subtitle_type"]
-                    print(f"  Fallback OK: {lang} ({sub_type})")
-                else:
-                    raise
+            if "429" in str(e):
+                text = None
+                # Attempt 1: transcript API fallback
+                if HAS_TRANSCRIPT_API:
+                    print(f"  Rate limited, trying transcript API fallback...")
+                    text, meta = fetch_captions_transcript_api(video_id, lang_priority, cookies_path)
+                    if text and text.strip():
+                        lang = meta["language"]
+                        sub_type = meta["subtitle_type"]
+                        print(f"  Fallback OK: {lang} ({sub_type})")
+
+                # Attempt 2: browser cookies
+                if not (text and text.strip()) and HAS_BROWSER_COOKIES:
+                    print(f"  Trying browser cookies fallback...")
+                    text, meta = fetch_captions_with_browser_cookies(video_id, lang_priority)
+                    if text and text.strip():
+                        lang = meta["language"]
+                        sub_type = meta["subtitle_type"]
+
+                if not (text and text.strip()):
+                    print(f"  WARNING: Rate limited, all fallbacks failed for: {title}")
+                    return None
             else:
                 raise
 
