@@ -8,8 +8,8 @@
 - Novo vendedor/CS entrou e precisa alimentar KB com primeiras calls
 
 ## Pré-requisitos
-- [ ] MCP Google Workspace configurado e autenticado
-- [ ] Pasta do Drive com transcrições: `1n0Dm6Ndjk1gupEk4nDwtpAxa1vFEnoK6`
+- [ ] Google Drive for Desktop sincronizado (pasta acessível localmente)
+- [ ] Pasta das transcrições: `/Users/luizfosc/Library/CloudStorage/GoogleDrive-luizfosc@gmail.com/.shortcut-targets-by-id/1b2DqeBvE_0aH_REqLVWWqrIGQu6wyQDF/Ensinio - Gui e Fosc/BANCO DE DADOS/Transcrição das Reuniões TLDV`
 - [ ] Acesso aos data files em `squads/ensinio-mind/data/`
 
 ## Speakers
@@ -23,21 +23,21 @@
 
 ### Fase 1: Discovery (5 min)
 
-1. Buscar docs na pasta do Drive:
+1. Listar arquivos `.md` na pasta local das transcrições:
    ```
-   drive_search na pasta 1n0Dm6Ndjk1gupEk4nDwtpAxa1vFEnoK6
+   Glob: "*.md" na pasta de transcrições tl;dv
    ```
-2. Filtrar docs que **NÃO** começam com `(MIND-CLONING OK)` no título
-3. Listar docs novos com: título, data de criação, tamanho estimado
+2. Filtrar arquivos cujo nome **NÃO** começa com `(MIND-CLONING OK)`
+3. Listar arquivos novos com: nome, data de modificação, word count estimado
 4. Apresentar lista ao usuário e confirmar quais processar
 
-**Gate:** Sem docs novos → parar e avisar. Docs com < 200 palavras → flaggar como incompleto, perguntar se processa.
+**Gate:** Sem arquivos novos → parar e avisar. Arquivos com < 200 palavras → flaggar como incompleto, perguntar se processa.
 
 ### Fase 2: Read & Classify (10 min)
 
-Para cada doc aprovado na Fase 1:
+Para cada arquivo aprovado na Fase 1:
 
-1. Ler conteúdo completo via `docs_getText`
+1. Ler conteúdo completo via `Read` (arquivo .md local)
 2. Classificar por speaker e tipo:
 
 | Indicador | Classificação |
@@ -110,11 +110,12 @@ Para cada doc aprovado na Fase 1:
 
 ### Fase 7: Mark as Processed (5 min)
 
-1. Para cada doc processado com sucesso:
-   - Renomear no Drive adicionando `(MIND-CLONING OK) ` no início do título
-   - Método: `docs_find` + rename via API (ou instruir usuário se MCP não suportar rename)
+1. Para cada arquivo processado com sucesso:
+   - Renomear localmente adicionando `(MIND-CLONING OK) ` no início do nome do arquivo
+   - Exemplo: `call-2026-03-14.md` → `(MIND-CLONING OK) call-2026-03-14.md`
+   - Método: `mv` via Bash (o rename sincroniza automaticamente para o Drive)
 2. Relatório final:
-   - X docs processados / Y ignorados
+   - X arquivos processados / Y ignorados
    - Z insights extraídos (breakdown por tipo)
    - W arquivos atualizados
    - Próxima execução sugerida: "daqui a 1 semana"
@@ -132,7 +133,7 @@ Para cada doc aprovado na Fase 1:
 ## Output
 
 - Data files atualizados em `squads/ensinio-mind/data/`
-- Docs processados marcados com `(MIND-CLONING OK)` no Drive
+- Arquivos processados renomeados com prefixo `(MIND-CLONING OK)` (sync automático pro Drive)
 - Config.yaml versionado
 - Commit feito
 - Relatório de execução apresentado
@@ -147,4 +148,4 @@ Ambas alimentam os mesmos data files e seguem as mesmas veto conditions.
 
 ---
 
-**Criado:** 2026-03-14 | **Tipo:** Operacional | **Fonte:** tl;dv (Google Drive via Zapier)
+**Criado:** 2026-03-14 | **Tipo:** Operacional | **Fonte:** tl;dv (.md via Google Drive sync)
