@@ -386,4 +386,89 @@ O ciclo de vendas de **AI Agents** é diferente do ciclo de **plataforma EAD**:
 
 ---
 
-**Versão:** 3.0 | **Data:** 2026-03-14 | **Fonte:** Google Forms (06-13/03) + tl;dv calls batch 1 (5 calls, 2026-03)
+## Churn Risks Ativos (Batch 3, tl;dv 2026-03-14)
+
+### Gil Junior (Preparatório PF) — 85% de risco
+
+**Sinais:**
+- Comparando custos com Hotmart + Tutoria
+- Reclamando de taxa de parcelamento (3,49% vs 2,99% desejado) - transparência legal gera objeção
+- Saque lento (D+3 Ted vs D+2 Hotmart até meio-dia)
+- **Bug crítico:** Arquivo .apkg não funciona (flashcards Anki) — **BLOQUEADOR** para nicho de concursos
+
+**Contexto:**
+- Cliente: Preparatório para Polícia Federal, 2.000+ alunos
+- Faturamento estimado: R$ 50-200K/mês
+- Ticket: R$ 200-800/mês por aluno
+- Plataforma anterior: Hotmart
+
+**Timeline:** Decisão até dia 25 do mês (limite para migrar ou renovar)
+
+**Ações recomendadas:**
+1. ⚠️ **URGENTE:** Resolver bug .apkg (Anki flashcards) — **P0**
+2. Mostrar comparativo real de custos (incluir custo oculto de Hotmart: chargeback 4%, antecipação 3,49%)
+3. CS proativo para acompanhar decisão
+4. Oferecer trial estendido para testar .apkg quando corrigido
+
+**Impacto se perder:**
+- Sinal negativo para nicho preparatórios (PF, OAB, tribunais)
+- Perda de R$ 4.000/ano (custo fixo) + taxa sobre R$ 50-200K/mês vendas
+
+**Fonte:** tl;dv call Gil Junior & Ensinio, 2026-03-14
+
+---
+
+### Vamos para o Quadro — 100% de churn (confirmado)
+
+**Status:** Cancelamento confirmado em 30/03/2026
+
+**Motivo:** Empresa encerrando plataforma digital (não especificado por quê)
+
+**Contexto:**
+- Clientes: Eduardo Barradas + Rosane
+- Produto: Cursos para concursos/vestibulares
+- Situação: Precisam exportar dados + cancelar recorrências em massa
+
+**Ações em andamento:**
+1. ✅ Exportação de dados (bug no filtro "ativos" — Bhrenda corrigindo)
+2. ✅ Cancelamento de recorrências em massa (dev vai fazer bulk cancel)
+3. ✅ Plataforma grátis até 30/03 (cortesia para garantir acesso dos alunos)
+
+**Data final:** 30/03/2026 (fixo)
+
+**Aprendizado:** Cliente satisfeito (sem reclamação da plataforma), mas negócio encerrou. Nada que Ensinio pudesse fazer.
+
+**Fonte:** tl;dv call Vamos para o Quadro & Ensinio, 2026-03-14
+
+---
+
+### Aforismos (Marlos Cavalheiro) — 40% de churn risk
+
+**Sinais:**
+- Renovação anual baixa (preocupação do cliente)
+- "A renovação é baixa... esperava mas quero minimizar isso"
+- Precisa de dados manuais (cruzar vendas + acessos no Excel) — não tem dashboard pronta
+
+**Contexto:**
+- Cliente: Clube de filosofia/humanidades (método proprietário)
+- Modelo: Assinatura anual
+- Público: Interessados em aforismos, filosofia prática
+- Plataforma: Migrou recentemente (jan/25), renovações começaram jan/26
+
+**Timeline:** Renovações anuais vencem a partir de jan/26 (12 meses após migração)
+
+**Ações recomendadas:**
+1. Check-in proativo no mês de renovação (antecipar objeções)
+2. Mostrar dados de uso para justificar valor (taxa de conclusão, acessos)
+3. Oferecer ajustes de UX (progresso visual + recompensa) — cliente pediu
+4. **Feature Request P1:** Dashboard de engajamento pronta (sem Excel manual)
+
+**Impacto se perder:**
+- Perda de receita recorrente anual
+- Sinal para outros clientes com modelo anual
+
+**Fonte:** tl;dv call Aforismos & Ensinio, 2026-03-14
+
+---
+
+**Versão:** 3.1 | **Data:** 2026-03-14 | **Fonte:** Google Forms (06-13/03) + tl;dv calls batch 1+2+3 (26 calls, 2026-03)

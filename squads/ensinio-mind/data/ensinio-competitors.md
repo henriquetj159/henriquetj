@@ -44,6 +44,21 @@ A Ensinio possui um ecossistema que atende de ponta a ponta tudo o que um infopr
 - **Pontos fracos vs Ensinio:** Área de membros genérica (Sparkle), sem comunidade própria, sem gamificação, sem IA, sem white label, sem vídeo hosting próprio
 - **Argumento principal:** "Hotmart é um marketplace com área de membros. Ensinio é uma área de membros all-in-one com checkout."
 
+#### Argumentos Usados CONTRA Ensinio (tl;dv batch 3)
+**Mencionado em:** 3 calls (Gil Junior, Gabriel Guitarrari, Aforismos)
+
+| Argumento Hotmart | Resposta Ensinio |
+|-------------------|------------------|
+| **Sem custo fixo** (só % de venda vs R$ 4.000/ano Ensinio) | UX superior (billboard, gamificação, sessões), suporte em vídeo + check-ins, comunidade nativa. Break-even: a partir de ~R$ 60K vendas/mês compensa |
+| **Saque D+2** (até meio-dia) vs D+3 Ted Ensinio | Antecipação sem taxa (Hotmart cobra 3,49% para antecipar). Ensinio: D+15 cartão, D+3 pix/boleto SEM taxa |
+| **Familiaridade** (cliente já conhece interface) | Migração gratuita + onboarding incluso. Ensinio tem features que Hotmart não tem (gamificação, IA, comunidade) |
+| **Taxa de parcelamento menor** (Hotmart transfere 4,49% pro comprador) | Ensinio: 3,49% transparente (lei exige mostrar). Cliente vê juros mas é legal. Hotmart esconde custo |
+
+#### Churn Risk Ativo
+- **Gil Junior (85%)** — Comparando custos Hotmart vs Ensinio, reclamando de saque lento (D+3 vs D+2 Hotmart), taxa de parcelamento gerando objeção. **Decisão até dia 25**. Bug .apkg agrava situação.
+
+**Fonte:** tl;dv calls batch 3 (Gil Junior, Gabriel Guitarrari, Parceria Ricardo/Victor), 2026-03-11 a 2026-03-14
+
 ### Kiwify
 - **O que é:** Plataforma de vendas de infoprodutos
 - **Pontos fortes:** Checkout rápido, crescimento acelerado
@@ -79,6 +94,36 @@ A Ensinio possui um ecossistema que atende de ponta a ponta tudo o que um infopr
 - **Pontos fortes:** App mobile, interface simples
 - **Pontos fracos vs Ensinio:** SEM checkout próprio, sem IA, sem comunidade, sem gamificação, sem white label
 - **Argumento principal:** "Cademi tem app mas não tem ecossistema. Ensinio tem ambos."
+
+### Tutoria
+- **O que é:** Plataforma de vendas + área de membros
+- **Pontos fortes:** Taxa competitiva (6-7% vs 6,99% Ensinio)
+- **Pontos fracos vs Ensinio:** Feature-set menor (sem gamificação, sem IA, sem comunidade nativa, sem app próprio)
+- **Argumento principal:** "Tutoria é mais barata, mas limitante. Ensinio tem feature-set completo que justifica 0,99% a mais."
+
+**Mencionado em:** 1 call (Gil Junior comparando custos)
+**Fonte:** tl;dv call Gil Junior & Ensinio, 2026-03-14
+
+### Carie Academy (Kartra)
+- **O que é:** LMS + automação de marketing (produto americano)
+- **Pontos fortes:** Muito conhecida (legado de anos no mercado), automações avançadas
+- **Pontos fracos vs Ensinio:** Interface pesada/complexa, curva de aprendizado alta, capas em tamanhos diferentes (trabalho de design ao migrar)
+- **Argumento principal:** "Carie é poderosa mas complexa. Ensinio é simples + poderosa."
+
+**Mencionado em:** 1 call (Flavia Affonso migrando de Carie para Ensinio)
+**Feedback do cliente:** "Sou muito feliz com eles [Carie]. Material deles, suporte deles, gosto demais. Facilidade assim fora do comum... Mas Ensinio escolhida para migração."
+**Motivo da migração:** Custo (~R$ 1.600/mês Carie vs Ensinio), necessidade de redesign de capas
+**Fonte:** tl;dv call Flavia Affonso & Ensinio, 2026-03-14
+
+### WordPress + Plugins
+- **O que é:** CMS genérico + plugins de LMS (LearnDash, LifterLMS, etc.)
+- **Pontos fortes:** Barato (self-hosted), altamente customizável
+- **Pontos fracos vs Ensinio:** Bugado, sem suporte, plugins conflitantes, equipe abandona projeto por complexidade técnica, "ninguém conseguia encontrar o maldito menu"
+- **Argumento principal:** "WordPress é gambiarra. Ensinio é plataforma estável e nativa."
+
+**Mencionado em:** 1 call (Alex Hurley — experiência traumática)
+**Contexto:** Cliente comprou WordPress + plugins, experiência muito negativa (bugado, sem suporte, perdeu tempo e dinheiro). Pediu reembolso. Ensinio se posiciona como oposto: suporte em vídeo, estável, sem gambiarra.
+**Fonte:** tl;dv call 11032026-Meeting (Alex Hurley), 2026-03-11
 
 ---
 

@@ -84,4 +84,171 @@ Ricardo usa a metáfora da mudança de casa:
 
 ---
 
-**Versão:** 2.0.0 | **Atualizado:** 2026-03-14 | **Fonte principal:** tl;dv calls batch 1 (Ricardo, 5 calls)
+## TOP 10 Fricções Críticas (Batch 3, tl;dv 2026-03-14)
+
+### #1. Migração de alunos com múltiplos produtos = trabalho manual gigante 🔴
+**Frequência:** 4 calls (Gabriel Guitarrari, Camila Tourinho, Flavia Affonso, Rica Pro)
+
+**Problema:**
+- Cliente vem de Hotmart com aluno que comprou múltiplos produtos
+- Precisa repetir email do aluno N vezes na planilha (1 linha por grupo)
+- Trabalho manual enorme para 2.000+ alunos
+
+**Workaround atual:** Planilha com repetição de email (sem automação)
+
+**Impacto:** ALTO — gargalo de onboarding, atrasa migração completa, cliente frustra e adia
+
+**Fonte:** tl;dv calls batch 3 (Gabriel Guitarrari, Camila Tourinho, Flavia Affonso, Rica Pro), 2026-03-11 a 2026-03-14
+
+---
+
+### #2. Dashboard de engajamento — "quem comprou X dias atrás e usou Y vezes" 🔴
+**Frequência:** 3 calls (Marlos/Aforismos, Elton, Gil)
+
+**Problema:**
+- Cliente precisa saber: "Quem comprou há X dias e usou pelo menos Y vezes?"
+- Hoje: Exportar vendas (jan) + exportar acessos (jan) → cruzar emails manualmente no Excel
+- Não tem dashboard automática
+
+**Workaround atual:** Cruzamento manual via Excel
+
+**Impacto:** ALTO — retenção depende disso. Clientes usam para identificar quem precisa de follow-up.
+
+**Feature Request:** Dashboard pronta com filtros (período de compra + frequência de acesso)
+
+**Fonte:** tl;dv calls batch 3 (Aforismos, Elton Luiz, Gil Junior), 2026-03-11 a 2026-03-14
+
+---
+
+### #3. Bug arquivo .apkg (Anki flashcards) — CHURN RISK 🔴
+**Frequência:** 1 call (Gil Junior)
+
+**Problema:**
+- Cliente de preparatórios (concursos) precisa de flashcards .apkg (Anki)
+- Arquivo não funciona quando sobe (desconfigurado, não abre como deveria)
+- **CRÍTICO** para nicho de concursos (PF, OAB, tribunais)
+
+**Impacto:** ALTO — Gil Junior em 85% churn risk por isso. Nicho preparatórios é grande.
+
+**Ação:** Resolver bug .apkg URGENTE — **P0**
+
+**Fonte:** tl;dv call Gil Junior & Ensinio, 2026-03-14
+
+---
+
+### #4. Muitas capas para criar (horizontal, vertical, fundo, estampa, módulo) 🟡
+**Frequência:** 3 calls (Flavia Affonso, Camila Tourinho, Elton)
+
+**Problema:**
+- Cada grupo precisa: capa horizontal, vertical, fundo, estampa, capas de módulos
+- Trabalho de design grande (cliente pagou caro em plataforma anterior e precisa refazer tudo)
+- Tamanhos diferentes da plataforma anterior
+
+**Workaround atual:** Migração via dev (caso a caso) — Bhrenda oferece ajuda
+
+**Impacto:** MÉDIO — atrasa migração, mas não impede
+
+**Fonte:** tl;dv calls batch 3 (Flavia Affonso, Camila Tourinho), 2026-03-14
+
+---
+
+### #5. Email Microsoft bloqueado — problema conhecido sem solução 🟡
+**Frequência:** 2 calls (Camila Tourinho, não especificado)
+
+**Problema:**
+- Email de boas-vindas bloqueado pela Microsoft (Outlook, Hotmail)
+- Gmail funciona bem, Microsoft bloqueia
+- Problema conhecido, sem solução atualmente
+
+**Workaround atual:** "Use Gmail" (não resolve B2B)
+
+**Impacto:** MÉDIO — afeta onboarding de alunos com email corporativo Microsoft
+
+**Fonte:** tl;dv calls batch 3, 2026-03-14
+
+---
+
+### #6. Pagamento não cai no mesmo dia (Ted = até 3 dias) vs Hotmart D+2 🟡
+**Frequência:** 1 call (Gil Junior)
+
+**Problema:**
+- Hotmart: saque até meio-dia cai no mesmo dia, após 17h cai no dia seguinte
+- Ensinio: D+3 Ted (banco) — impossível mudar
+- Cliente com fluxo de caixa semanal depende de saques rápidos
+
+**Impacto:** ALTO — churn risk (Gil Junior comparando custos)
+
+**Solução atual:** D+15 cartão, D+3 pix/boleto sem taxa de antecipação
+
+**Fonte:** tl;dv call Gil Junior & Ensinio, 2026-03-14
+
+---
+
+### #7. Checkout em 2 etapas cria "lixo" na base (cadastro sem compra) 🟡
+**Frequência:** 1 call (Camila Tourinho)
+
+**Problema:**
+- Checkout em 2 etapas: pessoas criam cadastro mas não finalizam compra
+- Base fica com "lixo" (usuários sem acesso)
+
+**Solução:** Mudar para checkout one-page (experiências → One page)
+
+**Impacto:** BAIXO — resolvível facilmente
+
+**Fonte:** tl;dv call Camila Tourinho, 2026-03-14
+
+---
+
+### #8. Não consegue criar sessões por aula (só módulo/grupo) 🟡
+**Frequência:** 2 calls (Camila Tourinho, não especificado)
+
+**Problema:**
+- Cliente quer criar sessão mostrando apenas aulas específicas (ex: "Cardio Intenso" só as aulas desse tema)
+- Limitação técnica: só módulos ou grupos
+- Alternativa: tipo módulo (mostra módulos do grupo)
+
+**Impacto:** MÉDIO — limitação de UX, não bloqueante
+
+**Fonte:** tl;dv call Camila Tourinho, 2026-03-14
+
+---
+
+### #9. Limite de banda vs armazenamento (vídeos 4K consomem muito) 🟡
+**Frequência:** 2 calls (Flavia Affonso, Box1824)
+
+**Problema:**
+- Cliente com vídeos 4K: "Tô com 86% de armazenamento e só uso 5% da banda mensal"
+- Preocupação com custo de excedente (18-20 centavos/GB)
+
+**Solução atual:** Comunicar custo 1 mês antes + oferecer planos maiores
+
+**Impacto:** MÉDIO — afeta clientes premium com muito conteúdo
+
+**Fonte:** tl;dv calls batch 3 (Flavia Affonso, Box1824), 2026-03-14
+
+---
+
+### #10. Botão SSO (Okta) muito em evidência confunde cliente final 🟢
+**Frequência:** 2 calls (Prof. Fredão, 04032026-Meeting)
+
+**Problema:**
+- Botão "Entrar com Okta" em destaque na tela de login
+- Cliente final (alunos) não usa Okta, só interno
+- Confunde UX
+
+**Solução:** Dev vai avaliar colocar botão SSO em segundo plano (embaixo do email/senha)
+
+**Impacto:** BAIXO — questão estética, não bloqueante
+
+**Fonte:** tl;dv calls batch 3 (Prof. Fredão, 04032026-Meeting), 2026-03-14
+
+---
+
+## Fonte Consolidada Completa
+
+Para **47 fricções**, **58 FAQs** e **12 padrões de setup** completos, consultar:
+**`squads/ensinio-mind/data/insights-batch-3-raw.md`** (785 linhas, seções consolidadas)
+
+---
+
+**Versão:** 2.1.0 | **Atualizado:** 2026-03-14 | **Fonte principal:** tl;dv calls batch 1+3 (21 calls, Ricardo + Bhrenda)

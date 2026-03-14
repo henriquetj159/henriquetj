@@ -214,9 +214,46 @@ O pitch deck inclui múltiplas capturas de tela de conversas WhatsApp mostrando:
 - ROI: Economizou R$ 90K em setup (30 clientes x R$ 3K)
 **Uso:** Prova de white-label
 
+### Case 11: Clube de Aforismos (renovação anual, 100+ membros)
+**Mencionado em:** Batch 3 (Marlos Cavalheiro - CS call)
+**Detalhes:**
+- Cliente: Clube de filosofia/humanidades (método proprietário estilo TED)
+- Público: Interessados em aforismos, filosofia prática
+- Estrutura: Sessões por coleção, 6 vídeos + quiz + teste de validação por aforismo
+- Uso na demo: Visual bem estruturado, sessões organizadas, progresso visual claro
+- Desafio: Baixa renovação anual (preocupação do cliente com retenção)
+**Uso:** Referência de vitrine bem estruturada + organização de conteúdo filosófico
+
+**Fonte:** tl;dv call Aforismos & Ensinio, 2026-03-14
+
+### Case 12: Elton (visual medieval/épico - preto + dourado)
+**Mencionado em:** Batch 3 (11032026-Meeting - Ricardo)
+**Detalhes:**
+- Cliente: Professor de história/filosofia
+- Público: Interessados em história, filosofia
+- Visual: Épico/medieval (preto + dourado = sofisticação)
+- Uso na demo: Referência visual para clientes que querem branding premium
+- Features destacadas: Gamificação ativa, agentes IA (Luiza - comercial, Bilbo - tutor)
+**Uso:** Prova de que Ensinio permite branding customizado e sofisticado
+
+**Fonte:** tl;dv call 11032026-Meeting (Alex Hurley), 2026-03-11
+
+### Case 13: Box1824 (tendências/design/comportamento - feedback positivo)
+**Mencionado em:** Batch 3 (Julia Caleffi - CS call)
+**Detalhes:**
+- Cliente: Escola de tendências, design thinking, estratégia
+- Público: Profissionais de design, marketing, inovação
+- Resultados: "Plataforma está sendo elogiada pelos alunos" (feedback direto)
+- Visual: Impecável, design cuidadoso, foco em qualidade
+- Estrutura: Aulas longas (2h), curso Unboxing 2026 (15 aulas x 2h)
+- Uso de dados: Dashboard de acessos por hora/dia para decidir timing de lives
+**Uso:** Prova de que Ensinio atende público premium/exigente com feedback positivo
+
+**Fonte:** tl;dv call Box1824 & Ensinio, 2026-03-14
+
 ---
 
-## ROI Consolidado (Batch 1 + Batch 2)
+## ROI Consolidado (Batch 1 + Batch 2 + Batch 3)
 
 | Case | Economia/Crescimento | Métrica |
 |------|---------------------|---------|
