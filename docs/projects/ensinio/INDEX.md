@@ -1,15 +1,11 @@
 # Ensinio — Project Index
 
 ## Estado Atual
-- **Squad:** `ensinio-whatsapp-prospector` v5.0 — Sheets-First + GHL Sync
+- **Squad ativo:** `ensinio-mind` v3.0.0 — KB enrichment via tl;dv calls
 - **Epic:** [EPIC-ENSINIO-APP](../../stories/epics/epic-ensinio-prospector-app/EPIC.md) — Evolução Squad → App
 - **Local:** `docs/projects/ensinio/`
-- **Status:** Planilha auditada, nomes corrigidos, GHL sincronizado
-- **Resultados:** 77 leads, 75 sincronizados no GHL, 2 pendentes (VERIFICAR)
-- **Phone Resolution:** 67/77 verificados na lista de membros, 8 de saídos do grupo, 2 VERIFICAR
-- **Outreach:** 77/77 mensagens personalizadas com WhatsApp links
-- **Google Sheets:** Planilha com Nome/Sobrenome/Telefone separados, dados auditados
-- **GHL:** 75 contatos + deals sincronizados (5 novos, 70 nomes atualizados)
+- **ensinio-mind:** v3.0.0 — 5/28 calls processadas (batch 1 completo), 8 data files enriquecidos
+- **ensinio-whatsapp-prospector:** v5.0 — Sheets auditado, 75/77 GHL sync OK (parado)
 
 ## Dados do Projeto
 - **Phone-book:** `squads/ensinio-whatsapp-prospector/data/phone-books/mentoria-50k.json`
@@ -27,18 +23,16 @@
   - `generate-sheets-paste.js` — Gera TSV com 7 colunas (formato planilha padrão)
   - `generate-apps-script.js` — Gera Apps Script com dados embutidos
 
-## Última Sessão (2026-03-12 — LATEST)
-- **Data:** 2026-03-12 ~22:00 (Noite)
-- **Agente/Squad:** ensinio-whatsapp-prospector (direto, sem agent formal)
+## Última Sessão (2026-03-14 — LATEST)
+- **Data:** 2026-03-14
+- **Agente/Squad:** ensinio-mind (extract-from-calls task)
 - **O que foi feito:**
-  1. ✅ Auditoria completa de 77 leads: cruzou planilha × lista de membros × chat
-  2. ✅ Corrigiu 9 telefones errados (6 duplicados do +5511974830404 + 3 outros)
-  3. ✅ Completou 23 nomes com sobrenomes (Katia→Katia Tavares, etc.)
-  4. ✅ Separou Nome/Sobrenome em colunas distintas na planilha
-  5. ✅ Removeu prefixos profissionais (Engenheiro, Dra, Psicóloga, etc.)
-  6. ✅ Criou `sync-sheets-to-ghl.js` — lê da planilha e sincroniza com GHL
-  7. ✅ Sincronizou 75/77 leads no GHL (5 novos contatos+deals, 70 nomes atualizados)
-  8. ✅ Verificação cruzada: 67 números confirmados, 8 de saídos do grupo, 2 VERIFICAR
+  1. ✅ Processou batch 1 (5 maiores transcrições tl;dv, ~57K palavras)
+  2. ✅ Extraiu ~45 insights (15 objeções, 7 técnicas, 5 ICPs, 6 concorrentes, 5 red flags, 8 cases, 4 ciclos)
+  3. ✅ Atualizou 8/15 data files do ensinio-mind
+  4. ✅ Bumped version 2.1.0 → 3.0.0
+  5. ✅ Renomeou 5 transcrições com prefixo `(MIND-CLONING OK)`
+  6. ✅ Commitado: `1608de6d7`
 
 ---
 
@@ -55,14 +49,13 @@
   7. ✅ Blocker GHL documentado em ADR-001-tech-stack.md + M0.4 story
 
 ## Próximo Passo
-- **Verificar 2 telefones pendentes:** Vinicius Soares e Patrícia de Pieri (saíram do grupo)
-- **Resolver 2 nomes:** ⚖️ (DDD 61, jurídica) e Get and Go (empresa mini mercado)
-- **SDR:** Completar sobrenomes faltantes (Eduardo, Alexandra, Ci, Jovito, etc.)
-- **Opcional:** Implementar Phase 8 (populate-sheet-v5.md) e Phase 9 (sync-to-ghl-v5.md) do pipeline v5.0
+- **ensinio-mind:** Processar batch 2 (calls #6-10) com `*extract-from-calls` — restam 23 transcrições
+- **ensinio-whatsapp-prospector:** Verificar 2 telefones pendentes, implementar Phase 8/9 v5.0
 
 ## Histórico
 | Data | Sessão | Resumo |
 |------|--------|--------|
+| 2026-03-14 | ensinio-mind v3.0 | Batch 1: 5 calls processadas, 8 data files enriquecidos, ~45 insights extraídos |
 | 2026-03-12 (3) | Sheets Audit + GHL Sync | Auditoria 77 leads, 9 telefones corrigidos, 23 nomes completados, 75 sincronizados no GHL |
 | 2026-03-12 (2) | GHL Integration v4.0 | API GHL validada, pipeline v4.0 com sync (contact+deal+msg), tag prompt, image-first phone resolution |
 | 2026-03-10 (2) | Phone Resolution + Sheets | 77/77 telefones resolvidos, scripts Google Sheets, MCP OAuth configurado |
@@ -78,5 +71,5 @@
 
 ## Squads Relacionados
 - `ensinio-whatsapp-prospector` — Pipeline de prospecção via WhatsApp (v4.0, base do app)
-- `ensinio-mind` — Source of truth do conhecimento Ensinio (v1.1)
+- `ensinio-mind` — Source of truth do conhecimento Ensinio (v3.0.0, 15 data files)
 - `ensinio-prospector` — Prospecção geral (consome ensinio-mind)
