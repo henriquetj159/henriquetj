@@ -69,16 +69,18 @@ let _modelConfigCache = null;
  * Returns { contextWindow, avgTokensPerPrompt } for the active model.
  * Falls back to DEFAULTS if config is missing or malformed.
  *
+ * @param {string|null} [basePath=null] - Project root override (defaults to __dirname-based resolution)
  * @returns {{ maxContext: number, avgTokensPerPrompt: number }}
  */
-function getModelConfig() {
+function getModelConfig(basePath = null) {
   if (_modelConfigCache) return _modelConfigCache;
 
   try {
     const yaml = require('js-yaml');
-    let configPath = path.join(process.cwd(), '.aios-core', 'core-config.yaml');
+    const root = basePath || path.resolve(__dirname, '..', '..', '..', '..');
+    let configPath = path.join(root, '.aios-core', 'core-config.yaml');
     if (!fs.existsSync(configPath)) {
-      configPath = path.join(process.cwd(), '.aiox-core', 'core-config.yaml');
+      configPath = path.join(root, '.aiox-core', 'core-config.yaml');
     }
     if (!fs.existsSync(configPath)) {
       _modelConfigCache = DEFAULTS;
@@ -105,7 +107,10 @@ function getModelConfig() {
         : DEFAULTS.avgTokensPerPrompt,
     };
     return _modelConfigCache;
-  } catch (_err) {
+  } catch (err) {
+    if (process.env.DEBUG || process.env.AIOX_DEBUG) {
+      console.warn('[context-tracker] Failed to load model config, using defaults:', err.message);
+    }
     _modelConfigCache = DEFAULTS;
     return _modelConfigCache;
   }
