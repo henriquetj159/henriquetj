@@ -1,6 +1,6 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-03-10T22:46:01.088Z'
+  lastUpdated: '2026-03-11T02:56:29.901Z'
   entityCount: 783
   checksumAlgorithm: sha256
   resolutionRate: 100
@@ -10829,8 +10829,8 @@ entities:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:a019168a151a07f60a655a6ec1833154ac73ec868ac9c22afe472d4ea565a2ba
-      lastVerified: '2026-03-09T14:41:33.334Z'
+      checksum: sha256:663295e8d185607dda1256e4eae82bee5448468c0fbf6951474caf66755e967f
+      lastVerified: '2026-03-11T02:56:29.899Z'
     agent-memory:
       path: .aios-core/core/doctor/checks/agent-memory.js
       layer: L1
@@ -10936,8 +10936,8 @@ entities:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:13c353d2459d7ff2cf809489fe36babf981dc950f2d766325cfde8e1902a3887
-      lastVerified: '2026-03-10T22:46:01.052Z'
+      checksum: sha256:87df28347d1a4c498463c9ca2f5700809e035ff31e29835a40bf385642fc35d0
+      lastVerified: '2026-03-11T02:56:29.898Z'
     entity-registry:
       path: .aios-core/core/doctor/checks/entity-registry.js
       layer: L1
