@@ -322,5 +322,71 @@ Check:
 
 ---
 
-Generated: 2026-03-12
-Version: 1.0
+## Project Configuration Template System (Novo — 2026-03-15)
+
+Todo projeto novo criado via `/new-project` recebe automaticamente configuração `.claude/` completa.
+
+### Templates Disponíveis
+
+Location: `tools/templates/project-configs/`
+
+| Tipo | Override | Permissões Extras |
+|------|----------|-------------------|
+| **base** | — | Git local, Read/Write/Edit, WebSearch/WebFetch básico |
+| **app** | settings.json | npm/yarn/pnpm/bun, docker/docker-compose |
+| **squad** | settings.json | Task(squad:*), Task(AIOS:*) |
+| **mind-clone** | settings.json | WebFetch(**), WebSearch(**), Task(mind-cloning:*) |
+| **pipeline** | settings.json | ffmpeg, magick/convert, python |
+| **knowledge** | settings.json | Glob(**), Grep(**), Read(**) |
+| **research** | settings.json | WebSearch(**), Task(deep-research:*) |
+
+### Estrutura de Template
+
+```
+{type}/.claude/
+├── settings.json          # Permissões + hooks + sandbox config
+├── CLAUDE.md             # Instruções de projeto (com placeholders)
+└── rules/
+    ├── behavioral-rules.md  # NEVER/ALWAYS rules
+    └── project-rules.md     # Placeholder customizável
+```
+
+### Processo de Cópia
+
+1. `/new-project` executa `node ~/aios-core/tools/copy-project-config.js`
+2. Script copia `base/.claude/` completo
+3. Se existe override para o tipo, sobrescreve apenas `settings.json`
+4. Substitui placeholders no `CLAUDE.md`:
+   - `{{PROJECT_NAME}}` → Nome legível
+   - `{{MODE}}` → HYBRID ou CENTRALIZED
+   - `{{INDEX_PATH}}`, `{{STORIES_PATH}}`, `{{SESSIONS_PATH}}` → Caminhos computados
+   - `{{PROJECT_SLUG}}` → Nome em kebab-case
+
+### Validação
+
+Use `/audit-project-config` para:
+- Detectar projetos sem `.claude/`
+- Validar configurações existentes
+- Corrigir gaps automaticamente
+
+### Customização
+
+Para adicionar novo tipo:
+1. Criar `tools/templates/project-configs/{novo-tipo}/.claude/settings.json`
+2. Customizar permissões conforme necessidade
+3. Adicionar tipo em `copy-project-config.js` (VALID_TYPES)
+4. Documentar aqui
+
+### Deny Rules Obrigatórias
+
+Todos os templates DEVEM ter:
+- `Bash(rm -rf /)`
+- `Bash(git push:*)` (Agent Authority — só @devops)
+- `Bash(sudo rm -rf:*)`
+- `Bash(mkfs:*)`
+- `Bash(chmod -R 777 /:*)`
+
+---
+
+Generated: 2026-03-12 (Updated: 2026-03-15)
+Version: 1.1

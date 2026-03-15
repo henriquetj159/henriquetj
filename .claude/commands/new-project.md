@@ -114,6 +114,79 @@ Este projeto usa governança híbrida AIOX. INDEX, stories e sessions vivem loca
 {A definir — preencha com stack, lint rules, etc. conforme o projeto evolui}
 ```
 
+## Passo 2.7: Criar estrutura de organização Epic/Story
+
+**SEMPRE executar este passo** para todo projeto (CENTRALIZED ou HYBRID).
+
+Execute o script:
+```bash
+node ~/aios-core/tools/create-epic-structure.js {project-path}
+```
+
+Onde `{project-path}` é:
+- **CENTRALIZED:** `.` (cwd já está em aios-core)
+- **HYBRID:** `{project-path}` (path absoluto do projeto externo)
+
+Isso cria automaticamente:
+- `docs/stories/active/`, `docs/stories/done/`, `docs/stories/epics/`
+- `docs/sessions/YYYY-MM/`
+- `docs/HANDOFFS-INDEX.md`
+- `docs/INDEX.md` (template — será sobrescrito no Passo 3)
+- `docs/README.md`
+
+**IMPORTANTE:** Se o projeto for HYBRID (externo), o script cria em `{project-path}/docs/`. Se for CENTRALIZED, cria em `docs/projects/{nome}/`.
+
+**Após rodar o script:**
+- Verificar que todos os diretórios foram criados
+- O INDEX.md gerado pelo script será SOBRESCRITO no Passo 3 com versão customizada
+
+## Passo 2.8: Configurar .claude/ (NOVO)
+
+**SEMPRE executar este passo** para todo projeto (CENTRALIZED ou HYBRID).
+
+Execute o script helper:
+
+```bash
+node ~/aios-core/tools/copy-project-config.js {destination} {type} "{project_name}" {mode}
+```
+
+**Parâmetros:**
+- `{destination}` — Caminho do destino:
+  - **CENTRALIZED:** `docs/projects/{nome}/`
+  - **HYBRID:** `{project-path}/` (path absoluto)
+- `{type}` — Tipo do projeto: `app`, `squad`, `mind-clone`, `pipeline`, `knowledge`, `research`
+- `{project_name}` — Nome legível (entre aspas, ex: "My App")
+- `{mode}` — Modo de governança: `HYBRID` ou `CENTRALIZED`
+
+**Exemplo CENTRALIZED:**
+```bash
+node ~/aios-core/tools/copy-project-config.js docs/projects/my-knowledge knowledge "My Knowledge Base" CENTRALIZED
+```
+
+**Exemplo HYBRID:**
+```bash
+node ~/aios-core/tools/copy-project-config.js ~/CODE/Projects/my-app app "My App" HYBRID
+```
+
+**O que o script faz:**
+1. Copia template `base/.claude/` completo
+2. Sobrescreve `settings.json` com override específico do tipo (se existir)
+3. Substitui todos os placeholders no `CLAUDE.md`
+4. Valida que todos os 4 arquivos obrigatórios foram criados
+
+**Saída esperada:**
+```
+✅ Copiando base template...
+✅ Aplicando override para tipo: app
+✅ Placeholders substituídos em CLAUDE.md
+🔍 Validando estrutura criada...
+   ✅ .claude/settings.json
+   ✅ .claude/CLAUDE.md
+   ✅ .claude/rules/behavioral-rules.md
+   ✅ .claude/rules/project-rules.md
+🎉 Configuração .claude/ criada com sucesso!
+```
+
 ## Passo 3: Gerar INDEX.md
 
 Crie o INDEX.md em `{index_path}` seguindo este formato:
@@ -217,11 +290,17 @@ Mostre ao usuário a estrutura criada:
 ```
 docs/projects/{nome}/
 ├── INDEX.md
+├── HANDOFFS-INDEX.md
+├── README.md
+├── stories/
+│   ├── active/       # Stories em progresso
+│   ├── done/         # Stories concluídas
+│   └── epics/        # Epics (projetos grandes)
+├── sessions/
+│   └── 2026-03/      # Handoffs organizados por ano-mês
 ├── research/
 │   └── .gitkeep
-├── data/
-│   └── .gitkeep
-└── sessions/
+└── data/
     └── .gitkeep
 ```
 
@@ -239,8 +318,18 @@ docs/projects/{nome}/
 │   │       └── .gitkeep
 │   └── epics/
 │       └── .gitkeep
-└── .claude/
-    └── CLAUDE.md
+├── .claude/
+│   └── CLAUDE.md
+└── docs/
+    ├── INDEX.md (link → ../.aios/INDEX.md)
+    ├── HANDOFFS-INDEX.md
+    ├── README.md
+    ├── stories/
+    │   ├── active/
+    │   ├── done/
+    │   └── epics/
+    └── sessions/
+        └── 2026-03/
 ```
 
 Mostre também:
