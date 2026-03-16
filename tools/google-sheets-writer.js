@@ -38,9 +38,9 @@ function getCredentials() {
     };
   }
 
-  // 2. Try .env in squad
+  // 2. Try .env in project (HYBRID location)
   const envFiles = [
-    path.join(__dirname, '../squads/ensinio-whatsapp-prospector/.env'),
+    path.join(process.env.HOME, 'CODE/Projects/ensinio-whatsapp-prospector/.env'),
     path.join(__dirname, '../.env'),
   ];
 

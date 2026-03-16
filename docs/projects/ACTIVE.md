@@ -2,7 +2,7 @@
 
 | # | Projeto | Modo | Status | Agente/Squad | Última Sessão | INDEX |
 |---|---------|------|--------|-------------|---------------|-------|
-| 1 | **ensinio** | 📦 | **ensinio-mind v3.0 — 5/28 calls processadas, 23 restantes** | **ensinio-mind** | **2026-03-14** | [INDEX](ensinio/INDEX.md) |
+| 1 | ~~ensinio~~ | 🔄 | **→ Migrado para HYBRID (Row #19)** | ensinio-whatsapp-prospector | 2026-03-16 | [INDEX](~/CODE/Projects/ensinio-whatsapp-prospector/.aios/INDEX.md) |
 | 2 | gui-avila-mind | 📦 | Transcrição limpa disponível | squad-creator-pro | 2026-03-07 | [INDEX](gui-avila-mind/INDEX.md) |
 | 3 | luiz-fosc-mentoria | 📦 | Research completa | tech-search | 2026-03-06 | [INDEX](luiz-fosc-mentoria/INDEX.md) |
 | 4 | luiz-fosc-mind-clone | 📦 | Research INPI concluída | tech-search | 2026-03-05 | [INDEX](luiz-fosc-mind-clone/INDEX.md) |
@@ -31,3 +31,4 @@
 | B4 | app-artes-ensinio | cmux workspace | Em andamento (42% contexto, $8.21) | Continuar sessão Lovable |
 | B5 | ~~app-extrair-dados-whatsapp-ensinio~~ | cmux workspace | Cancelado — deletado | — |
 | B6 | casa-fundamental | cmux workspace | Backlog | Definir escopo e objetivos |
+| 19 | ensinio-whatsapp-prospector | 🏠 | 🔄 Em andamento | — | 2026-03-16 | [INDEX](/Users/luizfosc/CODE/Projects/ensinio-whatsapp-prospector/.aios/INDEX.md) |
