@@ -334,5 +334,49 @@ Commits para push: 3
 
 ---
 
+## ✅ Bonus: Global Resources Symlinks (COMPLETO - 2026-03-15)
+
+**Problema identificado:** Projetos HYBRID não tinham acesso a skills e commands globais
+**Story:** STORY-devops-hybrid-global-resources
+**Status:** Implementado e testado ✅
+
+### O Que Foi Feito
+
+1. **Atualização do workflow `/new-project`** — `.claude/commands/new-project.md`
+   - Adicionada criação de symlink `.claude/commands/` (linha ~139-145)
+   - Documentação expandida para incluir ambos os symlinks (skills + commands)
+   - ✅ 75+ recursos globais agora acessíveis (45 skills + 30 squads)
+
+2. **Script de migração** — `tools/fix-hybrid-symlinks.js`
+   - Detecta projetos HYBRID em qualquer path
+   - Cria symlinks faltantes (`.aios/skills` e `.claude/commands`)
+   - Valida que symlinks funcionam corretamente
+   - Suporta `--dry-run` e `--path` flags
+   - ✅ Testado em /tmp com sucesso
+
+3. **Arquivos modificados:**
+   - `.claude/commands/new-project.md` (symlinks documentados)
+   - `docs/sessions/2026-03/checkpoint-2026-03-15-new-project.md` (este arquivo)
+
+4. **Arquivos criados:**
+   - `tools/fix-hybrid-symlinks.js` (script de migração, 386 linhas)
+
+### Impacto
+
+**Antes:** Projetos HYBRID perdiam acesso a 75+ recursos globais
+**Agora:** Acesso automático via symlinks:
+- ✅ 45 skills globais (kaizen, deep-research, tech-search, etc.)
+- ✅ 30+ slash commands (/oalanicolas, /pedro-valerio, squads, etc.)
+
+**Projetos afetados (4):**
+- `~/CODE/Projects/meta-ads-prospector`
+- `~/CODE/Projects/zeroaudio`
+- `~/CODE/Projects/tabgroup-vault`
+- `~/CODE/Projects/dne-digital-student-id`
+
+**Próximo passo:** Migrar projetos existentes com `node tools/fix-hybrid-symlinks.js`
+
+---
+
 **Fim do checkpoint.**
-**Última atualização:** 2026-03-16 (Fase 3 completa, 10/10 alcançado)
+**Última atualização:** 2026-03-15 (Fase 3 completa + Bonus global resources)
