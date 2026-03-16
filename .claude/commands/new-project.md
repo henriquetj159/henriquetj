@@ -135,11 +135,17 @@ Eles serão incluídos na seção "Arquivos Chave" do INDEX.md.
    - `.aios/stories/completed/` — stories concluídas
    - `.aios/epics/` — epics do projeto
 3. Adicione `.gitkeep` em cada subpasta vazia
-4. **Criar symlink de skills globais:**
+4. **Criar symlinks de recursos globais:**
    ```bash
+   # Skills globais
    cd {project-path}/.aios && ln -s ~/aios-core/.aios/skills skills
+
+   # Commands globais (slash commands e squads)
+   cd {project-path}/.claude && ln -s ~/aios-core/.claude/commands commands
    ```
-   Isso permite que o projeto acesse todas as skills do framework AIOS automaticamente.
+   Isso permite que o projeto acesse automaticamente:
+   - **45 skills globais** (kaizen, deep-research, tech-search, etc.)
+   - **30+ slash commands** (/oalanicolas, /pedro-valerio, squads, etc.)
 5. `index_path` = `{project-path}/.aios/INDEX.md`
 6. **NÃO** criar `docs/projects/{nome}/` em aios-core (elimina duplicação)
 7. Criar `.claude/CLAUDE.md` de ponte (ver Passo 2.5)
