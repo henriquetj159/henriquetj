@@ -524,7 +524,7 @@ Baseado no tipo do projeto, sugira o próximo passo concreto:
 
 | Tipo | Sugestão |
 |------|----------|
-| `app` | "Próximo passo: `@pm *create-epic` para definir escopo e criar PRD, ou `/new-project-full` para o pipeline completo." |
+| `app` | "Próximo passo: `@pm *create-epic` para definir escopo e criar PRD." |
 | `squad` | "Próximo passo: Criar `squads/{nome}/README.md` com escopo do squad, depois `@sm *draft` para primeira story." |
 | `mind-clone` | "Próximo passo: Coletar fontes do indivíduo (vídeos, textos, entrevistas). Use `@analyst` para research." |
 | `pipeline` | "Próximo passo: Mapear steps do pipeline (inputs → processamento → outputs). Use `@architect` para design." |
@@ -534,9 +534,148 @@ Baseado no tipo do projeto, sugira o próximo passo concreto:
 Se o tipo for `app` e o destino for externo (`~/CODE/Projects/` ou customizado):
 - Adicione: "Quer iniciar o scaffold com app-builder?"
 
-### Sugestão de upgrade para /new-project-full
+### Pergunta automática: continuar com planejamento?
 
-Se tipo = `app` ou `squad` ou `pipeline`:
-- Adicione: "Quer criar epic + stories agora? Use `/new-project-full` para o pipeline completo, ou `@pm *create-epic` para só o epic."
+**SEMPRE pergunte ao final** (para TODOS os tipos):
 
-Ao final, sempre pergunte: "Quer executar o próximo passo sugerido agora?"
+"✅ Estrutura criada! Quer continuar com o planejamento completo agora?"
+
+**Se tipo = `app`, `squad` ou `pipeline`:**
+- Explique: "Isso vai criar automaticamente: Epic → Stories → Validação (@pm + @sm + @po)"
+- Opções:
+  1. ✅ Sim, pipeline completo (recomendado)
+  2. ⏭️ Não, vou criar manualmente depois
+  3. 📝 Criar só o epic (sem stories)
+
+**Se tipo = `mind-clone`, `knowledge` ou `research`:**
+- Explique: "Isso vai coletar informações e definir escopo de pesquisa"
+- Opções:
+  1. ✅ Sim, continuar com setup
+  2. ⏭️ Não, vou configurar manualmente
+
+---
+
+**Se usuário escolher "Sim" (opção 1):**
+- Execute a **Fase 2** abaixo (planejamento completo)
+
+**Se usuário escolher "Não" (opção 2):**
+- Mostre a sugestão inteligente por tipo (tabela acima) e PARE
+
+**Se usuário escolher "Criar só o epic" (opção 3, apenas para app/squad/pipeline):**
+- Execute apenas o Passo 2.1 da Fase 2 (criar epic)
+- PARE após o epic estar criado
+
+---
+
+## Fase 2: Planejamento Automático (executado se usuário escolher "Sim")
+
+Esta fase só é executada se o usuário optar por continuar. Caso contrário, o comando termina no Passo 6.
+
+### Se tipo = `app` ou `squad` ou `pipeline`
+
+Estes tipos precisam de planejamento formal (epic + stories).
+
+**Passo 2.1: Criar Epic**
+
+Ative o agente @pm e execute `*create-epic` passando contexto:
+- Nome do projeto: `{nome}`
+- Descrição: `{descricao}`
+- Tipo: `{tipo}`
+- Squad: `{squad}`
+
+O @pm vai:
+1. Fazer perguntas de escopo (requisitos, stakeholders, prioridades)
+2. Gerar o PRD
+3. Criar o epic com milestones
+
+**IMPORTANTE:** Deixe o @pm conduzir a elicitação. NÃO invente requisitos.
+
+**Passo 2.2: Criar Stories**
+
+Após o epic estar pronto, ative o agente @sm e execute `*draft`:
+- O @sm vai quebrar o epic em stories implementáveis
+- Cada story terá: título, descrição, acceptance criteria, estimativa
+
+**Passo 2.3: Validar Stories**
+
+Após as stories estarem criadas, ative o agente @po e execute `*validate`:
+- O @po aplica checklist de 10 pontos em cada story
+- Stories que falharem voltam para @sm ajustar
+- Ciclo continua até todas passarem
+
+---
+
+### Se tipo = `mind-clone`
+
+Mind clones têm fluxo diferente — não precisam de epic formal.
+
+**Passo 2.1: Coletar fontes**
+
+Pergunte ao usuário:
+1. Quem é o indivíduo a ser clonado?
+2. Quais fontes estão disponíveis? (vídeos, podcasts, livros, textos, entrevistas)
+3. Qual o objetivo do clone? (assistente, gerador de conteúdo, consultor)
+
+Registre as respostas no INDEX.md do projeto em `{index_path}` (seção "Estado Atual").
+
+**Passo 2.2: Sugerir squad**
+
+Se squad = "nenhum ainda":
+- Sugira: "Use o squad `mind-cloning` ou `squad-creator-pro` para o processo completo."
+
+---
+
+### Se tipo = `knowledge` ou `research`
+
+Estes tipos são exploratórios — não precisam de stories.
+
+**Passo 2.1: Definir escopo de pesquisa**
+
+Pergunte ao usuário:
+1. Quais são as perguntas principais da pesquisa?
+2. Qual é a metodologia? (deep research, análise competitiva, estudo de mercado)
+3. Quais fontes devem ser consultadas?
+
+Registre as respostas no INDEX.md do projeto em `{index_path}`.
+
+**Passo 2.2: Sugerir ferramentas**
+
+Sugira conforme necessidade:
+- Deep research → `/tech-search`
+- Análise competitiva → `@analyst`
+- Dados de mercado → MCP Exa/Apify
+
+---
+
+## Fase 3: Checkpoint e resumo final
+
+Após completar a Fase 2 (ou pular se usuário escolheu "Não"):
+
+1. Atualize o INDEX.md em `{index_path}` com o estado atual (epic criado, stories validadas, etc.)
+2. Mostre resumo final:
+
+```
+## Projeto: {nome} — Criação Completa ✅
+
+**Modo:** {CENTRALIZED ou HYBRID}
+**INDEX.md:** {index_path}
+**ACTIVE.md:** Row #{número} adicionada
+```
+
+Para tipos `app`/`squad`/`pipeline` (se Fase 2 foi executada), adicione:
+```
+**Epic:** {nome do epic} criado em docs/stories/
+**Stories:** {N} stories criadas e validadas
+**Próximo passo:** `@dev` pode começar a implementar Story 1
+```
+
+Para tipos `mind-clone`/`knowledge`/`research` (se Fase 2 foi executada), adicione:
+```
+**Escopo:** Definido e registrado no INDEX.md
+**Próximo passo:** {ação específica baseada no tipo}
+```
+
+3. Se Fase 2 NÃO foi executada (usuário escolheu "Não"), mostre apenas:
+```
+**Estrutura criada!** Use as sugestões acima para os próximos passos.
+```

@@ -36,7 +36,7 @@ function getYearMonth() {
 function getNextStepsByType(type) {
   const suggestions = {
     'app': [
-      'Criar primeiro epic: `@pm *create-epic` ou `/new-project-full`',
+      'Criar primeiro epic: `@pm *create-epic`',
       'Configurar repositório Git se ainda não tiver',
       'Definir stack tecnológica (framework, database, etc.)',
       'Criar primeira story com `@sm *draft`'
@@ -167,7 +167,7 @@ ${getNextStepsByType(type).map((step, i) => `${i + 1}. ${step}`).join('\n')}
 - [ ] Ler INDEX.md e entender estado atual
 - [ ] Revisar .claude/CLAUDE.md (instruções do projeto)
 - [ ] Criar primeiro checkpoint: \`/checkpoint\`
-${type === 'app' ? '- [ ] Decidir se precisa de epic: `/new-project-full` ou `@pm *create-epic`' : ''}
+${type === 'app' ? '- [ ] Decidir se precisa de epic: `@pm *create-epic`' : ''}
 ${type === 'mind-clone' || type === 'research' ? '- [ ] Começar coleta de fontes em research/' : ''}
 ${type === 'squad' ? '- [ ] Documentar agentes principais no README.md' : ''}
 
