@@ -1,9 +1,9 @@
 # @pedro-valerio Memory - Process Absolutist
 
 ## Quick Stats
-- Workflows auditados: 9 (deep-research v1.0→v1.1; BRE extract v1.0→v1.1, formalize v1.0→v1.1; Mind Cloning v1.1; Project Lifecycle v1.0; YouTube Transcription v1.0)
+- Workflows auditados: 10 (deep-research v1.0→v1.1; BRE extract v1.0→v1.1, formalize v1.0→v1.1; Mind Cloning v1.1; Project Lifecycle v1.0; YouTube Transcription v1.0; /new-project v1.0)
 - Clones auditados: 2 (renner-silva v1.1=8.5, v1.2=9.0)
-- Veto conditions criadas: 18 (deep-research) + 24 (BRE v1.1) + 8 (Project Lifecycle)
+- Veto conditions propostas: 18 (deep-research) + 24 (BRE v1.1) + 8 (Project Lifecycle) + 8 (/new-project v1.0)
 - Detalhes completos: `audit-history.md`
 
 ---
@@ -26,6 +26,7 @@
 | Mind Cloning v1.1 | 78 | APROVAR c/ ressalvas |
 | Project Lifecycle v1.0 | 40 | VETO |
 | YouTube Transcription v1.0 | 47 | VETO |
+| **/new-project v1.0** | **67** | **VETO** |
 
 ---
 
@@ -63,6 +64,10 @@
 - **Subprocess delegation sem veto** (aios-transcriber → youtube_captions.py, check=False = erro oculto)
 - **Extension-only validation** (is_audio_file: .mp3 OK, mas .txt renomeado pra .mp3 passa)
 - **State file sem lock** (TranscriptionState: JSON atômico mas concurrent access = race condition)
+- **FAIL LATE** (/new-project: validation no Passo 6 → deveria estar em Passo 0)
+- **Validation sem rollback** (/new-project: falha deixa lixo no disco)
+- **Silent skip** (create-epic-structure: INDEX.md existe → pula sem ABORT)
+- **Table corruption** (/new-project: ACTIVE.md append sem validar header)
 
 ## Patterns Efetivos
 - Enforcement global: `enforcement: { checkpoint_policy, veto_behavior, max_retries }`
@@ -88,6 +93,7 @@
 ---
 
 ## Notas Recentes
+- [2026-03-15] /new-project v1.0 VETO (67/100) — 3C, 4H, 4M, 2L. **Fail Late** violação: validation no fim. CRITICAL: rollback ausente, table corruption, scan não bloqueia
 - [2026-03-13] YouTube Transcription v1.0 VETO (47/100) — 3C, 2H, 6M, 1L. Fallback chain sem veto, subprocess sem raise, extension-only validation
 - [2026-03-11] Project Lifecycle v1.0 VETO (40/100) — 3C, 4H, 4M, 2L. Skills /new-project+/checkpoint+/resume sem veto conditions
 - [2026-03-11] Mind Cloning v1.1 APROVADO c/ RESSALVAS (78/100) — 3C, 5M, 7m. Gap: workflow YAML sem gates em 3/5 fases

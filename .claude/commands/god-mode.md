@@ -1,24 +1,27 @@
 ---
 name: god-mode
-description: Orquestrador supremo v2.0. Classifica intent, roteia agents, executa workflows automaticamente.
+description: Orquestrador supremo v3.1. Classifica intent, roteia agents, cria componentes, executa workflows automaticamente.
 ---
 
-Ative o God Mode v2.0 carregando a skill completa.
+Ative o God Mode v3.1 carregando a skill completa.
 
 ## Ativação (executar nesta ordem)
 
-1. **Leia** `.aios/skills/god-mode/SKILL.md` (core — 12 seções, ~350 linhas)
+1. **Leia** `.aios/skills/god-mode/SKILL.md` (core — 14 seções, ~350 linhas)
 2. **Internalize** as regras de:
    - Intent Classification (OPERATE / CREATE / CONFIGURE)
    - Agent Router (keyword → agent mapping)
-   - Workflow Selection (árvore de decisão + complexity scoring)
-   - Workflow Playbooks (SDC, Spec Pipeline, QA Loop, Brownfield)
-   - Operation Playbooks (New Feature, Bug Fix, Research→Build, Recovery, Sprint)
-   - Constitutional Gates (6 artigos, enforçar em cada transição)
+   - Workflow Selection (decision tree + complexity scoring)
+   - Story Lifecycle (visual + execution modes + handoff prompts)
+   - Creation Engine (6-step protocol + configure commands)
+   - Constitutional Gates (6 articles, enforce at every transition)
    - Framework Boundaries (L1-L4)
+   - Error Recovery (7 scenarios)
+   - Anti-Patterns (9 items)
 3. **Carregue sob demanda** quando necessário:
+   - `references/agent-matrix.md` — Complete agent commands + authority matrix
+   - `references/workflow-playbooks.md` — Step-by-step workflow guides (SDC, QA Loop, Spec Pipeline, Brownfield)
    - `references/workflow-selector.md` — Complexity scoring detalhado
-   - `references/agent-quick-ref.md` — Matriz de agents + comandos
    - `references/agent-creation.md` — Schema + 18-point checklist
    - `references/task-creation.md` — Schema V1.0 + 12-point checklist
    - `references/workflow-creation.md` — YAML schema + 14-point checklist
@@ -29,7 +32,7 @@ Ative o God Mode v2.0 carregando a skill completa.
 4. **Apresente-se** ao usuário:
 
 ```
-God Mode v2.0 ativo.
+God Mode v3.1 ativo.
 
 Diga o que quer fazer e eu cuido do resto.
 Classifico seu pedido, escolho os agents certos, e orquestro o workflow.
@@ -37,8 +40,10 @@ Classifico seu pedido, escolho os agents certos, e orquestro o workflow.
 Quick commands:
   *go {pedido}      — Executar automaticamente
   *route {pedido}   — Ver plano sem executar
+  *create-* {name}  — Criar componentes AIOS
+  *configure {alvo} — Configurar sistema
   *agents           — 11 agents disponíveis
-  *workflows        — 14 workflows disponíveis
+  *workflows        — Workflows disponíveis
   *status           — Status do projeto
   *diagnose         — Health check
 ```

@@ -1,6 +1,6 @@
 # AIOX Catalog
 
-> Gerado automaticamente em 14/03/2026
+> Gerado automaticamente em 15/03/2026
 
 ---
 
@@ -95,7 +95,7 @@
 | deepgram-transcriber | Deepgram Transcriber | `/AIOS:skills:deepgram-transcriber` |
 | design-system-extractor | Sem descrição | `/AIOS:skills:design-system-extractor` |
 | game-development | Game Development | `/AIOS:skills:game-development` |
-| god-mode | God Mode v2.0 — Supreme Operator AIOX | `/AIOS:skills:god-mode` |
+| god-mode | God Mode v3.1 — Supreme Operator AIOX | `/AIOS:skills:god-mode` |
 | godot-gdscript-patterns | Godot GDScript Patterns | `/AIOS:skills:godot-gdscript-patterns` |
 | groq-transcriber | Groq Transcriber | `/AIOS:skills:groq-transcriber` |
 | image-creator | Image Creator | `/AIOS:skills:image-creator` |
@@ -120,7 +120,7 @@
 
 ---
 
-## Tools (13)
+## Tools (14)
 
 | Tool | Descrição |
 |------|-----------|
@@ -132,6 +132,7 @@
 | hotmart-downloader | Sem descrição |
 | instagram-publisher | Instagram Publisher |
 | quality-dashboard | Quality Dashboard |
+| templates | Sem descrição |
 | tldv-scraper | Sem descrição |
 | transcription-dashboard | Sem descrição |
 | xtts-voice-cloner | Sem descrição |
@@ -191,7 +192,7 @@
 |-----------|-------|----------|
 | Squads | 61 | 100% |
 | Skills | 41 | 100% |
-| Tools | 13 | 100% |
+| Tools | 14 | 100% |
 | Agents | 12 | 100% |
 
 ---

@@ -1,0 +1,1 @@
+../../../../../../.aios/skills/god-mode/references/component-templates.md
