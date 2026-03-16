@@ -12,10 +12,14 @@
  * - INDEX.md (project state)
  *
  * Usage:
- *   node tools/create-epic-structure.js [project-path]
+ *   node tools/create-epic-structure.js [project-path] [--skip-epics]
+ *
+ * Flags:
+ *   --skip-epics  Não criar docs/stories/epics/ (para tipos: mind-clone, pipeline, knowledge, research)
  *
  * Exemplo:
  *   node tools/create-epic-structure.js ~/CODE/Projects/meu-projeto
+ *   node tools/create-epic-structure.js . --skip-epics
  *   node tools/create-epic-structure.js .  (usa cwd)
  */
 
@@ -159,7 +163,7 @@ Veja [INDEX.md](INDEX.md) para estado atual.
 // MAIN
 // ═══════════════════════════════════════════════════════════
 
-async function createStructure(targetPath) {
+async function createStructure(targetPath, { skipEpics = false } = {}) {
   const resolvedPath = path.resolve(targetPath);
   const isHybrid = await fs.pathExists(path.join(resolvedPath, '.aios'));
 
@@ -179,6 +183,12 @@ async function createStructure(targetPath) {
   }
 
   for (const [relativePath, config] of Object.entries(STRUCTURE)) {
+    // Pular criação de epics/ se --skip-epics
+    if (relativePath === 'docs/stories/epics' && skipEpics) {
+      console.log(`⏭️  Pulando epics/ (--skip-epics)`);
+      continue;
+    }
+
     // Pular criação de docs/INDEX.md se já existe INDEX.md na raiz
     if (relativePath === 'docs/INDEX.md' && hasRootIndex) {
       console.log(`⏭️  Pulando docs/INDEX.md (já existe INDEX.md na raiz)\n`);
@@ -253,9 +263,11 @@ async function createStructure(targetPath) {
 // CLI
 // ═══════════════════════════════════════════════════════════
 
-const targetPath = process.argv[2] || process.cwd();
+const args = process.argv.slice(2);
+const skipEpics = args.includes('--skip-epics');
+const targetPath = args.filter(a => !a.startsWith('--'))[0] || process.cwd();
 
-createStructure(targetPath).catch((err) => {
+createStructure(targetPath, { skipEpics }).catch((err) => {
   console.error('❌ Erro ao criar estrutura:', err);
   process.exit(1);
 });

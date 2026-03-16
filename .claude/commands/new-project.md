@@ -75,6 +75,19 @@ Antes de perguntar "Onde o código vai ficar?", mostre este guia:
 
 Tipos `mind-clone`, `pipeline`, `knowledge` e `research` NÃO precisam dessa pergunta — o código (se houver) fica em `aios-core/`.
 
+### Pergunta adicional: squad associado? (para tipo `app`)
+
+Se tipo = `app`, perguntar:
+
+6. **Este projeto tem um squad AIOX associado?** — opções:
+   - Não (padrão)
+   - Sim (informar nome do squad)
+
+Se **SIM**, o projeto é tratado como **app+squad**:
+- Merge de checklists: inclui items de `app` E `squad` no Human Checklist do INDEX.md
+- Merge de permissões: `copy-project-config.js` copia settings.json de `app/` como base e adiciona permissões de `squad/` (Task tool para agents)
+- Seção "Squads Relacionados" é preenchida automaticamente no INDEX.md
+
 ### Validar squad (se informado)
 
 Se squad informado ≠ "nenhum ainda":
@@ -159,9 +172,24 @@ Este projeto usa governança híbrida AIOX. INDEX, stories e sessions vivem loca
 
 **SEMPRE executar este passo** para todo projeto (CENTRALIZED ou HYBRID).
 
+### Determinar se epics/ é necessário
+
+| Tipo | Criar epics/? | Razão |
+|------|--------------|-------|
+| `app` | SIM | Milestones de features |
+| `squad` | SIM | Versões e releases |
+| `pipeline` | NÃO | Batch processing, iterativo |
+| `mind-clone` | NÃO | Coleta iterativa, sem milestones |
+| `knowledge` | NÃO | Incremental, sem deadlines |
+| `research` | NÃO | Discovery-driven, não milestone-driven |
+
 Execute o script:
 ```bash
+# Para app/squad (com epics):
 node ~/aios-core/tools/create-epic-structure.js {project-path}
+
+# Para pipeline/mind-clone/knowledge/research (sem epics):
+node ~/aios-core/tools/create-epic-structure.js {project-path} --skip-epics
 ```
 
 Onde `{project-path}` é:
@@ -169,7 +197,8 @@ Onde `{project-path}` é:
 - **HYBRID:** `{project-path}` (path absoluto do projeto externo)
 
 Isso cria automaticamente:
-- `docs/stories/active/`, `docs/stories/done/`, `docs/stories/epics/`
+- `docs/stories/active/`, `docs/stories/done/`
+- `docs/stories/epics/` (apenas se tipo = app ou squad)
 - `docs/sessions/YYYY-MM/`
 - `docs/HANDOFFS-INDEX.md`
 - `docs/INDEX.md` (template — será sobrescrito no Passo 3)
@@ -209,13 +238,20 @@ node ~/aios-core/tools/copy-project-config.js docs/projects/my-knowledge knowled
 node ~/aios-core/tools/copy-project-config.js ~/CODE/Projects/my-app app "My App" HYBRID
 ```
 
+**Exemplo app+squad (merge de tipos):**
+```bash
+node ~/aios-core/tools/copy-project-config.js ~/CODE/Projects/meta-ads app "Meta Ads" HYBRID --merge-types app,squad
+```
+
 **O que o script faz:**
 1. Copia template `base/.claude/` completo
 2. Sobrescreve `settings.json` com override específico do tipo (se existir)
+   - Se `--merge-types` for usado, faz deep merge dos settings.json de TODOS os tipos especificados
+   - Arrays são combinados removendo duplicatas (ex: allow de app + allow de squad)
 3. Substitui todos os placeholders no `CLAUDE.md`
 4. Valida que todos os 4 arquivos obrigatórios foram criados
 
-**Saída esperada:**
+**Saída esperada (modo normal):**
 ```
 ✅ Copiando base template...
 ✅ Aplicando override para tipo: app
@@ -226,6 +262,23 @@ node ~/aios-core/tools/copy-project-config.js ~/CODE/Projects/my-app app "My App
    ✅ .claude/rules/behavioral-rules.md
    ✅ .claude/rules/project-rules.md
 🎉 Configuração .claude/ criada com sucesso!
+```
+
+**Saída esperada (modo merge):**
+```
+✅ Copiando base template...
+🔀 Fazendo merge de tipos: app + squad
+
+   ✅ Merged: app
+   ✅ Merged: squad
+
+✅ settings.json merged salvo.
+✅ Placeholders substituídos em CLAUDE.md
+🔍 Validando estrutura criada...
+   ✅ .claude/settings.json (merged)
+   ...
+🎉 Configuração .claude/ criada com sucesso!
+📝 Tipos merged: app + squad
 ```
 
 ## Passo 3: Gerar INDEX.md
@@ -320,21 +373,37 @@ Se squad não existe ou é "nenhum ainda":
 
 ## Passo 4: Atualizar ACTIVE.md
 
-1. Verificar se `docs/projects/ACTIVE.md` existe
-2. Se NÃO existir, criar com header padrão:
-   ```
-   # Projetos Ativos
+**Usar script automatizado** que valida header e adiciona row:
 
-   | # | Projeto | Modo | Status | Agente/Squad | Última Sessão | INDEX |
-   |---|---------|------|--------|-------------|---------------|-------|
-   ```
-3. Ler arquivo (agora garantido que existe)
-4. Verificar se projeto já está na tabela (NÃO deveria, pois Passo 0 bloqueou)
-5. Calcular próximo número sequencial: `max(números existentes) + 1`
-6. Adicionar nova row com emoji de modo (📦 CENTRALIZED, 🏠 HYBRID), emoji de status (🔄 ou ⏸️) e link INDEX:
-   - **CENTRALIZED:** Modo = `📦` | INDEX = `[INDEX]({nome}/INDEX.md)`
-   - **HYBRID:** Modo = `🏠` | INDEX = `[INDEX]({path-absoluto}/.aios/INDEX.md)`
-7. Formatar igual às rows existentes
+```bash
+node ~/aios-core/tools/append-to-active.js \
+  --project {nome} \
+  --mode {HYBRID|CENTRALIZED} \
+  --path {link-index}
+```
+
+Onde:
+- `{nome}` = nome do projeto (kebab-case)
+- `{mode}` = HYBRID ou CENTRALIZED (determinado no Passo 1)
+- `{link-index}`:
+  - **CENTRALIZED:** `{nome}/INDEX.md`
+  - **HYBRID:** `{path-absoluto}/.aios/INDEX.md`
+
+**O que o script faz:**
+- ✅ Valida header do ACTIVE.md (corrige se corrompido)
+- ✅ Detecta se projeto já existe
+- ✅ Calcula número sequencial automaticamente
+- ✅ Adiciona row com emoji correto (📦 CENTRALIZED, 🏠 HYBRID)
+- ✅ Formata igual às rows existentes
+
+**Exemplo:**
+```bash
+# CENTRALIZED
+node ~/aios-core/tools/append-to-active.js --project ensinio-v2 --mode CENTRALIZED --path ensinio-v2/INDEX.md
+
+# HYBRID
+node ~/aios-core/tools/append-to-active.js --project meta-ads --mode HYBRID --path ~/CODE/Projects/meta-ads/.aios/INDEX.md
+```
 
 ## Passo 5: Confirmar e sugerir próximo passo
 
@@ -413,8 +482,29 @@ node ~/aios-core/tools/validate-structure.js {project-path}
 
 **Se a validação falhar:**
 - Mostrar output do script (indica qual check falhou)
-- Corrigir o problema identificado
-- Rodar novamente até **6/6 PASS**
+- Tentar corrigir o problema identificado automaticamente (1 tentativa)
+- Se a segunda tentativa também falhar, executar **ROLLBACK AUTOMÁTICO**:
+
+### Rollback Automático (se validação falhar 2x)
+
+Execute o script de rollback:
+
+```bash
+node ~/aios-core/tools/rollback-project.js {project-path}
+```
+
+**O que o script faz:**
+1. Pede confirmação antes de deletar (⚠️ "Isso vai DELETAR a estrutura criada em: {path}. Continuar? (Y/N)")
+2. Se confirmado, remove NA ORDEM INVERSA:
+   - `.claude/` criado pelo copy-project-config.js
+   - `docs/INDEX.md`, `docs/HANDOFFS-INDEX.md`, `docs/sessions`, `docs/stories` criados pelo create-epic-structure.js
+   - `.aios/`, `research/`, `data/` criados no Passo 2
+   - Row do ACTIVE.md criada no Passo 4 (automaticamente detecta e remove)
+3. Pergunta se deve remover diretório do projeto se ficou vazio
+4. Mostra: "✅ Rollback completo! N itens removidos."
+5. Sugere: "💡 Corrija o problema e rode /new-project novamente."
+
+Se usuário cancelar: "❌ Rollback cancelado. Estrutura mantida com problemas."
 
 **Se passar:**
 - Mostrar: "🎉 Estrutura validada! 6/6 checks passaram."

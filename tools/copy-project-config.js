@@ -8,10 +8,12 @@
  *
  * Usage:
  *   node tools/copy-project-config.js {destination} {type} {projectName} {mode}
+ *   node tools/copy-project-config.js {destination} {type} {projectName} {mode} --merge-types type1,type2
  *
  * Exemplo:
  *   node tools/copy-project-config.js ~/CODE/Projects/my-app app "My App" HYBRID
  *   node tools/copy-project-config.js docs/projects/my-proj knowledge "My Knowledge" CENTRALIZED
+ *   node tools/copy-project-config.js ~/CODE/Projects/meta-ads app "Meta Ads" HYBRID --merge-types app,squad
  */
 
 const fs = require('fs-extra');
@@ -34,6 +36,25 @@ const MODE_DESCRIPTIONS = {
 // ═══════════════════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════════════════
+
+function deepMerge(target, source) {
+  const result = { ...target };
+
+  for (const [key, value] of Object.entries(source)) {
+    if (Array.isArray(value)) {
+      // Merge arrays removendo duplicatas
+      result[key] = Array.from(new Set([...(result[key] || []), ...value]));
+    } else if (value !== null && typeof value === 'object') {
+      // Merge objetos recursivamente
+      result[key] = deepMerge(result[key] || {}, value);
+    } else {
+      // Sobrescrever valores simples
+      result[key] = value;
+    }
+  }
+
+  return result;
+}
 
 function replacePlaceholders(content, vars) {
   let result = content;
@@ -70,14 +91,19 @@ function computePaths(destination, mode, projectName) {
 // MAIN
 // ═══════════════════════════════════════════════════════════
 
-async function copyProjectConfig(destination, type, projectName, mode) {
+async function copyProjectConfig(destination, type, projectName, mode, mergeTypes = null) {
   const resolvedDest = path.resolve(destination);
 
   console.log(`\n📋 Copiando templates .claude/ para: ${resolvedDest}\n`);
 
+  // Determinar tipos a processar
+  const typesToMerge = mergeTypes || [type];
+
   // Validar inputs
-  if (!VALID_TYPES.includes(type)) {
-    throw new Error(`Tipo inválido: ${type}. Válidos: ${VALID_TYPES.join(', ')}`);
+  for (const t of typesToMerge) {
+    if (!VALID_TYPES.includes(t)) {
+      throw new Error(`Tipo inválido: ${t}. Válidos: ${VALID_TYPES.join(', ')}`);
+    }
   }
 
   if (!VALID_MODES.includes(mode)) {
@@ -91,13 +117,36 @@ async function copyProjectConfig(destination, type, projectName, mode) {
   console.log(`✅ Copiando base template...`);
   await fs.copy(baseSrc, claudeDest);
 
-  // 2. Sobrescrever com tipo específico (se existe)
-  const typeSrc = path.join(TEMPLATES_DIR, type, '.claude/settings.json');
-  if (await fs.pathExists(typeSrc)) {
-    console.log(`✅ Aplicando override para tipo: ${type}`);
-    await fs.copy(typeSrc, path.join(claudeDest, 'settings.json'));
+  // 2. Merge de settings.json dos tipos especificados
+  if (mergeTypes && mergeTypes.length > 1) {
+    console.log(`🔀 Fazendo merge de tipos: ${mergeTypes.join(' + ')}\n`);
+
+    let mergedSettings = {};
+
+    for (const t of mergeTypes) {
+      const typeSrc = path.join(TEMPLATES_DIR, t, '.claude/settings.json');
+      if (await fs.pathExists(typeSrc)) {
+        const typeSettings = await fs.readJson(typeSrc);
+        mergedSettings = deepMerge(mergedSettings, typeSettings);
+        console.log(`   ✅ Merged: ${t}`);
+      } else {
+        console.log(`   ⏭️  Tipo '${t}' não tem settings.json override`);
+      }
+    }
+
+    // Salvar settings.json merged
+    await fs.writeJson(path.join(claudeDest, 'settings.json'), mergedSettings, { spaces: 2 });
+    console.log(`\n✅ settings.json merged salvo.`);
+
   } else {
-    console.log(`ℹ️  Tipo '${type}' usa settings.json base (sem override)`);
+    // Modo normal: sobrescrever com tipo específico (se existe)
+    const typeSrc = path.join(TEMPLATES_DIR, type, '.claude/settings.json');
+    if (await fs.pathExists(typeSrc)) {
+      console.log(`✅ Aplicando override para tipo: ${type}`);
+      await fs.copy(typeSrc, path.join(claudeDest, 'settings.json'));
+    } else {
+      console.log(`ℹ️  Tipo '${type}' usa settings.json base (sem override)`);
+    }
   }
 
   // 3. Substituir placeholders no CLAUDE.md
@@ -138,7 +187,11 @@ async function copyProjectConfig(destination, type, projectName, mode) {
 
   console.log(`\n🎉 Configuração .claude/ criada com sucesso!\n`);
   console.log(`📂 Destino: ${resolvedDest}/.claude/`);
-  console.log(`📝 Tipo: ${type}`);
+  if (mergeTypes && mergeTypes.length > 1) {
+    console.log(`📝 Tipos merged: ${mergeTypes.join(' + ')}`);
+  } else {
+    console.log(`📝 Tipo: ${type}`);
+  }
   console.log(`🔧 Modo: ${mode}\n`);
 }
 
@@ -146,15 +199,29 @@ async function copyProjectConfig(destination, type, projectName, mode) {
 // CLI
 // ═══════════════════════════════════════════════════════════
 
-const [destination, type, projectName, mode] = process.argv.slice(2);
+const args = process.argv.slice(2);
+
+// Parse --merge-types flag
+const mergeTypesIndex = args.indexOf('--merge-types');
+const mergeTypes = mergeTypesIndex !== -1 && args[mergeTypesIndex + 1]
+  ? args[mergeTypesIndex + 1].split(',')
+  : null;
+
+// Remover flag do args
+const filteredArgs = args.filter((arg, i) =>
+  arg !== '--merge-types' && (i !== mergeTypesIndex + 1)
+);
+
+const [destination, type, projectName, mode] = filteredArgs;
 
 if (!destination || !type || !projectName || !mode) {
-  console.error('❌ Uso: node copy-project-config.js {destination} {type} {projectName} {mode}');
+  console.error('❌ Uso: node copy-project-config.js {destination} {type} {projectName} {mode} [--merge-types type1,type2]');
   console.error('Exemplo: node copy-project-config.js ~/CODE/Projects/my-app app "My App" HYBRID');
+  console.error('         node copy-project-config.js ~/CODE/Projects/meta-ads app "Meta Ads" HYBRID --merge-types app,squad');
   process.exit(1);
 }
 
-copyProjectConfig(destination, type, projectName, mode).catch((err) => {
+copyProjectConfig(destination, type, projectName, mode, mergeTypes).catch((err) => {
   console.error('❌ Erro ao copiar configuração:', err.message);
   process.exit(1);
 });
