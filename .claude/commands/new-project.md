@@ -10,6 +10,27 @@ Usuário quer criar um novo projeto. Siga os passos abaixo:
    - Verificar se há row com mesmo nome em `docs/projects/ACTIVE.md`
    - Se existir: PARAR e mostrar "Projeto '{nome}' já existe. Veja `docs/projects/{nome}/INDEX.md` ou escolha outro nome."
 
+## Passo 0.5: Pre-flight Validation (BLOQUEADOR)
+
+**ANTES de coletar informações**, execute validação prévia do destino.
+
+Após determinar o `{project-path}` (no Passo 1, quando souber o destino):
+
+```bash
+node ~/aios-core/tools/validate-structure.js --dry-run {project-path}
+```
+
+**O que valida:**
+1. Diretório pai existe
+2. Sem conflito de nomes (INDEX.md já existente)
+3. Permissões de escrita OK
+4. Path é absoluto (se HYBRID)
+
+**Se FALHAR (exit code 1):** BLOQUEAR criação. Mostrar output e pedir correção.
+**Se PASSAR (exit code 0):** Continuar para Passo 2.
+
+**Nota:** Este passo é executado DEPOIS do Passo 1 (precisa saber o destino), mas ANTES de criar qualquer arquivo.
+
 ## Passo 1: Coletar informações
 
 Use AskUserQuestion para perguntar:
@@ -23,6 +44,26 @@ Use AskUserQuestion para perguntar:
    - `Pausado` → emoji ⏸️
 
 Se o tipo escolhido for `app` ou `squad`, faça uma pergunta adicional:
+
+### Como escolher o modo? (Decision Tree)
+
+Antes de perguntar "Onde o código vai ficar?", mostre este guia:
+
+**CENTRALIZED (padrão, 72% dos projetos):**
+- Squads AIOX (expansion packs)
+- Mind clones (vão pro catalog)
+- Pipelines que viram skills
+- Knowledge bases reutilizáveis
+- Research interna do framework
+
+**HYBRID (externo, 28% dos projetos):**
+- Apps SaaS independentes
+- Apps cliente (entrega externa)
+- Projetos com repositório Git próprio
+- Open source futuro
+- Protótipos que podem virar produtos
+
+**Na dúvida?** Use CENTRALIZED. É mais fácil migrar pra fora depois do que pra dentro.
 
 5. **Onde o código vai ficar?** — opções:
    - `aios-core/` (padrão — projeto vive dentro do monorepo)
@@ -232,6 +273,19 @@ Restante do INDEX.md:
 ## Human Checklist
 {selecionar checklist baseado no tipo — ver seção abaixo}
 
+## Metrics
+
+**Last Updated:** {data de hoje}
+
+| Métrica | Valor | Meta |
+|---------|-------|------|
+| Stories Ativas | 0 | - |
+| Stories Concluídas | 0 | - |
+| Epics Ativos | 0 | - |
+| Tempo Médio por Story | - | - |
+| Coverage de Testes | - | >80% |
+| Bugs Abertos | 0 | <5 |
+
 ## Histórico
 | Data | Ação |
 |------|------|
@@ -271,15 +325,15 @@ Se squad não existe ou é "nenhum ainda":
    ```
    # Projetos Ativos
 
-   | # | Projeto | Status | Agente/Squad | Última Sessão | INDEX |
-   |---|---------|--------|-------------|---------------|-------|
+   | # | Projeto | Modo | Status | Agente/Squad | Última Sessão | INDEX |
+   |---|---------|------|--------|-------------|---------------|-------|
    ```
 3. Ler arquivo (agora garantido que existe)
 4. Verificar se projeto já está na tabela (NÃO deveria, pois Passo 0 bloqueou)
 5. Calcular próximo número sequencial: `max(números existentes) + 1`
-6. Adicionar nova row com emoji de status (🔄 ou ⏸️) e link INDEX:
-   - **CENTRALIZED:** `[INDEX]({nome}/INDEX.md)`
-   - **HYBRID:** `[INDEX]({path-absoluto}/.aios/INDEX.md)`
+6. Adicionar nova row com emoji de modo (📦 CENTRALIZED, 🏠 HYBRID), emoji de status (🔄 ou ⏸️) e link INDEX:
+   - **CENTRALIZED:** Modo = `📦` | INDEX = `[INDEX]({nome}/INDEX.md)`
+   - **HYBRID:** Modo = `🏠` | INDEX = `[INDEX]({path-absoluto}/.aios/INDEX.md)`
 7. Formatar igual às rows existentes
 
 ## Passo 5: Confirmar e sugerir próximo passo
@@ -337,6 +391,34 @@ Mostre também:
 - Row adicionada no ACTIVE.md (#{número})
 - Modo: CENTRALIZED ou HYBRID
 
+## Passo 6: Validação Automática de Qualidade
+
+Execute a validação de estrutura automaticamente:
+
+```bash
+node ~/aios-core/tools/validate-structure.js {project-path}
+```
+
+**Onde `{project-path}` é:**
+- **CENTRALIZED:** `docs/projects/{nome}/`
+- **HYBRID:** `{project-path}/` (path absoluto do projeto externo)
+
+**O que a validação checa:**
+1. ✅ Estrutura base existe (docs/stories, docs/sessions, INDEX.md, etc.)
+2. ✅ Stories em active/ seguem naming (STORY-X.Y-nome.md)
+3. ✅ Epics seguem naming (EPIC-N-nome/)
+4. ✅ INDEX.md tem seção Metrics com Last Updated
+5. ✅ Sessions organizadas por YYYY-MM
+6. ✅ Stories concluídas em done/
+
+**Se a validação falhar:**
+- Mostrar output do script (indica qual check falhou)
+- Corrigir o problema identificado
+- Rodar novamente até **6/6 PASS**
+
+**Se passar:**
+- Mostrar: "🎉 Estrutura validada! 6/6 checks passaram."
+
 ### Sugestão inteligente por tipo
 
 Baseado no tipo do projeto, sugira o próximo passo concreto:
@@ -352,5 +434,10 @@ Baseado no tipo do projeto, sugira o próximo passo concreto:
 
 Se o tipo for `app` e o destino for externo (`~/CODE/Projects/` ou customizado):
 - Adicione: "Quer iniciar o scaffold com app-builder?"
+
+### Sugestão de upgrade para /new-project-full
+
+Se tipo = `app` ou `squad` ou `pipeline`:
+- Adicione: "Quer criar epic + stories agora? Use `/new-project-full` para o pipeline completo, ou `@pm *create-epic` para só o epic."
 
 Ao final, sempre pergunte: "Quer executar o próximo passo sugerido agora?"
