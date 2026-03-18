@@ -1,6 +1,6 @@
 # AIOS Ecosystem Index
 
-*Atualizado: 2026-03-18 03:59:53*  
+*Atualizado: 2026-03-18 04:05:01*  
 *Regenerar: `node scripts/generate-ecosystem-index.js`*
 
 ---
@@ -654,4 +654,4 @@
 
 ---
 
-*Gerado automaticamente em 2026-03-18 03:59:53*
+*Gerado automaticamente em 2026-03-18 04:05:01*
