@@ -4,7 +4,7 @@ from_agent: qa
 to_agent: devops
 story: docs/stories/active/ecosystem-index-automation.md
 date: 2026-03-18
-consumed: false
+consumed: true
 priority: P1
 last_command: qa-gate
 
